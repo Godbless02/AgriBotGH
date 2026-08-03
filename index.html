@@ -1,148 +1,263 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgriBotGH</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriBotGH</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ── WELCOME SCREEN ── -->
+    <div id="welcomeScreen" class="welcome-screen">
+      <div class="welcome-card">
+        <div class="welcome-logo">🌿</div>
+        <h1 class="welcome-title">AgriBotGH</h1>
+        <p class="welcome-subtitle">Bilingual Agricultural Chatbot</p>
+        <p class="welcome-tagline">Your farming assistant in English and Twi</p>
 
-  <!-- ── WELCOME SCREEN ── -->
-  <div id="welcomeScreen" class="welcome-screen">
-    <div class="welcome-card">
-      <div class="welcome-logo">🌿</div>
-      <h1 class="welcome-title">AgriBotGH</h1>
-      <p class="welcome-subtitle">Bilingual Agricultural Chatbot</p>
-      <p class="welcome-tagline">Your farming assistant in English and Twi</p>
-
-      <div class="welcome-form">
-        <label class="form-label">What should we call you?</label>
-        <input type="text" id="nameInput" class="name-input"
-               placeholder="Enter your name e.g. Kofi"
-               maxlength="30" autocomplete="off">
-
-        <label class="form-label" style="margin-top:18px">Choose your language</label>
-        <div class="lang-choice-btns">
-          <button class="lang-choice-btn active" id="langEnBtn" onclick="selectWelcomeLang('en')">
-            🇬🇧 English
-          </button>
-          <button class="lang-choice-btn" id="langTwBtn" onclick="selectWelcomeLang('tw')">
-            🇬🇭 Twi
-          </button>
-        </div>
-
-        <button class="start-btn" onclick="startChat()">Start Chatting →</button>
-        <p id="welcomeError" class="welcome-error"></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── MAIN CHAT APP ── -->
-  <div id="appShell" class="app-shell" style="display:none">
-
-    <header class="topbar">
-      <div class="topbar-left">
-        <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
-        <span class="brand">🌿 <strong>AgriBotGH</strong></span>
-      </div>
-      <div class="topbar-center">
-        <span class="status-dot">●</span>
-        <span class="status-text">Online</span>
-      </div>
-      <div class="topbar-right">
-        <span id="userBadge" class="user-badge"></span>
-        <button class="theme-btn" onclick="toggleTheme()" id="themeBtn" title="Switch theme">🌙</button>
-        <button class="clear-btn" onclick="clearChat()">Clear Chat</button>
-      </div>
-    </header>
-
-    <div class="main-layout">
-
-      <!-- LEFT SIDEBAR -->
-      <aside class="sidebar" id="sidebar">
-        <div class="sidebar-top">
-          <div class="sidebar-logo">🌾</div>
-          <div class="sidebar-brand">AgriBotGH</div>
-        </div>
-
-        <!-- Language Toggle -->
-        <div class="lang-toggle">
-          <button class="lang-btn active" id="enBtn" onclick="switchLanguage('en')">English</button>
-          <button class="lang-btn" id="twBtn" onclick="switchLanguage('tw')">Twi</button>
-        </div>
-        <div class="lang-indicator" id="langIndicator">Chatting in: <strong>English</strong></div>
-
-        <!-- New Chat -->
-        <button class="new-chat-btn" onclick="newChat()">+ New Chat</button>
-
-        <!-- Chat History -->
-        <div class="history-section">
-          <div class="history-title">Previous Chats</div>
-          <div class="history-columns">
-            <div class="history-col">
-              <div class="history-col-label">English</div>
-              <div id="enHistory" class="history-list"></div>
-            </div>
-            <div class="history-divider"></div>
-            <div class="history-col">
-              <div class="history-col-label">Twi</div>
-              <div id="twHistory" class="history-list"></div>
-            </div>
+        <div class="welcome-help">
+          <div class="help-title">How to ask</div>
+          <p class="help-text">
+            Ask a simple farming question in English or Twi. Try starting with
+            “How do I…”, “What should I…”, or “Why is…”.
+          </p>
+          <div class="example-list">
+            <button
+              class="example-chip"
+              onclick="fillHelpExample('How do I grow maize?')"
+            >
+              How do I grow maize?
+            </button>
+            <button
+              class="example-chip"
+              onclick="fillHelpExample('What fertilizer is best for tomatoes?')"
+            >
+              Best fertilizer for tomatoes?
+            </button>
+            <button
+              class="example-chip"
+              onclick="fillHelpExample('Dɛn na menyɛ sɛ m'asase yɛ pa?')"
+            >
+              Dɛn na menyɛ sɛ m'asase yɛ pa?
+            </button>
           </div>
         </div>
 
-        <!-- Change Name -->
-        <div class="sidebar-footer">
-          <button class="change-name-btn" onclick="changeName()">✏️ Change Name</button>
-        </div>
-      </aside>
+        <div class="welcome-form">
+          <label class="form-label">What should we call you?</label>
+          <input
+            type="text"
+            id="nameInput"
+            class="name-input"
+            placeholder="Enter your name e.g. Kofi"
+            maxlength="30"
+            autocomplete="off"
+            onkeydown="if (event.key === 'Enter') startChat();"
+          />
 
-      <!-- CHAT AREA -->
-      <section class="chat-area">
-        <div class="messages" id="messages"></div>
-        <div class="input-bar">
-          <input type="text" id="chatInput"
-                 placeholder="Type your farming question here..."
-                 maxlength="2000" autocomplete="off">
-          <span class="char-count" id="charCount">0/2000</span>
-          <button class="send-btn" id="sendBtn" onclick="handleSend()">Send</button>
-        </div>
-      </section>
+          <label class="form-label" style="margin-top: 18px"
+            >Choose your language</label
+          >
+          <div class="lang-choice-btns">
+            <button
+              class="lang-choice-btn active"
+              id="langEnBtn"
+              onclick="selectWelcomeLang('en')"
+            >
+              🇬🇧 English
+            </button>
+            <button
+              class="lang-choice-btn"
+              id="langTwBtn"
+              onclick="selectWelcomeLang('tw')"
+            >
+              🇬🇭 Twi
+            </button>
+          </div>
 
-      <!-- RIGHT SIDEBAR: QUICK QUESTIONS -->
-      <aside class="chips-sidebar" id="chipsSidebar">
-        <div class="chips-header">
-          <span>💡 Try asking</span>
-          <button class="chips-close" onclick="toggleChips()">✕</button>
+          <button class="start-btn" onclick="startChat()">
+            Start Chatting →
+          </button>
+          <p id="welcomeError" class="welcome-error"></p>
         </div>
-        <p class="chips-desc">Tap any question to fill the input.</p>
-        <div id="enChips" class="chips-group">
-          <button class="chip" onclick="fillChip(this)">How do I grow maize?</button>
-          <button class="chip" onclick="fillChip(this)">When should I plant maize in Ghana?</button>
-          <button class="chip" onclick="fillChip(this)">What is the best fertilizer for tomatoes?</button>
-          <button class="chip" onclick="fillChip(this)">How do I control pests on my farm?</button>
-          <button class="chip" onclick="fillChip(this)">How do I improve my soil?</button>
-          <button class="chip" onclick="fillChip(this)">How do I start fish farming?</button>
-          <button class="chip" onclick="fillChip(this)">How do I grow cassava?</button>
-          <button class="chip" onclick="fillChip(this)">What causes tomato blight?</button>
-        </div>
-        <div id="twChips" class="chips-group" style="display:none">
-          <button class="chip" onclick="fillChip(this)">Dɛn na menyɛ sɛ meto aburoɔ?</button>
-          <button class="chip" onclick="fillChip(this)">Ferefere bɛn na ɛyɛ papa ma aburo?</button>
-          <button class="chip" onclick="fillChip(this)">Dɛn na menyɛ sɛ m'asase yɛ pa?</button>
-          <button class="chip" onclick="fillChip(this)">Dɛn na menyɛ adwummaker ho?</button>
-          <button class="chip" onclick="fillChip(this)">Dɛn na menyɛ sɛ meto bankye?</button>
-          <button class="chip" onclick="fillChip(this)">Dɛn na menyɛ apataa adwuma?</button>
-        </div>
-        <button class="chips-toggle-float" onclick="toggleChips()" id="chipsToggleBtn" title="Quick questions">💡</button>
-      </aside>
-
+      </div>
     </div>
-    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
-  </div>
 
-<script src="app.js"></script>
-</body>
+    <!-- ── MAIN CHAT APP ── -->
+    <div id="appShell" class="app-shell" style="display: none">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+          <span class="brand">🌿 <strong>AgriBotGH</strong></span>
+        </div>
+        <div class="topbar-center">
+          <span class="status-dot">●</span>
+          <span class="status-text">Online</span>
+        </div>
+        <div class="topbar-right">
+          <span id="userBadge" class="user-badge"></span>
+          <button
+            class="theme-btn"
+            onclick="toggleTheme()"
+            id="themeBtn"
+            title="Switch theme"
+          >
+            🌙
+          </button>
+          <button class="clear-btn" onclick="clearChat()">Clear Chat</button>
+        </div>
+      </header>
+
+      <div class="main-layout">
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+          <div class="sidebar-top">
+            <div class="sidebar-logo">🌾</div>
+            <div class="sidebar-brand">AgriBotGH</div>
+          </div>
+
+          <!-- Language Toggle -->
+          <div class="lang-toggle">
+            <button
+              class="lang-btn active"
+              id="enBtn"
+              onclick="switchLanguage('en')"
+            >
+              English
+            </button>
+            <button class="lang-btn" id="twBtn" onclick="switchLanguage('tw')">
+              Twi
+            </button>
+          </div>
+          <div class="lang-indicator" id="langIndicator">
+            Chatting in: <strong>English</strong>
+          </div>
+
+          <!-- New Chat -->
+          <button class="new-chat-btn" onclick="newChat()">+ New Chat</button>
+
+          <!-- Chat History -->
+          <div class="history-section">
+            <div class="history-title">Previous Chats</div>
+            <div class="history-columns">
+              <div class="history-col">
+                <div class="history-col-label">English</div>
+                <div id="enHistory" class="history-list"></div>
+              </div>
+              <div class="history-divider"></div>
+              <div class="history-col">
+                <div class="history-col-label">Twi</div>
+                <div id="twHistory" class="history-list"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Change Name -->
+          <div class="sidebar-footer">
+            <button class="change-name-btn" onclick="changeName()">
+              ✏️ Change Name
+            </button>
+          </div>
+        </aside>
+
+        <!-- CHAT AREA -->
+        <section class="chat-area">
+          <div class="messages" id="messages"></div>
+          <div class="input-bar">
+            <button
+              type="button"
+              class="topic-toggle-btn"
+              onclick="toggleChips()"
+              title="Show topic ideas"
+              aria-controls="chipsSidebar"
+              aria-expanded="false"
+            >
+              💡 Topics
+            </button>
+            <input
+              type="text"
+              id="chatInput"
+              placeholder="Type your farming question here..."
+              maxlength="2000"
+              autocomplete="off"
+            />
+            <span class="char-count" id="charCount">0/2000</span>
+            <button class="send-btn" id="sendBtn" onclick="handleSend()">
+              Send
+            </button>
+          </div>
+        </section>
+
+        <!-- RIGHT SIDEBAR: QUICK QUESTIONS -->
+        <aside class="chips-sidebar" id="chipsSidebar">
+          <div class="chips-header">
+            <span>💡 Try asking</span>
+            <button class="chips-close" onclick="toggleChips()">✕</button>
+          </div>
+          <p class="chips-desc">Tap any question to fill the input.</p>
+          <div id="enChips" class="chips-group">
+            <button class="chip" onclick="fillChip(this)">
+              How do I grow maize?
+            </button>
+            <button class="chip" onclick="fillChip(this)">
+              When should I plant maize in Ghana?
+            </button>
+            <button class="chip" onclick="fillChip(this)">
+              What is the best fertilizer for tomatoes?
+            </button>
+            <button class="chip" onclick="fillChip(this)">
+              How do I control pests on my farm?
+            </button>
+            <button class="chip" onclick="fillChip(this)">
+              How do I improve my soil?
+            </button>
+            <button class="chip" onclick="fillChip(this)">
+              How do I start fish farming?
+            </button>
+            <button class="chip" onclick="fillChip(this)">
+              How do I grow cassava?
+            </button>
+            <button class="chip" onclick="fillChip(this)">
+              What causes tomato blight?
+            </button>
+          </div>
+          <div id="twChips" class="chips-group" style="display: none">
+            <button class="chip" onclick="fillChip(this)">
+              Dɛn na menyɛ sɛ meto aburoɔ?
+            </button>
+            <button class="chip" onclick="fillChip(this)">
+              Ferefere bɛn na ɛyɛ papa ma aburo?
+            </button>
+            <button class="chip" onclick="fillChip(this)">
+              Dɛn na menyɛ sɛ m'asase yɛ pa?
+            </button>
+            <button class="chip" onclick="fillChip(this)">
+              Dɛn na menyɛ adwummaker ho?
+            </button>
+            <button class="chip" onclick="fillChip(this)">
+              Dɛn na menyɛ sɛ meto bankye?
+            </button>
+            <button class="chip" onclick="fillChip(this)">
+              Dɛn na menyɛ apataa adwuma?
+            </button>
+          </div>
+          <button
+            class="chips-toggle-float"
+            onclick="toggleChips()"
+            id="chipsToggleBtn"
+            title="Quick questions"
+          >
+            💡
+          </button>
+        </aside>
+      </div>
+      <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
 </html>

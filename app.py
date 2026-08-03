@@ -3,26 +3,132 @@ from flask_cors import CORS
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from huggingface_hub import hf_hub_download
-import numpy as np, pickle, json, os, re
+import numpy as np
+import pickle
+import json
+import os
+import re
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder=None)
 CORS(app)
 
 REPO_ID = "Godbles02/agribot-gh"
+HF_TOKEN = os.getenv('HF_TOKEN', '').strip()
+PREFER_HF = os.getenv('PREFER_HF', '').strip().lower() in ('1', 'true', 'yes', 'on')
+FORCE_HF = os.getenv('FORCE_HF', '').strip().lower() in ('1', 'true', 'yes', 'on')
+DATA_FILE = os.path.join(os.path.dirname(__file__), 'agri_dataset.json')
+EN_VEC_FILE = os.path.join(os.path.dirname(__file__), 'en_vectorizer.pkl')
+TW_VEC_FILE = os.path.join(os.path.dirname(__file__), 'tw_vectorizer.pkl')
 
-# ── LOAD MODEL ────────────────────────────────────────────────────
-print("Loading chatbot from Hugging Face...")
-def hf(f): return hf_hub_download(repo_id=REPO_ID, filename=f)
+# ── MODEL LOADING ─────────────────────────────────────────────────
+print("Loading chatbot data...")
 
-with open(hf("en_vectorizer.pkl"),"rb") as f: en_vec = pickle.load(f)
-with open(hf("tw_vectorizer.pkl"),"rb") as f: tw_vec = pickle.load(f)
-with open(hf("en_questions.json"),"r",encoding="utf-8") as f: en_qs = json.load(f)
-with open(hf("en_answers.json"), "r",encoding="utf-8") as f: en_as = json.load(f)
-with open(hf("tw_questions.json"),"r",encoding="utf-8") as f: tw_qs = json.load(f)
-with open(hf("tw_answers.json"), "r",encoding="utf-8") as f: tw_as = json.load(f)
+def hf(filename):
+    kwargs = {'repo_id': REPO_ID, 'filename': filename}
+    if HF_TOKEN:
+        kwargs['token'] = HF_TOKEN
+    return hf_hub_download(**kwargs)
 
-en_vecs = en_vec.transform(en_qs)
-tw_vecs = tw_vec.transform(tw_qs)
+
+def load_local_dataset(path):
+    with open(path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    en_qs, en_as, tw_qs, tw_as = [], [], [], []
+    for item in data:
+        en_q = item.get('instruction_en', '').strip()
+        en_a = item.get('response_en', '').strip()
+        tw_q = item.get('instruction_tw', '').strip()
+        tw_a = item.get('response_tw', '').strip()
+
+        if en_q and en_a:
+            en_qs.append(en_q)
+            en_as.append(en_a)
+        if tw_q and tw_a:
+            tw_qs.append(tw_q)
+            tw_as.append(tw_a)
+
+    if not en_qs or not tw_qs:
+        raise ValueError('Local dataset must contain both English and Twi entries.')
+
+    return en_qs, en_as, tw_qs, tw_as
+
+
+def try_load_pickle(path):
+    try:
+        with open(path, 'rb') as f:
+            return pickle.load(f)
+    except Exception:
+        return None
+
+
+def build_vectorizers(en_qs, tw_qs):
+    en_vec = TfidfVectorizer(ngram_range=(1, 2), min_df=1)
+    tw_vec = TfidfVectorizer(ngram_range=(1, 2), min_df=1)
+    en_vecs = en_vec.fit_transform(en_qs)
+    tw_vecs = tw_vec.fit_transform(tw_qs)
+    return en_vec, tw_vec, en_vecs, tw_vecs
+
+
+def load_hf_assets():
+    print("Loading chatbot from Hugging Face...")
+    with open(hf('en_vectorizer.pkl'),'rb') as f:
+        en_vec = pickle.load(f)
+    with open(hf('tw_vectorizer.pkl'),'rb') as f:
+        tw_vec = pickle.load(f)
+    with open(hf('en_questions.json'),'r',encoding='utf-8') as f:
+        en_qs = json.load(f)
+    with open(hf('en_answers.json'), 'r',encoding='utf-8') as f:
+        en_as = json.load(f)
+    with open(hf('tw_questions.json'),'r',encoding='utf-8') as f:
+        tw_qs = json.load(f)
+    with open(hf('tw_answers.json'), 'r',encoding='utf-8') as f:
+        tw_as = json.load(f)
+    en_vecs = en_vec.transform(en_qs)
+    tw_vecs = tw_vec.transform(tw_qs)
+    return en_vec, tw_vec, en_vecs, tw_vecs, en_qs, en_as, tw_qs, tw_as
+
+
+def load_chatbot_assets():
+    if PREFER_HF or FORCE_HF:
+        try:
+            return load_hf_assets()
+        except Exception as exc:
+            if FORCE_HF:
+                raise RuntimeError(
+                    'Forced Hugging Face loading failed: ' + str(exc)
+                )
+            print('Hugging Face load failed; falling back to local assets:', exc)
+
+    if os.path.exists(DATA_FILE):
+        print(f"Loading local dataset from {DATA_FILE}")
+        en_qs, en_as, tw_qs, tw_as = load_local_dataset(DATA_FILE)
+        en_vec, tw_vec, en_vecs, tw_vecs = build_vectorizers(en_qs, tw_qs)
+        return en_vec, tw_vec, en_vecs, tw_vecs, en_qs, en_as, tw_qs, tw_as
+
+    if os.path.exists(EN_VEC_FILE) and os.path.exists(TW_VEC_FILE):
+        print("Loading cached vectorizers from local files...")
+        en_vec = try_load_pickle(EN_VEC_FILE)
+        tw_vec = try_load_pickle(TW_VEC_FILE)
+        if en_vec is not None and tw_vec is not None:
+            try:
+                with open('en_questions.json','r',encoding='utf-8') as f: en_qs = json.load(f)
+                with open('en_answers.json','r',encoding='utf-8') as f: en_as = json.load(f)
+                with open('tw_questions.json','r',encoding='utf-8') as f: tw_qs = json.load(f)
+                with open('tw_answers.json','r',encoding='utf-8') as f: tw_as = json.load(f)
+                en_vecs = en_vec.transform(en_qs)
+                tw_vecs = tw_vec.transform(tw_qs)
+                return en_vec, tw_vec, en_vecs, tw_vecs, en_qs, en_as, tw_qs, tw_as
+            except Exception as e:
+                print('Failed to load local cached assets:', e)
+
+    try:
+        return load_hf_assets()
+    except Exception as e:
+        raise RuntimeError('Failed to load chatbot assets from local dataset and Hugging Face: ' + str(e))
+
+
+en_vec, tw_vec, en_vecs, tw_vecs, en_qs, en_as, tw_qs, tw_as = load_chatbot_assets()
 print(f"Ready! {len(en_qs)} EN + {len(tw_qs)} TW pairs loaded.")
 
 # ── TOPICS ────────────────────────────────────────────────────────
@@ -761,12 +867,16 @@ def get_answer(question, lang, username=None):
 # ── ROUTES ────────────────────────────────────────────────────────
 @app.route('/api/chat', methods=['POST'])
 def chat():
-    d        = request.get_json()
-    question = d.get('message','').strip()
+    d = request.get_json(silent=True)
+    if not isinstance(d, dict):
+        return jsonify({"error": "Invalid JSON payload"}), 400
+
+    question = d.get('message','').strip() if d.get('message') else ''
     language = d.get('language','en')
     username = d.get('username', None)
     if not question:
         return jsonify({"error": "No message provided"}), 400
+
     result = get_answer(question, language, username)
     return jsonify(result)
 
@@ -804,16 +914,24 @@ def topic_suggestions_route():
 def health():
     return jsonify({"status":"ok","en_pairs":len(en_qs),"tw_pairs":len(tw_qs),"topics":len(TOPICS)})
 
-ALLOWED_STATIC_FILES = {'app.js', 'style.css'}
+ALLOWED_STATIC_FILES = {
+    'app.js',
+    'style.css',
+    'index.html',
+    'agri_dataset.json',
+}
 
 @app.route('/')
-def index(): return send_from_directory('.', 'index.html')
+def index():
+    return send_from_directory('.', 'index.html')
 
 @app.route('/<path:f>')
 def static_files(f):
-    if f not in ALLOWED_STATIC_FILES and not f.startswith('assets/'):
-        return jsonify({"error": "Not found"}), 404
-    return send_from_directory('.', f)
+    if f in ALLOWED_STATIC_FILES or f.startswith('css/') or f.startswith('js/'):
+        return send_from_directory('.', f)
+    return jsonify({"error": "Not found"}), 404
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    debug_mode = os.getenv('FLASK_DEBUG', 'false').strip().lower() == 'true'
+    port       = int(os.getenv('PORT', 5000))
+    app.run(debug=debug_mode, port=port)
