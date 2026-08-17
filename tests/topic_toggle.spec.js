@@ -56,4 +56,33 @@ test.describe("Topic toggle and chips panel", () => {
     // After rapid clicks, ensure chips are opened only once (show present)
     await expect(chips).toHaveClass(/show/);
   });
+
+  test("bot responses include a manual play control and do not auto-speak", async ({
+    page,
+  }) => {
+    await page.goto(BASE + "/index.html");
+    await page.fill("#nameInput", "TTSUser");
+    await page.click(".start-btn");
+
+    await page.fill("#chatInput", "How do I grow maize?");
+    await page.click("#sendBtn");
+
+    await expect(page.locator(".tts-button").first()).toBeVisible({
+      timeout: 15000,
+    });
+    await expect(page.locator(".tts-button").first()).toContainText(
+      /🔊|▶|Play/i,
+    );
+
+    const speechState = await page.evaluate(() => {
+      const synth = window.speechSynthesis;
+      return {
+        supported: !!synth,
+        speaking: synth ? synth.speaking : false,
+      };
+    });
+
+    expect(speechState.supported).toBeTruthy();
+    expect(speechState.speaking).toBeFalsy();
+  });
 });

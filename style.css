@@ -479,6 +479,57 @@ button {
 .msg-time.right {
   text-align: right;
 }
+.tts-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.tts-button,
+.tts-stop {
+  border-radius: 999px;
+  font-weight: 700;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 34px;
+}
+.tts-button {
+  background: var(--light-green);
+  color: var(--dark-green);
+  border: 1.5px solid var(--green);
+  padding: 6px 12px;
+  font-size: 12px;
+  min-width: 92px;
+}
+.tts-button:hover {
+  background: var(--green);
+  color: white;
+}
+.tts-button.is-playing {
+  background: #dce775;
+  color: #1b5e20;
+}
+.tts-stop {
+  background: white;
+  color: var(--text);
+  border: 1.5px solid #bdbdbd;
+  padding: 6px 10px;
+  font-size: 11px;
+}
+.tts-stop:hover {
+  background: #f5f5f5;
+}
+.tts-status {
+  font-size: 11px;
+  line-height: 1.4;
+  color: #d32f2f;
+  background: #fff3e0;
+  border: 1px solid #ffcc80;
+  border-radius: 999px;
+  padding: 5px 10px;
+}
 .welcome-bubble {
   margin: 16px auto;
   background: var(--light-green);
@@ -953,4 +1004,212 @@ body[data-theme="night"] .suggestion-btn {
 body[data-theme="night"] .suggestion-btn:hover {
   background: #2e7d32;
   color: white;
+}
+
+/* ── SUGGESTIONS BAR (Above input) ────────────────────────────────── */
+.suggestions-bar {
+  padding: 12px 16px;
+  background: var(--chat-bg);
+  border-top: 1px solid rgba(46, 125, 50, 0.1);
+  flex-shrink: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+.suggestions-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.suggestion-pill {
+  display: inline-block;
+  padding: 9px 16px;
+  border: 1.5px solid var(--green);
+  border-radius: 24px;
+  background: white;
+  color: var(--dark-green);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  line-height: 1.4;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.08);
+}
+
+.suggestion-pill:hover {
+  background: var(--green);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.15);
+}
+
+.suggestion-pill:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(46, 125, 50, 0.1);
+}
+
+/* ── TOPICS PANEL ────────────────────────────────────────────────── */
+.topics-panel {
+  width: 280px;
+  min-width: 280px;
+  background: var(--sidebar-bg);
+  border-left: 1px solid var(--border);
+  padding: 14px 10px;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 45;
+}
+
+.topics-panel.show {
+  display: flex;
+}
+
+.topics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.topics-header span {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.topics-close {
+  background: transparent;
+  border: none;
+  color: var(--green);
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.topics-close:hover {
+  background: rgba(46, 125, 50, 0.1);
+}
+
+.topics-desc {
+  font-size: 11px;
+  color: var(--timestamp);
+  line-height: 1.5;
+  margin: 4px 0;
+}
+
+.topics-grid-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.topics-grid-panel .topic-btn {
+  padding: 10px 8px;
+  font-size: 12px;
+  border-radius: 10px;
+  gap: 4px;
+}
+
+.topics-grid-panel .topic-icon {
+  font-size: 18px;
+}
+
+.topics-grid-panel .topic-name {
+  font-size: 10px;
+}
+
+/* ── RESPONSIVE: SUGGESTIONS BAR ─────────────────────────────────── */
+@media (max-width: 1024px) {
+  .suggestions-list {
+    justify-content: flex-start;
+  }
+
+  .suggestion-pill {
+    flex: 0 1 auto;
+    max-width: calc(50% - 5px);
+  }
+}
+
+@media (max-width: 768px) {
+  .suggestions-bar {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+
+  .suggestions-list {
+    gap: 6px;
+  }
+
+  .suggestion-pill {
+    padding: 8px 14px;
+    font-size: 12px;
+    flex: 0 1 calc(50% - 3px);
+  }
+
+  .topics-panel {
+    position: fixed;
+    right: 0;
+    top: 58px;
+    bottom: 0;
+    width: 100%;
+    max-width: none;
+    min-width: unset;
+    z-index: 60;
+    padding: 16px 14px;
+    background: var(--sidebar-bg);
+    border-left: none;
+    border-top: 1px solid var(--border);
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      transform 220ms ease,
+      opacity 220ms ease,
+      visibility 220ms ease;
+    display: flex;
+  }
+
+  .topics-panel.show {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* ── NIGHT THEME: SUGGESTIONS & TOPICS ────────────────────────────── */
+body[data-theme="night"] .suggestion-pill {
+  background: rgba(255, 255, 255, 0.08);
+  color: #c8e6c9;
+  border-color: #64dd17;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+body[data-theme="night"] .suggestion-pill:hover {
+  background: #2e7d32;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+body[data-theme="night"] .topics-panel {
+  background: #162e1a;
+  border-left-color: #2d5a2d;
 }

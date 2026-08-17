@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AgriBotGH</title>
+    <title>🌿AgriBotGH</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
@@ -56,7 +56,7 @@
             placeholder="Enter your name e.g. Kofi"
             maxlength="30"
             autocomplete="off"
-            onkeydown="if (event.key === 'Enter') startChat();"
+            onkeydown="if (event.key === 'Enter') { startChat(); }"
           />
 
           <label class="form-label" style="margin-top: 18px"
@@ -116,6 +116,15 @@
         <!-- LEFT SIDEBAR -->
         <aside class="sidebar" id="sidebar">
           <div class="sidebar-top">
+            <button
+              class="desktop-sidebar-toggle"
+              id="desktopSidebarToggle"
+              type="button"
+              onclick="toggleSidebarCollapse()"
+              aria-label="Collapse sidebar"
+            >
+              ⟨
+            </button>
             <div class="sidebar-logo">🌾</div>
             <div class="sidebar-brand">AgriBotGH</div>
           </div>
@@ -167,13 +176,18 @@
         <!-- CHAT AREA -->
         <section class="chat-area">
           <div class="messages" id="messages"></div>
+
+          <div class="suggestions-bar" id="suggestionsBar" aria-live="polite">
+            <div class="suggestions-list" id="suggestionsList"></div>
+          </div>
+
           <div class="input-bar">
             <button
               type="button"
               class="topic-toggle-btn"
-              onclick="toggleChips()"
-              title="Show topic ideas"
-              aria-controls="chipsSidebar"
+              onclick="toggleTopicsPanel()"
+              title="Show available topics"
+              aria-controls="topicsPanel"
               aria-expanded="false"
             >
               💡 Topics
@@ -191,6 +205,16 @@
             </button>
           </div>
         </section>
+
+        <!-- TOPICS PANEL -->
+        <aside class="topics-panel" id="topicsPanel" aria-label="Topics selector">
+          <div class="topics-header">
+            <span>💡 Select a topic</span>
+            <button class="topics-close" onclick="toggleTopicsPanel()">✕</button>
+          </div>
+          <p class="topics-desc">Choose a topic to get relevant farming questions.</p>
+          <div class="topics-grid-panel" id="topicsGridPanel"></div>
+        </aside>
 
         <!-- RIGHT SIDEBAR: QUICK QUESTIONS -->
         <aside class="chips-sidebar" id="chipsSidebar">

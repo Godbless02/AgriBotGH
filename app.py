@@ -736,6 +736,10 @@ def get_topic_display_name(topic, lang='en'):
         return info.get('tw_name', topic)
     return topic
 
+CONFIDENCE_HIGH = 0.75
+CONFIDENCE_LOW = 0.50
+
+
 def get_answer(question, lang, username=None):
     q  = question.strip()
     ql = q.lower()
@@ -804,48 +808,71 @@ def get_answer(question, lang, username=None):
     detected_topic = detect_topic(ql, lang)
 
     # ── Run retrieval ─────────────────────────────────────────────
-    # CONFIDENCE alone is too low a bar: common words like "what/is/best"
-    # are enough to push unrelated questions (e.g. "capital of France")
-    # over 0.18. Requiring a topic-keyword match too (or a much higher
-    # score that's basically an exact hit) filters those out without
-    # rejecting genuine paraphrases, which almost always hit a topic.
-    CONFIDENCE      = 0.18
-    HIGH_CONFIDENCE = 0.6
+    # Confidence thresholds are intentionally conservative: we prefer not to
+    # answer poorly when the similarity is weak. The values below are a
+    # practical starting point for this project and can be tuned with a real
+    # validation set later.
     if is_tw:
         vec    = tw_vec.transform([q])
         scores = cosine_similarity(vec, tw_vecs)[0]
         best   = int(np.argmax(scores))
         conf   = float(scores[best])
-        if conf >= HIGH_CONFIDENCE or (conf >= CONFIDENCE and detected_topic):
-            return {"type":"answer","text": tw_as[best]}
     else:
         vec    = en_vec.transform([q])
         scores = cosine_similarity(vec, en_vecs)[0]
         best   = int(np.argmax(scores))
         conf   = float(scores[best])
-        if conf >= HIGH_CONFIDENCE or (conf >= CONFIDENCE and detected_topic):
-            return {"type":"answer","text": en_as[best]}
 
-    # ── Topic detected but no exact match ─────────────────────────
-    if detected_topic:
-        icon      = TOPICS[detected_topic]['icon']
-        suggs     = get_suggestions(detected_topic, lang)
-        disp_name = get_topic_display_name(detected_topic, lang)
+    if conf >= CONFIDENCE_HIGH:
         if is_tw:
+            return {"type": "answer", "text": tw_as[best]}
+        return {"type": "answer", "text": en_as[best]}
+
+    if conf >= CONFIDENCE_LOW:
+        if detected_topic:
+            icon      = TOPICS[detected_topic]['icon']
+            suggs     = get_suggestions(detected_topic, lang)
+            disp_name = get_topic_display_name(detected_topic, lang)
+            if is_tw:
+                return {
+                    "type": "low_confidence",
+                    "text": f"Me nte aseɛ yiye wɔ wo asɛmmisa no ho. Ɛyɛ me nhomaso sɛ metumi aboa wo yie. Mempeammoa koraa.\n\nSɛ wopɛ a, kyerɛ me bio wɔ akenkan mu anaa paw asɛmmisa bi a ɛbɛboa wo wɔ {disp_name} {icon} ho:",
+                    "suggestions": suggs,
+                    "topic": detected_topic
+                }
             return {
                 "type": "low_confidence",
-                "text": f"Mahunu sɛ worerebisa fa **{disp_name}** {icon} ho — eyi yɛ topic a mewɔ ho nsɛm! Nanso, menni aseɛ pɛpɛɛpɛ wɔ saa bere yi.\n\nEyi betumi aba fia sɛ:\n• Wo asɛmmisa yɛ pɛ paa ma me training\n• Wuhia sɛ wo kyer me asɛm bio sɛ mete aseɛ yie\n\nAsɛmmisa a metumi aboa wo wɔ {disp_name} ho:",
+                "text": f"I am not fully confident that I understood your question. Please rephrase it or choose one of the related questions below.\n\nI can help with {detected_topic} {icon}, but I want to avoid giving an uncertain answer.",
                 "suggestions": suggs,
                 "topic": detected_topic
             }
+
+        general_suggestions = [
+            "How do I start farming?",
+            "Which crop is suitable for beginners?",
+            "How can I improve my farm yield?"
+        ]
+        twi_suggestions = [
+            "Dɛn na menyɛ sɛ meyɛ okuafo?",
+            "Nnuaba bɛn na ɛfata mmarima ne mmea a wɔn rehyɛ ase?",
+            "Dɛn na mayɛ sɛ menya nnuaba dodo wɔ m'afuo mu?"
+        ]
+        suggs = twi_suggestions if is_tw else general_suggestions
+        if is_tw:
+            return {
+                "type": "low_confidence",
+                "text": "Me nte aseɛ yiye wɔ wo asɛmmisa no ho. Kyerɛ me bio wɔ hɔhwɛ mu, anaa paw asɛmmisa bi a ɛbɛboa wo.",
+                "suggestions": suggs,
+                "topic": None
+            }
         return {
             "type": "low_confidence",
-            "text": f"I can see you are asking about **{detected_topic}** {icon} — that is one of my topics! However, I do not have a specific answer to your exact question yet.\n\nThis could be because:\n• The question is too specific for my current training\n• I may need more details\n\nHere are some related questions I can help you with:",
+            "text": "I am not confident that I understood your question. Please rephrase it or select one of the related questions below.",
             "suggestions": suggs,
-            "topic": detected_topic
+            "topic": None
         }
 
-    # ── Completely off-topic ──────────────────────────────────────
+    # ── Completely unrelated / weak match ────────────────────────
     topic_icons    = {t: TOPICS[t]['icon'] for t in TOPICS}
     topic_names_tw = {t: TOPICS[t].get('tw_name', t) for t in TOPICS}
     if is_tw:
