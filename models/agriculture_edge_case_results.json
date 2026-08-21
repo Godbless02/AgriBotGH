@@ -1,0 +1,899 @@
+{
+  "schema_version": 1,
+  "todo": 24,
+  "generated_at_utc": "2026-08-20T23:28:33.002902+00:00",
+  "edge_case_file": "data/evaluation/agriculture_edge_cases.json",
+  "active_model": "1.0.1",
+  "summary": {
+    "total": 32,
+    "passed": 32,
+    "failed": 0,
+    "stable_response_rate": 1.0,
+    "off_topic_errors": 0,
+    "unapproved_answers": 0
+  },
+  "response_distribution": {
+    "low_confidence/B": 28,
+    "topics/None": 4
+  },
+  "groups": {
+    "edge_type": {
+      "colloquial": {
+        "total": 4,
+        "passed": 4
+      },
+      "incomplete": {
+        "total": 4,
+        "passed": 4
+      },
+      "long": {
+        "total": 4,
+        "passed": 4
+      },
+      "multiple_topics": {
+        "total": 4,
+        "passed": 4
+      },
+      "paraphrase": {
+        "total": 4,
+        "passed": 4
+      },
+      "short": {
+        "total": 4,
+        "passed": 4
+      },
+      "spelling_error": {
+        "total": 4,
+        "passed": 4
+      },
+      "vague": {
+        "total": 4,
+        "passed": 4
+      }
+    },
+    "language": {
+      "English": {
+        "total": 16,
+        "passed": 16
+      },
+      "Twi": {
+        "total": 16,
+        "passed": 16
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "edge_en_001",
+      "pair_id": "edge_pair_001",
+      "language": "English",
+      "edge_type": "vague",
+      "question": "I have a problem",
+      "allowed_types": [
+        "topics"
+      ],
+      "allowed_states": [
+        null
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "topics",
+        "routing_state": null,
+        "source": null,
+        "domain_score": null,
+        "domain_signal": null,
+        "suggestion_count": 0,
+        "elapsed_ms": 13.35
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_tw_001",
+      "pair_id": "edge_pair_001",
+      "language": "Twi",
+      "edge_type": "vague",
+      "question": "Mhia mmoa",
+      "allowed_types": [
+        "topics"
+      ],
+      "allowed_states": [
+        null
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "topics",
+        "routing_state": null,
+        "source": null,
+        "domain_score": null,
+        "domain_signal": null,
+        "suggestion_count": 0,
+        "elapsed_ms": 1.669
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_en_002",
+      "pair_id": "edge_pair_002",
+      "language": "English",
+      "edge_type": "vague",
+      "question": "Tell me",
+      "allowed_types": [
+        "topics"
+      ],
+      "allowed_states": [
+        null
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "topics",
+        "routing_state": null,
+        "source": null,
+        "domain_score": null,
+        "domain_signal": null,
+        "suggestion_count": 0,
+        "elapsed_ms": 1.38
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_tw_002",
+      "pair_id": "edge_pair_002",
+      "language": "Twi",
+      "edge_type": "vague",
+      "question": "Kyerɛ me",
+      "allowed_types": [
+        "topics"
+      ],
+      "allowed_states": [
+        null
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "topics",
+        "routing_state": null,
+        "source": null,
+        "domain_score": null,
+        "domain_signal": null,
+        "suggestion_count": 0,
+        "elapsed_ms": 1.323
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_en_003",
+      "pair_id": "edge_pair_003",
+      "language": "English",
+      "edge_type": "incomplete",
+      "question": "Maize leaves turning yellow after the rain...",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.24141425375212772,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 18.88
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_tw_003",
+      "pair_id": "edge_pair_003",
+      "language": "Twi",
+      "edge_type": "incomplete",
+      "question": "Osu no akyi no, aburo nhaban reyɛ kɔkɔɔ...",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.18119999333883555,
+        "domain_signal": "recognized_agricultural_topic",
+        "suggestion_count": 5,
+        "elapsed_ms": 19.933
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_en_004",
+      "pair_id": "edge_pair_004",
+      "language": "English",
+      "edge_type": "incomplete",
+      "question": "Chickens weak and not eating since yesterday",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.33255782519691107,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 8.914
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_tw_004",
+      "pair_id": "edge_pair_004",
+      "language": "Twi",
+      "edge_type": "incomplete",
+      "question": "Efi nnora no, akokɔ no ayɛ mmerɛw na wɔnnidi",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.16868301651484185,
+        "domain_signal": "recognized_agricultural_topic",
+        "suggestion_count": 5,
+        "elapsed_ms": 14.042
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_en_005",
+      "pair_id": "edge_pair_005",
+      "language": "English",
+      "edge_type": "spelling_error",
+      "question": "How do I contol fall army wom in my maiz fam?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.3250273316141673,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 14.003
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_tw_005",
+      "pair_id": "edge_pair_005",
+      "language": "Twi",
+      "edge_type": "spelling_error",
+      "question": "Mɛyɛ dɛn akontro fall army wom wɔ me abro afuo mu?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.2342670452550164,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 13.43
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_en_006",
+      "pair_id": "edge_pair_006",
+      "language": "English",
+      "edge_type": "spelling_error",
+      "question": "My tomatos are rotening bfore harvist what shud I do?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.31271632403569094,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 23.421
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_tw_006",
+      "pair_id": "edge_pair_006",
+      "language": "Twi",
+      "edge_type": "spelling_error",
+      "question": "Me tomatto resɛe ansa na harvist, dɛn na menyɛ?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.29577414851127126,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 18.451
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_en_007",
+      "pair_id": "edge_pair_007",
+      "language": "English",
+      "edge_type": "colloquial",
+      "question": "Bossu, my maize no dey grow fine, wetin I go do?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.30130758297423976,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 14.401
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_tw_007",
+      "pair_id": "edge_pair_007",
+      "language": "Twi",
+      "edge_type": "colloquial",
+      "question": "Me nua, me aburo no nnyini yie oo, dɛn na menyɛ?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.3177617703524277,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 27.751
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_en_008",
+      "pair_id": "edge_pair_008",
+      "language": "English",
+      "edge_type": "colloquial",
+      "question": "Charlie, the worms chop my garden eggs plenty; help me small.",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.42220978916896773,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 3,
+        "elapsed_ms": 18.217
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_tw_008",
+      "pair_id": "edge_pair_008",
+      "language": "Twi",
+      "edge_type": "colloquial",
+      "question": "Chale, mmoawa awe me ntorɔ no pii; boa me kakra.",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.16087131670427884,
+        "domain_signal": "recognized_agricultural_topic",
+        "suggestion_count": 3,
+        "elapsed_ms": 22.546
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_en_009",
+      "pair_id": "edge_pair_009",
+      "language": "English",
+      "edge_type": "short",
+      "question": "Yellow maize leaves",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.3051382418428688,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 14.323
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_tw_009",
+      "pair_id": "edge_pair_009",
+      "language": "Twi",
+      "edge_type": "short",
+      "question": "Aburo nhaban kɔkɔɔ",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.23119194987519734,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 12.167
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_en_010",
+      "pair_id": "edge_pair_010",
+      "language": "English",
+      "edge_type": "short",
+      "question": "Sick young chickens",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.26051456737025014,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 9.706
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_tw_010",
+      "pair_id": "edge_pair_010",
+      "language": "Twi",
+      "edge_type": "short",
+      "question": "Akokɔ mma ayare",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.17991481544721621,
+        "domain_signal": "recognized_agricultural_topic",
+        "suggestion_count": 5,
+        "elapsed_ms": 16.049
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_en_011",
+      "pair_id": "edge_pair_011",
+      "language": "English",
+      "edge_type": "long",
+      "question": "My maize was planted three weeks ago on a field that received compost, but after several days of heavy rain the lower leaves became pale yellow and growth slowed; the soil is still wet, and I need help deciding what details to check before taking action.",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.25183567693465897,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 23.445
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_tw_011",
+      "pair_id": "edge_pair_011",
+      "language": "Twi",
+      "edge_type": "long",
+      "question": "Mede aburo no too afuo a mede compost guu mu nnawɔtwe mmiɛnsa ni, nanso osu kɛse akyi no nhaban a ɛwɔ fam no ayɛ kɔkɔɔ na ennyini ntɛm; asase no da so yɛ fɔtɔɔ, enti mepɛ sɛ mihunu nea ɛsɛ sɛ mehwɛ ansa na mayɛ biribi.",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.22251455575278495,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 19.273
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_en_012",
+      "pair_id": "edge_pair_012",
+      "language": "English",
+      "edge_type": "long",
+      "question": "Several young chickens in my small flock are quiet, eating less, and standing apart, but I have not seen coughing or diarrhoea; their water was changed this morning, and I want to know what observations I should record before contacting a veterinary officer.",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.2289079604416127,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 12.291
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_tw_012",
+      "pair_id": "edge_pair_012",
+      "language": "Twi",
+      "edge_type": "long",
+      "question": "Akokɔ mma pii a wɔwɔ me kuw ketewa no mu ayɛ komm, wɔnnidi pii na wɔgyina wɔn nko ara, nanso menhu sɛ wɔrebɔ wa anaa wɔn yam regu; mesesaa wɔn nsuo anɔpa yi, na mepɛ sɛ mihunu nea menkyerɛw ansa na mafrɛ mmoa ayaresafoɔ.",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.16676160084807998,
+        "domain_signal": "recognized_agricultural_topic",
+        "suggestion_count": 5,
+        "elapsed_ms": 12.196
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_en_013",
+      "pair_id": "edge_pair_013",
+      "language": "English",
+      "edge_type": "paraphrase",
+      "question": "Which plant nutrients should I consider for maize, and when should an extension officer help me choose the rate?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.24221361429950572,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 17.159
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_tw_013",
+      "pair_id": "edge_pair_013",
+      "language": "Twi",
+      "edge_type": "paraphrase",
+      "question": "Nnuan bɛn na ɛsɛ sɛ mede ma aburo, na bere bɛn na kuayɛ ɔfotufoɔ mmoa me mpaw dodow a mede bɛma?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.2869300004725819,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 22.994
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_en_014",
+      "pair_id": "edge_pair_014",
+      "language": "English",
+      "edge_type": "paraphrase",
+      "question": "What signs show that pond fish may not have enough oxygen, and what information should I give a fisheries officer?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.3549343935609218,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 13.937
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_tw_014",
+      "pair_id": "edge_pair_014",
+      "language": "Twi",
+      "edge_type": "paraphrase",
+      "question": "Ahohyɛn bɛn na ɛkyerɛ sɛ oxygen nnɔɔso wɔ apataa tadeɛ mu, na nsɛm bɛn na memfa mma apataa ɔfotufoɔ?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.3209903898513635,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 9.959
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_en_015",
+      "pair_id": "edge_pair_015",
+      "language": "English",
+      "edge_type": "multiple_topics",
+      "question": "Can I use poultry manure on my maize field, and how should I store the harvested grain safely afterward?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.2826923117939323,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 13.729
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_tw_015",
+      "pair_id": "edge_pair_015",
+      "language": "Twi",
+      "edge_type": "multiple_topics",
+      "question": "Metumi de akokɔ dɔteɛ agu me aburo afuo mu, na akyiri no mɛyɛ dɛn de aburo a matwa no asie yie?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.22160564914166786,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 14.326
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_en_016",
+      "pair_id": "edge_pair_016",
+      "language": "English",
+      "edge_type": "multiple_topics",
+      "question": "My tomatoes need irrigation and pest control, but I also want advice on grading them for the market; which issue should I handle first?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.27666806202857663,
+        "domain_signal": "statistical_domain_router",
+        "suggestion_count": 5,
+        "elapsed_ms": 14.632
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "edge_tw_016",
+      "pair_id": "edge_pair_016",
+      "language": "Twi",
+      "edge_type": "multiple_topics",
+      "question": "Me tomato hia nsuo ne mmoawa sohwɛ, na mepɛ nso sɛ mihunu sɛnea mɛkyekyɛ mu ama gua so; emu nea ɛwɔ he na minni kan?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "actual": {
+        "http_status": 200,
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "domain_score": 0.17860849926562206,
+        "domain_signal": "recognized_agricultural_topic",
+        "suggestion_count": 5,
+        "elapsed_ms": 11.306
+      },
+      "passed": true,
+      "failures": []
+    }
+  ]
+}

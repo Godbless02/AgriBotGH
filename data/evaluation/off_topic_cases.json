@@ -1,0 +1,54 @@
+{
+  "methodology": {
+    "purpose": "TODO 14 clearly unrelated State C evaluation",
+    "labels": "All entries are manually labeled clearly unrelated to agriculture",
+    "development_usage": "Select the agriculture-domain threshold",
+    "test_usage": "Held-out three-state evaluation only",
+    "hard_negatives": "Some cases contain agricultural-looking words used in unrelated contexts"
+  },
+  "cases": [
+    {"id": "off_en_dev_01", "split": "development", "language": "English", "question": "Who won the football match last night?"},
+    {"id": "off_en_dev_02", "split": "development", "language": "English", "question": "How can I fix my phone battery?"},
+    {"id": "off_en_dev_03", "split": "development", "language": "English", "question": "Help me solve this algebra equation."},
+    {"id": "off_en_dev_04", "split": "development", "language": "English", "question": "How do I reset my email password?"},
+    {"id": "off_en_dev_05", "split": "development", "language": "English", "question": "How can I grow my social media audience?"},
+    {"id": "off_en_dev_06", "split": "development", "language": "English", "question": "What is cloud storage on a computer?"},
+    {"id": "off_en_dev_07", "split": "development", "language": "English", "question": "Which medicine should I take for a headache?"},
+    {"id": "off_en_dev_08", "split": "development", "language": "English", "question": "Please write a job application letter for me."},
+    {"id": "off_en_dev_09", "split": "development", "language": "English", "question": "How do I remove bugs from my Python code?"},
+    {"id": "off_en_dev_10", "split": "development", "language": "English", "question": "What does field mean in physics?"},
+
+    {"id": "off_en_test_01", "split": "test", "language": "English", "question": "How do I repair a noisy car engine?"},
+    {"id": "off_en_test_02", "split": "test", "language": "English", "question": "Recommend some music for a birthday party."},
+    {"id": "off_en_test_03", "split": "test", "language": "English", "question": "How can I sort a list in Python?"},
+    {"id": "off_en_test_04", "split": "test", "language": "English", "question": "Where can I book an affordable hotel?"},
+    {"id": "off_en_test_05", "split": "test", "language": "English", "question": "How do I crop and brighten a photograph?"},
+    {"id": "off_en_test_06", "split": "test", "language": "English", "question": "What products does that manufacturing plant produce?"},
+    {"id": "off_en_test_07", "split": "test", "language": "English", "question": "Can you help me calculate interest on a bank loan?"},
+    {"id": "off_en_test_08", "split": "test", "language": "English", "question": "Write a short essay about Ghanaian history."},
+    {"id": "off_en_test_09", "split": "test", "language": "English", "question": "How can I harvest data from a website?"},
+    {"id": "off_en_test_10", "split": "test", "language": "English", "question": "How do I change the root password on Linux?"},
+
+    {"id": "off_tw_dev_01", "split": "development", "language": "Twi", "question": "Hena na odii bɔɔlbɔ no mu nkonim anadwo no?"},
+    {"id": "off_tw_dev_02", "split": "development", "language": "Twi", "question": "Mɛyɛ dɛn asiesie me fon battery?"},
+    {"id": "off_tw_dev_03", "split": "development", "language": "Twi", "question": "Boa me ma menyɛ algebra equation yi."},
+    {"id": "off_tw_dev_04", "split": "development", "language": "Twi", "question": "Mɛyɛ dɛn asesa me email password?"},
+    {"id": "off_tw_dev_05", "split": "development", "language": "Twi", "question": "Mɛyɛ dɛn ama nnipa pii ahwɛ me social media page?"},
+    {"id": "off_tw_dev_06", "split": "development", "language": "Twi", "question": "Dɛn ne cloud storage wɔ computer so?"},
+    {"id": "off_tw_dev_07", "split": "development", "language": "Twi", "question": "Aduru bɛn na menom ma tiyɛ?"},
+    {"id": "off_tw_dev_08", "split": "development", "language": "Twi", "question": "Kyerɛw adwuma application letter ma me."},
+    {"id": "off_tw_dev_09", "split": "development", "language": "Twi", "question": "Mɛyɛ dɛn ayi bugs afi me Python code mu?"},
+    {"id": "off_tw_dev_10", "split": "development", "language": "Twi", "question": "Dɛn na field kyerɛ wɔ physics mu?"},
+
+    {"id": "off_tw_test_01", "split": "test", "language": "Twi", "question": "Mɛyɛ dɛn asiesie car engine a ɛreyɛ dede?"},
+    {"id": "off_tw_test_02", "split": "test", "language": "Twi", "question": "Fa nnwom bi ma me ma awoda party."},
+    {"id": "off_tw_test_03", "split": "test", "language": "Twi", "question": "Mɛyɛ dɛn asort list wɔ Python mu?"},
+    {"id": "off_tw_test_04", "split": "test", "language": "Twi", "question": "Ɛhe na metumi anya hotel a ne bo nyɛ den?"},
+    {"id": "off_tw_test_05", "split": "test", "language": "Twi", "question": "Mɛyɛ dɛn acrop na mama mfonini ayɛ hann?"},
+    {"id": "off_tw_test_06", "split": "test", "language": "Twi", "question": "Nneɛma bɛn na manufacturing plant no yɛ?"},
+    {"id": "off_tw_test_07", "split": "test", "language": "Twi", "question": "Boa me ma menkan interest a ɛwɔ bank loan so."},
+    {"id": "off_tw_test_08", "split": "test", "language": "Twi", "question": "Kyerɛw Ghana abakɔsɛm ho essay tiawa."},
+    {"id": "off_tw_test_09", "split": "test", "language": "Twi", "question": "Mɛyɛ dɛn aharvest data afi website bi so?"},
+    {"id": "off_tw_test_10", "split": "test", "language": "Twi", "question": "Mɛyɛ dɛn asesa root password wɔ Linux so?"}
+  ]
+}

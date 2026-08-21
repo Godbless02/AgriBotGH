@@ -1,0 +1,43 @@
+{
+  "status": "integrated_todo17_conservative",
+  "retrieval_architecture": "topic_aware_tfidf",
+  "retrieval_weights": {
+    "tfidf": 0.38,
+    "embedding": 0.0,
+    "topic": 0.62
+  },
+  "confidence_signal": "normalized_score_margin",
+  "threshold": 0.27,
+  "score_name": "normalized_score_margin",
+  "is_probability": false,
+  "acceptance_rule": "normalized_score_margin >= threshold",
+  "selection_objective": "pooled_response_f0_5_with_precision_priority_across_candidate_signals",
+  "validation_metrics": {
+    "threshold": 0.27,
+    "total_cases": 168,
+    "accepted": 1,
+    "rejected": 167,
+    "coverage": 0.005952380952380952,
+    "true_positives_reliable_answers": 1,
+    "false_positives_unreliable_answers": 0,
+    "false_negatives_missed_reliable_answers": 17,
+    "true_negatives_unreliable_answers_rejected": 150,
+    "response_precision": 1.0,
+    "response_recall": 0.05555555555555555,
+    "response_f0_5": 0.22727272727272727,
+    "correct_answer_coverage": 0.005952380952380952,
+    "answerability": {
+      "gold_answerable": 36,
+      "accepted_answerable": 1,
+      "accepted_unsupported": 0,
+      "accepted_answerable_but_wrong_match": 0,
+      "rejected_answerable": 35,
+      "precision": 1.0,
+      "recall": 0.027777777777777776
+    }
+  },
+  "deployment_ready": false,
+  "limitation": "The zero-observed-false-positive threshold has very low coverage because supported and unsupported score distributions overlap",
+  "source_report": "models/threshold_experiments.json",
+  "next_step": "Retain the conservative threshold and document its low-coverage limitation during TODO 18"
+}

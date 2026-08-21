@@ -1,0 +1,1357 @@
+{
+  "methodology": {
+    "canonical_dataset": "data/agribotgh_dataset_bilingual_563.json",
+    "dataset_records": 563,
+    "stable_record_id": "qa- followed by the zero-padded canonical dataset ID",
+    "suggestion_text": "Exact question_en/question_twi from the linked canonical record",
+    "selection": "Up to five deterministic records per UI topic; multi-category topics use round-robin selection",
+    "fuzzy_linking": false,
+    "legacy_dataset_used": false
+  },
+  "summary": {
+    "topics": 28,
+    "suggestion_pairs": 132,
+    "unique_record_ids": 132,
+    "review_required": 0
+  },
+  "selected_category_counts": {
+    "Soil & Land Preparation": {
+      "Soil & Land Preparation": 5
+    },
+    "Fertilizer & Nutrients": {
+      "Fertilizer & Nutrients": 5
+    },
+    "Maize": {
+      "Maize": 5
+    },
+    "Cassava": {
+      "Cassava": 5
+    },
+    "Plantain & Banana": {
+      "Plantain & Banana": 5
+    },
+    "Yam": {
+      "Yam": 5
+    },
+    "Cocoyam": {
+      "Plantain & Banana": 1,
+      "Yam": 3
+    },
+    "Tomatoes": {
+      "Tomato": 5
+    },
+    "Pepper": {
+      "Pepper": 5
+    },
+    "Onion": {
+      "Onion": 5
+    },
+    "Carrot": {
+      "Carrot": 2
+    },
+    "Garden Eggs": {
+      "Garden Eggs": 3
+    },
+    "Palm Oil & Coconut": {
+      "Oil Palm & Coconut": 3,
+      "Palm & Coconut": 2
+    },
+    "Groundnut & Legumes": {
+      "Groundnut & Legumes": 5
+    },
+    "Rice": {
+      "Rice Farming": 5
+    },
+    "Cocoa": {
+      "Cocoa Farming": 5
+    },
+    "Other Vegetables": {
+      "Cucumber Farming": 2,
+      "Okra Farming": 2,
+      "Watermelon Farming": 1
+    },
+    "Pest & Disease Control": {
+      "Pest & Disease Control": 5
+    },
+    "Irrigation & Water": {
+      "Irrigation & Water": 5
+    },
+    "Harvesting & Storage": {
+      "Harvesting & Storage": 3,
+      "Post-Harvest & Food Safety": 2
+    },
+    "Fish Farming": {
+      "Fish Farming": 5
+    },
+    "Poultry Farming": {
+      "Poultry Farming": 5
+    },
+    "Goat Farming": {
+      "Goat Rearing": 5
+    },
+    "Sheep Farming": {
+      "Sheep Rearing": 3
+    },
+    "Cattle Farming": {
+      "Cattle Rearing": 5
+    },
+    "Business & Marketing": {
+      "Business & Marketing": 3,
+      "Farm Business Planning": 2
+    },
+    "Climate & Weather": {
+      "Climate-Smart Farming": 5
+    },
+    "Farm Management": {
+      "Farm Management & General": 2,
+      "Farm Mechanization & Tools": 2,
+      "Farm Records & Extension": 1
+    }
+  },
+  "links": {
+    "Soil & Land Preparation": [
+      {
+        "position": 0,
+        "record_id": "qa-0001",
+        "dataset_id": 1,
+        "category": "Soil & Land Preparation",
+        "suggestion_en": "What are the signs of good farming soil?",
+        "suggestion_tw": "Ɛdeɛn na ɛkyerɛ sɛ m'asase yɛ yɛ papa ma okuafo adwuma?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0004",
+        "dataset_id": 4,
+        "category": "Soil & Land Preparation",
+        "suggestion_en": "How can I make compost at home?",
+        "suggestion_tw": "Ɛdeɛn na meyɛ compost wɔ fie?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0005",
+        "dataset_id": 5,
+        "category": "Soil & Land Preparation",
+        "suggestion_en": "How can I improve sandy soil for farming?",
+        "suggestion_tw": "Ɛdeɛn na metumi yɛ asintiɛ asase a ɛwo ntɛm no yiye?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0006",
+        "dataset_id": 6,
+        "category": "Soil & Land Preparation",
+        "suggestion_en": "How can I prevent soil erosion on my farm?",
+        "suggestion_tw": "Ɛdeɛn na mema asase amma ɛnhuru wɔ m'afuo mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0007",
+        "dataset_id": 7,
+        "category": "Soil & Land Preparation",
+        "suggestion_en": "What can I do if my soil is too acidic?",
+        "suggestion_tw": "M'asase yɛ acidic dodo. Dɛn na metumi yɛ?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Fertilizer & Nutrients": [
+      {
+        "position": 0,
+        "record_id": "qa-0011",
+        "dataset_id": 11,
+        "category": "Fertilizer & Nutrients",
+        "suggestion_en": "Can too much fertilizer damage my crops?",
+        "suggestion_tw": "Ferefere dodo tumi sɛe m'nnuaba anaa?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0012",
+        "dataset_id": 12,
+        "category": "Fertilizer & Nutrients",
+        "suggestion_en": "What does NPK mean on a fertilizer bag?",
+        "suggestion_tw": "Dɛn na NPK kyerɛ wɔ ferefere bag so?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0040",
+        "dataset_id": 40,
+        "category": "Fertilizer & Nutrients",
+        "suggestion_en": "What are whiteflies and how can I get rid of them?",
+        "suggestion_tw": "Adwummakers fitaa a wɔwɔ m'nnuan so yɛ dɛn na metumi yi wɔn?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0051",
+        "dataset_id": 51,
+        "category": "Fertilizer & Nutrients",
+        "suggestion_en": "What causes leaf-tip burn and how can I fix it?",
+        "suggestion_tw": "M'nnuaba nhaban ɔkyɛ yɛ sɛ wɔahyew. Dɛn na ɛhia?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0125",
+        "dataset_id": 125,
+        "category": "Fertilizer & Nutrients",
+        "suggestion_en": "How can I dry vegetables so they last longer?",
+        "suggestion_tw": "Ɛdeɛn na meyɛ nnuan a ayaw sɛ wɔtena yie bere tenten?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Maize": [
+      {
+        "position": 0,
+        "record_id": "qa-0002",
+        "dataset_id": 2,
+        "category": "Maize",
+        "suggestion_en": "What fertilizer is best for maize?",
+        "suggestion_tw": "Ferefere bɛn na ɛyɛ papa ma aburo?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0016",
+        "dataset_id": 16,
+        "category": "Maize",
+        "suggestion_en": "When is the best time to plant maize in Ghana?",
+        "suggestion_tw": "Bere bɛn na ɛyɛ ɔkorɔ sɛ wode aburow to mu wɔ Ghana?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0017",
+        "dataset_id": 17,
+        "category": "Maize",
+        "suggestion_en": "How deep should I plant maize seeds?",
+        "suggestion_tw": "Ɛsukyerɛ bɛn na mede aburow aba to asase mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0018",
+        "dataset_id": 18,
+        "category": "Maize",
+        "suggestion_en": "What is crop rotation and why is it important?",
+        "suggestion_tw": "Dea ɛyɛ sɛ wosesa nnuaba gu asase mu na adɛn na ɛyɛ papa?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0025",
+        "dataset_id": 25,
+        "category": "Maize",
+        "suggestion_en": "Can I grow different crops together on the same farm?",
+        "suggestion_tw": "Metumi adua nnɔbae ahorow pii wɔ afuo koro mu anaa?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Cassava": [
+      {
+        "position": 0,
+        "record_id": "qa-0033",
+        "dataset_id": 33,
+        "category": "Cassava",
+        "suggestion_en": "My cassava leaves are turning yellow and curling. What should I do?",
+        "suggestion_tw": "M'bankye nhaban redan sika na rekyekye. Dɛn na ɛhia?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0060",
+        "dataset_id": 60,
+        "category": "Cassava",
+        "suggestion_en": "How do I know when my crops need water?",
+        "suggestion_tw": "Ɛdeɛn na menim bere a m'nnuaba hia nsuo?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0066",
+        "dataset_id": 66,
+        "category": "Cassava",
+        "suggestion_en": "How should I harvest cassava properly?",
+        "suggestion_tw": "Ɛdeɛn na megye m'bankye yie?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0074",
+        "dataset_id": 74,
+        "category": "Cassava",
+        "suggestion_en": "How long can fresh cassava be stored after harvest?",
+        "suggestion_tw": "Bere ahe na metumi guina bankye a megye no akyi?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0087",
+        "dataset_id": 87,
+        "category": "Cassava",
+        "suggestion_en": "How can I add value to my farm produce to earn more money?",
+        "suggestion_tw": "Ɛdeɛn na mede boɔ ka m'afuo nnuaba ho sɛ menya sika dodo?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Plantain & Banana": [
+      {
+        "position": 0,
+        "record_id": "qa-0137",
+        "dataset_id": 137,
+        "category": "Plantain & Banana",
+        "suggestion_en": "What fertilizer is best for plantain?",
+        "suggestion_tw": "Ferefere bɛn na ɛyɛ ɔkorɔ ma borɔdɔ?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0138",
+        "dataset_id": 138,
+        "category": "Plantain & Banana",
+        "suggestion_en": "How can I control Panama disease in plantain and banana?",
+        "suggestion_tw": "Ɛdeɛn na metumi kora Panama yadeɛ ase wɔ borɔdɔ ne kwadu mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0139",
+        "dataset_id": 139,
+        "category": "Plantain & Banana",
+        "suggestion_en": "How should I grow plantain successfully?",
+        "suggestion_tw": "Ɛdeɛn na mekura borɔdɔ yie?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0226",
+        "dataset_id": 226,
+        "category": "Plantain & Banana",
+        "suggestion_en": "How do I start a plantain farm in Ghana?",
+        "suggestion_tw": "Dɛn na menyɛ sɛ mefi ase wɔ boɔde afuom adwuma wɔ Ghana?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0227",
+        "dataset_id": 227,
+        "category": "Plantain & Banana",
+        "suggestion_en": "Which type of plantain sucker is best for planting?",
+        "suggestion_tw": "Sucker bɛn na ɛhia pa ara sɛ mede to mu wɔ boɔde afuom?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Yam": [
+      {
+        "position": 0,
+        "record_id": "qa-0075",
+        "dataset_id": 75,
+        "category": "Yam",
+        "suggestion_en": "How should I store yam properly?",
+        "suggestion_tw": "Ɛdeɛn na meguina m'bayerɛ yie?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0151",
+        "dataset_id": 151,
+        "category": "Yam",
+        "suggestion_en": "What advice would you give a young person starting farming?",
+        "suggestion_tw": "Adesua bɛn na wobɛma aberantemmaa a ɔresi okuafo adwuma ɛkan?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0231",
+        "dataset_id": 231,
+        "category": "Yam",
+        "suggestion_en": "How should I prepare yam setts before planting?",
+        "suggestion_tw": "Dɛn na menyɛ bayerɛ setts ansa na mede to mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0232",
+        "dataset_id": 232,
+        "category": "Yam",
+        "suggestion_en": "When is the best time to plant yam in Ghana?",
+        "suggestion_tw": "Bere bɛn na ɛyɛ papa pa ara sɛ wede bayerɛ to mu wɔ Ghana?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0233",
+        "dataset_id": 233,
+        "category": "Yam",
+        "suggestion_en": "Which yam varieties are commonly grown in Ghana?",
+        "suggestion_tw": "Bayerɛ variety bɛn na wɔtaa to mu wɔ Ghana?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Cocoyam": [
+      {
+        "position": 0,
+        "record_id": "qa-0235",
+        "dataset_id": 235,
+        "category": "Plantain & Banana",
+        "suggestion_en": "How can I grow cocoyam successfully in Ghana?",
+        "suggestion_tw": "Dɛn na menyɛ sɛ meto kɔkɔnte yie wɔ Ghana?",
+        "selection": "explicit_canonical_record_ids"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0236",
+        "dataset_id": 236,
+        "category": "Yam",
+        "suggestion_en": "What pests and diseases commonly affect cocoyam?",
+        "suggestion_tw": "Adwummaker ne yadeɛ bɛn na ɛtaa ba kɔkɔnte ho?",
+        "selection": "explicit_canonical_record_ids"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0316",
+        "dataset_id": 316,
+        "category": "Yam",
+        "suggestion_en": "How can I add value to cocoyam to increase income?",
+        "suggestion_tw": "Dɛn na menyɛ sɛ kɔkɔnte bo kɔ so ma sika pa?",
+        "selection": "explicit_canonical_record_ids"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0350",
+        "dataset_id": 350,
+        "category": "Yam",
+        "suggestion_en": "What are the market opportunities for cocoyam in Ghana?",
+        "suggestion_tw": "Dwa nhyiamu bɛn na ɛwɔ ma kɔkɔnte wɔ Ghana?",
+        "selection": "explicit_canonical_record_ids"
+      }
+    ],
+    "Tomatoes": [
+      {
+        "position": 0,
+        "record_id": "qa-0021",
+        "dataset_id": 21,
+        "category": "Tomato",
+        "suggestion_en": "Can I grow vegetables during the dry season?",
+        "suggestion_tw": "Metumi adua nnɔbae wɔ ɔpɛ bere mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0024",
+        "dataset_id": 24,
+        "category": "Tomato",
+        "suggestion_en": "What is a nursery and when should I use one?",
+        "suggestion_tw": "Nursery yɛ dɛn na bere bɛn na ɛsɛ sɛ yɛde di dwuma?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0027",
+        "dataset_id": 27,
+        "category": "Tomato",
+        "suggestion_en": "When should I transplant tomato seedlings?",
+        "suggestion_tw": "Mfeɛ bɛn na ɛfata sɛ mesi ntomato nnuaba mfoforo ananmu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0029",
+        "dataset_id": 29,
+        "category": "Tomato",
+        "suggestion_en": "How can I grow crops in containers if I do not have enough land?",
+        "suggestion_tw": "Ɛdeɛn na mekura nnuaba wɔ nkuku anaa pots mu sɛ menni asase?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0032",
+        "dataset_id": 32,
+        "category": "Tomato",
+        "suggestion_en": "My tomato plants are wilting even though I water them. What could be wrong?",
+        "suggestion_tw": "M'ntomato nnua rewo na mede nsu hyɛ won. Dɛn na ɛhia?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Pepper": [
+      {
+        "position": 0,
+        "record_id": "qa-0048",
+        "dataset_id": 48,
+        "category": "Pepper",
+        "suggestion_en": "How can I make a homemade chili pesticide spray?",
+        "suggestion_tw": "Ɛdeɛn na meyɛ fie nhwiren adwummakers dawuro fi mako?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0070",
+        "dataset_id": 70,
+        "category": "Pepper",
+        "suggestion_en": "How do I harvest pepper without damaging the plant?",
+        "suggestion_tw": "Ɛdeɛn na megye mako a ɛnsɛe nnua no?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0117",
+        "dataset_id": 117,
+        "category": "Pepper",
+        "suggestion_en": "How can I control vegetable pests using organic methods?",
+        "suggestion_tw": "Ɛdeɛn na metumi kora adwummakers ase nhwiren ho wɔ nnuan afuo mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0129",
+        "dataset_id": 129,
+        "category": "Pepper",
+        "suggestion_en": "How should I grow pepper successfully?",
+        "suggestion_tw": "Ɛdeɛn na mekura mako yie?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0200",
+        "dataset_id": 200,
+        "category": "Pepper",
+        "suggestion_en": "How can I access international markets for my farm produce?",
+        "suggestion_tw": "Ɛdeɛn na meka kɔ amanaman aguabasa ma m'afuo nnuaba?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Onion": [
+      {
+        "position": 0,
+        "record_id": "qa-0054",
+        "dataset_id": 54,
+        "category": "Onion",
+        "suggestion_en": "How can I control thrips on onions?",
+        "suggestion_tw": "Ɛdeɛn na metumi kora thrips ase wɔ m'gyene so?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0113",
+        "dataset_id": 113,
+        "category": "Onion",
+        "suggestion_en": "Which plants can I grow to help control pests naturally?",
+        "suggestion_tw": "Nnuaba bɛn na metumi kura sɛ wɔkora adwummakers ase nhwiren ho?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0131",
+        "dataset_id": 131,
+        "category": "Onion",
+        "suggestion_en": "How should I grow onions during the dry season?",
+        "suggestion_tw": "Ɛdeɛn na mekura gyene wɔ ɔpɛ bere mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0245",
+        "dataset_id": 245,
+        "category": "Onion",
+        "suggestion_en": "How do I grow onions successfully in Ghana?",
+        "suggestion_tw": "Dɛn na menyɛ sɛ meto abɔnkɔ wɔ Ghana?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0246",
+        "dataset_id": 246,
+        "category": "Onion",
+        "suggestion_en": "What causes onion bulbs to become small?",
+        "suggestion_tw": "Dɛn ma abɔnkɔ bulbs yɛ ketewa?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Carrot": [
+      {
+        "position": 0,
+        "record_id": "qa-0247",
+        "dataset_id": 247,
+        "category": "Carrot",
+        "suggestion_en": "How can I grow carrots successfully in Ghana?",
+        "suggestion_tw": "Dɛn na menyɛ sɛ meto carrot wɔ Ghana?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0317",
+        "dataset_id": 317,
+        "category": "Carrot",
+        "suggestion_en": "What are the common problems in carrot farming?",
+        "suggestion_tw": "Aho yɛ den bɛn na ɛtaa ba carrot nnoa mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Garden Eggs": [
+      {
+        "position": 0,
+        "record_id": "qa-0147",
+        "dataset_id": 147,
+        "category": "Garden Eggs",
+        "suggestion_en": "What are the best practices for growing garden eggs?",
+        "suggestion_tw": "Anammɔn bɛn na ɛyɛ pa wɔ kura garden egg (Afrika ntrɔba)?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0248",
+        "dataset_id": 248,
+        "category": "Garden Eggs",
+        "suggestion_en": "How do I grow garden eggs successfully in Ghana?",
+        "suggestion_tw": "Dɛn na menyɛ sɛ meto ntorɔ wɔ Ghana?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0348",
+        "dataset_id": 348,
+        "category": "Garden Eggs",
+        "suggestion_en": "Which garden egg varieties are commonly grown in Ghana?",
+        "suggestion_tw": "Garden egg varieties bɛn na wɔtaa to mu wɔ Ghana?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Palm Oil & Coconut": [
+      {
+        "position": 0,
+        "record_id": "qa-0534",
+        "dataset_id": 534,
+        "category": "Oil Palm & Coconut",
+        "suggestion_en": "Why is spacing important in oil palm plantations?",
+        "suggestion_tw": "Adɛn nti na plant spacing ho hia wɔ oil palm afuo mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0068",
+        "dataset_id": 68,
+        "category": "Palm & Coconut",
+        "suggestion_en": "How do I know when palm fruits are ready to harvest?",
+        "suggestion_tw": "Ɛdeɛn na megye abe aba yie?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0535",
+        "dataset_id": 535,
+        "category": "Oil Palm & Coconut",
+        "suggestion_en": "How should young oil palms be protected from weeds?",
+        "suggestion_tw": "Mɛyɛ dɛn abɔ oil palm nketewa ho ban fi nwura ho?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0127",
+        "dataset_id": 127,
+        "category": "Palm & Coconut",
+        "suggestion_en": "How can I process palm fruits into oil at home?",
+        "suggestion_tw": "Ɛdeɛn na meyɛ ngo wɔ fie?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0536",
+        "dataset_id": 536,
+        "category": "Oil Palm & Coconut",
+        "suggestion_en": "Why should oil palm bunches be harvested on time?",
+        "suggestion_tw": "Adɛn nti na ɛsɛ sɛ yɛgye oil palm bunches bere a ɛsɛ?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Groundnut & Legumes": [
+      {
+        "position": 0,
+        "record_id": "qa-0384",
+        "dataset_id": 384,
+        "category": "Groundnut & Legumes",
+        "suggestion_en": "How can I improve groundnut flowering and pod formation?",
+        "suggestion_tw": "Mɛyɛ dɛn ama nkatie nhwiren ne aba no ayɛ yie?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0385",
+        "dataset_id": 385,
+        "category": "Groundnut & Legumes",
+        "suggestion_en": "Why is good drainage important for groundnut?",
+        "suggestion_tw": "Adɛn nti na nsuo firi asase mu yie ho hia ma nkatie?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0386",
+        "dataset_id": 386,
+        "category": "Groundnut & Legumes",
+        "suggestion_en": "How can I reduce aflatoxin risk in groundnut?",
+        "suggestion_tw": "Mɛyɛ dɛn ate aflatoxin haw so wɔ nkatie mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0387",
+        "dataset_id": 387,
+        "category": "Groundnut & Legumes",
+        "suggestion_en": "When should groundnuts be harvested for seed?",
+        "suggestion_tw": "Bere bɛn na ɛsɛ sɛ megye nkatie a mede bɛyɛ aba?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0388",
+        "dataset_id": 388,
+        "category": "Groundnut & Legumes",
+        "suggestion_en": "How should cowpea be protected after harvest?",
+        "suggestion_tw": "Mɛyɛ dɛn abɔ cowpea a magye no ho ban?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Rice": [
+      {
+        "position": 0,
+        "record_id": "qa-0364",
+        "dataset_id": 364,
+        "category": "Rice Farming",
+        "suggestion_en": "How should I choose a rice field site?",
+        "suggestion_tw": "Mɛyɛ dɛn apaw beae a mɛdua aburow?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0365",
+        "dataset_id": 365,
+        "category": "Rice Farming",
+        "suggestion_en": "What is the difference between upland and lowland rice farming?",
+        "suggestion_tw": "Nsonsonoe bɛn na ɛwɔ upland ne lowland aburow kuayɛ mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0366",
+        "dataset_id": 366,
+        "category": "Rice Farming",
+        "suggestion_en": "How can I level a rice field before planting?",
+        "suggestion_tw": "Mɛyɛ dɛn asiesie aburow afuo no ma asase no yɛ pɛ ansa na madu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0367",
+        "dataset_id": 367,
+        "category": "Rice Farming",
+        "suggestion_en": "Why is water management important in rice farming?",
+        "suggestion_tw": "Adɛn nti na nsuo ho nhwɛsoɔ ho hia wɔ aburow kuayɛ mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0368",
+        "dataset_id": 368,
+        "category": "Rice Farming",
+        "suggestion_en": "How do I reduce bird damage in a rice field?",
+        "suggestion_tw": "Mɛyɛ dɛn ate anomaa sɛe so wɔ aburow afuo mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Cocoa": [
+      {
+        "position": 0,
+        "record_id": "qa-0374",
+        "dataset_id": 374,
+        "category": "Cocoa Farming",
+        "suggestion_en": "How should I choose a cocoa nursery site?",
+        "suggestion_tw": "Mɛyɛ dɛn apaw beae a mɛyɛ cocoa nursery?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0375",
+        "dataset_id": 375,
+        "category": "Cocoa Farming",
+        "suggestion_en": "How can I improve survival of cocoa seedlings after planting?",
+        "suggestion_tw": "Mɛyɛ dɛn ama cocoa aba nketewa no atena ase yie bere a madu wɔn?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0376",
+        "dataset_id": 376,
+        "category": "Cocoa Farming",
+        "suggestion_en": "Why is shade important for young cocoa?",
+        "suggestion_tw": "Adɛn nti na sunsuma ho hia ma cocoa nketewa?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0377",
+        "dataset_id": 377,
+        "category": "Cocoa Farming",
+        "suggestion_en": "How often should I inspect cocoa trees?",
+        "suggestion_tw": "Mpɛn ahe na ɛsɛ sɛ mehwɛ cocoa nnua so?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0378",
+        "dataset_id": 378,
+        "category": "Cocoa Farming",
+        "suggestion_en": "How can I keep a cocoa plantation clean?",
+        "suggestion_tw": "Mɛyɛ dɛn ama cocoa afuo no ho atew?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Other Vegetables": [
+      {
+        "position": 0,
+        "record_id": "qa-0404",
+        "dataset_id": 404,
+        "category": "Cucumber Farming",
+        "suggestion_en": "What kind of site is suitable for cucumber?",
+        "suggestion_tw": "Beae bɛn na ɛfata ma cucumber?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0394",
+        "dataset_id": 394,
+        "category": "Okra Farming",
+        "suggestion_en": "How do I start an okra farm?",
+        "suggestion_tw": "Mɛyɛ dɛn ahyɛ okra afuo ase?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0414",
+        "dataset_id": 414,
+        "category": "Watermelon Farming",
+        "suggestion_en": "How do I select land for watermelon?",
+        "suggestion_tw": "Mɛyɛ dɛn apaw asase ma watermelon?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0405",
+        "dataset_id": 405,
+        "category": "Cucumber Farming",
+        "suggestion_en": "Why do cucumber vines need support?",
+        "suggestion_tw": "Adɛn nti na ɛsɛ sɛ yɛma cucumber vines nya biribi kura wɔn?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0395",
+        "dataset_id": 395,
+        "category": "Okra Farming",
+        "suggestion_en": "How often should okra pods be harvested?",
+        "suggestion_tw": "Mpɛn ahe na ɛsɛ sɛ megye okra aba?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Pest & Disease Control": [
+      {
+        "position": 0,
+        "record_id": "qa-0031",
+        "dataset_id": 31,
+        "category": "Pest & Disease Control",
+        "suggestion_en": "How can I control weevils in stored grain?",
+        "suggestion_tw": "Ɛdeɛn na metumi de weevils hyɛ ase wɔ m'aduan a maguina mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0035",
+        "dataset_id": 35,
+        "category": "Pest & Disease Control",
+        "suggestion_en": "How can I control aphids on my crops?",
+        "suggestion_tw": "Ɛdeɛn na metumi kora aphid ase wɔ m'nnuaba so?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0037",
+        "dataset_id": 37,
+        "category": "Pest & Disease Control",
+        "suggestion_en": "What disease causes leaf spots on groundnuts?",
+        "suggestion_tw": "M'nkatie nhaban wɔ nsono. Yadeɛ bɛn na ɛyɛ?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0038",
+        "dataset_id": 38,
+        "category": "Pest & Disease Control",
+        "suggestion_en": "How can I prevent pests from attacking my crops?",
+        "suggestion_tw": "Ɛdeɛn na mema adwummakers amma wɔnba m'nnuan afuo mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0045",
+        "dataset_id": 45,
+        "category": "Pest & Disease Control",
+        "suggestion_en": "How can I use pesticides safely on my farm?",
+        "suggestion_tw": "Ɛdeɛn na mefa adwummakers dawuro di dwuma a ɛho tumi wɔ m'afuo mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Irrigation & Water": [
+      {
+        "position": 0,
+        "record_id": "qa-0043",
+        "dataset_id": 43,
+        "category": "Irrigation & Water",
+        "suggestion_en": "My beans have rust disease. What should I do?",
+        "suggestion_tw": "M'abɔdweɛ wɔ rust yadeɛ. Ɛdeɛn na meyɛ?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0061",
+        "dataset_id": 61,
+        "category": "Irrigation & Water",
+        "suggestion_en": "What is the best irrigation method for a small farm?",
+        "suggestion_tw": "Nsuo to anammɔn bɛn na ɛyɛ ɔkorɔ wɔ afuo ketewa mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0062",
+        "dataset_id": 62,
+        "category": "Irrigation & Water",
+        "suggestion_en": "Can I use borehole water to irrigate my crops?",
+        "suggestion_tw": "Metumi de borehole nsuo to nnuaba so?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0159",
+        "dataset_id": 159,
+        "category": "Irrigation & Water",
+        "suggestion_en": "How can I build a small farm water-harvesting system?",
+        "suggestion_tw": "Ɛdeɛn na mesi dam ketewa anaa nsuo gye sistɛm?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0160",
+        "dataset_id": 160,
+        "category": "Irrigation & Water",
+        "suggestion_en": "What can I do to store more water during the dry season?",
+        "suggestion_tw": "M'esre yera wɔ ɔpɛ bere mu. Ɛdeɛn na metumi guina nsuo dodo?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Harvesting & Storage": [
+      {
+        "position": 0,
+        "record_id": "qa-0064",
+        "dataset_id": 64,
+        "category": "Harvesting & Storage",
+        "suggestion_en": "What time of day is best for harvesting vegetables?",
+        "suggestion_tw": "Bere bɛn wɔ da mu na ɛyɛ ɔkorɔ sɛ wogye nnuan?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0504",
+        "dataset_id": 504,
+        "category": "Post-Harvest & Food Safety",
+        "suggestion_en": "Why should harvested vegetables not be left in direct sun?",
+        "suggestion_tw": "Adɛn nti na ɛnsɛ sɛ mede nnɔbae a magye no gyaw owia tee mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0072",
+        "dataset_id": 72,
+        "category": "Harvesting & Storage",
+        "suggestion_en": "How do I know when pineapple is ready to harvest?",
+        "suggestion_tw": "Ɛdeɛn na menim sɛ m'aborɔfo awie ase sɛ megye?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0505",
+        "dataset_id": 505,
+        "category": "Post-Harvest & Food Safety",
+        "suggestion_en": "How can I reduce bruising during produce transport?",
+        "suggestion_tw": "Mɛyɛ dɛn ate mpirapira so bere a merekɔfa nnɔbae?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0076",
+        "dataset_id": 76,
+        "category": "Harvesting & Storage",
+        "suggestion_en": "How can I protect stored food from rats and mice?",
+        "suggestion_tw": "Ɛdeɛn na mekora m'aduan a maguina fi ɔkra ne okusie ho?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Fish Farming": [
+      {
+        "position": 0,
+        "record_id": "qa-0079",
+        "dataset_id": 79,
+        "category": "Fish Farming",
+        "suggestion_en": "How can I store dried fish or meat without a refrigerator?",
+        "suggestion_tw": "Ɛdeɛn na meguina nsuomnam anaa nam a ayaw wɔ afuo so a menwɔ fridge?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0251",
+        "dataset_id": 251,
+        "category": "Fish Farming",
+        "suggestion_en": "How do I start a fish farm in Ghana?",
+        "suggestion_tw": "Dɛn na menyɛ sɛ mefi ase apataa adwuma wɔ Ghana?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0253",
+        "dataset_id": 253,
+        "category": "Fish Farming",
+        "suggestion_en": "How can I prevent diseases in farmed fish?",
+        "suggestion_tw": "Dɛn na menyɛ sɛ yadeɛ annyi me apataa ho?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0254",
+        "dataset_id": 254,
+        "category": "Fish Farming",
+        "suggestion_en": "How much does it cost to start a small fish farm in Ghana?",
+        "suggestion_tw": "Sika ahe na ɛyɛ papa sɛ mefi ase apataa adwuma wɔ Ghana?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0255",
+        "dataset_id": 255,
+        "category": "Fish Farming",
+        "suggestion_en": "When should I harvest tilapia?",
+        "suggestion_tw": "Bere bɛn na meyiyɛ me tilapia apataa?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Poultry Farming": [
+      {
+        "position": 0,
+        "record_id": "qa-0003",
+        "dataset_id": 3,
+        "category": "Poultry Farming",
+        "suggestion_en": "Can I use animal manure instead of chemical fertilizer?",
+        "suggestion_tw": "Metumi de mmoa dɔteɛ adi dwuma mmom sen nnuru ferefere?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0015",
+        "dataset_id": 15,
+        "category": "Poultry Farming",
+        "suggestion_en": "What causes soil to become hard and how can I fix it?",
+        "suggestion_tw": "Dɛn na ɛma asase yɛ den na ɛhia yiye?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0078",
+        "dataset_id": 78,
+        "category": "Poultry Farming",
+        "suggestion_en": "How can I make low-cost hermetic storage?",
+        "suggestion_tw": "Ɛdeɛn na meyɛ hermetic guina a ɛboɔ yɛ ketewa?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0175",
+        "dataset_id": 175,
+        "category": "Poultry Farming",
+        "suggestion_en": "How can I integrate livestock into my crop farm?",
+        "suggestion_tw": "Ɛdeɛn na mefa m'mmoa di dwuma ma m'afuo nnuaba?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0176",
+        "dataset_id": 176,
+        "category": "Poultry Farming",
+        "suggestion_en": "My chickens are dying suddenly. What could be the cause?",
+        "suggestion_tw": "M'akrɔma rewu ntɛm. Dɛn na betumi yɛ?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Goat Farming": [
+      {
+        "position": 0,
+        "record_id": "qa-0187",
+        "dataset_id": 187,
+        "category": "Goat Rearing",
+        "suggestion_en": "What are the signs that a goat is pregnant and what should I do?",
+        "suggestion_tw": "Ahohyenam bɛn na ɛkyerɛ sɛ m'abirekyi wɔ nyinsɛn na ɛdeɛn na meyɛ?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0262",
+        "dataset_id": 262,
+        "category": "Goat Rearing",
+        "suggestion_en": "How do I start goat farming in Ghana?",
+        "suggestion_tw": "Dɛn na menyɛ sɛ mefi ase birekyie adwuma wɔ Ghana?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0263",
+        "dataset_id": 263,
+        "category": "Goat Rearing",
+        "suggestion_en": "What diseases should goats be vaccinated against?",
+        "suggestion_tw": "Yadeɛ bɛn na mahware me birekyie so?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0266",
+        "dataset_id": 266,
+        "category": "Goat Rearing",
+        "suggestion_en": "What is the difference between sheep farming and goat farming?",
+        "suggestion_tw": "Nte sɛn kɛse a ɛwɔ oguan ne birekyie adwuma ntam?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0293",
+        "dataset_id": 293,
+        "category": "Goat Rearing",
+        "suggestion_en": "How long is the goat gestation period and how often can goats give birth?",
+        "suggestion_tw": "Bere ahe na birekyie wo mma na mma ahe na ɛwo mmere baako?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Sheep Farming": [
+      {
+        "position": 0,
+        "record_id": "qa-0265",
+        "dataset_id": 265,
+        "category": "Sheep Rearing",
+        "suggestion_en": "How do I start sheep farming in Ghana?",
+        "suggestion_tw": "Dɛn na menyɛ sɛ mefi ase oguan adwuma wɔ Ghana?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0312",
+        "dataset_id": 312,
+        "category": "Sheep Rearing",
+        "suggestion_en": "How can I build a simple sheep pen in Ghana?",
+        "suggestion_tw": "Dɛn na menyɛ oguan pen ketewa wɔ Ghana?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0562",
+        "dataset_id": 562,
+        "category": "Sheep Rearing",
+        "suggestion_en": "How can I provide shelter for sheep during heavy rain?",
+        "suggestion_tw": "Mɛyɛ dɛn ayɛ dabere ama nguan bere a osu den retɔ?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Cattle Farming": [
+      {
+        "position": 0,
+        "record_id": "qa-0009",
+        "dataset_id": 9,
+        "category": "Cattle Rearing",
+        "suggestion_en": "What is green manure and how do I use it?",
+        "suggestion_tw": "Dɛn na nhwiren-tew ferefere yɛ na ɛdeɛn na mefa di dwuma?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0130",
+        "dataset_id": 130,
+        "category": "Cattle Rearing",
+        "suggestion_en": "How long does cowpea take to mature?",
+        "suggestion_tw": "Bere ahe na ɛsɛ ma abɔdweɛ awie ase?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0184",
+        "dataset_id": 184,
+        "category": "Cattle Rearing",
+        "suggestion_en": "How can I improve the quantity and quality of cow milk?",
+        "suggestion_tw": "Ɛdeɛn na metumi ma m'boo nufuo pa ara?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0267",
+        "dataset_id": 267,
+        "category": "Cattle Rearing",
+        "suggestion_en": "How do I start cattle farming in Ghana?",
+        "suggestion_tw": "Dɛn na menyɛ sɛ mefi ase nnwan adwuma wɔ Ghana?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0268",
+        "dataset_id": 268,
+        "category": "Cattle Rearing",
+        "suggestion_en": "What vaccines do cattle need in Ghana?",
+        "suggestion_tw": "Vaccines bɛn na nnwan hia wɔ Ghana?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Business & Marketing": [
+      {
+        "position": 0,
+        "record_id": "qa-0083",
+        "dataset_id": 83,
+        "category": "Business & Marketing",
+        "suggestion_en": "Where can I sell my farm produce for a better price?",
+        "suggestion_tw": "Ɛhe na metumi de m'afuo nnuaba tɔn na nya boɔ pa?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0494",
+        "dataset_id": 494,
+        "category": "Farm Business Planning",
+        "suggestion_en": "What questions should I ask before investing money in a new farm enterprise?",
+        "suggestion_tw": "Nsɛmmisa bɛn na ɛsɛ sɛ mibisa ansa na mede sika ahyɛ kuayɛ adwuma foforo mu?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0084",
+        "dataset_id": 84,
+        "category": "Business & Marketing",
+        "suggestion_en": "How can I get an agricultural loan in Ghana?",
+        "suggestion_tw": "Ɛdeɛn na menya ka sɛ meyɛ okuafo adwuma?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0495",
+        "dataset_id": 495,
+        "category": "Farm Business Planning",
+        "suggestion_en": "Why should I calculate break-even before starting a farm enterprise?",
+        "suggestion_tw": "Adɛn nti na ɛsɛ sɛ mebu break-even ansa na mahyɛ kuayɛ ase?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0086",
+        "dataset_id": 86,
+        "category": "Business & Marketing",
+        "suggestion_en": "Should I join a farmers' cooperative?",
+        "suggestion_tw": "Ɛsɛ sɛ meba okuafo kuo mu anaa?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Climate & Weather": [
+      {
+        "position": 0,
+        "record_id": "qa-0514",
+        "dataset_id": 514,
+        "category": "Climate-Smart Farming",
+        "suggestion_en": "How can farmers prepare for a late rainy season?",
+        "suggestion_tw": "Mɛyɛ dɛn asiesie m'akuayɛ ma osu bere no akyɛ?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0515",
+        "dataset_id": 515,
+        "category": "Climate-Smart Farming",
+        "suggestion_en": "What is drought-tolerant farming?",
+        "suggestion_tw": "Dɛn ne drought-tolerant kuayɛ?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0516",
+        "dataset_id": 516,
+        "category": "Climate-Smart Farming",
+        "suggestion_en": "How can mulch help during drought?",
+        "suggestion_tw": "Sɛn na mulch betumi aboa bere a ɔpɛ wɔ hɔ?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0517",
+        "dataset_id": 517,
+        "category": "Climate-Smart Farming",
+        "suggestion_en": "How can farmers prepare for floods?",
+        "suggestion_tw": "Mɛyɛ dɛn asiesie m'afuo ama nsuyiri?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0518",
+        "dataset_id": 518,
+        "category": "Climate-Smart Farming",
+        "suggestion_en": "Why is crop diversity useful under climate uncertainty?",
+        "suggestion_tw": "Adɛn nti na nnɔbae ahorow ho hia bere a ewim tebea nsakra?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ],
+    "Farm Management": [
+      {
+        "position": 0,
+        "record_id": "qa-0039",
+        "dataset_id": 39,
+        "category": "Farm Management & General",
+        "suggestion_en": "How can I control grasshoppers on my farm?",
+        "suggestion_tw": "Ɛdeɛn na metumi kora totrobonini ase wɔ m'afuo so?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 1,
+        "record_id": "qa-0484",
+        "dataset_id": 484,
+        "category": "Farm Mechanization & Tools",
+        "suggestion_en": "How do I choose the right farm tool for a job?",
+        "suggestion_tw": "Mɛyɛ dɛn apaw farm tool a ɛfata adwuma bi?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 2,
+        "record_id": "qa-0524",
+        "dataset_id": 524,
+        "category": "Farm Records & Extension",
+        "suggestion_en": "What farm records should a beginner start with?",
+        "suggestion_tw": "Farm records bɛn na beginner okuafoɔ ɛsɛ sɛ ofi ase de?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 3,
+        "record_id": "qa-0041",
+        "dataset_id": 41,
+        "category": "Farm Management & General",
+        "suggestion_en": "How can I protect my rice from birds?",
+        "suggestion_tw": "Anomaa redidi m'ɔtɛ ne ɔtɛ pa. Ɛdeɛn na mekora m'nnuaba?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      },
+      {
+        "position": 4,
+        "record_id": "qa-0485",
+        "dataset_id": 485,
+        "category": "Farm Mechanization & Tools",
+        "suggestion_en": "Why should farm tools be cleaned after use?",
+        "suggestion_tw": "Adɛn nti na ɛsɛ sɛ mehohoro farm tools akyi a mede di dwuma?",
+        "selection": "deterministic_category_round_robin_by_record_id"
+      }
+    ]
+  }
+}

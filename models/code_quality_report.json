@@ -1,0 +1,53 @@
+{
+  "generated_at_utc": "2026-08-21T00:39:47.081405+00:00",
+  "status": "pass",
+  "checks": {
+    "python_syntax": true,
+    "no_duplicate_top_level_definitions": true,
+    "required_files_present": true,
+    "no_noncanonical_dataset_references": true,
+    "canonical_dataset_referenced": true,
+    "no_hardcoded_secret_patterns": true,
+    "dependencies_complete": true,
+    "configuration_safe": true
+  },
+  "details": {
+    "python_files_checked": 50,
+    "runtime_files_checked": 57,
+    "syntax_errors": [],
+    "duplicate_definitions": [],
+    "missing_files": [],
+    "noncanonical_dataset_references": [],
+    "canonical_dataset_references": [
+      "build_retrieval_artifacts.py",
+      "build_suggestion_links.py",
+      "evaluate_language_separation.py",
+      "generate_final_project_report.py",
+      "review_code_quality.py",
+      "split_dataset.py",
+      "validate_dataset.py"
+    ],
+    "hardcoded_secret_findings": [],
+    "dependency_checks": {
+      "flask_declared": true,
+      "flask_cors_declared": true,
+      "numpy_declared": true,
+      "scikit_learn_declared": true,
+      "joblib_declared": true,
+      "gunicorn_declared": true,
+      "optional_fastembed_not_in_production": true
+    },
+    "configuration_checks": {
+      "canonical_dataset_used_by_app": true,
+      "debug_disabled_by_default": true,
+      "production_startup_declared": true,
+      "model_freeze_enforced": true
+    },
+    "not_in_project_scope": [
+      "authentication",
+      "database persistence",
+      "email/SMTP",
+      "Paystack payments"
+    ]
+  }
+}

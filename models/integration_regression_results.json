@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "todo": 33,
+  "generated_at_utc": "2026-08-21T00:09:07.274630+00:00",
+  "active_model": "AgriBotGH Retrieval Model v1.0.1",
+  "freeze_id": "204b2fee6a158e7e782b581c93b0b02b908b5ba12e3c3ac467241205de2d4aa1",
+  "summary": {
+    "total_checks": 7,
+    "passed": 7,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "frozen_model_health",
+      "passed": true,
+      "evidence": {
+        "en_pairs": 563,
+        "freeze_id": "204b2fee6a158e7e782b581c93b0b02b908b5ba12e3c3ac467241205de2d4aa1",
+        "model_frozen": true,
+        "model_version": "AgriBotGH Retrieval Model v1.0.1",
+        "retrieval_architecture": "topic_aware_tfidf",
+        "semantic_version": "1.0.1",
+        "status": "ok",
+        "topics": 28,
+        "training_records": 394,
+        "tw_pairs": 563
+      }
+    },
+    {
+      "name": "english_twi_and_exact_questions",
+      "passed": true,
+      "evidence": {
+        "total_language_cases": 80,
+        "passed": 80,
+        "failed": 0,
+        "english_cases": 40,
+        "twi_cases": 40,
+        "cross_language_errors": 0,
+        "invalid_language_rejected": true
+      }
+    },
+    {
+      "name": "paraphrase_and_low_confidence",
+      "passed": true,
+      "evidence": {
+        "total": 32,
+        "passed": 32,
+        "failed": 0,
+        "stable_response_rate": 1.0,
+        "off_topic_errors": 0,
+        "unapproved_answers": 0
+      }
+    },
+    {
+      "name": "off_topic",
+      "passed": true,
+      "evidence": {
+        "total": 48,
+        "passed": 48,
+        "failed": 0,
+        "state_c_recall": 1.0,
+        "agricultural_answers_returned": 0
+      }
+    },
+    {
+      "name": "topic_selection_and_suggestion",
+      "passed": true,
+      "evidence": {
+        "topic": "Maize",
+        "suggestion_id": "qa-0002",
+        "clicked_source": "known_suggestion"
+      }
+    },
+    {
+      "name": "high_risk_safety_layer",
+      "passed": true,
+      "evidence": {
+        "classification": "high_risk_agricultural_guidance",
+        "notice": "Safety note: Product strengths and local recommendations vary. Follow the current product label and consult a MOFA extension officer or veterinary professional before using pesticides, medicines, vaccines, fertilizer rates, or treatment doses."
+      }
+    },
+    {
+      "name": "browser_contracts_present",
+      "passed": true,
+      "evidence": {
+        "history_language_bound": true,
+        "manual_tts": true,
+        "responsive_suite": true,
+        "browser_tests_required": true
+      }
+    }
+  ],
+  "browser_verification": "Run npm test; Python checks confirm contracts exist but do not substitute for Playwright."
+}

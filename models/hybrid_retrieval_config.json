@@ -1,0 +1,27 @@
+{
+  "status": "integrated_todo17",
+  "evaluated_architecture": "hybrid_tfidf_embedding_topic",
+  "selected_architecture": "topic_aware_tfidf",
+  "weights": {
+    "tfidf": 0.38,
+    "embedding": 0.0,
+    "topic": 0.62
+  },
+  "tfidf_configuration": "C_word_and_character",
+  "embedding_configuration": "lsa_question_256d",
+  "embedding_details": {
+    "text_scope": "question",
+    "requested_dimensions": 256,
+    "actual_dimensions": 256
+  },
+  "topic_method": "training_category_centroids",
+  "score_normalization": "per_query_nonnegative_max",
+  "selection_metrics": {
+    "macro_top_1_accuracy": 0.5,
+    "macro_top_3_accuracy": 0.6388888888888888,
+    "macro_category_match_rate": 0.5059523809523809
+  },
+  "decision": "The semantic component produced no metric improvement, so the simpler zero-embedding control was selected",
+  "source_report": "models/hybrid_experiments.json",
+  "next_step": "TODO 18 model artifact management and reproducibility review"
+}

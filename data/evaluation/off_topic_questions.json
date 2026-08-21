@@ -1,0 +1,452 @@
+{
+  "schema_version": 1,
+  "todo": 23,
+  "purpose": "Post-integration bilingual challenge set for clearly non-agricultural questions.",
+  "expected_behavior": {
+    "routing_state": "C",
+    "response_type": "off_topic",
+    "must_not_return_answer": true
+  },
+  "methodology": {
+    "independence": "These prompts are separate from the TODO 14 development and held-out router cases.",
+    "pairing": "Each intent has one English prompt and one corresponding Twi prompt.",
+    "ordinary": "Clearly unrelated everyday intents without agricultural vocabulary.",
+    "hard_negative": "Non-agricultural intents containing words that can also occur in farming or retrieval data."
+  },
+  "pair_count": 24,
+  "case_count": 48,
+  "cases": [
+    {
+      "id": "off23_en_001",
+      "pair_id": "off23_pair_001",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "general_knowledge",
+      "question": "What is the capital city of France?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_001",
+      "pair_id": "off23_pair_001",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "general_knowledge",
+      "question": "France ahenkurow no din de sɛn?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_002",
+      "pair_id": "off23_pair_002",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "technology",
+      "question": "How can I replace a cracked laptop screen?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_002",
+      "pair_id": "off23_pair_002",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "technology",
+      "question": "Mɛyɛ dɛn asesa laptop screen a apaapae?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_003",
+      "pair_id": "off23_pair_003",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "sports",
+      "question": "What was the final score in yesterday's football game?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_003",
+      "pair_id": "off23_pair_003",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "sports",
+      "question": "Bɔɔlbɔ agodie a wɔbɔe nnora no baa awiei sɛn?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_004",
+      "pair_id": "off23_pair_004",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "programming",
+      "question": "How does a decorator work in Python?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_004",
+      "pair_id": "off23_pair_004",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "programming",
+      "question": "Python mu decorator yɛ adwuma sɛn?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_005",
+      "pair_id": "off23_pair_005",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "entertainment",
+      "question": "Can you tell me a funny joke about school?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_005",
+      "pair_id": "off23_pair_005",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "entertainment",
+      "question": "Wubetumi aka sukuu ho aseresɛm bi akyerɛ me?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_006",
+      "pair_id": "off23_pair_006",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "music",
+      "question": "Which songs should I add to a wedding playlist?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_006",
+      "pair_id": "off23_pair_006",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "music",
+      "question": "Nnwom bɛn na mede nka ayeforohyia playlist ho?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_007",
+      "pair_id": "off23_pair_007",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "travel",
+      "question": "Where can I reserve a quiet hotel room in London?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_007",
+      "pair_id": "off23_pair_007",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "travel",
+      "question": "Ɛhe na metumi afa hotel dan a ɛhɔ yɛ dinn wɔ London?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_008",
+      "pair_id": "off23_pair_008",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "cooking",
+      "question": "How do I bake a chocolate birthday cake?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_008",
+      "pair_id": "off23_pair_008",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "cooking",
+      "question": "Mɛyɛ dɛn ato chocolate awoda cake?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_009",
+      "pair_id": "off23_pair_009",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "mathematics",
+      "question": "Can you solve this quadratic equation for me?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_009",
+      "pair_id": "off23_pair_009",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "mathematics",
+      "question": "Wubetumi adi quadratic equation yi ama me?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_010",
+      "pair_id": "off23_pair_010",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "finance",
+      "question": "How much interest will my savings account earn?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_010",
+      "pair_id": "off23_pair_010",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "finance",
+      "question": "Interest dodow bɛn na mɛnya wɔ me savings account mu?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_011",
+      "pair_id": "off23_pair_011",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "health",
+      "question": "Why does my head hurt whenever I read at night?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_011",
+      "pair_id": "off23_pair_011",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "health",
+      "question": "Adɛn nti na me ti yɛ me yaw bere biara a mekenkan ade anadwo?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_012",
+      "pair_id": "off23_pair_012",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "employment",
+      "question": "Please help me format a CV for an office job.",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_012",
+      "pair_id": "off23_pair_012",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "employment",
+      "question": "Boa me ma mensiesie CV ma office adwuma bi.",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_013",
+      "pair_id": "off23_pair_013",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "photography",
+      "question": "How do I crop a portrait photo without losing quality?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_013",
+      "pair_id": "off23_pair_013",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "photography",
+      "question": "Mɛyɛ dɛn acrop portrait mfonini a ne quality remmɔ?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_014",
+      "pair_id": "off23_pair_014",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "web_technology",
+      "question": "Which tool can harvest public records from a website?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_014",
+      "pair_id": "off23_pair_014",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "web_technology",
+      "question": "Tool bɛn na ebetumi aharvest public records afi website so?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_015",
+      "pair_id": "off23_pair_015",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "manufacturing",
+      "question": "Why did the manufacturing plant stop producing phone chargers?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_015",
+      "pair_id": "off23_pair_015",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "manufacturing",
+      "question": "Adɛn nti na manufacturing plant no gyaee phone charger yɛ?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_016",
+      "pair_id": "off23_pair_016",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "physics",
+      "question": "How is an electric field measured in physics?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_016",
+      "pair_id": "off23_pair_016",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "physics",
+      "question": "Wɔsusuw electric field wɔ physics mu sɛn?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_017",
+      "pair_id": "off23_pair_017",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "cybersecurity",
+      "question": "How should I protect the root account on my Linux server?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_017",
+      "pair_id": "off23_pair_017",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "cybersecurity",
+      "question": "Mɛyɛ dɛn abɔ root account a ɛwɔ me Linux server so no ho ban?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_018",
+      "pair_id": "off23_pair_018",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "programming",
+      "question": "Why does this bug crash my JavaScript application?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_018",
+      "pair_id": "off23_pair_018",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "programming",
+      "question": "Adɛn nti na bug yi ma me JavaScript application no crash?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_019",
+      "pair_id": "off23_pair_019",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "software_development",
+      "question": "How do I merge a branch safely in Git?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_019",
+      "pair_id": "off23_pair_019",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "software_development",
+      "question": "Mɛyɛ dɛn de branch abɔ mu yie wɔ Git mu?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_020",
+      "pair_id": "off23_pair_020",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "statistics",
+      "question": "Why should I set a random seed before a simulation?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_020",
+      "pair_id": "off23_pair_020",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "statistics",
+      "question": "Adɛn nti na ɛsɛ sɛ mede random seed si simulation anim?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_021",
+      "pair_id": "off23_pair_021",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "social_media",
+      "question": "How can I organize the news feed on my social media account?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_021",
+      "pair_id": "off23_pair_021",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "social_media",
+      "question": "Mɛyɛ dɛn asiesie news feed a ɛwɔ me social media account so?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_022",
+      "pair_id": "off23_pair_022",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "chemistry",
+      "question": "What does organic mean in a chemistry textbook?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_022",
+      "pair_id": "off23_pair_022",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "chemistry",
+      "question": "Dɛn na organic kyerɛ wɔ chemistry textbook mu?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_023",
+      "pair_id": "off23_pair_023",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "cloud_computing",
+      "question": "Is cloud storage suitable for backing up family videos?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_023",
+      "pair_id": "off23_pair_023",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "cloud_computing",
+      "question": "Cloud storage fata sɛ mede sie abusua videos anaa?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_en_024",
+      "pair_id": "off23_pair_024",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "computer_security",
+      "question": "Can a computer virus damage my maize sales spreadsheet?",
+      "expected_state": "C"
+    },
+    {
+      "id": "off23_tw_024",
+      "pair_id": "off23_pair_024",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "computer_security",
+      "question": "Computer virus betumi asɛe me aburo adetɔn spreadsheet no anaa?",
+      "expected_state": "C"
+    }
+  ]
+}

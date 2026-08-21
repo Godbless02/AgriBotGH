@@ -1,0 +1,1524 @@
+{
+  "methodology": {
+    "unit": "One entry per validation question and language.",
+    "review_basis": "Manual semantic review of English and Twi questions, reference answers, same-category candidates and baseline retrieval candidates.",
+    "positive_rule": "A training answer must reasonably answer the validation question; word overlap, category agreement or a partial answer is insufficient.",
+    "negative_rule": "answerable=false when required knowledge is absent or available records cover only part of the requested information."
+  },
+  "validation_records": 84,
+  "language_cases": 168,
+  "entries": [
+    {
+      "validation_id": 92,
+      "category": "Soil & Land Preparation",
+      "question": "What government support programmes are available to farmers in Ghana?",
+      "language": "English",
+      "expected_training_record": 165,
+      "answerable": true,
+      "explanation": "Directly explains how Ghanaian farmers access government/PFJ support."
+    },
+    {
+      "validation_id": 92,
+      "category": "Soil & Land Preparation",
+      "question": "Ɔman boa adwuma bɛn na ɛwɔ ho ma okuafo wɔ Ghana?",
+      "language": "Twi",
+      "expected_training_record": 165,
+      "answerable": true,
+      "explanation": "Directly explains how Ghanaian farmers access government/PFJ support."
+    },
+    {
+      "validation_id": 391,
+      "category": "Groundnut & Legumes",
+      "question": "What should I look for in good cowpea seed?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Groundnut & Legumes question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 391,
+      "category": "Groundnut & Legumes",
+      "question": "Dɛn na ɛsɛ sɛ mehwɛ wɔ cowpea aba pa mu?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Groundnut & Legumes question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 257,
+      "category": "Poultry Farming",
+      "question": "How do I start a poultry farm in Ghana?",
+      "language": "English",
+      "expected_training_record": 183,
+      "answerable": true,
+      "explanation": "Covers the essential decisions and setup for starting a small poultry farm."
+    },
+    {
+      "validation_id": 257,
+      "category": "Poultry Farming",
+      "question": "Dɛn na menyɛ sɛ mefi ase akoko adwuma wɔ Ghana?",
+      "language": "Twi",
+      "expected_training_record": 183,
+      "answerable": true,
+      "explanation": "Covers the essential decisions and setup for starting a small poultry farm."
+    },
+    {
+      "validation_id": 447,
+      "category": "Rabbit Farming",
+      "question": "What should I feed growing rabbits?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Rabbit Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 447,
+      "category": "Rabbit Farming",
+      "question": "Dɛn na ɛsɛ sɛ mede ma rabbits a wɔrenyin no di?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Rabbit Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 369,
+      "category": "Rice Farming",
+      "question": "How can I reduce lodging in rice?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Rice Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 369,
+      "category": "Rice Farming",
+      "question": "Mɛyɛ dɛn atumi atew aburow mu dabere so?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Rice Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 415,
+      "category": "Watermelon Farming",
+      "question": "How often should watermelon be watered?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Watermelon Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 415,
+      "category": "Watermelon Farming",
+      "question": "Mpɛn ahe na ɛsɛ sɛ megu watermelon nsuo?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Watermelon Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 2,
+      "category": "Maize",
+      "question": "What fertilizer is best for maize?",
+      "language": "English",
+      "expected_training_record": 210,
+      "answerable": true,
+      "explanation": "Same maize fertilizer programme, rates and application timing."
+    },
+    {
+      "validation_id": 2,
+      "category": "Maize",
+      "question": "Ferefere bɛn na ɛyɛ papa ma aburo?",
+      "language": "Twi",
+      "expected_training_record": 210,
+      "answerable": true,
+      "explanation": "Same maize fertilizer programme, rates and application timing."
+    },
+    {
+      "validation_id": 510,
+      "category": "Post-Harvest & Food Safety",
+      "question": "Why is clean water important when washing food crops?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Post-Harvest & Food Safety question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 510,
+      "category": "Post-Harvest & Food Safety",
+      "question": "Adɛn nti na nsuo a ɛho tew ho hia bere a yɛhohorɔ nnɔbae?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Post-Harvest & Food Safety question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 523,
+      "category": "Climate-Smart Farming",
+      "question": "Why should farmers keep weather and planting records?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Climate-Smart Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 523,
+      "category": "Climate-Smart Farming",
+      "question": "Adɛn nti na ɛsɛ sɛ akuafoɔ kyerɛw weather ne planting dates?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Climate-Smart Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 223,
+      "category": "Cassava",
+      "question": "What diseases commonly affect cassava and how can I manage them?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Cassava question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 223,
+      "category": "Cassava",
+      "question": "Yadeɛ bɛn na ɛtaa ba bankye ho na dɛn na menyɛ wɔn ho?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Cassava question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 151,
+      "category": "Yam",
+      "question": "What advice would you give a young person starting farming?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Yam question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 151,
+      "category": "Yam",
+      "question": "Adesua bɛn na wobɛma aberantemmaa a ɔresi okuafo adwuma ɛkan?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Yam question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 58,
+      "category": "Soil & Land Preparation",
+      "question": "What is citrus greening disease and can it be treated?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Soil & Land Preparation question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 58,
+      "category": "Soil & Land Preparation",
+      "question": "Dɛn na citrus greening yadeɛ yɛ na wobetumi ayɛ dawuro?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Soil & Land Preparation question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 175,
+      "category": "Poultry Farming",
+      "question": "How can I integrate livestock into my crop farm?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Poultry Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 175,
+      "category": "Poultry Farming",
+      "question": "Ɛdeɛn na mefa m'mmoa di dwuma ma m'afuo nnuaba?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Poultry Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 329,
+      "category": "Fish Farming",
+      "question": "How can I sell my farmed fish at a good price in Ghana?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Fish Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 329,
+      "category": "Fish Farming",
+      "question": "Dɛn na menyɛ sɛ metɔ me apataa wɔ bo pa wɔ Ghana?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Fish Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 477,
+      "category": "Beekeeping",
+      "question": "How can I reduce disturbance around bee hives?",
+      "language": "English",
+      "expected_training_record": 476,
+      "answerable": true,
+      "explanation": "Hive placement guidance explicitly includes protection from disturbance."
+    },
+    {
+      "validation_id": 477,
+      "category": "Beekeeping",
+      "question": "Mɛyɛ dɛn ate basabasa so wɔ beehive ho?",
+      "language": "Twi",
+      "expected_training_record": 476,
+      "answerable": true,
+      "explanation": "Hive placement guidance explicitly includes protection from disturbance."
+    },
+    {
+      "validation_id": 501,
+      "category": "Farm Business Planning",
+      "question": "How can I calculate the expected cash needed before starting a farming season?",
+      "language": "English",
+      "expected_training_record": 496,
+      "answerable": true,
+      "explanation": "Listing all expected production costs supports calculating seasonal cash needs."
+    },
+    {
+      "validation_id": 501,
+      "category": "Farm Business Planning",
+      "question": "Mɛyɛ dɛn akyerɛ sika a mɛhia ansa na mahyɛ farming season ase?",
+      "language": "Twi",
+      "expected_training_record": 496,
+      "answerable": true,
+      "explanation": "Listing all expected production costs supports calculating seasonal cash needs."
+    },
+    {
+      "validation_id": 385,
+      "category": "Groundnut & Legumes",
+      "question": "Why is good drainage important for groundnut?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Groundnut & Legumes question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 385,
+      "category": "Groundnut & Legumes",
+      "question": "Adɛn nti na nsuo firi asase mu yie ho hia ma nkatie?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Groundnut & Legumes question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 275,
+      "category": "Tomato",
+      "question": "Which farming businesses are more profitable in Ghana?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Tomato question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 275,
+      "category": "Tomato",
+      "question": "Okuafo adwuma bɛn na ɛde mfaso ba sen wɔ Ghana?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Tomato question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 498,
+      "category": "Farm Business Planning",
+      "question": "How can I compare two farming enterprises?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Farm Business Planning question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 498,
+      "category": "Farm Business Planning",
+      "question": "Mɛyɛ dɛn atoto kuayɛ adwuma mmienu ho?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Farm Business Planning question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 59,
+      "category": "Soil & Land Preparation",
+      "question": "How much water do crops generally need?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Soil & Land Preparation question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 59,
+      "category": "Soil & Land Preparation",
+      "question": "Nsuo bɛn na m'nnuaba hia?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Soil & Land Preparation question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 370,
+      "category": "Rice Farming",
+      "question": "What should I check before buying rice seed?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Rice Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 370,
+      "category": "Rice Farming",
+      "question": "Dɛn na ɛsɛ sɛ mehwɛ ansa na matɔ aburow aba?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Rice Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 508,
+      "category": "Post-Harvest & Food Safety",
+      "question": "Why should different grades of produce be separated?",
+      "language": "English",
+      "expected_training_record": 124,
+      "answerable": true,
+      "explanation": "Explains produce grading, separation criteria and why separated grades retain value."
+    },
+    {
+      "validation_id": 508,
+      "category": "Post-Harvest & Food Safety",
+      "question": "Adɛn nti na ɛsɛ sɛ yɛkyekyɛ nnɔbae no grades mu?",
+      "language": "Twi",
+      "expected_training_record": 124,
+      "answerable": true,
+      "explanation": "Explains produce grading, separation criteria and why separated grades retain value."
+    },
+    {
+      "validation_id": 6,
+      "category": "Soil & Land Preparation",
+      "question": "How can I prevent soil erosion on my farm?",
+      "language": "English",
+      "expected_training_record": 201,
+      "answerable": true,
+      "explanation": "Contour planting, cover crops and mulch directly address erosion prevention."
+    },
+    {
+      "validation_id": 6,
+      "category": "Soil & Land Preparation",
+      "question": "Ɛdeɛn na mema asase amma ɛnhuru wɔ m'afuo mu?",
+      "language": "Twi",
+      "expected_training_record": 201,
+      "answerable": true,
+      "explanation": "Contour planting, cover crops and mulch directly address erosion prevention."
+    },
+    {
+      "validation_id": 284,
+      "category": "Maize",
+      "question": "What is minimum tillage and can I use it for maize?",
+      "language": "English",
+      "expected_training_record": 172,
+      "answerable": true,
+      "explanation": "Defines minimum tillage and gives practical direct-planting guidance."
+    },
+    {
+      "validation_id": 284,
+      "category": "Maize",
+      "question": "Minimum tillage yɛ dɛn na ɛtumi yɛ adwuma wɔ aburoɔ afuom?",
+      "language": "Twi",
+      "expected_training_record": 172,
+      "answerable": true,
+      "explanation": "Defines minimum tillage and gives practical direct-planting guidance."
+    },
+    {
+      "validation_id": 129,
+      "category": "Pepper",
+      "question": "How should I grow pepper successfully?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Pepper question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 129,
+      "category": "Pepper",
+      "question": "Ɛdeɛn na mekura mako yie?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Pepper question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 528,
+      "category": "Farm Records & Extension",
+      "question": "How can I measure whether a new farming practice has improved my farm?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Farm Records & Extension question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 528,
+      "category": "Farm Records & Extension",
+      "question": "Mɛyɛ dɛn ahu sɛ kuayɛ kwan foforo bi ama m'afuo ayɛ yie?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Farm Records & Extension question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 240,
+      "category": "Tomato",
+      "question": "How can I control tomato leaf miners and reduce leaf damage?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Tomato question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 240,
+      "category": "Tomato",
+      "question": "Dɛn na menyɛ tomato leaf miner ho?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Tomato question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 426,
+      "category": "Mushroom Farming",
+      "question": "How should mushroom growing materials be prepared?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Mushroom Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 426,
+      "category": "Mushroom Farming",
+      "question": "Mɛyɛ dɛn asiesie nneɛma a mede bɛyɛ mushroom?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Mushroom Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 196,
+      "category": "Business & Marketing",
+      "question": "How can young people make farming profitable?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Business & Marketing question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 196,
+      "category": "Business & Marketing",
+      "question": "Ɛdeɛn na mmofra tumi ma okuafo adwuma brɛ sika?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Business & Marketing question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 198,
+      "category": "Soil & Land Preparation",
+      "question": "How can I access land for farming if I do not own land?",
+      "language": "English",
+      "expected_training_record": 340,
+      "answerable": true,
+      "explanation": "Directly covers leasing, sharecropping and communal land access in Ghana."
+    },
+    {
+      "validation_id": 198,
+      "category": "Soil & Land Preparation",
+      "question": "Ɛdeɛn na menya asase ma okuafo adwuma sɛ menni?",
+      "language": "Twi",
+      "expected_training_record": 340,
+      "answerable": true,
+      "explanation": "Directly covers leasing, sharecropping and communal land access in Ghana."
+    },
+    {
+      "validation_id": 554,
+      "category": "Poultry Farming",
+      "question": "How can I reduce stress when introducing new chickens?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Poultry Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 554,
+      "category": "Poultry Farming",
+      "question": "Mɛyɛ dɛn ate stress so bere a mede nkokoɔ foforo ba?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Poultry Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 306,
+      "category": "Business & Marketing",
+      "question": "What is a farmer-based organisation and how does it help farmers?",
+      "language": "English",
+      "expected_training_record": 86,
+      "answerable": true,
+      "explanation": "Cooperative benefits substantially cover the role of a farmer-based organisation."
+    },
+    {
+      "validation_id": 306,
+      "category": "Business & Marketing",
+      "question": "Okuafo kuo adwuma yɛ dɛn wɔ Ghana?",
+      "language": "Twi",
+      "expected_training_record": 86,
+      "answerable": true,
+      "explanation": "Cooperative benefits substantially cover the role of a farmer-based organisation."
+    },
+    {
+      "validation_id": 217,
+      "category": "Maize",
+      "question": "Can I intercrop maize with other crops?",
+      "language": "English",
+      "expected_training_record": 99,
+      "answerable": true,
+      "explanation": "Defines intercropping and explicitly gives maize with cowpea as an example."
+    },
+    {
+      "validation_id": 217,
+      "category": "Maize",
+      "question": "Metumi de aburoɔ ato mu ne nnuaba foforɔ?",
+      "language": "Twi",
+      "expected_training_record": 99,
+      "answerable": true,
+      "explanation": "Defines intercropping and explicitly gives maize with cowpea as an example."
+    },
+    {
+      "validation_id": 539,
+      "category": "Oil Palm & Coconut",
+      "question": "How can I improve young coconut seedling survival?",
+      "language": "English",
+      "expected_training_record": 352,
+      "answerable": true,
+      "explanation": "Directly covers moisture, weed, heat/grazing protection and care of young coconuts."
+    },
+    {
+      "validation_id": 539,
+      "category": "Oil Palm & Coconut",
+      "question": "Mɛyɛ dɛn ama coconut seedlings nketewa atena ase yie?",
+      "language": "Twi",
+      "expected_training_record": 352,
+      "answerable": true,
+      "explanation": "Directly covers moisture, weed, heat/grazing protection and care of young coconuts."
+    },
+    {
+      "validation_id": 406,
+      "category": "Cucumber Farming",
+      "question": "How can I reduce misshapen cucumber fruits?",
+      "language": "English",
+      "expected_training_record": 409,
+      "answerable": true,
+      "explanation": "Moisture management and avoiding flowering stress address misshapen cucumber fruit."
+    },
+    {
+      "validation_id": 406,
+      "category": "Cucumber Farming",
+      "question": "Mɛyɛ dɛn ate cucumber aba a ɛnsɛ ho?",
+      "language": "Twi",
+      "expected_training_record": 409,
+      "answerable": true,
+      "explanation": "Moisture management and avoiding flowering stress address misshapen cucumber fruit."
+    },
+    {
+      "validation_id": 515,
+      "category": "Climate-Smart Farming",
+      "question": "What is drought-tolerant farming?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Climate-Smart Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 515,
+      "category": "Climate-Smart Farming",
+      "question": "Dɛn ne drought-tolerant kuayɛ?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Climate-Smart Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 322,
+      "category": "Maize",
+      "question": "How can I scout my maize field for pests?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Maize question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 322,
+      "category": "Maize",
+      "question": "Dɛn na menyɛ sɛ mehwɛ me aburoɔ afuom mu hwɛ adwummaker?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Maize question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 79,
+      "category": "Fish Farming",
+      "question": "How can I store dried fish or meat without a refrigerator?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Fish Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 79,
+      "category": "Fish Farming",
+      "question": "Ɛdeɛn na meguina nsuomnam anaa nam a ayaw wɔ afuo so a menwɔ fridge?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Fish Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 57,
+      "category": "Tomato",
+      "question": "How can I control tomato leaf miners?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Tomato question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 57,
+      "category": "Tomato",
+      "question": "Ɛdeɛn na metumi kora ntomato nhaban miner ase?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Tomato question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 25,
+      "category": "Maize",
+      "question": "Can I grow different crops together on the same farm?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Maize question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 25,
+      "category": "Maize",
+      "question": "Metumi adua nnɔbae ahorow pii wɔ afuo koro mu anaa?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Maize question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 387,
+      "category": "Groundnut & Legumes",
+      "question": "When should groundnuts be harvested for seed?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Groundnut & Legumes question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 387,
+      "category": "Groundnut & Legumes",
+      "question": "Bere bɛn na ɛsɛ sɛ megye nkatie a mede bɛyɛ aba?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Groundnut & Legumes question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 549,
+      "category": "Plantain & Banana",
+      "question": "How can I protect banana bunches from physical damage?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Plantain & Banana question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 549,
+      "category": "Plantain & Banana",
+      "question": "Mɛyɛ dɛn abɔ banana bunches ho ban fi mpirapira ho?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Plantain & Banana question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 253,
+      "category": "Fish Farming",
+      "question": "How can I prevent diseases in farmed fish?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Fish Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 253,
+      "category": "Fish Farming",
+      "question": "Dɛn na menyɛ sɛ yadeɛ annyi me apataa ho?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Fish Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 261,
+      "category": "Poultry Farming",
+      "question": "How many eggs can a good layer produce in a year?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Poultry Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 261,
+      "category": "Poultry Farming",
+      "question": "Tamma ahe na layer akoko gu wɔ afe baako mu?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Poultry Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 71,
+      "category": "Soil & Land Preparation",
+      "question": "How do I harvest and process shea nuts properly?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Soil & Land Preparation question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 71,
+      "category": "Soil & Land Preparation",
+      "question": "Ɛdeɛn na megye ne yɛ adwuma wɔ nkuto aba?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Soil & Land Preparation question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 481,
+      "category": "Beekeeping",
+      "question": "What is honey harvesting hygiene?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Beekeeping question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 481,
+      "category": "Beekeeping",
+      "question": "Dɛn ne ahotew a ɛsɛ wɔ honey gyeɛ mu?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Beekeeping question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 186,
+      "category": "Soil & Land Preparation",
+      "question": "How should I safely handle sick animals?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Soil & Land Preparation question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 186,
+      "category": "Soil & Land Preparation",
+      "question": "Ɛdeɛn na mehwɛ mmoa a wɔayarɛ ho yie?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Soil & Land Preparation question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 205,
+      "category": "Harvesting & Storage",
+      "question": "What is cold storage and can a small farmer use it?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Harvesting & Storage question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 205,
+      "category": "Harvesting & Storage",
+      "question": "Dɛn na cold storage yɛ na okuafo ketewa tumi nya ase anaa?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Harvesting & Storage question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 299,
+      "category": "Fish Farming",
+      "question": "How can I control tilapia breeding and prevent overcrowding?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Fish Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 299,
+      "category": "Fish Farming",
+      "question": "Dɛn na menyɛ tilapia apataa kyerɛ wɔn phula sɛ wobɔ wɔn bɔhyɛ so?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Fish Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 220,
+      "category": "Cassava",
+      "question": "What is the best way to plant cassava stems?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Cassava question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 220,
+      "category": "Cassava",
+      "question": "Dɛn na ɛyɛ ɛkwan pa sɛ mede bankye abɔ to mu?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Cassava question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 300,
+      "category": "Maize",
+      "question": "How do I choose crops that match my soil type?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Maize question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 300,
+      "category": "Maize",
+      "question": "Dɛn na menyɛ sɛ mepick nnuaba pa ma me asase nhyiamu?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Maize question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 383,
+      "category": "Cocoa Farming",
+      "question": "How can I keep records on a cocoa farm?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Cocoa Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 383,
+      "category": "Cocoa Farming",
+      "question": "Mɛyɛ dɛn akora nsɛm wɔ cocoa afuo ho?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Cocoa Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 135,
+      "category": "Soil & Land Preparation",
+      "question": "How can I grow ginger successfully?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Soil & Land Preparation question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 135,
+      "category": "Soil & Land Preparation",
+      "question": "Ɛdeɛn na mekura kakaduro yie?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Soil & Land Preparation question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 276,
+      "category": "Maize",
+      "question": "How do I apply for the Planting for Food and Jobs programme?",
+      "language": "English",
+      "expected_training_record": 165,
+      "answerable": true,
+      "explanation": "Explains PFJ registration channels, identification and subsidized inputs."
+    },
+    {
+      "validation_id": 276,
+      "category": "Maize",
+      "question": "Dɛn na menyɛ sɛ mebisa Planting for Food and Jobs programme?",
+      "language": "Twi",
+      "expected_training_record": 165,
+      "answerable": true,
+      "explanation": "Explains PFJ registration channels, identification and subsidized inputs."
+    },
+    {
+      "validation_id": 288,
+      "category": "Palm & Coconut",
+      "question": "How much palm oil can one hectare produce in Ghana?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Palm & Coconut question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 288,
+      "category": "Palm & Coconut",
+      "question": "Abɛ ɔman ahe na ɛfiri hectare baako mu wɔ Ghana?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Palm & Coconut question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 382,
+      "category": "Cocoa Farming",
+      "question": "How should cocoa beans be dried?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Cocoa Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 382,
+      "category": "Cocoa Farming",
+      "question": "Mɛyɛ dɛn ayow cocoa aba?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Cocoa Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 127,
+      "category": "Palm & Coconut",
+      "question": "How can I process palm fruits into oil at home?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Palm & Coconut question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 127,
+      "category": "Palm & Coconut",
+      "question": "Ɛdeɛn na meyɛ ngo wɔ fie?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Palm & Coconut question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 519,
+      "category": "Climate-Smart Farming",
+      "question": "How can trees support a farm?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Climate-Smart Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 519,
+      "category": "Climate-Smart Farming",
+      "question": "Sɛn na nnua betumi aboa afuo?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Climate-Smart Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 136,
+      "category": "Harvesting & Storage",
+      "question": "When should I harvest sorghum?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Harvesting & Storage question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 136,
+      "category": "Harvesting & Storage",
+      "question": "Bere bɛn na ɛsɛ sɛ megye ɔtɛ?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Harvesting & Storage question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 74,
+      "category": "Cassava",
+      "question": "How long can fresh cassava be stored after harvest?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Cassava question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 74,
+      "category": "Cassava",
+      "question": "Bere ahe na metumi guina bankye a megye no akyi?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Cassava question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 235,
+      "category": "Plantain & Banana",
+      "question": "How can I grow cocoyam successfully in Ghana?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Plantain & Banana question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 235,
+      "category": "Plantain & Banana",
+      "question": "Dɛn na menyɛ sɛ meto kɔkɔnte yie wɔ Ghana?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Plantain & Banana question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 330,
+      "category": "Fish Farming",
+      "question": "What minimum pond size is suitable for commercial fish farming?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Fish Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 330,
+      "category": "Fish Farming",
+      "question": "Pond ketewa bɛn na ɛhia ma adwuma kɛse apataa?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Fish Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 453,
+      "category": "Rabbit Farming",
+      "question": "How can rabbit production be made more profitable?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Rabbit Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 453,
+      "category": "Rabbit Farming",
+      "question": "Mɛyɛ dɛn ama rabbit kuayɛ anya mfasoɔ pii?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Rabbit Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 203,
+      "category": "Fertilizer & Nutrients",
+      "question": "What are whiteflies and how can I remove them from my crops?",
+      "language": "English",
+      "expected_training_record": 40,
+      "answerable": true,
+      "explanation": "Semantically equivalent whitefly identification and control knowledge."
+    },
+    {
+      "validation_id": 203,
+      "category": "Fertilizer & Nutrients",
+      "question": "Mɛyɛ dɛn yi adwummakers fitaa fi m'nnɔbae so?",
+      "language": "Twi",
+      "expected_training_record": 40,
+      "answerable": true,
+      "explanation": "Semantically equivalent whitefly identification and control knowledge."
+    },
+    {
+      "validation_id": 256,
+      "category": "Fish Farming",
+      "question": "What is the difference between tilapia and catfish farming?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Fish Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 256,
+      "category": "Fish Farming",
+      "question": "Nte sɛn bɛn na ɛwɔ tilapia ne catfish adwuma ntam?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Fish Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 336,
+      "category": "Cattle Rearing",
+      "question": "When should I deworm cattle and what should I use?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Cattle Rearing question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 336,
+      "category": "Cattle Rearing",
+      "question": "Dɛn na menyɛ nnwan mu adwummaker na bere bɛn?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Cattle Rearing question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 466,
+      "category": "Snail Farming",
+      "question": "What can snails eat on a farm?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Snail Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 466,
+      "category": "Snail Farming",
+      "question": "Dɛn na snails tumi di wɔ afuo mu?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Snail Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 470,
+      "category": "Snail Farming",
+      "question": "How can I tell whether snails are growing well?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Snail Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 470,
+      "category": "Snail Farming",
+      "question": "Mɛyɛ dɛn ahu sɛ snails renyin yie?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Snail Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 530,
+      "category": "Farm Records & Extension",
+      "question": "Why are farmer field demonstrations useful?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Farm Records & Extension question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 530,
+      "category": "Farm Records & Extension",
+      "question": "Adɛn nti na farmer field demonstration wɔ mfasoɔ?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Farm Records & Extension question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 449,
+      "category": "Rabbit Farming",
+      "question": "How should breeding rabbits be selected?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Rabbit Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 449,
+      "category": "Rabbit Farming",
+      "question": "Mɛyɛ dɛn apaw rabbits a mɛde ayɛ breeding?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Rabbit Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 291,
+      "category": "Soil & Land Preparation",
+      "question": "How do I set up a brooder for day-old chicks?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Soil & Land Preparation question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 291,
+      "category": "Soil & Land Preparation",
+      "question": "Dɛn na menyɛ brooder ketewa ma day-old chicks?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Soil & Land Preparation question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 109,
+      "category": "Soil & Land Preparation",
+      "question": "How can I protect my farm from theft?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Soil & Land Preparation question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 109,
+      "category": "Soil & Land Preparation",
+      "question": "Ɛdeɛn na mekora m'afuo fi korɔmfo ho?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Soil & Land Preparation question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 34,
+      "category": "Maize",
+      "question": "What is Fall Armyworm and how can I control it?",
+      "language": "English",
+      "expected_training_record": 202,
+      "answerable": true,
+      "explanation": "Same Fall Armyworm definition and control guidance."
+    },
+    {
+      "validation_id": 34,
+      "category": "Maize",
+      "question": "Dɛn na Aborɔnoma Adwummaker Kɛse ne ɛyɛ ɔkɔmm bɛn?",
+      "language": "Twi",
+      "expected_training_record": 202,
+      "answerable": true,
+      "explanation": "Same Fall Armyworm definition and control guidance."
+    },
+    {
+      "validation_id": 138,
+      "category": "Plantain & Banana",
+      "question": "How can I control Panama disease in plantain and banana?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Plantain & Banana question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 138,
+      "category": "Plantain & Banana",
+      "question": "Ɛdeɛn na metumi kora Panama yadeɛ ase wɔ borɔdɔ ne kwadu mu?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Plantain & Banana question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 206,
+      "category": "Soil & Land Preparation",
+      "question": "What should I do if my farm becomes waterlogged?",
+      "language": "English",
+      "expected_training_record": 302,
+      "answerable": true,
+      "explanation": "Directly covers drainage, raised beds and flood/waterlogging prevention."
+    },
+    {
+      "validation_id": 206,
+      "category": "Soil & Land Preparation",
+      "question": "Dɛn na mɛyɛ sɛ nsuo hyɛ m'afuo mu dodo?",
+      "language": "Twi",
+      "expected_training_record": 302,
+      "answerable": true,
+      "explanation": "Directly covers drainage, raised beds and flood/waterlogging prevention."
+    },
+    {
+      "validation_id": 162,
+      "category": "Soil & Land Preparation",
+      "question": "What equipment do I need to start a small farm?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Soil & Land Preparation question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 162,
+      "category": "Soil & Land Preparation",
+      "question": "Adeɛ bɛn na mehia sɛ mesi afuo ketewa?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Soil & Land Preparation question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 413,
+      "category": "Cucumber Farming",
+      "question": "Why should cucumber farmers avoid planting the crop repeatedly in the same spot?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Cucumber Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 413,
+      "category": "Cucumber Farming",
+      "question": "Adɛn nti na cucumber okuafoɔ nni sɛ wɔdua no mpɛn pii wɔ beae koro?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Cucumber Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 17,
+      "category": "Maize",
+      "question": "How deep should I plant maize seeds?",
+      "language": "English",
+      "expected_training_record": 209,
+      "answerable": true,
+      "explanation": "The training answer explicitly gives maize planting depth."
+    },
+    {
+      "validation_id": 17,
+      "category": "Maize",
+      "question": "Ɛsukyerɛ bɛn na mede aburow aba to asase mu?",
+      "language": "Twi",
+      "expected_training_record": 209,
+      "answerable": true,
+      "explanation": "The training answer explicitly gives maize planting depth."
+    },
+    {
+      "validation_id": 421,
+      "category": "Watermelon Farming",
+      "question": "Can watermelon be grown with other crops?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Watermelon Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 421,
+      "category": "Watermelon Farming",
+      "question": "Watermelon tumi nyin ne nnɔbae foforo bom anaa?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Watermelon Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 118,
+      "category": "Maize",
+      "question": "What is the push-pull farming system?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Maize question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 118,
+      "category": "Maize",
+      "question": "Dɛn na push-pull farming systɛm yɛ?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Maize question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 29,
+      "category": "Tomato",
+      "question": "How can I grow crops in containers if I do not have enough land?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Tomato question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 29,
+      "category": "Tomato",
+      "question": "Ɛdeɛn na mekura nnuaba wɔ nkuku anaa pots mu sɛ menni asase?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Tomato question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 398,
+      "category": "Okra Farming",
+      "question": "How do I know if okra needs water?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Okra Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 398,
+      "category": "Okra Farming",
+      "question": "Mɛyɛ dɛn ahu sɛ okra hia nsuo?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Okra Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 394,
+      "category": "Okra Farming",
+      "question": "How do I start an okra farm?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Okra Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 394,
+      "category": "Okra Farming",
+      "question": "Mɛyɛ dɛn ahyɛ okra afuo ase?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Okra Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 432,
+      "category": "Mushroom Farming",
+      "question": "Why is ventilation important in a mushroom room?",
+      "language": "English",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Mushroom Farming question; related records were partial, about a different task, or only shared wording."
+    },
+    {
+      "validation_id": 432,
+      "category": "Mushroom Farming",
+      "question": "Adɛn nti na mframa ho hia wɔ mushroom dan mu?",
+      "language": "Twi",
+      "expected_training_record": null,
+      "answerable": false,
+      "explanation": "Manual bilingual review found no training record whose answer adequately covers this Mushroom Farming question; related records were partial, about a different task, or only shared wording."
+    }
+  ]
+}

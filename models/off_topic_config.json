@@ -1,0 +1,108 @@
+{
+  "status": "integrated_todo17",
+  "router": "three_state_agriculture_router",
+  "states": {
+    "A": "return_answer",
+    "B": "uncertain_agriculture_rephrase_and_suggestions",
+    "C": "agriculture_only_response"
+  },
+  "domain_detection": {
+    "English": {
+      "text_weight": 0.45,
+      "topic_weight": 0.55,
+      "threshold": 0.22,
+      "metrics": {
+        "threshold": 0.22,
+        "agriculture_true": 38,
+        "agriculture_false_negative": 4,
+        "off_topic_true": 8,
+        "off_topic_false_negative": 2,
+        "agriculture_recall": 0.9047619047619048,
+        "off_topic_recall": 0.8,
+        "off_topic_precision": 0.6666666666666666,
+        "balanced_accuracy": 0.8523809523809525,
+        "agriculture_weighted_accuracy": 0.8698412698412699
+      }
+    },
+    "Twi": {
+      "text_weight": 0.25,
+      "topic_weight": 0.75,
+      "threshold": 0.22,
+      "metrics": {
+        "threshold": 0.22,
+        "agriculture_true": 41,
+        "agriculture_false_negative": 1,
+        "off_topic_true": 9,
+        "off_topic_false_negative": 1,
+        "agriculture_recall": 0.9761904761904762,
+        "off_topic_recall": 0.9,
+        "off_topic_precision": 0.9,
+        "balanced_accuracy": 0.9380952380952381,
+        "agriculture_weighted_accuracy": 0.9507936507936509
+      }
+    }
+  },
+  "answer_confidence": {
+    "signal": "normalized_score_margin",
+    "threshold": 0.27,
+    "exact_match_override": "max_raw_tfidf_similarity >= 1 - 1e-12"
+  },
+  "test_metrics": {
+    "total": 104,
+    "correct": 79,
+    "accuracy": 0.7596153846153846,
+    "macro_f1": 0.5516499688685119,
+    "per_state": {
+      "A": {
+        "support": 18,
+        "predicted": 0,
+        "correct": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "B": {
+        "support": 66,
+        "predicted": 85,
+        "correct": 63,
+        "precision": 0.7411764705882353,
+        "recall": 0.9545454545454546,
+        "f1": 0.8344370860927153
+      },
+      "C": {
+        "support": 20,
+        "predicted": 19,
+        "correct": 16,
+        "precision": 0.8421052631578947,
+        "recall": 0.8,
+        "f1": 0.8205128205128205
+      }
+    },
+    "confusion_matrix": {
+      "A": {
+        "A": 0,
+        "B": 18,
+        "C": 0
+      },
+      "B": {
+        "A": 0,
+        "B": 63,
+        "C": 3
+      },
+      "C": {
+        "A": 0,
+        "B": 4,
+        "C": 16
+      }
+    },
+    "answer_safety": {
+      "answers_returned": 0,
+      "reliable_answers": 0,
+      "unsafe_answers": 0,
+      "response_precision": 0.0
+    }
+  },
+  "todo_13_reassessment": "Do not lower the answer threshold yet: held-out score overlap would trade abstention for unreliable answers. Reassess after retrieval improvements or calibrated confidence features",
+  "source_report": "models/off_topic_experiments.json",
+  "next_step": "TODO 18 model artifact management and reproducibility review"
+}

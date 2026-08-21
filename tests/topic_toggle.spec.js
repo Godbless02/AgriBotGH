@@ -6,8 +6,85 @@ const { test, expect } = require("@playwright/test");
 
 const BASE = process.env.TEST_BASE_URL || "http://localhost:8080";
 
-test.describe("Topic toggle and chips panel", () => {
-  test("opens chips and hides topics button, then closes and restores", async ({
+test.describe("Topic and quick-question panels", () => {
+  test("renders uncertain agriculture and off-topic router states", async ({
+    page,
+  }) => {
+    await page.goto(BASE + "/index.html");
+    await page.fill("#nameInput", "RouterUser");
+    await page.click(".start-btn");
+
+    await page.fill(
+      "#chatInput",
+      "My maize leaves are changing colour and I am not sure why",
+    );
+    await page.click("#sendBtn");
+    await expect(
+      page.locator(".suggestions-wrapper .suggestion-btn").first(),
+    ).toBeVisible({ timeout: 15000 });
+    await expect(page.locator(".message-card.bot-message").last()).toContainText(
+      "not fully confident",
+    );
+
+    await page.fill("#chatInput", "Who won the football match last night?");
+    await page.click("#sendBtn");
+    await expect(page.locator(".topics-grid .topic-btn")).toHaveCount(28, {
+      timeout: 15000,
+    });
+    await expect(page.locator(".message-card.bot-message").last()).toContainText(
+      "agricultural assistant",
+    );
+  });
+
+  test("loads all canonical topics and routes a selected suggestion", async ({
+    page,
+  }) => {
+    await page.goto(BASE + "/index.html");
+    await page.fill("#nameInput", "TopicUser");
+    await page.click(".start-btn");
+
+    await page.click(".topic-toggle-btn");
+    const topicButtons = page.locator("#topicsGridPanel .topic-btn[data-topic]");
+    await expect(topicButtons).toHaveCount(28);
+
+    const expectedResponse = await page.request.post(
+      BASE + "/api/topic-suggestions",
+      { data: { topic: "Maize", lang: "en" } },
+    );
+    expect(expectedResponse.ok()).toBeTruthy();
+    const expected = await expectedResponse.json();
+
+    await page.locator('#topicsGridPanel .topic-btn[data-topic="Maize"]').click();
+    const suggestionButtons = page.locator(
+      ".suggestions-wrapper .suggestion-btn",
+    );
+    await expect(suggestionButtons).toHaveCount(expected.suggestions.length);
+    await expect(suggestionButtons.first()).toHaveText(
+      expected.suggestions[0].text,
+    );
+
+    await suggestionButtons.first().click();
+    await expect(page.locator(".message-card.bot-message").last()).toContainText(
+      /.+/,
+      { timeout: 15000 },
+    );
+  });
+
+  test("renders canonical Twi topic names", async ({ page }) => {
+    await page.goto(BASE + "/index.html");
+    await page.fill("#nameInput", "TwiTopicUser");
+    await page.click(".start-btn");
+    await page.click("#twBtn");
+    await page.click(".topic-toggle-btn");
+
+    const topicButtons = page.locator("#topicsGridPanel .topic-btn[data-topic]");
+    await expect(topicButtons).toHaveCount(28);
+    await expect(
+      page.locator('#topicsGridPanel .topic-btn[data-topic="Maize"]'),
+    ).toContainText("Aburoɔ");
+  });
+
+  test("opens and closes the topics panel", async ({
     page,
   }) => {
     await page.goto(BASE + "/index.html");
@@ -20,22 +97,22 @@ test.describe("Topic toggle and chips panel", () => {
     const topicBtn = page.locator(".topic-toggle-btn");
     await expect(topicBtn).toBeVisible();
 
-    // Click it to open chips
+    // Click it to open the topic catalogue
     await topicBtn.click();
 
-    const chips = page.locator("#chipsSidebar");
+    const topicsPanel = page.locator("#topicsPanel");
     const overlay = page.locator("#overlay");
 
-    await expect(chips).toHaveClass(/show/);
+    await expect(topicsPanel).toHaveClass(/show/);
     await expect(overlay).toHaveClass(/show/);
-    await expect(topicBtn).toHaveClass(/hidden/);
+    await expect(topicBtn).toHaveAttribute("aria-expanded", "true");
 
     // Click overlay to close
     await overlay.click();
 
-    await expect(chips).not.toHaveClass(/show/);
+    await expect(topicsPanel).not.toHaveClass(/show/);
     await expect(overlay).not.toHaveClass(/show/);
-    await expect(topicBtn).not.toHaveClass(/hidden/);
+    await expect(topicBtn).toHaveAttribute("aria-expanded", "false");
   });
 
   test("rapid clicks do not toggle repeatedly", async ({ page }) => {
@@ -53,8 +130,8 @@ test.describe("Topic toggle and chips panel", () => {
       toggleChips();
     });
 
-    // After rapid clicks, ensure chips are opened only once (show present)
-    await expect(chips).toHaveClass(/show/);
+    // Desktop quick questions start open, so one accepted toggle closes them.
+    await expect(chips).toHaveClass(/desktop-hidden/);
   });
 
   test("bot responses include a manual play control and do not auto-speak", async ({
@@ -84,5 +161,90 @@ test.describe("Topic toggle and chips panel", () => {
 
     expect(speechState.supported).toBeTruthy();
     expect(speechState.speaking).toBeFalsy();
+  });
+
+  test("language switching keeps responses, history, and TTS language isolated", async ({
+    page,
+  }) => {
+    await page.route("**/api/chat", async (route) => {
+      const request = route.request();
+      const payload = request.postDataJSON();
+      if (payload.language === "en") {
+        await new Promise((resolve) => setTimeout(resolve, 250));
+      }
+      await route.continue();
+    });
+
+    await page.goto(BASE + "/index.html");
+    await page.fill("#nameInput", "LanguageIsolationUser");
+    await page.click(".start-btn");
+
+    await page.fill("#chatInput", "What are the signs of good farming soil?");
+    await page.click("#sendBtn");
+    await page.click("#twBtn");
+
+    await expect(page.locator("#enHistory .history-item")).toHaveCount(1, {
+      timeout: 15000,
+    });
+    await expect(page.locator("#messages")).not.toContainText(
+      "Good farming soil is dark",
+    );
+
+    await page.locator("#enHistory .history-item").click();
+    await expect(page.locator("#messages")).toContainText(
+      "Good farming soil is dark",
+    );
+    await expect(page.locator(".tts-button").last()).toHaveAttribute(
+      "data-language",
+      "en",
+    );
+
+    await page.click("#twBtn");
+    await page.fill(
+      "#chatInput",
+      "Ɛdeɛn na ɛkyerɛ sɛ m'asase yɛ yɛ papa ma okuafo adwuma?",
+    );
+    await page.click("#sendBtn");
+    await expect(page.locator("#twHistory .history-item")).toHaveCount(1, {
+      timeout: 15000,
+    });
+    await expect(page.locator(".message-card.bot-message").last()).toContainText(
+      "Asase pa wɔ okuafo adwuma mu",
+    );
+    await expect(page.locator(".tts-button").last()).toHaveAttribute(
+      "data-language",
+      "tw",
+    );
+
+    const sessionLanguages = await page.evaluate(() => {
+      const users = JSON.parse(localStorage.getItem("agribot_all_users"));
+      return Object.values(users.languageisolationuser.sessions).map(
+        (session) => session.lang,
+      );
+    });
+    expect(sessionLanguages.sort()).toEqual(["en", "tw"]);
+  });
+
+  test("high-risk advice displays and stores its safety notice", async ({ page }) => {
+    await page.goto(BASE + "/index.html");
+    await page.fill("#nameInput", "SafetyNoticeUser");
+    await page.click(".start-btn");
+
+    await page.fill("#chatInput", "What fertilizer is best for maize?");
+    await page.click("#sendBtn");
+
+    const lastBot = page.locator(".message-card.bot-message").last();
+    await expect(lastBot).toContainText("Safety note", { timeout: 15000 });
+    await expect(lastBot).toContainText("product label");
+
+    const storedSafetyNotice = await page.evaluate(() => {
+      const users = JSON.parse(localStorage.getItem("agribot_all_users"));
+      const sessions = Object.values(users.safetynoticeuser.sessions);
+      const botMessages = sessions[0].messages.filter(
+        (message) => message.role === "bot",
+      );
+      return botMessages.at(-1).text;
+    });
+    expect(storedSafetyNotice).toContain("Safety note");
   });
 });

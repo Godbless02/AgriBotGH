@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "todo": 31,
+  "generated_at_utc": "2026-08-21T00:06:34.680853+00:00",
+  "evaluation_basis": {
+    "validation_records_per_language": 84,
+    "gold_answerable_per_language": 18,
+    "ranking_coverage_definition": "A top candidate is produced for every validation query; this is not automatic-answer coverage.",
+    "threshold_note": "Thresholds were selected only after architecture selection; null means no response threshold was applied in that ranking experiment."
+  },
+  "architectures": [
+    {
+      "id": "baseline_tfidf",
+      "name": "Baseline word TF-IDF",
+      "configuration": "word unigrams and bigrams",
+      "languages": {
+        "English": {
+          "metrics": {
+            "top_1_accuracy": 0.2777777777777778,
+            "top_3_accuracy": 0.3333333333333333,
+            "precision": 0.05952380952380952,
+            "coverage": 1.0,
+            "category_match_rate": 0.27380952380952384
+          },
+          "cost": {
+            "feature_count": 2442,
+            "matrix_nonzero_values": 5808,
+            "matrix_storage_bytes": 71276,
+            "fit_seconds": 0.02680529997451231,
+            "average_retrieval_seconds": 0.0021207178624102936
+          }
+        },
+        "Twi": {
+          "metrics": {
+            "top_1_accuracy": 0.3333333333333333,
+            "top_3_accuracy": 0.4444444444444444,
+            "precision": 0.07142857142857142,
+            "coverage": 1.0,
+            "category_match_rate": 0.2619047619047619
+          },
+          "cost": {
+            "feature_count": 2559,
+            "matrix_nonzero_values": 6847,
+            "matrix_storage_bytes": 83744,
+            "fit_seconds": 0.031284799973946065,
+            "average_retrieval_seconds": 0.0018682416633791512
+          }
+        }
+      },
+      "macro": {
+        "top_1_accuracy": 0.3055555555555556,
+        "top_3_accuracy": 0.38888888888888884,
+        "category_match_rate": 0.2678571428571429
+      },
+      "threshold": null,
+      "weaknesses": [
+        "Weak semantic discrimination",
+        "Confuses similarly worded agricultural categories"
+      ],
+      "computational_cost": "Lowest of the compared sparse models",
+      "source": "models/model_experiments.json"
+    },
+    {
+      "id": "improved_tfidf",
+      "name": "Improved word + character TF-IDF",
+      "configuration": "C_word_and_character",
+      "languages": {
+        "English": {
+          "metrics": {
+            "top_1_accuracy": 0.4444444444444444,
+            "top_3_accuracy": 0.6111111111111112,
+            "precision": 0.09523809523809523,
+            "coverage": 1.0,
+            "category_match_rate": 0.3333333333333333
+          },
+          "cost": {
+            "feature_count": 9328,
+            "matrix_nonzero_values": 42431,
+            "matrix_storage_bytes": 510752,
+            "fit_seconds": 0.1100820999708958,
+            "average_retrieval_seconds": 0.005540049998671748
+          }
+        },
+        "Twi": {
+          "metrics": {
+            "top_1_accuracy": 0.5,
+            "top_3_accuracy": 0.5555555555555556,
+            "precision": 0.10714285714285714,
+            "coverage": 1.0,
+            "category_match_rate": 0.3333333333333333
+          },
+          "cost": {
+            "feature_count": 9121,
+            "matrix_nonzero_values": 39368,
+            "matrix_storage_bytes": 473996,
+            "fit_seconds": 0.10970660002203658,
+            "average_retrieval_seconds": 0.00401181785578263
+          }
+        }
+      },
+      "macro": {
+        "top_1_accuracy": 0.4722222222222222,
+        "top_3_accuracy": 0.5833333333333334,
+        "category_match_rate": 0.3333333333333333
+      },
+      "threshold": null,
+      "weaknesses": [
+        "Better spelling robustness but no explicit topic compatibility",
+        "Sparse lexical matching remains paraphrase-sensitive"
+      ],
+      "computational_cost": "Moderate sparse matrices; larger than baseline",
+      "source": "models/model_experiments.json"
+    },
+    {
+      "id": "topic_aware_tfidf",
+      "name": "Topic-aware improved TF-IDF",
+      "configuration": {
+        "text_weight": 0.38,
+        "topic_weight": 0.62
+      },
+      "languages": {
+        "English": {
+          "metrics": {
+            "top_1_accuracy": 0.5,
+            "top_3_accuracy": 0.6666666666666666,
+            "precision": 0.10714285714285714,
+            "coverage": 1.0,
+            "category_match_rate": 0.47619047619047616
+          },
+          "cost": {}
+        },
+        "Twi": {
+          "metrics": {
+            "top_1_accuracy": 0.5,
+            "top_3_accuracy": 0.6111111111111112,
+            "precision": 0.10714285714285714,
+            "coverage": 1.0,
+            "category_match_rate": 0.5357142857142857
+          },
+          "cost": {}
+        }
+      },
+      "macro": {
+        "top_1_accuracy": 0.5,
+        "top_3_accuracy": 0.6388888888888888,
+        "category_match_rate": 0.5059523809523809
+      },
+      "threshold": 0.27,
+      "weaknesses": [
+        "Automatic answer coverage is deliberately very low at the zero-observed-false-positive threshold",
+        "Some unsupported questions still require State B clarification"
+      ],
+      "computational_cost": "Moderate CPU-only sparse retrieval; no external model download",
+      "source": "models/topic_aware_experiments.json"
+    },
+    {
+      "id": "embedding_retrieval",
+      "name": "Local dense LSA embedding retrieval",
+      "configuration": "lsa_question_256d",
+      "languages": {
+        "English": {
+          "metrics": {
+            "top_1_accuracy": 0.3333333333333333,
+            "top_3_accuracy": 0.5555555555555556,
+            "precision": 0.07142857142857142,
+            "coverage": 1.0,
+            "category_match_rate": 0.2976190476190476
+          },
+          "cost": {
+            "embedding_dimensions": 256,
+            "training_embedding_bytes": 403456,
+            "fit_seconds": 2.259229800023604,
+            "query_encoding_seconds": 0.0336824000114575,
+            "average_query_encoding_seconds": 0.00040098095251735123
+          }
+        },
+        "Twi": {
+          "metrics": {
+            "top_1_accuracy": 0.4444444444444444,
+            "top_3_accuracy": 0.5555555555555556,
+            "precision": 0.09523809523809523,
+            "coverage": 1.0,
+            "category_match_rate": 0.30952380952380953
+          },
+          "cost": {
+            "embedding_dimensions": 256,
+            "training_embedding_bytes": 403456,
+            "fit_seconds": 2.2444188999943435,
+            "query_encoding_seconds": 0.03353740001330152,
+            "average_query_encoding_seconds": 0.00039925476206311333
+          }
+        }
+      },
+      "macro": {
+        "top_1_accuracy": 0.38888888888888884,
+        "top_3_accuracy": 0.5555555555555556,
+        "category_match_rate": 0.3035714285714286
+      },
+      "threshold": null,
+      "weaknesses": [
+        "Lower bilingual ranking accuracy than improved and topic-aware TF-IDF",
+        "Pretrained multilingual model transfer could not be integrity-verified under host throttling"
+      ],
+      "computational_cost": "Dense 256-dimensional projection plus fitting cost",
+      "source": "models/embedding_experiments.json"
+    },
+    {
+      "id": "hybrid_retrieval",
+      "name": "TF-IDF + embedding + topic weight search",
+      "configuration": {
+        "tfidf": 0.38,
+        "embedding": 0.0,
+        "topic": 0.62
+      },
+      "languages": {
+        "English": {
+          "metrics": {
+            "top_1_accuracy": 0.5,
+            "top_3_accuracy": 0.6666666666666666,
+            "precision": 0.10714285714285714,
+            "coverage": 1.0,
+            "category_match_rate": 0.47619047619047616
+          },
+          "cost": {
+            "text_and_topic_preparation_seconds": 0.2439555999590084,
+            "embedding_preparation_seconds": 2.7142433999688365,
+            "embedding_dimensions": 256,
+            "training_embedding_bytes": 806912
+          }
+        },
+        "Twi": {
+          "metrics": {
+            "top_1_accuracy": 0.5,
+            "top_3_accuracy": 0.6111111111111112,
+            "precision": 0.10714285714285714,
+            "coverage": 1.0,
+            "category_match_rate": 0.5357142857142857
+          },
+          "cost": {
+            "text_and_topic_preparation_seconds": 0.27841519995126873,
+            "embedding_preparation_seconds": 2.042558300017845,
+            "embedding_dimensions": 256,
+            "training_embedding_bytes": 806912
+          }
+        }
+      },
+      "macro": {
+        "top_1_accuracy": 0.5,
+        "top_3_accuracy": 0.6388888888888888,
+        "category_match_rate": 0.5059523809523809
+      },
+      "threshold": 0.27,
+      "weaknesses": [
+        "Best validated hybrid assigned zero weight to embeddings",
+        "Adding an embedding component increased complexity without measured benefit"
+      ],
+      "computational_cost": "Winning weights collapse to the topic-aware sparse model, avoiding dense runtime cost",
+      "source": "models/hybrid_experiments.json"
+    }
+  ],
+  "selection": {
+    "architecture_id": "topic_aware_tfidf",
+    "active_semantic_version": "1.0.1",
+    "reason": "Highest validated macro top-1 and top-3 accuracy with the highest category-match rate, tied by the hybrid grid only when embedding weight is zero; practical CPU-only deployment.",
+    "answer_confidence_threshold": 0.27,
+    "threshold_response_precision": 1.0,
+    "threshold_response_coverage": 0.005952380952380952
+  }
+}

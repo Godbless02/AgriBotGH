@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "todo": 34,
+  "generated_at_utc": "2026-08-21T00:39:45.136048+00:00",
+  "environment": {
+    "python": "3.13.5",
+    "platform": "win32",
+    "model": "AgriBotGH Retrieval Model v1.0.1",
+    "training_records_per_language": 394
+  },
+  "cold_start": {
+    "seconds": 9.54,
+    "exit_code": 0,
+    "stderr_tail": ""
+  },
+  "retrieval_latency": {
+    "samples": 100,
+    "minimum_ms": 7.19,
+    "average_ms": 13.827,
+    "median_ms": 13.197,
+    "p95_ms": 20.372,
+    "maximum_ms": 33.199
+  },
+  "flask_test_client_latency": {
+    "samples": 60,
+    "minimum_ms": 0.634,
+    "average_ms": 12.027,
+    "median_ms": 12.461,
+    "p95_ms": 27.819,
+    "maximum_ms": 31.602
+  },
+  "memory": {
+    "working_set_mb": 167.81,
+    "measurement": "current process resident working set"
+  },
+  "limits": {
+    "cold_start_seconds": 20.0,
+    "retrieval_p95_ms": 100.0,
+    "api_p95_ms": 200.0,
+    "working_set_mb": 600.0
+  },
+  "checks": {
+    "cold_start": true,
+    "retrieval_latency": true,
+    "api_latency": true,
+    "working_set": true,
+    "api_statuses": true
+  },
+  "summary": {
+    "passed": true,
+    "checks_passed": 5,
+    "checks_total": 5
+  }
+}

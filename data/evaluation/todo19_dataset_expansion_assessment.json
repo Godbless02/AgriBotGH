@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "todo": 19,
+  "title": "Final dataset expansion quality gate",
+  "assessed_on": "2026-08-20",
+  "canonical_dataset": {
+    "path": "data/agribotgh_dataset_bilingual_563.json",
+    "sha256": "45dcf61300699d4808c6843efa07c1a9648f2b136b5c1740139f8d67fe57dd14",
+    "record_count": 563,
+    "category_count": 40,
+    "minimum_id": 1,
+    "maximum_id": 563,
+    "is_sole_authoritative_dataset": true
+  },
+  "roadmap_target": {
+    "approximate_record_count": 700,
+    "quality_condition": "Expand only when useful, non-duplicative, source-backed bilingual knowledge can be added without reducing quality."
+  },
+  "decision": {
+    "status": "quality_hold",
+    "records_added": 0,
+    "canonical_dataset_modified": false,
+    "summary": "Keep the canonical dataset at 563 records. A mechanical expansion to approximately 700 would currently add more risk than verified knowledge.",
+    "reasons": [
+      "The current dataset has category imbalance and category-label errors that should be corrected before adding more training examples.",
+      "The audit found semantically duplicated questions even though exact normalized English and Twi question checks pass.",
+      "Safety-sensitive pesticide, chemical, vaccination, medicine, and poisoning guidance needs agronomist or veterinary review before expansion.",
+      "New English guidance requires native-speaker review of every Twi question and answer; automatic translation is not an acceptable quality gate.",
+      "The active production bundle is checksum-bound to the 563-record dataset, so an unreviewed dataset mutation would correctly stop application startup until splitting, evaluation, training, and versioned activation are repeated."
+    ]
+  },
+  "audit": {
+    "structural_validation": {
+      "missing_field_records": 0,
+      "empty_field_records": 0,
+      "duplicate_record_ids": 0,
+      "exact_duplicate_english_questions": 0,
+      "exact_duplicate_twi_questions": 0,
+      "normalized_duplicate_english_question_groups": 0
+    },
+    "coverage": {
+      "categories_below_10_records": {
+        "Carrot": 2,
+        "Garden Eggs": 3,
+        "Sheep Rearing": 3,
+        "Farm Management & General": 7,
+        "Palm & Coconut": 7,
+        "Onion": 8,
+        "Goat Rearing": 9,
+        "Irrigation & Water": 9
+      },
+      "largest_category": {
+        "name": "Soil & Land Preparation",
+        "record_count": 90
+      },
+      "category_error_examples": [
+        {
+          "id": 9,
+          "current_category": "Cattle Rearing",
+          "question_en": "What is green manure and how do I use it?"
+        },
+        {
+          "id": 15,
+          "current_category": "Poultry Farming",
+          "question_en": "What causes soil to become hard and how can I fix it?"
+        },
+        {
+          "id": 43,
+          "current_category": "Irrigation & Water",
+          "question_en": "My beans have rust disease. What should I do?"
+        },
+        {
+          "id": 85,
+          "current_category": "Soil & Land Preparation",
+          "question_en": "How do I calculate the profit from my farm?"
+        },
+        {
+          "id": 291,
+          "current_category": "Soil & Land Preparation",
+          "question_en": "How do I set up a brooder for day-old chicks?"
+        }
+      ]
+    },
+    "semantic_overlap": {
+      "method": "English question word and bigram TF-IDF cosine similarity",
+      "pairs_at_or_above_0_55": 26,
+      "high_priority_pairs": [
+        {
+          "ids": [83, 274],
+          "similarity": 1.0
+        },
+        {
+          "ids": [46, 204],
+          "similarity": 1.0
+        },
+        {
+          "ids": [120, 278],
+          "similarity": 0.892
+        },
+        {
+          "ids": [81, 205],
+          "similarity": 0.774
+        },
+        {
+          "ids": [26, 201],
+          "similarity": 0.646
+        },
+        {
+          "ids": [98, 212],
+          "similarity": 0.596
+        },
+        {
+          "ids": [198, 340],
+          "similarity": 0.592
+        }
+      ]
+    },
+    "safety_review": {
+      "keyword_flagged_records": 85,
+      "keywords": [
+        "pesticide",
+        "herbicide",
+        "insecticide",
+        "fungicide",
+        "dose",
+        "dosage",
+        "vaccine",
+        "antibiotic",
+        "medicine",
+        "chemical",
+        "withdrawal",
+        "poison"
+      ],
+      "interpretation": "Keyword flags are a review queue, not a claim that every flagged answer is wrong."
+    }
+  },
+  "authoritative_sources_reviewed": [
+    {
+      "organization": "Ghana Ministry of Food and Agriculture",
+      "title": "Production Guides",
+      "url": "https://www.mofa.gov.gh/site/index.php/publications/production-guides",
+      "relevance": "Official guides cover soil, nutrient management, compost, maize, rice, onion, pepper, cucumber, carrot, lettuce, cabbage, and aflatoxin prevention."
+    },
+    {
+      "organization": "Ghana Ministry of Food and Agriculture",
+      "title": "Guide to Maize Production",
+      "url": "https://www.mofa.gov.gh/site/images/pdf/production_guides/GUIDE_TO_MAIZE_PRODUCTION.pdf",
+      "relevance": "Extension-oriented Ghana guidance covering site selection, variety selection, planting, nutrients, pests, harvesting, and storage."
+    },
+    {
+      "organization": "Ghana Ministry of Food and Agriculture, Statistics Research and Information Directorate",
+      "title": "Agriculture in Ghana: Facts and Figures 2024",
+      "url": "https://srid.mofa.gov.gh/node/49",
+      "relevance": "Current official overview of Ghanaian crop, livestock, fisheries, and input-price data."
+    },
+    {
+      "organization": "Food and Agriculture Organization of the United Nations",
+      "title": "Farming in sync with the seasons: Ghana's cropping calendar revolution",
+      "url": "https://www.fao.org/family-farming/detail/en/c/1749137/",
+      "relevance": "Supports the need for location- and season-specific Ghana agro-advisories rather than generic calendar answers."
+    }
+  ],
+  "future_expansion_priorities": {
+    "under_covered_existing_categories": [
+      "Carrot",
+      "Garden Eggs",
+      "Sheep Rearing",
+      "Onion",
+      "Goat Rearing",
+      "Irrigation & Water"
+    ],
+    "candidate_new_categories_requiring_expert_and_twi_review": [
+      "Cabbage",
+      "Lettuce",
+      "Sweet Potato",
+      "Cocoyam",
+      "Mango",
+      "Pineapple",
+      "Cashew",
+      "Ginger",
+      "Sorghum and Millet",
+      "Cowpea"
+    ]
+  },
+  "release_gates_before_any_future_addition": [
+    "Resolve category-label errors and merge genuinely redundant records.",
+    "Attach authoritative source provenance to each proposed English answer.",
+    "Require agronomist or veterinary approval for safety-sensitive guidance.",
+    "Require native Twi review of every proposed question and answer.",
+    "Reject near-duplicate questions using semantic-overlap review, not exact matching alone.",
+    "Run the full TODO 20 validation workflow after changes.",
+    "Regenerate deterministic splits and complete TODO 21 retraining and evaluation.",
+    "Build and activate a new immutable semantic model version; never overwrite v1.0.1."
+  ],
+  "runtime_impact": {
+    "active_model_version": "1.0.1",
+    "active_model_remains_compatible": true,
+    "application_behavior_changed": false,
+    "dataset_checksum_changed": false
+  }
+}

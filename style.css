@@ -268,6 +268,45 @@ button {
   padding: 14px 10px;
   gap: 10px;
   overflow-y: auto;
+  transition: width 180ms ease, min-width 180ms ease, padding 180ms ease;
+}
+.desktop-sidebar-toggle {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--chat-bg);
+  color: var(--green);
+  min-width: 32px;
+  min-height: 32px;
+  font-size: 18px;
+}
+@media (min-width: 769px) {
+  .sidebar.collapsed {
+    width: 56px;
+    min-width: 56px;
+    padding: 14px 8px;
+    overflow: hidden;
+  }
+  .sidebar.collapsed .sidebar-logo,
+  .sidebar.collapsed .sidebar-brand,
+  .sidebar.collapsed .lang-toggle,
+  .sidebar.collapsed .lang-indicator,
+  .sidebar.collapsed .new-chat-btn,
+  .sidebar.collapsed .history-section,
+  .sidebar.collapsed .sidebar-footer {
+    display: none;
+  }
+  .sidebar.collapsed .sidebar-top {
+    display: flex;
+    justify-content: center;
+  }
+  .chips-sidebar.desktop-hidden {
+    display: none;
+  }
+  body.chips-collapsed .chips-toggle-float {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 .sidebar-top {
   text-align: center;
@@ -796,6 +835,9 @@ body[data-theme="night"] .welcome-bubble {
   .sidebar.mobile-open {
     display: flex;
   }
+  .desktop-sidebar-toggle {
+    display: none;
+  }
   .chips-sidebar {
     /* start off-screen and invisible so we can animate in */
     position: fixed;
@@ -862,28 +904,41 @@ body[data-theme="night"] .welcome-bubble {
     left: 0;
     right: 0;
     z-index: 20;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
     padding: 12px 12px 14px;
     gap: 8px;
     background: var(--input-bg);
     border-top: 1px solid rgba(46, 125, 50, 0.15);
   }
   #chatInput {
-    flex: 1 1 100%;
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
     min-width: 0;
-    padding: 14px 16px;
+    padding: 12px 14px;
     font-size: 15px;
     border-radius: 28px;
   }
   .char-count {
-    width: 100%;
+    grid-column: 2;
+    grid-row: 2;
     text-align: right;
     font-size: 11px;
   }
+  .topic-toggle-btn {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    min-width: 88px;
+    padding: 12px 10px;
+  }
   .send-btn {
-    width: 100%;
-    padding: 14px;
-    font-size: 15px;
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    width: auto;
+    padding: 12px 14px;
+    font-size: 14px;
     border-radius: 28px;
   }
   .bubble {

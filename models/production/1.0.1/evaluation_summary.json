@@ -1,0 +1,115 @@
+{
+  "retrieval_selection": {
+    "macro_top_1_accuracy": 0.5,
+    "macro_top_3_accuracy": 0.6388888888888888,
+    "macro_category_match_rate": 0.5059523809523809
+  },
+  "languages": {
+    "English": {
+      "total_cases": 84,
+      "answerable_cases": 18,
+      "top_1_correct": 9,
+      "top_3_correct": 12,
+      "top_1_accuracy": 0.5,
+      "top_3_accuracy": 0.6666666666666666,
+      "precision": 0.10714285714285714,
+      "coverage": 1.0,
+      "category_match_rate": 0.47619047619047616
+    },
+    "Twi": {
+      "total_cases": 84,
+      "answerable_cases": 18,
+      "top_1_correct": 9,
+      "top_3_correct": 11,
+      "top_1_accuracy": 0.5,
+      "top_3_accuracy": 0.6111111111111112,
+      "precision": 0.10714285714285714,
+      "coverage": 1.0,
+      "category_match_rate": 0.5357142857142857
+    }
+  },
+  "threshold_validation": {
+    "threshold": 0.27,
+    "total_cases": 168,
+    "accepted": 1,
+    "rejected": 167,
+    "coverage": 0.005952380952380952,
+    "true_positives_reliable_answers": 1,
+    "false_positives_unreliable_answers": 0,
+    "false_negatives_missed_reliable_answers": 17,
+    "true_negatives_unreliable_answers_rejected": 150,
+    "response_precision": 1.0,
+    "response_recall": 0.05555555555555555,
+    "response_f0_5": 0.22727272727272727,
+    "correct_answer_coverage": 0.005952380952380952,
+    "answerability": {
+      "gold_answerable": 36,
+      "accepted_answerable": 1,
+      "accepted_unsupported": 0,
+      "accepted_answerable_but_wrong_match": 0,
+      "rejected_answerable": 35,
+      "precision": 1.0,
+      "recall": 0.027777777777777776
+    }
+  },
+  "router_test": {
+    "total": 104,
+    "correct": 79,
+    "accuracy": 0.7596153846153846,
+    "macro_f1": 0.5516499688685119,
+    "per_state": {
+      "A": {
+        "support": 18,
+        "predicted": 0,
+        "correct": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "B": {
+        "support": 66,
+        "predicted": 85,
+        "correct": 63,
+        "precision": 0.7411764705882353,
+        "recall": 0.9545454545454546,
+        "f1": 0.8344370860927153
+      },
+      "C": {
+        "support": 20,
+        "predicted": 19,
+        "correct": 16,
+        "precision": 0.8421052631578947,
+        "recall": 0.8,
+        "f1": 0.8205128205128205
+      }
+    },
+    "confusion_matrix": {
+      "A": {
+        "A": 0,
+        "B": 18,
+        "C": 0
+      },
+      "B": {
+        "A": 0,
+        "B": 63,
+        "C": 3
+      },
+      "C": {
+        "A": 0,
+        "B": 4,
+        "C": 16
+      }
+    },
+    "answer_safety": {
+      "answers_returned": 0,
+      "reliable_answers": 0,
+      "unsafe_answers": 0,
+      "response_precision": 0.0
+    }
+  },
+  "limitations": [
+    "The zero-observed-false-positive threshold has very low coverage because supported and unsupported score distributions overlap",
+    "The held-out router test returned no automatic State-A answers; exact canonical questions use a deterministic exact-match path.",
+    "Some unrelated hard negatives can be classified as uncertain State B instead of off-topic State C."
+  ]
+}

@@ -1,139 +1,121 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-from huggingface_hub import hf_hub_download
-import numpy as np
-import pickle
 import json
 import os
 import re
+from pathlib import Path
+
+from retrieval_runtime import RetrievalRuntime, sha256_file
+
+BASE_DIR = Path(__file__).resolve().parent
+DATA_DIR = BASE_DIR
 
 app = Flask(__name__, static_folder=None)
 CORS(app)
 
-REPO_ID = "Godbles02/agribot-gh"
-HF_TOKEN = os.getenv('HF_TOKEN', '').strip()
-PREFER_HF = os.getenv('PREFER_HF', '').strip().lower() in ('1', 'true', 'yes', 'on')
-FORCE_HF = os.getenv('FORCE_HF', '').strip().lower() in ('1', 'true', 'yes', 'on')
-DATA_FILE = os.path.join(os.path.dirname(__file__), 'agri_dataset.json')
-EN_VEC_FILE = os.path.join(os.path.dirname(__file__), 'en_vectorizer.pkl')
-TW_VEC_FILE = os.path.join(os.path.dirname(__file__), 'tw_vectorizer.pkl')
+DATA_FILE = DATA_DIR / 'data' / 'agribotgh_dataset_bilingual_563.json'
+SUGGESTION_LINKS_FILE = BASE_DIR / 'models' / 'suggestion_links.json'
+MODEL_FREEZE_FILE = BASE_DIR / 'models' / 'production' / 'model_freeze.json'
 
 # ── MODEL LOADING ─────────────────────────────────────────────────
 print("Loading chatbot data...")
 
-def hf(filename):
-    kwargs = {'repo_id': REPO_ID, 'filename': filename}
-    if HF_TOKEN:
-        kwargs['token'] = HF_TOKEN
-    return hf_hub_download(**kwargs)
-
-
-def load_local_dataset(path):
+def load_canonical_dataset(path):
     with open(path, 'r', encoding='utf-8') as f:
         data = json.load(f)
-
-    en_qs, en_as, tw_qs, tw_as = [], [], [], []
+    required = (
+        'id', 'category', 'question_en', 'answer_en', 'question_twi', 'answer_twi'
+    )
+    if len(data) != 563:
+        raise RuntimeError(f'Canonical dataset must contain 563 records, found {len(data)}')
     for item in data:
-        en_q = item.get('instruction_en', '').strip()
-        en_a = item.get('response_en', '').strip()
-        tw_q = item.get('instruction_tw', '').strip()
-        tw_a = item.get('response_tw', '').strip()
-
-        if en_q and en_a:
-            en_qs.append(en_q)
-            en_as.append(en_a)
-        if tw_q and tw_a:
-            tw_qs.append(tw_q)
-            tw_as.append(tw_a)
-
-    if not en_qs or not tw_qs:
-        raise ValueError('Local dataset must contain both English and Twi entries.')
-
-    return en_qs, en_as, tw_qs, tw_as
+        if any(field not in item or not str(item[field]).strip() for field in required):
+            raise RuntimeError(f"Invalid canonical dataset record: {item.get('id')}")
+    return data
 
 
-def try_load_pickle(path):
-    try:
-        with open(path, 'rb') as f:
-            return pickle.load(f)
-    except Exception:
-        return None
+if not DATA_FILE.exists():
+    raise RuntimeError(f'Canonical dataset is missing: {DATA_FILE}')
+print(f"Loading canonical local dataset from {DATA_FILE}")
+CANONICAL_RECORDS = load_canonical_dataset(DATA_FILE)
+en_qs = [record['question_en'].strip() for record in CANONICAL_RECORDS]
+en_as = [record['answer_en'].strip() for record in CANONICAL_RECORDS]
+tw_qs = [record['question_twi'].strip() for record in CANONICAL_RECORDS]
+tw_as = [record['answer_twi'].strip() for record in CANONICAL_RECORDS]
+RETRIEVAL_RUNTIME = RetrievalRuntime(BASE_DIR, DATA_FILE)
 
 
-def build_vectorizers(en_qs, tw_qs):
-    en_vec = TfidfVectorizer(ngram_range=(1, 2), min_df=1)
-    tw_vec = TfidfVectorizer(ngram_range=(1, 2), min_df=1)
-    en_vecs = en_vec.fit_transform(en_qs)
-    tw_vecs = tw_vec.fit_transform(tw_qs)
-    return en_vec, tw_vec, en_vecs, tw_vecs
+def load_final_model_freeze(path):
+    if not path.exists():
+        raise RuntimeError(f'Final model freeze is missing: {path}')
+    with path.open('r', encoding='utf-8') as handle:
+        freeze = json.load(handle)
+    metadata = RETRIEVAL_RUNTIME.metadata
+    manifest = RETRIEVAL_RUNTIME.manifest
+    checks = (
+        (freeze.get('status') == 'frozen', 'Model freeze is not active'),
+        (freeze.get('semantic_version') == metadata['semantic_version'], 'Frozen model version differs from active model'),
+        (freeze.get('dataset_sha256') == metadata['canonical_dataset_sha256'], 'Frozen dataset differs from active dataset'),
+        (freeze.get('metadata_sha256') == manifest['metadata_sha256'], 'Frozen metadata differs from active metadata'),
+        (freeze.get('comparison_sha256') == sha256_file(BASE_DIR / freeze['comparison_file']), 'Frozen comparison checksum mismatch'),
+    )
+    for passed, message in checks:
+        if not passed:
+            raise RuntimeError(message)
+    return freeze
 
 
-def load_hf_assets():
-    print("Loading chatbot from Hugging Face...")
-    with open(hf('en_vectorizer.pkl'),'rb') as f:
-        en_vec = pickle.load(f)
-    with open(hf('tw_vectorizer.pkl'),'rb') as f:
-        tw_vec = pickle.load(f)
-    with open(hf('en_questions.json'),'r',encoding='utf-8') as f:
-        en_qs = json.load(f)
-    with open(hf('en_answers.json'), 'r',encoding='utf-8') as f:
-        en_as = json.load(f)
-    with open(hf('tw_questions.json'),'r',encoding='utf-8') as f:
-        tw_qs = json.load(f)
-    with open(hf('tw_answers.json'), 'r',encoding='utf-8') as f:
-        tw_as = json.load(f)
-    en_vecs = en_vec.transform(en_qs)
-    tw_vecs = tw_vec.transform(tw_qs)
-    return en_vec, tw_vec, en_vecs, tw_vecs, en_qs, en_as, tw_qs, tw_as
+FINAL_MODEL_FREEZE = load_final_model_freeze(MODEL_FREEZE_FILE)
+print(
+    f"Ready! {len(en_qs)} EN + {len(tw_qs)} TW canonical pairs; "
+    f"{RETRIEVAL_RUNTIME.metadata['model_version']} loaded."
+)
 
 
-def load_chatbot_assets():
-    if PREFER_HF or FORCE_HF:
-        try:
-            return load_hf_assets()
-        except Exception as exc:
-            if FORCE_HF:
-                raise RuntimeError(
-                    'Forced Hugging Face loading failed: ' + str(exc)
-                )
-            print('Hugging Face load failed; falling back to local assets:', exc)
-
-    if os.path.exists(DATA_FILE):
-        print(f"Loading local dataset from {DATA_FILE}")
-        en_qs, en_as, tw_qs, tw_as = load_local_dataset(DATA_FILE)
-        en_vec, tw_vec, en_vecs, tw_vecs = build_vectorizers(en_qs, tw_qs)
-        return en_vec, tw_vec, en_vecs, tw_vecs, en_qs, en_as, tw_qs, tw_as
-
-    if os.path.exists(EN_VEC_FILE) and os.path.exists(TW_VEC_FILE):
-        print("Loading cached vectorizers from local files...")
-        en_vec = try_load_pickle(EN_VEC_FILE)
-        tw_vec = try_load_pickle(TW_VEC_FILE)
-        if en_vec is not None and tw_vec is not None:
-            try:
-                with open('en_questions.json','r',encoding='utf-8') as f: en_qs = json.load(f)
-                with open('en_answers.json','r',encoding='utf-8') as f: en_as = json.load(f)
-                with open('tw_questions.json','r',encoding='utf-8') as f: tw_qs = json.load(f)
-                with open('tw_answers.json','r',encoding='utf-8') as f: tw_as = json.load(f)
-                en_vecs = en_vec.transform(en_qs)
-                tw_vecs = tw_vec.transform(tw_qs)
-                return en_vec, tw_vec, en_vecs, tw_vecs, en_qs, en_as, tw_qs, tw_as
-            except Exception as e:
-                print('Failed to load local cached assets:', e)
-
-    try:
-        return load_hf_assets()
-    except Exception as e:
-        raise RuntimeError('Failed to load chatbot assets from local dataset and Hugging Face: ' + str(e))
+def normalize_known_question(value):
+    """Normalize only for exact known-record identity checks."""
+    return re.sub(r"[^\w]+", " ", str(value or "").casefold(), flags=re.UNICODE).strip()
 
 
-en_vec, tw_vec, en_vecs, tw_vecs, en_qs, en_as, tw_qs, tw_as = load_chatbot_assets()
-print(f"Ready! {len(en_qs)} EN + {len(tw_qs)} TW pairs loaded.")
+def build_known_record_registry():
+    """Build stable suggestion IDs directly from canonical dataset record IDs."""
+    registry = {}
+    for item in CANONICAL_RECORDS:
+        dataset_id = item.get('id')
+        if not isinstance(dataset_id, int):
+            raise ValueError('Every canonical dataset record must have an integer ID.')
+        record_id = f"qa-{dataset_id:04d}"
+        record = {
+            "id": record_id,
+            "dataset_id": dataset_id,
+            "category": item.get('category', '').strip(),
+            "question_en": item.get('question_en', '').strip(),
+            "answer_en": item.get('answer_en', '').strip(),
+            "question_tw": item.get('question_twi', '').strip(),
+            "answer_tw": item.get('answer_twi', '').strip(),
+        }
+        if record_id in registry:
+            raise ValueError(f"Duplicate canonical dataset ID: {dataset_id}")
+        if not all(record[key] for key in (
+            'category', 'question_en', 'answer_en', 'question_tw', 'answer_tw'
+        )):
+            raise ValueError(f"Incomplete canonical dataset record: {dataset_id}")
+        registry[record_id] = record
+    return registry
+
+
+KNOWN_RECORDS = build_known_record_registry()
+KNOWN_QUESTION_RECORDS = {'en': {}, 'tw': {}}
+for record_id, record in KNOWN_RECORDS.items():
+    for language in ('en', 'tw'):
+        normalized = normalize_known_question(record[f'question_{language}'])
+        if normalized in KNOWN_QUESTION_RECORDS[language]:
+            raise ValueError(f'Duplicate canonical {language} question: {normalized}')
+        KNOWN_QUESTION_RECORDS[language][normalized] = record_id
 
 # ── TOPICS ────────────────────────────────────────────────────────
-# All 28 topics extracted from the dataset with their keywords,
-# Twi names, suggested questions, and topic icons.
+# All 28 UI topics with their retrieval keywords, Twi names, and icons.
+# Suggested questions are loaded only from the canonical linkage artifact.
 
 TOPICS = {
     "Soil & Land Preparation": {
@@ -144,20 +126,6 @@ TOPICS = {
                         "germina","seed","planting","spacing","rotation","mulch","biochar"],
         "keywords_tw": ["asase","afuo","pH","acidic","huru","compost","nhwiren-tew",
                         "nursery","aba","to mu","siesie","mulch","biochar","asintiɛ"],
-        "suggestions_en": [
-            "How do I know if my soil is good for farming?",
-            "How do I prevent soil erosion on my farm?",
-            "How do I make compost at home?",
-            "What is the best way to transplant seedlings?",
-            "What is crop rotation and why is it important?"
-        ],
-        "suggestions_tw": [
-            "Ɛdeɛn na ɛkyerɛ sɛ m'asase yɛ papa ma okuafo adwuma?",
-            "Ɛdeɛn na mema asase amma ɛnhuru wɔ m'afuo mu?",
-            "Ɛdeɛn na meyɛ compost wɔ fie?",
-            "Kwan bɛn na ɛyɛ papa a yɛfa so si nnua nketewa baabi foforo?",
-            "Dea ɛyɛ sɛ wosesa nnuaba gu asase mu na adɛn na ɛyɛ papa?"
-        ]
     },
     "Fertilizer & Nutrients": {
         "icon": "🧪",
@@ -166,316 +134,96 @@ TOPICS = {
                         "nitrogen","phosphorus","potassium","foliar","deficien"],
         "keywords_tw": ["ferefere","NPK","nutrient","mmoa dɔteɛ","nhwiren-tew",
                         "nitrogen","phosphorus","potassium","foliar","hia"],
-        "suggestions_en": [
-            "What does NPK mean on a fertilizer bag?",
-            "Can I use animal manure instead of chemical fertilizer?",
-            "How do I know if my fertilizer is working?",
-            "Can over-fertilizing damage my crops?",
-            "What is green manure and how do I use it?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na NPK kyerɛ wɔ ferefere bag so?",
-            "Metumi de mmoa dɔteɛ adi dwuma mmom sen nnuru ferefere?",
-            "Ɛdeɛn na menim sɛ m'ferefere yɛ adwuma?",
-            "Ferefere dodo tumi sɛe m'nnuaba anaa?",
-            "Dɛn na nhwiren-tew ferefere yɛ na ɛdeɛn na mefa di dwuma?"
-        ]
     },
     "Maize": {
         "icon": "🌽",
         "tw_name": "Aburoɔ",
         "keywords_en": ["maize","corn","armyworm","streak","aburow"],
         "keywords_tw": ["aburow","aburo","aborɔnoma adwummaker","streak","aburoɔ"],
-        "suggestions_en": [
-            "When is the best time to plant maize in Ghana?",
-            "What fertilizer should I apply to maize and when?",
-            "How do I identify a fall armyworm attack on my maize?",
-            "How do I control weeds in my maize farm?",
-            "How many bags of maize can I expect from one acre?"
-        ],
-        "suggestions_tw": [
-            "Bere bɛn na ɛyɛ ɔkorɔ sɛ wode aburow to mu wɔ Ghana?",
-            "Ferefere bɛn na mede to aburoɔ ho na bere bɛn?",
-            "Dɛn na ɛkyerɛ sɛ fall armyworm atu mako wɔ me aburoɔ afuom?",
-            "Dɛn na menyɛ nhaban foforo a wɔ me aburoɔ afuom mu?",
-            "Sacks aburoɔ ahe na mebetumi anya fi eka baako mu?"
-        ]
     },
     "Cassava": {
         "icon": "🥔",
         "tw_name": "Bankye",
         "keywords_en": ["cassava","gari","mosaic","starch","fufu"],
         "keywords_tw": ["bankye","gari","mosaic","starch","fufu"],
-        "suggestions_en": [
-            "How do I select good cassava stems for planting?",
-            "How do I process cassava into gari?",
-            "What diseases affect cassava and how do I manage them?",
-            "What is the best cassava variety for making fufu?",
-            "How much profit can I make from one acre of cassava?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na menyɛ sɛ mepick bankye abɔ pa sɛ mede to mu?",
-            "Dɛn na menyɛ bankye ho yɛ gari?",
-            "Yadeɛ bɛn na ɛtaa ba bankye ho na dɛn na menyɛ wɔn ho?",
-            "Bankye variety bɛn na ɛhia pa ara ma fufu yɛ?",
-            "Mfa sika ahe bɛfata me wɔ bankye eka baako mu?"
-        ]
     },
     "Plantain & Banana": {
         "icon": "🍌",
         "tw_name": "Boɔde ne Kwadu",
         "keywords_en": ["plantain","banana","sigatoka","sucker"],
         "keywords_tw": ["boɔde","kwadu","sigatoka","sucker","borɔdɔ"],
-        "suggestions_en": [
-            "What type of sucker is best for planting plantain?",
-            "How do I control black sigatoka disease in plantain?",
-            "How do I know when plantain is ready to harvest?",
-            "How do I make plantain chips for sale?",
-            "What fertilizer is best for plantain?"
-        ],
-        "suggestions_tw": [
-            "Sucker bɛn na ɛhia pa ara sɛ mede to mu wɔ boɔde afuom?",
-            "Dɛn na menyɛ black sigatoka yadeɛ ho wɔ boɔde ho?",
-            "Dɛn na ɛkyerɛ sɛ boɔde atwa so sɛ wɔbɛyi?",
-            "Dɛn na menyɛ boɔde chips ma tɔ?",
-            "Ferefere bɛn na ɛyɛ ɔkorɔ ma borɔdɔ?"
-        ]
     },
     "Yam": {
         "icon": "🍠",
         "tw_name": "Bayerɛ",
         "keywords_en": ["yam","sett","mound"],
         "keywords_tw": ["bayerɛ","sett","afe","stake"],
-        "suggestions_en": [
-            "How do I prepare yam setts for planting?",
-            "What is the best time to plant yam in Ghana?",
-            "How do I build a yam mound and why is it important?",
-            "How do I store yam properly after harvest?",
-            "Can I grow yam without mounds?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na menyɛ bayerɛ setts ansa na mede to mu?",
-            "Bere bɛn na ɛyɛ papa pa ara sɛ wede bayerɛ to mu wɔ Ghana?",
-            "Dɛn na menyɛ bayerɛ afe anaa stake na ɛyɛ papa adɛn?",
-            "Ɛkwan pa bɛn na mede bayerɛ twew na guina yi akyi?",
-            "Metumi ato bayerɛ a afe amma?"
-        ]
     },
     "Cocoyam": {
         "icon": "🌿",
         "tw_name": "Kɔkɔnte",
         "keywords_en": ["cocoyam","kontomire","taro","eddoe"],
         "keywords_tw": ["kɔkɔnte","kontomire","taro","eddoe"],
-        "suggestions_en": [
-            "How do I grow cocoyam successfully in Ghana?",
-            "How do I store cocoyam after harvest?",
-            "How do I add value to cocoyam for better income?",
-            "What are the common pests and diseases of cocoyam?",
-            "What are the marketing opportunities for cocoyam?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na menyɛ sɛ meto kɔkɔnte yie wɔ Ghana?",
-            "Dɛn na menyɛ kɔkɔnte corms guina yi akyi?",
-            "Dɛn na menyɛ sɛ kɔkɔnte bo kɔ so ma sika pa?",
-            "Adwummaker ne yadeɛ bɛn na ɛtaa ba kɔkɔnte ho?",
-            "Dwa nhyiamu bɛn na ɛwɔ ma kɔkɔnte wɔ Ghana?"
-        ]
     },
     "Tomatoes": {
         "icon": "🍅",
         "tw_name": "Ntomatoes",
         "keywords_en": ["tomato","blight","blossom","leaf miner"],
         "keywords_tw": ["ntomato","tomato","blight","ntomate"],
-        "suggestions_en": [
-            "How do I grow tomatoes in Ghana for good yield?",
-            "How do I prevent tomato late blight?",
-            "What causes tomato blossom end rot and how do I fix it?",
-            "What is the best irrigation method for tomatoes?",
-            "What fertilizer programme should I follow for tomatoes?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na menyɛ sɛ meto tomatoes yie wɔ Ghana sɛ nnoa pii aba?",
-            "Dɛn na menyɛ sɛ tomato late blight annya me nnuaba?",
-            "Dɛn ma tomato blossom end rot na dɛn na menyɛ ho?",
-            "Quench nhyiamu bɛn na ɛhia pa ara ma tomatoes wɔ Ghana?",
-            "Ferefere programme bɛn na mede to tomatoes ho?"
-        ]
     },
     "Pepper": {
         "icon": "🌶️",
         "tw_name": "Mako",
         "keywords_en": ["pepper","scotch bonnet","bell pepper"],
         "keywords_tw": ["mako","pepper","bell pepper"],
-        "suggestions_en": [
-            "How do I raise pepper seedlings?",
-            "How do I prevent pepper root rot?",
-            "How do I dry and preserve pepper for longer shelf life?",
-            "How do I grow bell pepper for high value markets?",
-            "What types of pepper are grown in Ghana?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na menyɛ pepper seedlings?",
-            "Dɛn na menyɛ sɛ pepper root rot annya me nnuaba?",
-            "Dɛn na menyɛ pepper tew na kata so sɛ ɛtena mu akyi?",
-            "Dɛn na menyɛ bell pepper ma dwa a bo wɔ so wɔ Ghana?",
-            "Pepper nhyiamu bɛn na wɔtaa to mu wɔ Ghana?"
-        ]
     },
     "Onion": {
         "icon": "🧅",
         "tw_name": "Gyene / Abɔnkɔ",
         "keywords_en": ["onion","downy","thrips"],
         "keywords_tw": ["gyene","abɔnkɔ","onion","thrips","downy"],
-        "suggestions_en": [
-            "How do I grow onions in Ghana?",
-            "What causes onion bulbs to be small?",
-            "How do I control thrips on my onions?",
-            "How do I cure and store onions after harvest?",
-            "What are the main onion varieties grown in Ghana?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na menyɛ sɛ meto abɔnkɔ wɔ Ghana?",
-            "Dɛn ma abɔnkɔ bulbs yɛ ketewa?",
-            "Ɛdeɛn na metumi kora thrips ase wɔ m'gyene so?",
-            "Dɛn na menyɛ sɛ me twew na guina abɔnkɔ yi akyi?",
-            "Onion varieties bɛn na wɔtaa to mu wɔ Ghana?"
-        ]
     },
     "Carrot": {
         "icon": "🥕",
         "tw_name": "Carrot",
         "keywords_en": ["carrot"],
         "keywords_tw": ["carrot"],
-        "suggestions_en": [
-            "How do I grow carrots in Ghana?",
-            "What problems are common in carrot growing?",
-            "How do I thin carrot seedlings?",
-            "How do I harvest and clean carrots for market?",
-            "What fertilizer does carrot need?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na menyɛ sɛ meto carrot wɔ Ghana?",
-            "Aho yɛ den bɛn na ɛtaa ba carrot nnoa mu?",
-            "Dɛn na menyɛ carrot seedlings yi?",
-            "Dɛn na menyɛ sɛ meyiyɛ na hohoro carrot ma dwa?",
-            "Ferefere bɛn na carrot hia na bere bɛn na mede to ho?"
-        ]
     },
     "Garden Eggs": {
         "icon": "🍆",
         "tw_name": "Ntorɔ / Mako Ntorɔ",
         "keywords_en": ["garden egg","eggplant","epilachna"],
         "keywords_tw": ["ntorɔ","ntoro","garden egg","epilachna"],
-        "suggestions_en": [
-            "How do I grow garden eggs in Ghana?",
-            "What pests attack garden eggs and how do I control them?",
-            "How do I manage water for garden eggs?",
-            "How long does garden egg take from planting to harvest?",
-            "How do I make garden egg farming profitable?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na menyɛ sɛ meto ntorɔ wɔ Ghana?",
-            "Adwummaker bɛn na ɛtaa tu mako ntorɔ na dɛn na menyɛ wɔn ho?",
-            "Dɛn na menyɛ sɛ mede nsuo hwɛ ntorɔ ho?",
-            "Bere ahe na ɛkyɛ fi to aba kɔsi ntorɔ yi ediɛ?",
-            "Dɛn na menyɛ ntorɔ adwuma sɛ ɛde mfaso ba?"
-        ]
     },
     "Palm Oil & Coconut": {
         "icon": "🌴",
         "tw_name": "Abɛ ne Kuuku",
         "keywords_en": ["palm","coconut","kernel"],
         "keywords_tw": ["abɛ","kuuku","coconut","palm","ɔman"],
-        "suggestions_en": [
-            "How do I establish a palm oil plantation in Ghana?",
-            "How do I harvest palm fruits properly?",
-            "How do I process palm fruits into palm oil?",
-            "How do I grow and care for coconut trees?",
-            "How do I process coconut into various products?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na menyɛ sɛ mefi ase abɛ afuom wɔ Ghana?",
-            "Dɛn na menyɛ sɛ meyiyɛ abɛ ntama pa?",
-            "Dɛn na menyɛ abɛ ntama yɛ abɛ ɔman wɔ efie?",
-            "Dɛn na menyɛ sɛ meto kuuku nnuaba wɔ Ghana?",
-            "Dɛn na menyɛ kuuku yɛ nneɛma ahorow ma sika?"
-        ]
     },
     "Groundnut & Legumes": {
         "icon": "🥜",
         "tw_name": "Nkatie ne Abɔdweɛ",
         "keywords_en": ["groundnut","cowpea","soybean","legume"],
         "keywords_tw": ["nkatie","abɔdweɛ","soya","legume"],
-        "suggestions_en": [
-            "How do I grow groundnuts in Ghana?",
-            "How do I make peanut butter from groundnuts?",
-            "What disease affects groundnuts?",
-            "How do I grow soybean commercially?",
-            "How long does cowpea take to mature?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na menyɛ sɛ meto nkatie wɔ Ghana?",
-            "Dɛn na menyɛ nkatie betere fi nkatie mu?",
-            "Yadeɛ bɛn na ɛtaa ba nkatie ho?",
-            "Dɛn na menyɛ soya yɛ adwuma sɛ menya sika?",
-            "Bere ahe na ɛsɛ ma abɔdweɛ awie ase?"
-        ]
     },
     "Rice": {
         "icon": "🌾",
         "tw_name": "Ɔmo / Ɔtɛ",
         "keywords_en": ["rice","striga"],
         "keywords_tw": ["ɔtɛ","ɔmo","rice","striga"],
-        "suggestions_en": [
-            "When should I harvest rice?",
-            "Which rice varieties perform best in Ghana?",
-            "How do I control striga weed in rice?",
-            "How do I protect my rice from birds?"
-        ],
-        "suggestions_tw": [
-            "Bere bɛn na ɛsɛ sɛ megye ɔtɛ?",
-            "Ɔmɔ aba bɛn na ɛda sor pa wɔ Ghana?",
-            "Striga nhaban foforo resɛe m'ɔtɛ. Dɛn na metumi yɛ?",
-            "Anomaa redidi m'ɔtɛ. Ɛdeɛn na mekora m'nnuaba?"
-        ]
     },
     "Cocoa": {
         "icon": "🍫",
         "tw_name": "Kookoo",
         "keywords_en": ["cocoa","black pod","cacao"],
         "keywords_tw": ["kookoo","cocoa","black pod"],
-        "suggestions_en": [
-            "How do I increase my cocoa yield?",
-            "What causes cocoa black pod disease?",
-            "How do I manage disease in my cocoa nursery?",
-            "How do I grow cashew successfully?"
-        ],
-        "suggestions_tw": [
-            "Ɛdeɛn na metumi ma m'kookoo da sor dodo?",
-            "Dɛn na ɛma kookoo black pod yadeɛ na ɛdeɛn na metumi kora ase?",
-            "Ɛdeɛn na metumi kora yadeɛ ase wɔ m'kookoo nursery mu?",
-            "Ɛdeɛn na mekura cashew yie?"
-        ]
     },
     "Other Vegetables": {
         "icon": "🥦",
         "tw_name": "Nnuan Foforo",
         "keywords_en": ["cucumber","watermelon","moringa","vegetable","pineapple","mango","cashew"],
         "keywords_tw": ["nnuan","kakaduro","watermelon","moringa","aborɔfo","pineapple","mango"],
-        "suggestions_en": [
-            "Can I grow vegetables in the dry season?",
-            "Can I plant different vegetables together in one plot?",
-            "How do I grow moringa and what are its benefits?",
-            "How do I grow pineapple commercially?",
-            "How do I grow watermelon successfully?"
-        ],
-        "suggestions_tw": [
-            "Metumi adua nnɔbae wɔ ɔpɛ bere mu?",
-            "Metumi adua nnɔbae ahorow pii wɔ afuo koro mu anaa?",
-            "Ɛdeɛn na mekura moringa na mfaaso bɛn na ɛwɔ?",
-            "Ɛdeɛn na mekura aborɔfo wɔ adwuma mu?",
-            "Ɛdeɛn na mekura watermelon yie?"
-        ]
     },
     "Pest & Disease Control": {
         "icon": "🐛",
@@ -484,160 +232,48 @@ TOPICS = {
                         "weevil","armyworm","ipm","integrated","pesticide","neem"],
         "keywords_tw": ["adwummaker","yadeɛ","aphid","mite","fungus","nematode",
                         "weevil","armyworm","IPM","dawuro","neem"],
-        "suggestions_en": [
-            "How do I use pesticides safely on my farm?",
-            "What is Integrated Pest Management (IPM)?",
-            "How do I make neem pesticide spray at home?",
-            "How do I identify spider mites and control them?",
-            "What causes powdery mildew and how do I control it?"
-        ],
-        "suggestions_tw": [
-            "Ɛdeɛn na mefa adwummakers dawuro di dwuma a ɛho tumi wɔ m'afuo mu?",
-            "Dɛn na adwumakers hwɛ anammɔn kaa bom (IPM) yɛ?",
-            "Ɛdeɛn na meyɛ fie nhwiren adwumakers dawuro fi mako?",
-            "Ɛdeɛn na mehunu spider mite na metumi kora wɔn ase?",
-            "Dɛn na tukutuku fitaa yadeɛ yɛ na ɛdeɛn na metumi kora ase?"
-        ]
     },
     "Irrigation & Water": {
         "icon": "💧",
         "tw_name": "Nsuo ne Quench",
         "keywords_en": ["irrigat","water","drip","borehole","flood","drainage","moisture","dam"],
         "keywords_tw": ["nsuo","quench","drip","borehole","flood","drainage","dam","nsuo gye"],
-        "suggestions_en": [
-            "What is the best irrigation method for a small farm?",
-            "How do I conserve water on my farm during the dry season?",
-            "How do I build a small dam or water harvesting system?",
-            "How do I manage waterlogging on my farm?",
-            "How do I manage irrigation efficiently to save water?"
-        ],
-        "suggestions_tw": [
-            "Nsuo to anammɔn bɛn na ɛyɛ ɔkorɔ wɔ afuo ketewa mu?",
-            "Ɛdeɛn na mekora nsuo wɔ m'afuo mu wɔ ɔpɛ bere mu?",
-            "Ɛdeɛn na mesi dam ketewa anaa nsuo gye sistɛm?",
-            "Ɛdeɛn na mehwɛ nsuo a ɛhyɛ m'afuo mu?",
-            "Dɛn na menyɛ sɛ mede quench pa yie sɛ me nsa nsuo?"
-        ]
     },
     "Harvesting & Storage": {
         "icon": "🏪",
         "tw_name": "Yi ne Guina",
         "keywords_en": ["harvest","storage","store","post-harvest","hermetic","silo","aflatoxin","mould","weevil"],
         "keywords_tw": ["yi","guina","harvest","storage","hermetic","silo","aflatoxin","mold","weevil"],
-        "suggestions_en": [
-            "How do I store my maize to prevent aflatoxin?",
-            "How do I properly dry my produce after harvesting?",
-            "What is hermetic storage and can a small farmer use it?",
-            "How do I reduce post-harvest losses for vegetables?",
-            "How do I store seeds properly for the next season?"
-        ],
-        "suggestions_tw": [
-            "Ɛdeɛn na meguina m'aburow na aflatoxin nka ho?",
-            "Ɛdeɛn na meyaw m'nnuaba yie akyi a megye wɔn?",
-            "Dɛn na ntwene-nkuma guina yɛ na okuafo ketewa tumi nya ase anaa?",
-            "Ɛdeɛn na metumi sua nnuan a megye wɔn akyi mpoano?",
-            "Ɛdeɛn na meguina m'aba yie ma bere a ɛto so?"
-        ]
     },
     "Fish Farming": {
         "icon": "🐟",
         "tw_name": "Apataa Adwuma",
         "keywords_en": ["fish","tilapia","catfish","pond","cage","fingerling","aquaculture"],
         "keywords_tw": ["apataa","tilapia","catfish","pond","cage","fingerling","aquaculture"],
-        "suggestions_en": [
-            "How do I start a fish farm in Ghana?",
-            "What is the best fish feed for tilapia?",
-            "How do I maintain good water quality in my fish pond?",
-            "How much does it cost to start a fish farm in Ghana?",
-            "What is the difference between tilapia and catfish farming?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na menyɛ sɛ mefi ase apataa adwuma wɔ Ghana?",
-            "Apataa aduan bɛn na ɛhia pa ara ma tilapia wɔ Ghana?",
-            "Dɛn na menyɛ sɛ nsuo pa wɔ me apataa pond mu?",
-            "Sika ahe na ɛyɛ papa sɛ mefi ase apataa adwuma wɔ Ghana?",
-            "Nte sɛn bɛn na ɛwɔ tilapia ne catfish adwuma ntam?"
-        ]
     },
     "Poultry Farming": {
         "icon": "🐔",
         "tw_name": "Akoko Adwuma",
         "keywords_en": ["poultry","chicken","broiler","layer","newcastle","litter","brooder","guinea fowl","egg"],
-        "keywords_tw": ["akoko","broiler","layer","newcastle","litter","brooder","kurontihene","tamma"],
-        "suggestions_en": [
-            "How do I start a poultry farm in Ghana?",
-            "How do I prevent Newcastle disease in my poultry?",
-            "What should I feed my broiler chickens?",
-            "How do I set up a brooder for day-old chicks?",
-            "How do I reduce feed costs in poultry farming?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na menyɛ sɛ mefi ase akoko adwuma wɔ Ghana?",
-            "Dɛn na menyɛ sɛ Newcastle yadeɛ annya me akoko?",
-            "Aduan bɛn na mede ma me broiler akoko?",
-            "Dɛn na menyɛ brooder ketewa ma day-old chicks?",
-            "Dɛn na menyɛ sɛ me aduan bo sua wɔ akoko adwuma mu?"
-        ]
+        "keywords_tw": ["akoko","akokɔ","broiler","layer","newcastle","litter","brooder","kurontihene","tamma"],
     },
     "Goat Farming": {
         "icon": "🐐",
         "tw_name": "Birekyie / Abirekyi Adwuma",
         "keywords_en": ["goat","kid","doe","buck","dairy goat"],
         "keywords_tw": ["birekyie","abirekyi","PPR","mma","mmofraase","bɔhyɛ"],
-        "suggestions_en": [
-            "How do I start goat farming in Ghana?",
-            "What diseases should I vaccinate my goats against?",
-            "What do goats eat and how do I feed them?",
-            "How often do goats give birth?",
-            "How do I identify a healthy goat when buying?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na menyɛ sɛ mefi ase birekyie adwuma wɔ Ghana?",
-            "Yadeɛ bɛn na mahware me birekyie so?",
-            "Dɛn na birekyie di na dɛn na mede ma wɔn yie?",
-            "Bere ahe na birekyie wo mma na mma ahe na ɛwo mmere baako?",
-            "Dɛn na ɛkyerɛ birekyie pa bere a megye?"
-        ]
     },
     "Sheep Farming": {
         "icon": "🐑",
         "tw_name": "Oguan Adwuma",
         "keywords_en": ["sheep","lamb","ewe","foot rot"],
         "keywords_tw": ["oguan","lamb","ewe","foot rot"],
-        "suggestions_en": [
-            "How do I start sheep farming in Ghana?",
-            "How do I treat sheep for internal parasites?",
-            "How do I build a simple sheep pen in Ghana?",
-            "How do I market sheep for maximum profit?",
-            "What shelter do sheep need in Ghana?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na menyɛ sɛ mefi ase oguan adwuma wɔ Ghana?",
-            "Dɛn na menyɛ internal parasites wɔ oguan ho?",
-            "Dɛn na menyɛ oguan pen ketewa wɔ Ghana?",
-            "Dɛn na menyɛ sɛ metɔ me oguan wɔ bo pa wɔ Ghana?",
-            "Beae bɛn na oguan hia sɛ wɔntena wɔ Ghana?"
-        ]
     },
     "Cattle Farming": {
         "icon": "🐄",
         "tw_name": "Nnwan Adwuma",
         "keywords_en": ["cattle","cow","bull","calf","trypanosomiasis","fodder"],
         "keywords_tw": ["nnwan","boo","bull","calf","trypanosomiasis","fodder"],
-        "suggestions_en": [
-            "How do I start cattle farming in Ghana?",
-            "What vaccines do cattle need in Ghana?",
-            "How do I deworm cattle and when should it be done?",
-            "What fodder crops can I grow to feed my cattle?",
-            "How do I manage grazing land for cattle sustainably?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na menyɛ sɛ mefi ase nnwan adwuma wɔ Ghana?",
-            "Vaccines bɛn na nnwan hia wɔ Ghana?",
-            "Dɛn na menyɛ nnwan mu adwummaker na bere bɛn?",
-            "Fodder nnuaba bɛn na mede ato mu sɛ mede ma me nnwan wɔ Ghana?",
-            "Dɛn na menyɛ nhawan asase ma nnwan yie sɛ ɛtena so?"
-        ]
     },
     "Business & Marketing": {
         "icon": "💰",
@@ -646,64 +282,102 @@ TOPICS = {
                         "contract","export","insurance","budget","middlemen","business"],
         "keywords_tw": ["dwa","tɔn","mfaso","sika","mfɛdomhyɛw","kuo","contract",
                         "export","insurance","budget","middlemen","adwuma plan"],
-        "suggestions_en": [
-            "How do I sell my farm produce at a better price?",
-            "Where can I get agricultural loans in Ghana?",
-            "What is contract farming and how does it benefit me?",
-            "How do I write a simple farm business plan?",
-            "What government support is available for young farmers?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na menyɛ sɛ metɔ me afuom nnuaba wɔ bo pa wɔ Ghana?",
-            "Ɛhɔ na metumi anya okuafo mfɛdomhyɛw wɔ Ghana?",
-            "Dɛn na contract farming yɛ na ɛbɛtumi aboa me wɔ Ghana?",
-            "Dɛn na menyɛ sɛ meyɛ me afuom adwuma plan ketewa?",
-            "Ɔman boa adwuma bɛn na ɛwɔ ho ma okuafo wɔ Ghana?"
-        ]
     },
     "Climate & Weather": {
         "icon": "🌦️",
         "tw_name": "Osuoha ne Berɛ",
         "keywords_en": ["climate","weather","drought","flood","rainfall","season","agroforestry"],
         "keywords_tw": ["osuoha","berɛ","climate","drought","flood","rainfall","agroforestry"],
-        "suggestions_en": [
-            "How does climate change affect farming in Ghana?",
-            "How do I protect my farm during heavy rainfall?",
-            "How do I prepare my farm for unpredictable weather?",
-            "What crops are most resilient to climate change in Ghana?",
-            "What is agroforestry and how does it benefit my farm?"
-        ],
-        "suggestions_tw": [
-            "Dɛn na climate change yɛ okuafo adwuma den wɔ Ghana na dɛn na menyɛ?",
-            "Ɛdeɛn na mehwɛ nhaban a ɛntia asɛm yie a mennya sika koraa?",
-            "Ɛdeɛn na mesiesie m'afuo ama ɛwim tebea a ɛntumi nnim?",
-            "Nnuaba bɛn na ɛtumi wiase tebea sɛsae ase hyɛ yie wɔ Ghana?",
-            "Dɛn na agroforestry yɛ na ɛboa m'afuo sɛn?"
-        ]
     },
     "Farm Management": {
         "icon": "📋",
         "tw_name": "Afuom Hwɛ",
         "keywords_en": ["manage","plan","map","labour","equipment","extension","mofa","record","mechaniz"],
         "keywords_tw": ["hwɛ","plan","map","adwuma","equipment","extension","MOFA","nsɛm","kora"],
-        "suggestions_en": [
-            "How do I keep records for my farm?",
-            "How do I prepare a simple farm budget?",
-            "What equipment do I need to start a small farm?",
-            "How do I access land for farming in Ghana?",
-            "What training opportunities exist for farmers in Ghana?"
-        ],
-        "suggestions_tw": [
-            "Ɛdeɛn na mekora m'afuo nsɛm?",
-            "Dɛn na menyɛ afuom budget ketewa?",
-            "Adeɛ bɛn na mehia sɛ mesi afuo ketewa?",
-            "Dɛn na menyɛ sɛ menya asase ma okuafo adwuma wɔ Ghana?",
-            "Training nhyiamu bɛn na ɛwɔ ma okuafo wɔ Ghana?"
-        ]
     },
 }
 
+CATEGORY_TO_TOPIC = {
+    "Soil & Land Preparation": "Soil & Land Preparation",
+    "Fertilizer & Nutrients": "Fertilizer & Nutrients",
+    "Maize": "Maize",
+    "Cassava": "Cassava",
+    "Plantain & Banana": "Plantain & Banana",
+    "Yam": "Yam",
+    "Tomato": "Tomatoes",
+    "Pepper": "Pepper",
+    "Onion": "Onion",
+    "Carrot": "Carrot",
+    "Garden Eggs": "Garden Eggs",
+    "Oil Palm & Coconut": "Palm Oil & Coconut",
+    "Palm & Coconut": "Palm Oil & Coconut",
+    "Groundnut & Legumes": "Groundnut & Legumes",
+    "Rice Farming": "Rice",
+    "Cocoa Farming": "Cocoa",
+    "Cucumber Farming": "Other Vegetables",
+    "Okra Farming": "Other Vegetables",
+    "Watermelon Farming": "Other Vegetables",
+    "Pest & Disease Control": "Pest & Disease Control",
+    "Irrigation & Water": "Irrigation & Water",
+    "Harvesting & Storage": "Harvesting & Storage",
+    "Post-Harvest & Food Safety": "Harvesting & Storage",
+    "Fish Farming": "Fish Farming",
+    "Poultry Farming": "Poultry Farming",
+    "Goat Rearing": "Goat Farming",
+    "Sheep Rearing": "Sheep Farming",
+    "Cattle Rearing": "Cattle Farming",
+    "Business & Marketing": "Business & Marketing",
+    "Farm Business Planning": "Business & Marketing",
+    "Climate-Smart Farming": "Climate & Weather",
+    "Farm Management & General": "Farm Management",
+    "Farm Mechanization & Tools": "Farm Management",
+    "Farm Records & Extension": "Farm Management",
+    "Beekeeping": "Farm Management",
+    "Grasscutter Farming": "Farm Management",
+    "Mushroom Farming": "Farm Management",
+    "Pig Farming": "Farm Management",
+    "Rabbit Farming": "Farm Management",
+    "Snail Farming": "Farm Management",
+}
+
 # ── CONVERSATION HELPERS ──────────────────────────────────────────
+def load_suggestion_links():
+    if not SUGGESTION_LINKS_FILE.exists():
+        raise RuntimeError(
+            f"Missing suggestion linkage artifact: {SUGGESTION_LINKS_FILE}"
+        )
+    with open(SUGGESTION_LINKS_FILE, 'r', encoding='utf-8') as handle:
+        report = json.load(handle)
+    links = report.get('links', {})
+    if set(links) != set(TOPICS):
+        raise RuntimeError('Suggestion-link topics do not match application topics')
+    for topic in TOPICS:
+        topic_links = links.get(topic)
+        if not isinstance(topic_links, list) or not 1 <= len(topic_links) <= 5:
+            raise RuntimeError(f"Invalid suggestion links for topic: {topic}")
+        for position, link in enumerate(topic_links):
+            record_id = link.get('record_id')
+            if record_id not in KNOWN_RECORDS:
+                raise RuntimeError(
+                    f"Suggestion link references unknown record: {topic}[{position}]"
+                )
+            record = KNOWN_RECORDS[record_id]
+            if link.get('dataset_id') != record['dataset_id']:
+                raise RuntimeError(f"Stale dataset ID in link: {topic}[{position}]")
+            if link.get('category') != record['category']:
+                raise RuntimeError(f"Stale category in link: {topic}[{position}]")
+            for language in ('en', 'tw'):
+                linked_text = link.get(f'suggestion_{language}', '')
+                canonical_text = record[f'question_{language}']
+                if linked_text != canonical_text:
+                    raise RuntimeError(
+                        f"Stale suggestion text in link: {topic}[{position}]/{language}"
+                    )
+    return links
+
+
+SUGGESTION_LINKS = load_suggestion_links()
+
 EN_GREET  = ['hi','hello','hey','good morning','good afternoon','good evening']
 TW_GREET  = ['akwaaba','maakye','maaha','maadwo']
 CASUAL    = ['how are you','i am fine','thank you','thanks','okay','ok','good','nice','great']
@@ -725,9 +399,67 @@ def detect_topic(text, lang='en'):
 
 def get_suggestions(topic, lang='en'):
     """Return suggestion questions for a topic in the right language."""
-    info = TOPICS.get(topic, {})
-    key  = 'suggestions_tw' if lang == 'tw' else 'suggestions_en'
-    return info.get(key, info.get('suggestions_en', []))[:5]
+    language = 'tw' if lang == 'tw' else 'en'
+    return [
+        {
+            "id": link["record_id"],
+            "text": link[f"suggestion_{language}"],
+        }
+        for link in SUGGESTION_LINKS.get(topic, [])[:5]
+    ]
+
+
+def get_known_suggestion_answer(suggestion_id, question, lang):
+    """Resolve a clicked known suggestion without fuzzy retrieval."""
+    record = KNOWN_RECORDS.get(str(suggestion_id or ""))
+    if record is None:
+        return None, "Unknown suggestion ID"
+    language = 'tw' if lang == 'tw' else 'en'
+    if normalize_known_question(question) != normalize_known_question(
+        record[f"question_{language}"]
+    ):
+        return None, "Suggestion text does not match its record ID"
+    return {
+        "type": "answer",
+        "text": record[f"answer_{language}"],
+        "source": "known_suggestion",
+        "suggestion_id": record["id"],
+    }, None
+
+
+def get_exact_canonical_answer(question, lang):
+    """Return an exact canonical answer across all 563 supported records."""
+    language = 'tw' if lang == 'tw' else 'en'
+    record_id = KNOWN_QUESTION_RECORDS[language].get(
+        normalize_known_question(question)
+    )
+    if record_id is None:
+        return None
+    record = KNOWN_RECORDS[record_id]
+    return {
+        "type": "answer",
+        "text": record[f"answer_{language}"],
+        "source": "canonical_exact",
+        "routing_state": "A",
+        "record_id": record_id,
+    }
+
+
+def get_candidate_suggestions(candidates, lang):
+    """Turn retrieved canonical candidates into safe direct-answer buttons."""
+    language = 'tw' if lang == 'tw' else 'en'
+    suggestions = []
+    seen = set()
+    for candidate in candidates:
+        record_id = f"qa-{candidate['id']:04d}"
+        if record_id in seen or record_id not in KNOWN_RECORDS:
+            continue
+        seen.add(record_id)
+        suggestions.append({
+            "id": record_id,
+            "text": KNOWN_RECORDS[record_id][f"question_{language}"],
+        })
+    return suggestions
 
 def get_topic_display_name(topic, lang='en'):
     """Return topic name in the right language."""
@@ -736,8 +468,107 @@ def get_topic_display_name(topic, lang='en'):
         return info.get('tw_name', topic)
     return topic
 
-CONFIDENCE_HIGH = 0.75
-CONFIDENCE_LOW = 0.50
+
+# High-precision non-agricultural intent markers supplement the statistical
+# domain router. They deliberately use phrases, not isolated words such as
+# "field", "seed", "feed", "plant", "crop", or "storage", because those
+# words have legitimate agricultural meanings. Exact canonical questions are
+# resolved before this guard, so known dataset answers remain reachable.
+EXPLICIT_OFF_TOPIC_PATTERNS = {
+    'en': (
+        r'\bcapital city of\b',
+        r'\blaptop screen\b',
+        r'\bpython\b.*\bdecorator\b|\bdecorator\b.*\bpython\b',
+        r'\blinux (?:server|root|account)\b|\broot account\b',
+        r'\brandom seed\b.*\bsimulation\b|\bsimulation\b.*\brandom seed\b',
+        r'\bnews feed\b.*\bsocial media\b|\bsocial media\b.*\bnews feed\b',
+        r'\bchemistry (?:textbook|book|class)\b',
+        r'\bcomputer virus\b|\bspreadsheet\b',
+    ),
+    'tw': (
+        r'\bcapital city\b',
+        r'\blaptop screen\b',
+        r'\bpython\b.*\bdecorator\b|\bdecorator\b.*\bpython\b',
+        r'\blinux (?:server|root|account)\b|\broot account\b',
+        r'\brandom seed\b.*\bsimulation\b|\bsimulation\b.*\brandom seed\b',
+        r'\bnews feed\b.*\bsocial media\b|\bsocial media\b.*\bnews feed\b',
+        r'\bchemistry (?:textbook|book|class)\b',
+        r'\bcomputer virus\b|\bspreadsheet\b',
+    ),
+}
+
+# High-precision crop and livestock names can safely rescue a strict router
+# miss into State B. Broader, overloaded terms such as field, plant, crop,
+# seed, feed, bug, harvest, and storage are intentionally excluded.
+AGRICULTURAL_ENTITY_PATTERNS = {
+    'en': (
+        r'\b(?:maize|cassava|plantain|cocoyam|groundnut|cowpea|soybean|compost)\b',
+        r'\b(?:tomato(?:es)?|garden eggs?|oil palm|cocoa|rice paddy)\b',
+        r'\b(?:poultry|chickens?|broilers?|layers?|tilapia|catfish)\b',
+        r'\b(?:goats?|sheep|cattle|piglets?|rabbits?|grasscutters?)\b',
+    ),
+    'tw': (
+        r'\b(?:aburo|aburow|bankye|borɔdɔ|bayerɛ|kɔkɔnte|kookoo|compost)\b',
+        r'\b(?:ntomato|tomato|ntorɔ|ntoro|mako|gyene|nkatie)\b',
+        r'\b(?:akokɔ|akoko|apataa|birekyie|abirekyi|oguan|nnwan)\b',
+    ),
+}
+
+HIGH_RISK_AGRICULTURE_PATTERN = re.compile(
+    r"\b(?:pesticides?|insecticides?|fungicides?|herbicides?|miticides?|"
+    r"antibiotics?|vaccin(?:e|es|ation|ate|ated|ating)?|deworm(?:er|ers|ing)?|"
+    r"ivermectin|albendazole|levamisole|carbofuran|imidacloprid|spinosad|"
+    r"emamectin|mancozeb|chlorothalonil|lambda-cyhalothrin|abamectin|"
+    r"chemical(?:s)?|fertili[sz]er|ferefere|nnuru|aduro|dose|dosage|treatment)\b",
+    flags=re.IGNORECASE | re.UNICODE,
+)
+
+SAFETY_NOTICES = {
+    'en': (
+        "Safety note: Product strengths and local recommendations vary. Follow "
+        "the current product label and consult a MOFA extension officer or "
+        "veterinary professional before using pesticides, medicines, vaccines, "
+        "fertilizer rates, or treatment doses."
+    ),
+    'tw': (
+        "Ahobammɔ ho nkae: Aduru biara ahoɔden ne ne nhyehyɛe sesa. Di nea "
+        "wɔakyerɛw wɔ aduru no so no akyi, na bisa MOFA kuayɛ ɔfotufoɔ anaa "
+        "mmoa ayaresafoɔ ansa na wode pesticide, mmoa aduru, vaccine, ferefere "
+        "dodow anaa dose bi adi dwuma."
+    ),
+}
+
+
+def is_explicitly_off_topic(text, lang='en'):
+    """Recognize narrow, unambiguous non-farming intents in either UI language."""
+    language = 'tw' if lang == 'tw' else 'en'
+    normalized = str(text or '').casefold()
+    return any(
+        re.search(pattern, normalized, flags=re.UNICODE)
+        for pattern in EXPLICIT_OFF_TOPIC_PATTERNS[language]
+    )
+
+
+def has_agricultural_entity_signal(text, lang='en'):
+    """Recognize unambiguous crop or livestock names in either UI language."""
+    language = 'tw' if lang == 'tw' else 'en'
+    normalized = str(text or '').casefold()
+    return any(
+        re.search(pattern, normalized, flags=re.UNICODE)
+        for pattern in AGRICULTURAL_ENTITY_PATTERNS[language]
+    )
+
+
+def add_safety_notice(result, question, lang='en'):
+    """Attach transparent high-risk guidance without rewriting canonical answers."""
+    if result.get("type") != "answer":
+        return result
+    combined = f"{question} {result.get('text', '')}"
+    if HIGH_RISK_AGRICULTURE_PATTERN.search(combined):
+        language = 'tw' if lang == 'tw' else 'en'
+        result["safety_notice"] = SAFETY_NOTICES[language]
+        result["safety_classification"] = "high_risk_agricultural_guidance"
+    return result
 
 
 def get_answer(question, lang, username=None):
@@ -760,12 +591,12 @@ def get_answer(question, lang, username=None):
 
     # ── Twi Greetings ──────────────────────────────────────────────
     TW_GREET_LIST = ['akwaaba','maakye','maaha','maadwo','ɛte sɛn','wo ho te sɛn']
-    if any(g in ql for g in TW_GREET_LIST) and len(ql) < 40:
+    if any(re.search(rf'\b{re.escape(g)}\b', ql) for g in TW_GREET_LIST) and len(ql) < 40:
         return {"type":"answer","text":f"Akwaaba{nb}! 🌿 Yɛfrɛ me AgriBotGH, wo okuafo mmoa chatbot. Asɛmmisa bɛn fa okuafo adwuma ho na wopɛ sɛ mebo wo aseɛ?"}
 
     # ── English Greetings ──────────────────────────────────────────
     EN_GREET_LIST = ['hi','hello','hey','good morning','good afternoon','good evening']
-    if any(g in ql for g in EN_GREET_LIST) and len(ql) < 40:
+    if any(re.search(rf'\b{re.escape(g)}\b', ql) for g in EN_GREET_LIST) and len(ql) < 40:
         return {"type":"answer","text":f"Hello{nb}! 🌿 I am AgriBotGH, your bilingual farming assistant. What farming question can I help you with today?"}
 
     # ── Twi Casual ─────────────────────────────────────────────────
@@ -804,93 +635,106 @@ def get_answer(question, lang, username=None):
             "topic_names_tw": topic_names_tw
         }
 
-    # ── Detect topic ──────────────────────────────────────────────
+    # Exact canonical questions remain directly answerable even when their
+    # records belong to the held-out validation or test split.
+    exact_answer = get_exact_canonical_answer(q, lang)
+    if exact_answer is not None:
+        return exact_answer
+
     detected_topic = detect_topic(ql, lang)
+    retrieval = RETRIEVAL_RUNTIME.retrieve(q, lang)
+    if is_explicitly_off_topic(q, lang):
+        retrieval["state"] = "C"
+        retrieval["explicit_off_topic"] = True
+    elif retrieval["state"] == "C" and has_agricultural_entity_signal(q, lang):
+        # The statistical domain detector is intentionally strict. A known
+        # farming-topic term is enough to ask for clarification, but never to
+        # return an answer. Explicit non-farming phrases above keep priority.
+        retrieval["state"] = "B"
+        retrieval["lexical_agriculture_signal"] = True
+    top_candidate = retrieval["candidates"][0]
 
-    # ── Run retrieval ─────────────────────────────────────────────
-    # Confidence thresholds are intentionally conservative: we prefer not to
-    # answer poorly when the similarity is weak. The values below are a
-    # practical starting point for this project and can be tuned with a real
-    # validation set later.
-    if is_tw:
-        vec    = tw_vec.transform([q])
-        scores = cosine_similarity(vec, tw_vecs)[0]
-        best   = int(np.argmax(scores))
-        conf   = float(scores[best])
-    else:
-        vec    = en_vec.transform([q])
-        scores = cosine_similarity(vec, en_vecs)[0]
-        best   = int(np.argmax(scores))
-        conf   = float(scores[best])
+    if retrieval["state"] == "A":
+        return {
+            "type": "answer",
+            "text": top_candidate["answer"],
+            "source": "retrieval_v1",
+            "routing_state": "A",
+            "record_id": f"qa-{top_candidate['id']:04d}",
+            "retrieval_score": top_candidate["final_score"],
+            "score_margin": retrieval["answer_margin"],
+        }
 
-    if conf >= CONFIDENCE_HIGH:
+    if retrieval["state"] == "B":
+        topic = detected_topic or CATEGORY_TO_TOPIC.get(top_candidate["category"])
+        if topic in TOPICS:
+            suggestions = get_suggestions(topic, lang)
+            icon = TOPICS[topic]["icon"]
+            display_name = get_topic_display_name(topic, lang)
+        else:
+            suggestions = get_candidate_suggestions(retrieval["candidates"], lang)
+            icon = "🌱"
+            display_name = top_candidate["category"]
+
         if is_tw:
-            return {"type": "answer", "text": tw_as[best]}
-        return {"type": "answer", "text": en_as[best]}
-
-    if conf >= CONFIDENCE_LOW:
-        if detected_topic:
-            icon      = TOPICS[detected_topic]['icon']
-            suggs     = get_suggestions(detected_topic, lang)
-            disp_name = get_topic_display_name(detected_topic, lang)
-            if is_tw:
-                return {
-                    "type": "low_confidence",
-                    "text": f"Me nte aseɛ yiye wɔ wo asɛmmisa no ho. Ɛyɛ me nhomaso sɛ metumi aboa wo yie. Mempeammoa koraa.\n\nSɛ wopɛ a, kyerɛ me bio wɔ akenkan mu anaa paw asɛmmisa bi a ɛbɛboa wo wɔ {disp_name} {icon} ho:",
-                    "suggestions": suggs,
-                    "topic": detected_topic
-                }
-            return {
-                "type": "low_confidence",
-                "text": f"I am not fully confident that I understood your question. Please rephrase it or choose one of the related questions below.\n\nI can help with {detected_topic} {icon}, but I want to avoid giving an uncertain answer.",
-                "suggestions": suggs,
-                "topic": detected_topic
-            }
-
-        general_suggestions = [
-            "How do I start farming?",
-            "Which crop is suitable for beginners?",
-            "How can I improve my farm yield?"
-        ]
-        twi_suggestions = [
-            "Dɛn na menyɛ sɛ meyɛ okuafo?",
-            "Nnuaba bɛn na ɛfata mmarima ne mmea a wɔn rehyɛ ase?",
-            "Dɛn na mayɛ sɛ menya nnuaba dodo wɔ m'afuo mu?"
-        ]
-        suggs = twi_suggestions if is_tw else general_suggestions
-        if is_tw:
-            return {
-                "type": "low_confidence",
-                "text": "Me nte aseɛ yiye wɔ wo asɛmmisa no ho. Kyerɛ me bio wɔ hɔhwɛ mu, anaa paw asɛmmisa bi a ɛbɛboa wo.",
-                "suggestions": suggs,
-                "topic": None
-            }
+            text = (
+                "Me nni ahotoso koraa sɛ mete wo asɛmmisa no ase yiye. "
+                "Yɛsrɛ wo, kyerɛkyerɛ mu bio anaa paw asɛmmisa a ɛfa "
+                f"{display_name} {icon} ho:"
+            )
+        else:
+            text = (
+                "I'm not fully confident that I understood your agricultural "
+                "question. Please rephrase it or add more detail, or choose a "
+                f"related question about {display_name} {icon}:"
+            )
         return {
             "type": "low_confidence",
-            "text": "I am not confident that I understood your question. Please rephrase it or select one of the related questions below.",
-            "suggestions": suggs,
-            "topic": None
+            "text": text,
+            "suggestions": suggestions,
+            "topic": topic,
+            "source": "retrieval_v1",
+            "routing_state": "B",
+            "domain_score": retrieval["domain_score"],
+            "score_margin": retrieval["answer_margin"],
+            "domain_signal": (
+                "recognized_agricultural_topic"
+                if retrieval.get("lexical_agriculture_signal")
+                else "statistical_domain_router"
+            ),
         }
 
-    # ── Completely unrelated / weak match ────────────────────────
-    topic_icons    = {t: TOPICS[t]['icon'] for t in TOPICS}
-    topic_names_tw = {t: TOPICS[t].get('tw_name', t) for t in TOPICS}
+    topic_icons = {topic: TOPICS[topic]['icon'] for topic in TOPICS}
+    topic_names_tw = {
+        topic: TOPICS[topic].get('tw_name', topic) for topic in TOPICS
+    }
     if is_tw:
-        return {
-            "type": "off_topic",
-            "text": f"Kafra{nb}, me yɛ AgriBotGH — chatbot a wɔayɛ no pɛ ma okuafo adwuma. Metumi aboa wo pɛ wɔ okuafo nsɛm ho. 🌾\n\nPaw topic baako fi aseɛ yi na mɛkyerɛ wo asɛm a metumi aboa wo wɔ so:",
-            "topics": list(TOPICS.keys()),
-            "topic_icons": topic_icons,
-            "topic_names_tw": topic_names_tw
-        }
+        text = (
+            f"Kafra{nb}, me yɛ AgriBotGH — chatbot a wɔayɛ no pɛ ma okuafo "
+            "adwuma. Metumi aboa wo pɛ wɔ okuafo nsɛm ho. 🌾\\n\\n"
+            "Paw topic baako fi aseɛ yi na mɛkyerɛ wo asɛm a metumi aboa wo wɔ so:"
+        )
+    else:
+        text = (
+            f"Sorry{nb}, I am AgriBotGH — a specialised agricultural assistant. "
+            "I can only help with farming-related topics. 🌾\\n\\n"
+            "Please select a topic below and I will show you what I can help you with:"
+        )
     return {
         "type": "off_topic",
-        "text": f"Sorry{nb}, I am AgriBotGH — a specialised agricultural assistant. I can only help with farming-related topics. 🌾\n\nPlease select a topic below and I will show you what I can help you with:",
+        "text": text,
         "topics": list(TOPICS.keys()),
         "topic_icons": topic_icons,
-        "topic_names_tw": topic_names_tw
+        "topic_names_tw": topic_names_tw,
+        "source": "retrieval_v1",
+        "routing_state": "C",
+        "domain_score": retrieval["domain_score"],
+        "off_topic_signal": (
+            "explicit_non_agricultural_intent"
+            if retrieval.get("explicit_off_topic")
+            else "statistical_domain_router"
+        ),
     }
-
 # ── ROUTES ────────────────────────────────────────────────────────
 @app.route('/api/chat', methods=['POST'])
 def chat():
@@ -901,19 +745,36 @@ def chat():
     question = d.get('message','').strip() if d.get('message') else ''
     language = d.get('language','en')
     username = d.get('username', None)
+    suggestion_id = d.get('suggestion_id')
     if not question:
         return jsonify({"error": "No message provided"}), 400
+    if language not in {'en', 'tw'}:
+        return jsonify({"error": "Language must be 'en' or 'tw'"}), 400
+
+    if suggestion_id is not None:
+        result, error = get_known_suggestion_answer(
+            suggestion_id, question, language
+        )
+        if error:
+            return jsonify({"error": error}), 400
+        add_safety_notice(result, question, language)
+        result["language"] = language
+        return jsonify(result)
 
     result = get_answer(question, language, username)
+    add_safety_notice(result, question, language)
+    result["language"] = language
     return jsonify(result)
 
 @app.route('/api/topics', methods=['GET'])
 def get_topics():
-    """Return all topics with their icons and suggestions."""
+    """Return the canonical topic catalogue used by the browser UI."""
     return jsonify({
         topic: {
             "icon": info['icon'],
-            "suggestions": info['suggestions_en']
+            "tw_name": info.get('tw_name', topic),
+            "suggestion_count": len(SUGGESTION_LINKS[topic]),
+            "suggestions": get_suggestions(topic, 'en'),
         }
         for topic, info in TOPICS.items()
     })
@@ -921,31 +782,44 @@ def get_topics():
 @app.route('/api/topic-suggestions', methods=['POST'])
 def topic_suggestions_route():
     """Return suggestions for a selected topic in the right language."""
-    d     = request.get_json()
+    d     = request.get_json(silent=True)
+    if not isinstance(d, dict):
+        return jsonify({"error": "Invalid JSON payload"}), 400
     topic = d.get('topic','')
-    lang  = d.get('lang','en')
+    lang  = 'tw' if d.get('lang') == 'tw' else 'en'
     if topic not in TOPICS:
         return jsonify({"error": "Topic not found"}), 404
     info  = TOPICS[topic]
-    suggs = info.get('suggestions_tw' if lang == 'tw' else 'suggestions_en',
-                     info.get('suggestions_en', []))
+    suggs = get_suggestions(topic, lang)
     name  = info.get('tw_name', topic) if lang == 'tw' else topic
     return jsonify({
         "topic": topic,
         "display_name": name,
         "icon": info['icon'],
-        "suggestions": suggs[:5]
+        "suggestions": suggs
     })
 
 @app.route('/api/health')
 def health():
-    return jsonify({"status":"ok","en_pairs":len(en_qs),"tw_pairs":len(tw_qs),"topics":len(TOPICS)})
+    return jsonify({
+        "status": "ok",
+        "en_pairs": len(en_qs),
+        "tw_pairs": len(tw_qs),
+        "topics": len(TOPICS),
+        "model_version": RETRIEVAL_RUNTIME.metadata["model_version"],
+        "semantic_version": RETRIEVAL_RUNTIME.metadata["semantic_version"],
+        "retrieval_architecture": RETRIEVAL_RUNTIME.metadata[
+            "retrieval_architecture"
+        ],
+        "training_records": RETRIEVAL_RUNTIME.metadata["training_records"],
+        "model_frozen": FINAL_MODEL_FREEZE["status"] == "frozen",
+        "freeze_id": FINAL_MODEL_FREEZE["freeze_id"],
+    })
 
 ALLOWED_STATIC_FILES = {
     'app.js',
     'style.css',
     'index.html',
-    'agri_dataset.json',
 }
 
 @app.route('/')

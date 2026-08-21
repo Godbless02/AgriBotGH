@@ -1,0 +1,902 @@
+{
+  "schema_version": 1,
+  "todo": 23,
+  "generated_at_utc": "2026-08-20T23:31:21.433743+00:00",
+  "challenge_file": "data/evaluation/off_topic_questions.json",
+  "active_model": "1.0.1",
+  "summary": {
+    "total": 48,
+    "passed": 48,
+    "failed": 0,
+    "state_c_recall": 1.0,
+    "agricultural_answers_returned": 0
+  },
+  "groups": {
+    "language": {
+      "English": {
+        "total": 24,
+        "passed": 24
+      },
+      "Twi": {
+        "total": 24,
+        "passed": 24
+      }
+    },
+    "difficulty": {
+      "hard_negative": {
+        "total": 24,
+        "passed": 24
+      },
+      "ordinary": {
+        "total": 24,
+        "passed": 24
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "off23_en_001",
+      "pair_id": "off23_pair_001",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "general_knowledge",
+      "question": "What is the capital city of France?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.2354658414218298,
+        "elapsed_ms": 30.884
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_001",
+      "pair_id": "off23_pair_001",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "general_knowledge",
+      "question": "France ahenkurow no din de sɛn?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.1389709835868425,
+        "elapsed_ms": 18.883
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_002",
+      "pair_id": "off23_pair_002",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "technology",
+      "question": "How can I replace a cracked laptop screen?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.1915384793579693,
+        "elapsed_ms": 11.195
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_002",
+      "pair_id": "off23_pair_002",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "technology",
+      "question": "Mɛyɛ dɛn asesa laptop screen a apaapae?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.22161473218327682,
+        "elapsed_ms": 11.971
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_003",
+      "pair_id": "off23_pair_003",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "sports",
+      "question": "What was the final score in yesterday's football game?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.17643065241060324,
+        "elapsed_ms": 9.574
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_003",
+      "pair_id": "off23_pair_003",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "sports",
+      "question": "Bɔɔlbɔ agodie a wɔbɔe nnora no baa awiei sɛn?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.1394423787359728,
+        "elapsed_ms": 12.223
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_004",
+      "pair_id": "off23_pair_004",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "programming",
+      "question": "How does a decorator work in Python?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.19028205530557496,
+        "elapsed_ms": 15.61
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_004",
+      "pair_id": "off23_pair_004",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "programming",
+      "question": "Python mu decorator yɛ adwuma sɛn?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.22244929267747138,
+        "elapsed_ms": 12.984
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_005",
+      "pair_id": "off23_pair_005",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "entertainment",
+      "question": "Can you tell me a funny joke about school?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.16206496629372744,
+        "elapsed_ms": 14.788
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_005",
+      "pair_id": "off23_pair_005",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "entertainment",
+      "question": "Wubetumi aka sukuu ho aseresɛm bi akyerɛ me?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.12618944725616632,
+        "elapsed_ms": 10.715
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_006",
+      "pair_id": "off23_pair_006",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "music",
+      "question": "Which songs should I add to a wedding playlist?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.17705537277908712,
+        "elapsed_ms": 10.186
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_006",
+      "pair_id": "off23_pair_006",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "music",
+      "question": "Nnwom bɛn na mede nka ayeforohyia playlist ho?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.2182184403312058,
+        "elapsed_ms": 13.983
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_007",
+      "pair_id": "off23_pair_007",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "travel",
+      "question": "Where can I reserve a quiet hotel room in London?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.21886566056507734,
+        "elapsed_ms": 17.999
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_007",
+      "pair_id": "off23_pair_007",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "travel",
+      "question": "Ɛhe na metumi afa hotel dan a ɛhɔ yɛ dinn wɔ London?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.1960696947670485,
+        "elapsed_ms": 12.29
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_008",
+      "pair_id": "off23_pair_008",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "cooking",
+      "question": "How do I bake a chocolate birthday cake?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.1937392139031534,
+        "elapsed_ms": 8.075
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_008",
+      "pair_id": "off23_pair_008",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "cooking",
+      "question": "Mɛyɛ dɛn ato chocolate awoda cake?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.15824193152144178,
+        "elapsed_ms": 11.217
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_009",
+      "pair_id": "off23_pair_009",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "mathematics",
+      "question": "Can you solve this quadratic equation for me?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.15939977904066668,
+        "elapsed_ms": 13.363
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_009",
+      "pair_id": "off23_pair_009",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "mathematics",
+      "question": "Wubetumi adi quadratic equation yi ama me?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.0990049290825738,
+        "elapsed_ms": 9.832
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_010",
+      "pair_id": "off23_pair_010",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "finance",
+      "question": "How much interest will my savings account earn?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.18449834110585503,
+        "elapsed_ms": 15.75
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_010",
+      "pair_id": "off23_pair_010",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "finance",
+      "question": "Interest dodow bɛn na mɛnya wɔ me savings account mu?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.19442702073726104,
+        "elapsed_ms": 11.936
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_011",
+      "pair_id": "off23_pair_011",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "health",
+      "question": "Why does my head hurt whenever I read at night?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.17672674170793456,
+        "elapsed_ms": 10.289
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_011",
+      "pair_id": "off23_pair_011",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "health",
+      "question": "Adɛn nti na me ti yɛ me yaw bere biara a mekenkan ade anadwo?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.20184333346237382,
+        "elapsed_ms": 12.316
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_012",
+      "pair_id": "off23_pair_012",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "employment",
+      "question": "Please help me format a CV for an office job.",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.14877964590788684,
+        "elapsed_ms": 18.147
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_012",
+      "pair_id": "off23_pair_012",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "employment",
+      "question": "Boa me ma mensiesie CV ma office adwuma bi.",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.2180004147475157,
+        "elapsed_ms": 9.57
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_013",
+      "pair_id": "off23_pair_013",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "photography",
+      "question": "How do I crop a portrait photo without losing quality?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.18208943543484407,
+        "elapsed_ms": 11.909
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_013",
+      "pair_id": "off23_pair_013",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "photography",
+      "question": "Mɛyɛ dɛn acrop portrait mfonini a ne quality remmɔ?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.1825044406369171,
+        "elapsed_ms": 14.415
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_014",
+      "pair_id": "off23_pair_014",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "web_technology",
+      "question": "Which tool can harvest public records from a website?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.19647157508302848,
+        "elapsed_ms": 16.26
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_014",
+      "pair_id": "off23_pair_014",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "web_technology",
+      "question": "Tool bɛn na ebetumi aharvest public records afi website so?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.1970661926822655,
+        "elapsed_ms": 20.782
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_015",
+      "pair_id": "off23_pair_015",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "manufacturing",
+      "question": "Why did the manufacturing plant stop producing phone chargers?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.14644048334040655,
+        "elapsed_ms": 15.856
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_015",
+      "pair_id": "off23_pair_015",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "manufacturing",
+      "question": "Adɛn nti na manufacturing plant no gyaee phone charger yɛ?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.19410878824732994,
+        "elapsed_ms": 19.711
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_016",
+      "pair_id": "off23_pair_016",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "physics",
+      "question": "How is an electric field measured in physics?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.19155851357908105,
+        "elapsed_ms": 15.458
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_016",
+      "pair_id": "off23_pair_016",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "physics",
+      "question": "Wɔsusuw electric field wɔ physics mu sɛn?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.12244186157825945,
+        "elapsed_ms": 16.624
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_017",
+      "pair_id": "off23_pair_017",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "cybersecurity",
+      "question": "How should I protect the root account on my Linux server?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.21990588860266638,
+        "elapsed_ms": 21.325
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_017",
+      "pair_id": "off23_pair_017",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "cybersecurity",
+      "question": "Mɛyɛ dɛn abɔ root account a ɛwɔ me Linux server so no ho ban?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.222210548134241,
+        "elapsed_ms": 29.211
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_018",
+      "pair_id": "off23_pair_018",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "programming",
+      "question": "Why does this bug crash my JavaScript application?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.17993772002963634,
+        "elapsed_ms": 22.561
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_018",
+      "pair_id": "off23_pair_018",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "programming",
+      "question": "Adɛn nti na bug yi ma me JavaScript application no crash?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.2157130362228796,
+        "elapsed_ms": 20.712
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_019",
+      "pair_id": "off23_pair_019",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "software_development",
+      "question": "How do I merge a branch safely in Git?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.21386213977886476,
+        "elapsed_ms": 15.708
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_019",
+      "pair_id": "off23_pair_019",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "software_development",
+      "question": "Mɛyɛ dɛn de branch abɔ mu yie wɔ Git mu?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.18836768748971522,
+        "elapsed_ms": 15.258
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_020",
+      "pair_id": "off23_pair_020",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "statistics",
+      "question": "Why should I set a random seed before a simulation?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.2939013084636211,
+        "elapsed_ms": 12.871
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_020",
+      "pair_id": "off23_pair_020",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "statistics",
+      "question": "Adɛn nti na ɛsɛ sɛ mede random seed si simulation anim?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.2915649471446693,
+        "elapsed_ms": 23.42
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_021",
+      "pair_id": "off23_pair_021",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "social_media",
+      "question": "How can I organize the news feed on my social media account?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.2465374923852237,
+        "elapsed_ms": 21.279
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_021",
+      "pair_id": "off23_pair_021",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "social_media",
+      "question": "Mɛyɛ dɛn asiesie news feed a ɛwɔ me social media account so?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.27984223219721577,
+        "elapsed_ms": 23.252
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_022",
+      "pair_id": "off23_pair_022",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "chemistry",
+      "question": "What does organic mean in a chemistry textbook?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.26617536096279176,
+        "elapsed_ms": 14.09
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_022",
+      "pair_id": "off23_pair_022",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "chemistry",
+      "question": "Dɛn na organic kyerɛ wɔ chemistry textbook mu?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.1717652797661388,
+        "elapsed_ms": 12.002
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_023",
+      "pair_id": "off23_pair_023",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "cloud_computing",
+      "question": "Is cloud storage suitable for backing up family videos?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.21924157024524582,
+        "elapsed_ms": 13.403
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_023",
+      "pair_id": "off23_pair_023",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "cloud_computing",
+      "question": "Cloud storage fata sɛ mede sie abusua videos anaa?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.1472044467681983,
+        "elapsed_ms": 13.285
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_en_024",
+      "pair_id": "off23_pair_024",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "computer_security",
+      "question": "Can a computer virus damage my maize sales spreadsheet?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.27845032190292063,
+        "elapsed_ms": 13.982
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "off23_tw_024",
+      "pair_id": "off23_pair_024",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "computer_security",
+      "question": "Computer virus betumi asɛe me aburo adetɔn spreadsheet no anaa?",
+      "expected_state": "C",
+      "actual": {
+        "http_status": 200,
+        "response_type": "off_topic",
+        "routing_state": "C",
+        "domain_score": 0.16155054346688638,
+        "elapsed_ms": 12.116
+      },
+      "passed": true,
+      "failures": []
+    }
+  ]
+}

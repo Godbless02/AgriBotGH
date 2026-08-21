@@ -91,7 +91,12 @@
     <div id="appShell" class="app-shell" style="display: none">
       <header class="topbar">
         <div class="topbar-left">
-          <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+          <button
+            class="mobile-menu-btn"
+            type="button"
+            onclick="toggleSidebar()"
+            aria-label="Open navigation and chat history"
+          >☰</button>
           <span class="brand">🌿 <strong>AgriBotGH</strong></span>
         </div>
         <div class="topbar-center">
@@ -198,9 +203,10 @@
               placeholder="Type your farming question here..."
               maxlength="2000"
               autocomplete="off"
+              aria-label="Farming question"
             />
             <span class="char-count" id="charCount">0/2000</span>
-            <button class="send-btn" id="sendBtn" onclick="handleSend()">
+            <button type="button" class="send-btn" id="sendBtn" onclick="handleSend()">
               Send
             </button>
           </div>
@@ -210,7 +216,7 @@
         <aside class="topics-panel" id="topicsPanel" aria-label="Topics selector">
           <div class="topics-header">
             <span>💡 Select a topic</span>
-            <button class="topics-close" onclick="toggleTopicsPanel()">✕</button>
+            <button type="button" class="topics-close" onclick="closeTopicsPanel()" aria-label="Close topics">✕</button>
           </div>
           <p class="topics-desc">Choose a topic to get relevant farming questions.</p>
           <div class="topics-grid-panel" id="topicsGridPanel"></div>
@@ -220,7 +226,7 @@
         <aside class="chips-sidebar" id="chipsSidebar">
           <div class="chips-header">
             <span>💡 Try asking</span>
-            <button class="chips-close" onclick="toggleChips()">✕</button>
+            <button type="button" class="chips-close" onclick="closeChips()" aria-label="Close quick questions">✕</button>
           </div>
           <p class="chips-desc">Tap any question to fill the input.</p>
           <div id="enChips" class="chips-group">
@@ -269,15 +275,17 @@
               Dɛn na menyɛ apataa adwuma?
             </button>
           </div>
-          <button
-            class="chips-toggle-float"
-            onclick="toggleChips()"
-            id="chipsToggleBtn"
-            title="Quick questions"
-          >
-            💡
-          </button>
         </aside>
+        <button
+          type="button"
+          class="chips-toggle-float"
+          onclick="toggleChips()"
+          id="chipsToggleBtn"
+          title="Quick questions"
+          aria-label="Open quick questions"
+        >
+          💡
+        </button>
       </div>
       <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
     </div>

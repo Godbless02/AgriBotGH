@@ -1,0 +1,682 @@
+[
+  {
+    "id": 167,
+    "category": "Soil & Land Preparation",
+    "question_en": "How do I select seeds from my harvest for the next planting season?",
+    "answer_en": "For open-pollinated varieties select the best-performing plants and allow their fruits to fully mature on the plant. Harvest seeds, clean and dry them thoroughly in shade. Store in airtight containers with silica gel sachets to absorb moisture. Label with crop name, variety, and date.",
+    "question_twi": "Ɛdeɛn na megye m'aba sɛ mede to mu wɔ bere a ɛto so?",
+    "answer_twi": "Open-pollinated aba ho, paw nnua a wɔda sor pa na ma wɔn aba no wie ase yie wɔ nnua so. Gye aba no, hohoro na yaw wɔ owia sum mu yie. Guina wɔ nkuku a apo so ne silica gel sachets a ɛsuo nsukuro. Kyerɛw nnuaba din, aba din ne da so."
+  },
+  {
+    "id": 351,
+    "category": "Plantain & Banana",
+    "question_en": "How can I make plantain chips for sale?",
+    "answer_en": "Select firm unripe green plantains for crispy chips or ripe ones for sweet chips. Peel and slice thinly using a mandoline or sharp knife. Soak slices in salted water for 10 minutes to reduce browning. Drain and pat dry thoroughly. Fry in hot vegetable oil at 170 to 180 degrees Celsius until golden and crispy. Drain on paper towels. Season with salt and optional spices. Package in sealed airtight bags immediately while still warm for a shelf life of 2 to 4 weeks. Plantain chips have strong market demand from supermarkets and snack distributors.",
+    "question_twi": "Dɛn na menyɛ boɔde chips ma tɔ?",
+    "answer_twi": "Yi boɔde fitaa a ɛyɛ den ma chips a ɛkɔkɔɔ anaa a ɛatwa so ma chips a ɛdɛ. Yi ho na twa nkoko de mandoline anaa akyer akyer. Da slices no mu nsuo a salt wɔ mu simma 10 sɛ ɛnnatoa yɛ tuntum. Yi fi mu na tew yie pɛpɛɛpɛ. Hyehye wɔ vegetable oil a ɛhyehyɛ paa wɔ degrees 170 kɔ 180 Celsius kosi sɛ ɛyɛ sikafuo na ɛkɔkɔɔ. Yi fi mu de ntama so. De salt ne spices ka so sɛ wopɛ. Kura wɔ sealed airtight bags ntɛm bere a ɛda so sɛ tena 2 kɔ 4 nnansas. Boɔde chips wɔ dwa nhia pa fi supermarkets ne snack distributors ho."
+  },
+  {
+    "id": 113,
+    "category": "Onion",
+    "question_en": "Which plants can I grow to help control pests naturally?",
+    "answer_en": "Plant marigolds, basil, garlic, or neem trees around your farm or between crop rows. These release compounds that deter many insects. Pyrethrum is very effective. Push-pull farming uses Desmodium grass between crop rows to repel stemborers.",
+    "question_twi": "Nnuaba bɛn na metumi kura sɛ wɔkora adwummakers ase nhwiren ho?",
+    "answer_twi": "To marigold, basil, gyene kokoo, anaa neem nnua wo afuo ho anaa wɔ nnuaba ntam. Wɔn pue nhwiren a ɛtete adwummakers bebree. Pyrethrum yɛ adwuma pa ara. Push-pull farming de Desmodium atɛntɛnni to nnuaba ntam sɛ ɛkora stemborer ase yie pa ara."
+  },
+  {
+    "id": 286,
+    "category": "Cassava",
+    "question_en": "How can I make cassava flour from fresh cassava?",
+    "answer_en": "Peel and wash fresh cassava. Grate or chip the cassava into small pieces. Dry the pieces on clean raised platforms in the sun for 2 to 3 days until completely dry. Alternatively use a mechanical dryer. Mill the dried chips into flour using a hammer mill. Sieve to get uniform flour. Store in sealed bags in a dry place. Cassava flour can be used for bread, pastries, banku and as a thickener. It has a shelf life of 6 to 12 months when properly stored.",
+    "question_twi": "Dɛn na menyɛ bankye flour fi bankye foforɔ?",
+    "answer_twi": "Yi bankye no ho na hohoro. Grate anaa twa bankye no yɛ chips ketewa. Ma chips no tew wɔ platforms a ɛtele na ɛpaa owia so adays mmienu kɔ mmiɛnsa kosi sɛ ɛtew pɛpɛɛpɛ. Anaa de mechanical dryer. Fɛn chips a ɛatew no yɛ flour de hammer mill. Sie fi mu sɛ flour a ɛte so yie. Guina wɔ bags a wɔato mu wɔ baabi a ɛdɛ. Bankye flour bɛtumi de yɛ paanoo, pastries, banku na sɛ thickener. Ɛtumi gyina agyapade 6 kɔ 12 mfe mu sɛ wode guina yie."
+  },
+  {
+    "id": 529,
+    "category": "Farm Records & Extension",
+    "question_en": "When should I seek professional agricultural advice?",
+    "answer_en": "Seek help when a problem is severe, spreading quickly, difficult to identify, or involves animals, chemicals or food safety.",
+    "question_twi": "Bere bɛn na ɛsɛ sɛ mepaw agricultural advice a efi ɔbenfoɔ hɔ?",
+    "answer_twi": "Bisa mmoa bere a ɔhaw no yɛ kɛse, trɛw ntɛm, ɛyɛ den sɛ wobɛte aseɛ, anaa ɛfa mmoa, chemicals anaa food safety ho."
+  },
+  {
+    "id": 328,
+    "category": "Fish Farming",
+    "question_en": "What is a recirculating aquaculture system (RAS)?",
+    "answer_en": "A recirculating aquaculture system or RAS is an indoor fish farming system where water is continuously filtered and recycled using biofilters mechanical filters and UV sterilizers. It allows high density fish farming in a small space with full control over water quality and temperature. RAS is suitable for Ghana for high-value fish species like catfish and tilapia especially in urban areas where land is limited. The main challenge is the high initial setup cost of GHS 50,000 to 200,000 and regular electricity requirement.",
+    "question_twi": "Recirculating aquaculture system yɛ dɛn na ɛhia wɔ Ghana?",
+    "answer_twi": "Recirculating aquaculture system anaa RAS ne apataa adwuma fie mu a nsuo de filter na fa bio de biofilters, mechanical filters ne UV sterilizers. Ɛma apataa pii to mu kotoku ketewa mu a wɔhwɛ nsuo pa ne berɛ so yie. RAS hia wɔ Ghana ma apataa nhyiamu a bo yɛ so te sɛ catfish ne tilapia a ɛhia pii wɔ dɔn kɛse mu wɔ hɔ a asase hia. Aho yɛ den kɛse ne setup bo a ɛboro so a ɛyɛ GHS 50,000 kɔ 200,000 na electricity a ɛhia bere biara."
+  },
+  {
+    "id": 474,
+    "category": "Beekeeping",
+    "question_en": "What should I consider before starting beekeeping?",
+    "answer_en": "Consider forage availability, water, hive security, local regulations, labour, safety and a suitable location away from frequent human activity.",
+    "question_twi": "Dɛn na ɛsɛ sɛ misusuw ho ansa na mahyɛ nkyene yɛ kuayɛ ase?",
+    "answer_twi": "Susuw nhwiren a ɛwɔ mpɔtam, nsuo, beehive banbɔ, mpɔtam mmara, adwuma, ahobammɔ ne beae a ɛwɔ nnipa akyi kakra ho."
+  },
+  {
+    "id": 139,
+    "category": "Plantain & Banana",
+    "question_en": "How should I grow plantain successfully?",
+    "answer_en": "Plant plantain suckers from healthy mother plants. Choose planting material free from pests. Dig holes 60cm x 60cm x 60cm and fill with compost. Space plants 3m x 3m. Mulch heavily, water in dry periods, and apply potassium-rich fertilizer for good bunch development.",
+    "question_twi": "Ɛdeɛn na mekura borɔdɔ yie?",
+    "answer_twi": "To borɔdɔ aba fi nnua a wɔwɔ aho na wɔsom yie. Paw aba a enni adwummakers. Hu tumtum sɛntimita 60 x 60 x 60 na hye compost mu. Gyae asukyerɛ mita 3 x 3. De mulch to so papaapa, de nsuo to ɔpɛ bere mu, na de potassium ferefere to sɛ aba reba yie."
+  },
+  {
+    "id": 195,
+    "category": "Soil & Land Preparation",
+    "question_en": "How can I test whether my seeds are viable before planting?",
+    "answer_en": "Test seed viability by: placing 10 seeds on a damp paper towel, fold and keep in a warm place, check after 7-10 days. Count how many germinated — if 8-10 germinated (80-100%) seeds are excellent; 6-7 (60-70%) are acceptable; below 5 (50%) plant more seeds per hole. Old or poorly stored seeds lose viability — check the production date on the bag and do not use seeds more than 2 years old.",
+    "question_twi": "Ɛdeɛn na menim sɛ aba no da sor na ɛfata sɛ mede to mu?",
+    "answer_twi": "Hwɛ aba ho pa wɔ: de aba 10 si krataa nte so, fa bo mu na guina wɔ bae a ɛhuru, hwɛ nnafoa 7-10 akyi. Kan a pue — sɛ 8-10 apue (80-100%) a aba no yɛ pa pa ara; 6-7 (60-70%) akyɛ; ɛsua 5 (50%) a to aba dodo wɔ tumtum biara mu. Aba kedee anaa a wonguina wɔn yie sua wɔn tumi — hwɛ yɛ da a ɛwɔ bag so na mfa aba a wɔadin mfe abien kenkan."
+  },
+  {
+    "id": 237,
+    "category": "Tomato",
+    "question_en": "How can I grow tomatoes successfully in Ghana for high yield?",
+    "answer_en": "Start tomato seedlings in a nursery bed for 3 to 4 weeks before transplanting. Prepare fertile well-drained beds with compost. Transplant seedlings at 60 by 60 cm spacing in the late afternoon to avoid heat stress. Apply NPK fertilizer at planting and top dress with calcium nitrate to prevent blossom end rot. Water regularly especially during fruit set. Most varieties take 60 to 80 days from transplanting to harvest.",
+    "question_twi": "Dɛn na menyɛ sɛ meto tomatoes yie wɔ Ghana sɛ nnoa pii aba?",
+    "answer_twi": "Fi ase de tomatoes aba to mu wɔ nursery bed nnansa mmiɛnsa kɔ nnan ansa na wode transplant. Siesie beds a ɛyɛ pa ne asase a nsuo tew na compost wɔ mu. Transplant seedlings wɔ ahodɔ 60 ne 60 sɛntimita wɔ awia ansanaan awiei sɛ ɛnyɛ hyehyɛ no tidi. De NPK ferefere to ho bere a wode to mu na de calcium nitrate to so sɛ blossom end rot annya. Quench daadaa a ɛhia pii bere a nnuaba rerebo. Varieties pii twa so adays 60 kɔ 80 fi transplant kɔ yi."
+  },
+  {
+    "id": 506,
+    "category": "Post-Harvest & Food Safety",
+    "question_en": "Why should storage rooms be cleaned before new grain is stored?",
+    "answer_en": "Cleaning removes old residues, insects and mould sources that could affect the new grain.",
+    "question_twi": "Adɛn nti na ɛsɛ sɛ wɔhohoro guina dan ansa na wɔde aburow foforo hyɛ mu?",
+    "answer_twi": "Ahotew yi nneɛma dedaw, mmoawa ne mould fibea a ɛbɛtumi akɔ new grain no so."
+  },
+  {
+    "id": 126,
+    "category": "Business & Marketing",
+    "question_en": "How can I make peanut butter from groundnuts?",
+    "answer_en": "To make peanut butter: sort and remove damaged nuts, roast in a pan on low heat until golden brown (20-30 minutes), stir constantly to prevent burning, remove skins while warm, grind in a blender or milling machine until smooth, add salt to taste, and pack in clean sealed containers. Can add a little vegetable oil if too thick. Homemade peanut butter sells well and has a 2-3 month shelf life at room temperature.",
+    "question_twi": "Ɛdeɛn na meyɛ nkatie betere fi nkatie mu?",
+    "answer_twi": "Yɛ nkatie betere eyi: yi na si nnuaba a asɛe, hyew wɔ pan so ogya sua mu kosi sɛ ɛdan hoho bɔɔ (sɛntɔ 20-30), sane pɛ sɛ ɛnhyew, yi nkuto a ɛwɔ so bere a ɛhuru, blend wɔ blender anaa mill mu kosi sɛ ɛyɛ mmerɛ, de ɛwa ka ho sɛ dɛm, na paka wɔ nkuku horo a apo so. Tumi de vegetable dawuro kakra ka ho sɛ ɛhwa pa dodo. Fie nkatie betere tɔn yie na ɛtena abosome 2-3 wɔ fie osu mu."
+  },
+  {
+    "id": 374,
+    "category": "Cocoa Farming",
+    "question_en": "How should I choose a cocoa nursery site?",
+    "answer_en": "Choose a site with good drainage, access to water, protection from strong winds and suitable shade. Keep the nursery clean and easy to monitor.",
+    "question_twi": "Mɛyɛ dɛn apaw beae a mɛyɛ cocoa nursery?",
+    "answer_twi": "Paw beae a nsuo tumi firi mu, nsuo wɔ hɔ, mframa den nnya hɔ dodo na sunsuma wɔ hɔ. Ma nursery no ho tew na ɛnyɛ den sɛ wobɛhwɛ so."
+  },
+  {
+    "id": 274,
+    "category": "Business & Marketing",
+    "question_en": "How can I sell my farm produce at a better price?",
+    "answer_en": "To get better prices for your farm produce, time your sales to avoid market gluts by selling when supply is low, join a farmer cooperative to negotiate collectively, add value through processing before selling, sell directly to restaurants, schools or supermarkets, use aggregator platforms and apps like Farmerline Esoko and Ghana Agricultural Market Information System, build relationships with reliable buyers, and diversify to multiple buyers.",
+    "question_twi": "Dɛn na menyɛ sɛ metɔ me afuom nnuaba wɔ bo a ɛso sen?",
+    "answer_twi": "Sɛ wobɛnya wo afuom nnuaba bo a ɛso sen a, siesie wo tɔ bere sɛ wo bɛtɔ bere a nnuaba nni ho pii, ka okuafo kuo ho sɛ wobɔ bo kaa bom, de wo nnuaba yɛ aduan ansa na wotɔ, tɔ straight kɔ adidibea, sukuu anaa supermarkets, de aggregator platforms ne apps te sɛ Farmerline Esoko ne Ghana Agricultural Market Information System, kora wo adwene ho buyers a wɔ gyinae, na tɔ kuo mmerantee ho."
+  },
+  {
+    "id": 88,
+    "category": "Harvesting & Storage",
+    "question_en": "How can I transport my farm produce without damaging it?",
+    "answer_en": "Use ventilated crates or baskets not plastic bags for vegetables and fruits. Harvest early morning and transport before midday heat. Avoid overloading to prevent bruising. Cover produce with wet sacks to keep cool. For grains use clean dry bags. Sell same day for perishables whenever possible.",
+    "question_twi": "Ɛdeɛn na mede m'nnuaba kɔ aguabasa a ɛnkɔ ase?",
+    "answer_twi": "Fa afidie a mframa pue mu anaa akete na mfa plastik bags nsɛ nnuan ne aba. Gye owia da ano na de kɔ ansa na awia mu ahuhuro aba. Bɔ hwɛ de dodo hye mu sɛ ɛnhow. De ntama nte sɛɛ nnuaba so sɛ ɛkora wɔn ase huru. Nnuaba a ayaw ho, fa bags horo ne kraen."
+  },
+  {
+    "id": 509,
+    "category": "Post-Harvest & Food Safety",
+    "question_en": "How can I choose containers that protect tomatoes during transport?",
+    "answer_en": "Harvest at suitable maturity, use rigid ventilated containers, avoid overloading and protect the produce from excessive heat.",
+    "question_twi": "Mɛyɛ dɛn apaw containers a ɛbɔ tomatoes ho ban bere a merekɔtɔn?",
+    "answer_twi": "Gye tomato bere a ɛfata, fa rigid containers a mframa tumi fa mu, mma ɛmmɔ mu dodo na bɔ wɔn ho ban fi ɔhyew den ho."
+  },
+  {
+    "id": 312,
+    "category": "Sheep Rearing",
+    "question_en": "How can I build a simple sheep pen in Ghana?",
+    "answer_en": "Build a simple sheep pen using locally available materials. Make the floor raised 50 to 60 cm off the ground using wooden planks or bamboo to keep the sheep dry and reduce parasite buildup. Use wooden poles and wire mesh or bamboo for the walls. The pen should be well ventilated but protected from rain and predators. Allow 1 to 1.5 square metres per adult sheep. Include a feeding trough and water trough. Clean the pen and remove manure weekly to prevent disease buildup.",
+    "question_twi": "Dɛn na menyɛ oguan pen ketewa wɔ Ghana?",
+    "answer_twi": "Tu oguan pen ketewa de nneɛma a ɛwɔ ho wɔ ɛhɔ. Ma asase no tele sɛntimita 50 kɔ 60 fi asase so de dua anaa bamboo krataa sɛ oguan tena dɛ na parasites nni mu pii. De dua abɔ ne wire mesh anaa bamboo yɛ ho. Pen no nini yie sɛ mframa fa mu nanso ɛhwɛ so fi nsuo ne adwummaker. Ma square metres baako kɔ 1.5 biara oguan panyin. Ka aduan trough ne nsuo trough ka ho. Hohoro pen no na yi aguare biara nnansas sɛ yadeɛ nni mu."
+  },
+  {
+    "id": 37,
+    "category": "Pest & Disease Control",
+    "question_en": "What disease causes leaf spots on groundnuts?",
+    "answer_en": "Leaf spots on groundnuts are usually Early Leaf Spot or Late Leaf Spot fungal diseases. Spray with fungicides like mancozeb or chlorothalonil every 2 weeks. Plant resistant varieties and practice crop rotation.",
+    "question_twi": "M'nkatie nhaban wɔ nsono. Yadeɛ bɛn na ɛyɛ?",
+    "answer_twi": "Nhaban nsono wɔ nkatie so taa yɛ Early Nhaban Nsono Yadeɛ anaa Late Nhaban Nsono Yadeɛ fungal yadeɛ. De mancozeb anaa chlorothalonil guare mmere 2 biara. To aba a ɛtumi hyɛ ase na yɛ nnuaba sesae."
+  },
+  {
+    "id": 332,
+    "category": "Poultry Farming",
+    "question_en": "How should I manage litter in a poultry house?",
+    "answer_en": "Manage poultry litter by starting with 5 to 7 cm of dry wood shavings rice husks or sawdust as bedding. Turn the litter every 2 to 3 days to prevent caking and ammonia buildup. Add fresh dry litter as needed. Keep the moisture content below 25 percent. Replace wet patches immediately. After each flock clean the house completely remove all litter fumigate with formaldehyde and rest the house for 2 to 4 weeks before the next flock. Good litter management prevents respiratory disease and foot problems.",
+    "question_twi": "Dɛn na menyɛ litter wɔ akoko fie mu?",
+    "answer_twi": "Hwɛ akoko litter de fi ase de wood shavings, rice husks anaa sawdust tia 5 kɔ 7 sɛntimita yɛ bedding. Gyinaso litter no mprɛn mmienu kɔ mmiɛnsa biara nnansas sɛ ɛnkakra na ammonia nntea. De litter foforɔ a ɛtew ka ho sɛ ɛhia. Ma nsuo a ɛwɔ mu nkyɛ 25 percent. Yi baabi a ɛposo so ntɛm. Flock biara yi akyi hohoro fie no pɛpɛɛpɛ yi litter nyinaa fumigate de formaldehyde na ma fie no ho mprɛnsa mmienu kɔ nnan ansa na flock foforɔ aba. Litter hwɛ pa gye asufufuo yadeɛ ne nan ho aho yɛ den fi ho."
+  },
+  {
+    "id": 350,
+    "category": "Yam",
+    "question_en": "What are the market opportunities for cocoyam in Ghana?",
+    "answer_en": "Cocoyam has good market opportunities in Ghana especially in urban areas. Fresh cocoyam corms sell well in all major markets. Cocoyam leaves sold as kontomire are very popular for stews and palava sauce and command good prices especially in Accra and Kumasi. Processed cocoyam flour has growing demand in the food processing industry. Export opportunities exist for dried cocoyam to the diaspora market in Europe and North America. Value addition through processing into chips flour or paste significantly improves profitability.",
+    "question_twi": "Dwa nhyiamu bɛn na ɛwɔ ma kɔkɔnte wɔ Ghana?",
+    "answer_twi": "Kɔkɔnte wɔ dwa nhyiamu pa wɔ Ghana a ɛhia pii wɔ dɔn kɛse mu. Kɔkɔnte corms foforɔ tɔ yie wɔ dwa kɛse nyinaa. Kɔkɔnte nhaban a wɔtɔ sɛ kontomire pɛ paa ma nkwan ne palava sauce na dwa bo yɛ so pii a ɛhia pii wɔ Accra ne Kumasi. Kɔkɔnte flour a wɔayɛ so nhia taa pɛ wɔ food processing adwuma mu. Export nhyiamu wɔ ma kɔkɔnte a ɛatew kɔ diaspora dwa wɔ Yurop ne North America. Value addition wɔ de yɛ chips, flour anaa paste de ma mfaso kɔ so pii."
+  },
+  {
+    "id": 480,
+    "category": "Beekeeping",
+    "question_en": "How can I prevent ants from entering beehives?",
+    "answer_en": "Keep vegetation from touching the hive and use appropriate physical or approved barriers around hive stands.",
+    "question_twi": "Mɛyɛ dɛn amma ants ankɔ beehive mu?",
+    "answer_twi": "Mma nhaban nka hive no, na fa barriers a ɛfata around hive stand no ho ban fi ants ho."
+  },
+  {
+    "id": 360,
+    "category": "Soil & Land Preparation",
+    "question_en": "What are the advantages of using hydroponics for vegetable farming in Ghana?",
+    "answer_en": "Hydroponics allows vegetables to be grown without soil and can use much less water than conventional soil farming. It can produce high yields, support faster growth, and allow production throughout the year, especially where soil quality is poor.",
+    "question_twi": "Mfaso bɛn na ɛwɔ hydroponics a wɔde yɛ nnuaba adwuma wɔ Ghana so?",
+    "answer_twi": "Hydroponics ma wotumi dua nnuaba a asase nni mu, na wode nsu kakraa bi na edi dwuma (ɛkɔ soro kosi 90% sua) ne asase. Ɛma wotumi nya nnuaba pii, nyini ntɛm, na wotumi yɛ adwuma afe mũ no nyinaa, titiriw wɔ nkuraase anaa mmeae a asase no nyɛ papa."
+  },
+  {
+    "id": 137,
+    "category": "Plantain & Banana",
+    "question_en": "What fertilizer is best for plantain?",
+    "answer_en": "Plantain responds well to organic matter such as manure and compost plus potassium-rich fertilizers. Apply NPK 15-15-15 at planting then top-dress with muriate of potash during bunch development. Potassium is critical for good bunch weight and disease resistance.",
+    "question_twi": "Ferefere bɛn na ɛyɛ ɔkorɔ ma borɔdɔ?",
+    "answer_twi": "Borɔdɔ gye nhwiren foforo aduan pa te sɛ aguare ne compost a potassium ferefere ka ho yiye. De NPK 15-15-15 to mu bere a wode to mu afei de muriate of potash to so bere a aba reba. Potassium ho hia pa ara ma bɔ kɛse ne yadeɛ tumi."
+  },
+  {
+    "id": 344,
+    "category": "Tomato",
+    "question_en": "What fertilizer programme should I use for tomatoes?",
+    "answer_en": "Follow this fertilizer programme for tomatoes: at transplanting apply NPK 15-15-15 at 1 bag per acre in the planting holes. At 2 weeks after transplanting apply calcium nitrate to prevent blossom end rot. At 4 weeks apply NPK 15-15-15 top dressing. At 6 weeks switch to a high potassium fertilizer like NPK 12-12-17 to support fruit development. Add micronutrient foliar sprays containing boron zinc and magnesium every 2 weeks. Stop nitrogen fertilizer once fruit set begins to prevent excess leafy growth at the expense of fruit.",
+    "question_twi": "Ferefere programme bɛn na mede to tomatoes ho?",
+    "answer_twi": "De ferefere programme yi to tomatoes ho: bere a wode transplant to, de NPK 15-15-15 to mu bag baako biara eka baako wɔ planting holes mu. Nnansas mmienu akyi a wode transplant a, de calcium nitrate to ho sɛ blossom end rot annya. Nnansas nnan akyi de NPK 15-15-15 top dressing to ho. Nnansas nsia akyi sesa kɔ ferefere a potassium wɔ mu pii te sɛ NPK 12-12-17 ma nnuaba kɔ so. De micronutrient foliar sprays a boron, zinc ne magnesium wɔ mu to mprɛn mmienu biara nnansas. Gyae nitrogen ferefere bere a nnuaba fi ase bo sɛ ɛnhia nhaban pii a ɛdi nnuaba bo ho brε."
+  },
+  {
+    "id": 108,
+    "category": "Soil & Land Preparation",
+    "question_en": "What should I do if my farm floods regularly?",
+    "answer_en": "If your farm floods regularly, take these steps: dig drainage channels around and through the field to direct water away, create raised beds to keep plant roots above waterline, plant flood-tolerant crop varieties, install water pumps to remove standing water quickly, build earthen bunds around the field perimeter, and consider planting floating rice varieties if flooding is very severe and frequent.",
+    "question_twi": "Ɛdeɛn na mehwɛ nsuo a ɛhyɛ m'afuo mu?",
+    "answer_twi": "Sɛ nsuo taa hye wo afuo mu a, yɛ eyi: hu mmɔnkyemmonkyem twa ne wɔ afuo mu de nsuo no kɔ, yɛ asase-sor afuo sɛ nnuaba ntini atena sor nsuo soronko, to aba a ɛtumi nsuo tenten ase hyɛ, si nsuo pumps sɛ yi nsuo a ɛda hɔ ntɛm, yɛ asase bɔ twa afuo no ho, na hwɛ fa floating rice aba sɛ nsuo tenten taa ba na ɛyɛ dodo."
+  },
+  {
+    "id": 182,
+    "category": "Pest & Disease Control",
+    "question_en": "How can I use a smartphone camera to identify crop problems?",
+    "answer_en": "Take clear close-up photos of affected plant parts — leaves, stems, fruits, or roots. Include a coin for scale. Send photos to: your extension officer via WhatsApp, post in farmer WhatsApp or Facebook groups for advice, use apps like Plantix or PlantVillage that use AI to diagnose diseases from photos, or email to your nearest CSIR research station. Clear photos from multiple angles help get the most accurate diagnosis.",
+    "question_twi": "Ɛdeɛn na mefa smartphone camera di dwuma sɛ hunu m'nnuaba nsɛm?",
+    "answer_twi": "Fa foto fitafita wɔ nnuaba a wɔayarɛ no ho — nhaban, tibo, aba, anaa ntini. Ka sika de hwɛ boɔ. De foto kɔ: wo extension officer ho wɔ WhatsApp, de si wɔ okuafo WhatsApp anaa Facebook kuo mu sɛ wunya boa, fa apps te sɛ Plantix anaa PlantVillage a wɔde AI di dwuma sɛ hunu yadeɛ fi foto mu, anaa email kɔ CSIR research station a ɛbɛn wo. Foto fitafita fi afã ahodoɔ boa sɛ wuhu yadeɛ no pa ara."
+  },
+  {
+    "id": 190,
+    "category": "Irrigation & Water",
+    "question_en": "How should I wash vegetables safely before eating or selling them?",
+    "answer_en": "Wash vegetables safely by: using clean potable water, soaking for 1-2 minutes in a solution of 1 tablespoon of vinegar per litre of water or approved food-grade chlorine solution, then rinsing thoroughly with clean water. For leafy vegetables, separate leaves and wash each leaf individually. Dry before packaging. Never wash with river, pond, or canal water as these may contain pathogens.",
+    "question_twi": "Ɛdeɛn na mehohoro nnuan yie ansa na midi anaa tɔn?",
+    "answer_twi": "Hohoro nnuan yie wɔ: fa nsuo horo a wɔtumi nom, da wɔ vinegar tablespoon baako wɔ nsuo litre biara mu anaa food-grade chlorine a wɔagyei mu sɛntɔ 1-2, afei hohoro yie wɔ nsuo horo. Nhaban nnuan ho, twa nhaban mu na hohoro nhaban biara biara ho. Yaw ansa na wopaka. Mhohoro wɔ ɔsubɔnten, asranom, anaa kɔtɔ nsuo mu da efisɛ wɔn mu tumi wɔ yadeɛ."
+  },
+  {
+    "id": 84,
+    "category": "Business & Marketing",
+    "question_en": "How can I get an agricultural loan in Ghana?",
+    "answer_en": "Access agricultural loans through GIRSAL, rural banks, microfinance institutions, and cooperatives. Have a farm business plan ready, register your farm officially, and consult your local MOFA office for guidance.",
+    "question_twi": "Ɛdeɛn na menya ka sɛ meyɛ okuafo adwuma?",
+    "answer_twi": "Nya okuafo adwuma ka wɔ GIRSAL, ɔmansin ban, microfinance kuro, ne cooperatives mu. Wɔ wo afuo adwuma dwumadie plan, kyerɛw wo afuo din wɔ ɔman hɔ yie, na bisa wo MOFA ofisi wɔ beae a ɛbɛn wo."
+  },
+  {
+    "id": 187,
+    "category": "Goat Rearing",
+    "question_en": "What are the signs that a goat is pregnant and what should I do?",
+    "answer_en": "Signs of goat pregnancy include: no return to heat after mating, enlarged abdomen especially from month 3, enlarged udder especially in the last month, behavioral changes like becoming calmer, and weight gain. Care during pregnancy: provide extra feed especially in the last 6 weeks, ensure access to clean water always, avoid rough handling, vaccinate against clostridial diseases, deworm at least 3 weeks before kidding, and prepare a clean kidding area.",
+    "question_twi": "Ahohyenam bɛn na ɛkyerɛ sɛ m'abirekyi wɔ nyinsɛn na ɛdeɛn na meyɛ?",
+    "answer_twi": "Abirekyi nyinsɛn ahohyenam ho ne: onsan nba bio akyi a watwa, yafunu kɛse titiriw fi bosome 3, nufuo kɛse titiriw wɔ bosome ɔkyena, ɔtenabea sɛsae te sɛ yɛ abotare, na boɔ sor. Hwɛ bere nyinsɛn mu: ma aduan dodo titiriw wɔ nnawotwe 6 a atwam ansa na omba, kora nsuo horo wɔ hɔ daa, mhaw no, de kɔ clostridial yadeɛ dawuro, hwɛ adwummakers ase wiemu 3 ansa na oba mba, na siesie beae horo sɛ oba mba."
+  },
+  {
+    "id": 428,
+    "category": "Mushroom Farming",
+    "question_en": "Why should mushrooms not be overwatered?",
+    "answer_en": "Excess moisture can create conditions that encourage contamination and poor growth. Moisture should be maintained at the level required by the species.",
+    "question_twi": "Adɛn nti na ɛnsɛ sɛ megu mushrooms nsuo dodo?",
+    "answer_twi": "Nsuo dodo tumi yɛ tebea a contamination nyin na mushroom nnyin yie. Ma nsuo no nyɛ sɛnea species no hia."
+  },
+  {
+    "id": 326,
+    "category": "Cassava",
+    "question_en": "What nutrients does cassava provide?",
+    "answer_en": "Cassava is rich in carbohydrates providing a good energy source. It contains vitamin C, folate, magnesium and potassium. The leaves are highly nutritious containing protein, iron, calcium and vitamins A and C. Cassava leaves are eaten as a vegetable throughout West Africa. However cassava contains cyanogenic compounds which produce hydrogen cyanide. Processing methods like fermentation soaking grating and cooking remove these toxins making cassava safe to eat.",
+    "question_twi": "Ahoɔden bɛn na ɛwɔ bankye mu?",
+    "answer_twi": "Bankye wɔ carbohydrates pii mu a ɛde energy toɔ pa. Ɛwɔ vitamin C, folate, magnesium ne potassium. Nhaban no wɔ protein, iron, calcium ne vitamins A ne C pii mu. Wɔ di bankye nhaban sɛ nnuaba wɔ West Africa nyinaa mu. Nanso bankye wɔ cyanogenic compounds a ɛma hydrogen cyanide. Processing nhyiamu te sɛ fermentation, da mu, grate ne hyehye yi poisons yi wɔ mu a ɛma ɛtumi adi."
+  },
+  {
+    "id": 233,
+    "category": "Yam",
+    "question_en": "Which yam varieties are commonly grown in Ghana?",
+    "answer_en": "Common yam varieties in Ghana include Pona which is the most popular for its white floury texture and good taste, Laribako which has a pinkish color and stores well, Dente which is hard textured and used in fufu, Asana which matures early and Afase which has a creamy texture. Pona commands the highest market price. Choose your variety based on your target market and growing area.",
+    "question_twi": "Bayerɛ variety bɛn na wɔtaa to mu wɔ Ghana?",
+    "answer_twi": "Bayerɛ varieties a wɔtaa to mu wɔ Ghana ne Pona a ɛyɛ a ɛtaa to mu sen na ɛwɔ biribi tuntum fitaa na ɛdɛ, Laribako a ɛwɔ kɔɔ kakra na ɛguina yie, Dente a ɛye den na wɔde yɛ fufu, Asana a ɛtwa so ntɛm na Afase a ɛwɔ biribi a ɛyɛ smooth. Pona de dwa kɛse boro sen wɔn nyinaa. Yi wo variety sɛ wo dwa no so ne ɛhɔ a woto mu so."
+  },
+  {
+    "id": 558,
+    "category": "Fish Farming",
+    "question_en": "Why should fish be stocked gradually?",
+    "answer_en": "Gradual acclimatization helps fish adjust to differences in water temperature and quality and can reduce stress.",
+    "question_twi": "Adɛn nti na ɛsɛ sɛ yɛde mpataa gu pond mu nkakrankakra?",
+    "answer_twi": "Acclimatization a wɔyɛ nkakrankakra boa mpataa ma wɔfa nsakrae a ɛwɔ nsuo hyew ne quality mu no ho na ɛte stress so."
+  },
+  {
+    "id": 532,
+    "category": "Farm Records & Extension",
+    "question_en": "What makes a good farm record book?",
+    "answer_en": "It should be simple, consistent, easy to update and organized so costs, activities, production and sales can be found quickly.",
+    "question_twi": "Dɛn na ɛma farm record book yɛ papa?",
+    "answer_twi": "Ɛsɛ sɛ ɛyɛ mmerɛ, ɛyɛ pɛ daa, ɛyɛ mmerɛ sɛ wode nsɛm foforo hyɛ mu na costs, adwuma, production ne sales nya ntɛm."
+  },
+  {
+    "id": 104,
+    "category": "Soil & Land Preparation",
+    "question_en": "What is a farm map and why should I create one?",
+    "answer_en": "A farm map is a simple drawing or diagram showing your farm layout including field boundaries, crops in each area, water sources, access roads, trees, and infrastructure. It helps you: plan crop rotations, track what was planted where, plan irrigation and drainage, apply for land certificates, and communicate with extension officers and banks. You can draw it by hand or use free GPS apps on your phone.",
+    "question_twi": "Dɛn na afuo map yɛ na ɛsɛ sɛ meyɛ baako adɛn?",
+    "answer_twi": "Afuo map yɛ kyerɛwee anaa diagram ketewa a ɛkyerɛ wo afuo anammɔn a mu wɔ afuo nkyɛn, nnuaba a ɛwɔ beae biara mu, nsuo, kwan, nnua, ne adwumafie. Ɛboa wo sɛ: siesie nnuaba sesae, kora nsɛm a wode aba to mu wɔ beae bɛn, siesie nsuo to ne nsuo pue anammɔn, bisa asase krataa, na kasa ne extension officers ne ban. Wobetumi kyerɛw wo nsa so anaa fa GPS apps daa wɔ wo fɔn so."
+  },
+  {
+    "id": 550,
+    "category": "Plantain & Banana",
+    "question_en": "What causes poor bunch development in plantain?",
+    "answer_en": "Poor nutrition, drought stress, pests, disease, overcrowding and weak planting material can reduce bunch development.",
+    "question_twi": "Dɛn na ɛma plantain bunch development yɛ bɔne?",
+    "answer_twi": "Nutrition a ɛsua, ɔpɛ, mmoawa, yare, overcrowding ne planting material a ɛyɛ mmerɛ tumi tew bunch development so."
+  },
+  {
+    "id": 82,
+    "category": "Soil & Land Preparation",
+    "question_en": "How should I store seeds for the next planting season?",
+    "answer_en": "Dry seeds thoroughly to less than 10% moisture. Sort and remove damaged, diseased, or small seeds. Place in airtight containers — glass jars, tins, or sealed plastic bags. Add a small packet of silica gel or a tablespoon of powdered milk wrapped in cloth to absorb moisture. Store in a cool, dark, dry place. Label with crop name, variety, and date. Test germination before planting season.",
+    "question_twi": "Ɛdeɛn na meguina m'aba yie ma bere a ɛto so?",
+    "answer_twi": "Yaw aba no yie na ɛsua nsukuro 10%. Si na yi aba a asɛe, a yadeɛ aka, anaa a wɔkum. De aba to nkuku a apo so — glass jar, tin, anaa sealed plastik bag. De silica gel kotoku ketewa anaa powdered milk tablespoon baako a wɔde ntama sɛɛ no ka ho sɛ ɛsuo nsukuro. Guina wɔ bae a ɛhuru, ɛsum, na yera. Kyerɛw nnuaba din, aba din, ne da. Hwɛ aba pue ansa na bere aba."
+  },
+  {
+    "id": 297,
+    "category": "Fish Farming",
+    "question_en": "What water quality should I maintain in a fish pond?",
+    "answer_en": "Good water quality is the foundation of successful fish farming. Test water weekly for pH which should be 6.5 to 8.5, dissolved oxygen above 5 mg per litre, ammonia below 0.02 mg per litre, and temperature between 25 and 30 degrees Celsius. Maintain quality by avoiding overfeeding which causes ammonia buildup, not overstocking, doing partial water changes of 20 to 30 percent weekly, growing aquatic plants to absorb excess nutrients, and aeration using paddle wheels or air pumps.",
+    "question_twi": "Dɛn na menyɛ sɛ nsuo pa wɔ me apataa pond mu?",
+    "answer_twi": "Nsuo pa yɛ fapem a apataa adwuma pa si so. Hwɛ nsuo biara nnansa de pH a ɛnni yie sɛ 6.5 kɔ 8.5, dissolved oxygen a ɛboro 5 mg biara litre, ammonia a ɛsian 0.02 mg biara litre ase, na berɛ wɔ degrees 25 ne 30 Celsius ntam. Kora mmerɛ de gye wo ho fi aduan a ɛboro so a ɛma ammonia adɔ so, to apataa a ɛboro so, sesa nsuo 20 kɔ 30 percent biara nnansas, to aquatic nnuaba sɛ wɔgye nutrients a ɛboro so, na de paddle wheels anaa air pumps ma nsuo nya oxygen."
+  },
+  {
+    "id": 234,
+    "category": "Yam",
+    "question_en": "How do I make yam mounds or stakes and why are they important?",
+    "answer_en": "Make mounds 30 to 60 cm high by heaping soil to create a raised planting area. After the vine emerges and grows to 30 cm, insert a 1.5 to 2 metre stake beside the plant and tie the vine loosely to support it. Staking is important because it keeps the vine off the ground preventing disease, improves sunlight exposure, makes weeding easier and increases tuber size.",
+    "question_twi": "Dɛn na menyɛ bayerɛ afe anaa stake na ɛyɛ papa adɛn?",
+    "answer_twi": "Yɛ afe a ɛtelɛ 30 kɔ 60 sɛntimita de asase a wɔdɛdɛ maa ɛso yɛ awia. Vine a ɛba fi mu na ɛkɔ 30 sɛntimita akyi a, de stake a ɛtelɛ metre 1.5 kɔ 2 sia bɛn nnuaba no ho na kyekyere vine no na ɛdae mu. Staking ho hia efisɛ ɛkora vine no fi asase so a ɛkyɛ yadeɛ, ɛma nnuaba nya owia, ɛyɛ nhaban foforo yi ayɛ mmerɛw na ɛma bua kɔ so kɛse."
+  },
+  {
+    "id": 47,
+    "category": "Pest & Disease Control",
+    "question_en": "What is Integrated Pest Management (IPM)?",
+    "answer_en": "Integrated Pest Management (IPM) is an approach that combines multiple pest control methods to minimize chemical use. It includes: monitoring crops regularly to catch problems early, using resistant varieties, practicing good agronomic practices, using biological controls like beneficial insects, and only using chemicals as a last resort when pest populations exceed economic thresholds.",
+    "question_twi": "Dɛn na adwummakers hwɛ anammɔn kaa bom (IPM) yɛ?",
+    "answer_twi": "Adwummakers Hwɛ Anammɔn Kaa Bom (IPM) yɛ anammɔn a wɔka adwummakers kora anammɔn bebree bom sɛ chemical fa sua. Mu wɔ: hwɛ nnuaba so pɛ sɛ wuhu nsɛm ntɛm, fa aba a ɛtumi hyɛ ase, yɛ okuafo adwuma pa, fa biological controls te sɛ adwummakers a wɔboa, na fa chemicals pɛ bere a adwummakers a ɛyɛ dodo sene sika mu a wobɛnya."
+  },
+  {
+    "id": 72,
+    "category": "Harvesting & Storage",
+    "question_en": "How do I know when pineapple is ready to harvest?",
+    "answer_en": "A pineapple is ready when: the skin changes from green to yellow starting at the base, the fruit gives a dull hollow sound when tapped, the fruit smells sweet and fragrant, the leaves at the top pull out easily, and the fruit is firm but gives slightly when pressed. Pineapples do not ripen further after harvest, so timing is critical.",
+    "question_twi": "Ɛdeɛn na menim sɛ m'aborɔfo awie ase sɛ megye?",
+    "answer_twi": "Aborɔfo awie ase bere a: foforo no resen fi akyen kɔ hoho fi ase, aba no su sɛ kɔkɔ bere a wode bɔ so, aba no nhwiren foforo pue na ɛyɛ dɛ, nhaban a ɛwɔ so no twe ba yie, na aba no yɛ den nanso tumi pii kakra. Aborɔfo nware bio akyi a wogye, enti bere yɛ titiriw pa ara."
+  },
+  {
+    "id": 197,
+    "category": "Farm Management & General",
+    "question_en": "What is a Farmer Field School and how can I join one?",
+    "answer_en": "A Farmer Field School (FFS) is a learning program where groups of 25-30 farmers meet regularly in a field to observe, experiment, and learn about agriculture together under a trained facilitator. They learn practical skills by doing rather than just listening. FFS programs in Ghana are run by MOFA, NGOs, and development organizations. Contact your local MOFA extension office or agricultural NGOs in your area to find and join one.",
+    "question_twi": "Dɛn na farmer field school yɛ na ɛdeɛn na meba mu?",
+    "answer_twi": "Farmer Field School (FFS) yɛ suahu adwuma a okuafo 25-30 kuo hyia pɛ wɔ afuo mu sɛ wɔhwɛ, dwiri, ne sua okuafo adwuma bom wɔ obi a wɔakyerɛ ase. Wɔsua adwuma ho nyansam wɔ di dwuma na mfa tie pɛ. FFS adwuma wɔ Ghana ne MOFA, NGOs, ne nkosuo kuo di. Ka kyerɛ wo MOFA extension ofisi anaa agricultural NGOs wɔ wo beae sɛ wuhu ne ba mu."
+  },
+  {
+    "id": 371,
+    "category": "Rice Farming",
+    "question_en": "How can I reduce weed competition in rice?",
+    "answer_en": "Start with a clean field, establish the crop well, maintain good spacing and use timely mechanical or approved weed-control methods.",
+    "question_twi": "Mɛyɛ dɛn ate nwura ne aburow akyinnyɛ so wɔ afuo mu?",
+    "answer_twi": "Fi afuo a nwura nnim ase, ma aburow no fifi yie, ma nnua no ntam yɛ pɛ na yɛ nwura yiyie bere a ɛsɛ, anaa fa akwan a wɔagye atom so kum nwura."
+  },
+  {
+    "id": 301,
+    "category": "Soil & Land Preparation",
+    "question_en": "What government support is available for young farmers in Ghana?",
+    "answer_en": "Government support for young farmers in Ghana includes the Planting for Food and Jobs programme providing subsidized seeds and fertilizer, the Young Entrepreneurs and Agricultural Development (YEAD) programme, the Ghana Youth Employment and Entrepreneurial Development Agency (GYEEDA) agricultural modules, scholarships for agricultural education from MOFA, and the Agricultural Development Bank youth loans. Some districts also have youth in agriculture programmes. Visit your nearest MOFA district office or the Ministry of Food and Agriculture website for current programmes.",
+    "question_twi": "Aban mmoa bɛn na ɛwɔ ma mmerante okuafo wɔ Ghana?",
+    "answer_twi": "Aban mmoa ma mmerante okuafo wɔ Ghana ne Planting for Food and Jobs programme a de subsidized aba ne ferefere to, Young Entrepreneurs ne Agricultural Development (YEAD) programme, Ghana Youth Employment ne Entrepreneurial Development Agency (GYEEDA) agricultural modules, scholarships ma okuafo education fi MOFA, na Agricultural Development Bank youth loans. Districts bi nso wɔ youth in agriculture programmes. Kɔ wo MOFA district ofisi a ɛbɛn anaa Ministry of Food and Agriculture website ma programmes a wɔwɔ saa ara."
+  },
+  {
+    "id": 81,
+    "category": "Harvesting & Storage",
+    "question_en": "What is cold storage and how can a small farmer access it?",
+    "answer_en": "Cold storage is refrigerated storage that keeps produce at low temperatures to extend shelf life. Small farmers can access it through: farmer cooperatives that own shared cold storage facilities, government-run cold storage centers, private cold storage services that charge per crate or kilogram, mobile cold storage trucks, and evaporative coolers which are low-cost non-electrical cooling structures.",
+    "question_twi": "Dɛn na ntwene-nkuma guina yɛ na okuafo ketewa tumi nya ase anaa?",
+    "answer_twi": "Ntwene-nkuma guina yɛ aduan guina a wɔde ntwene nkuma so ma aduan tena yie bere tenten. Okuafo ketewa tumi nya ase wɔ: okuafo cooperative a wɔwɔ ntwene-nkuma guina bom, ɔman ntwene-nkuma guina centres, onipa hɔ ntwene-nkuma guina nnwuma a wɔsua crate anaa kilogram biara, mobile ntwene-nkuma guina trucks, ne evaporative coolers a ɛboɔ yɛ ketewa a wɔhyɛ electricity mu."
+  },
+  {
+    "id": 388,
+    "category": "Groundnut & Legumes",
+    "question_en": "How should cowpea be protected after harvest?",
+    "answer_en": "Dry the grain thoroughly, remove damaged grains and store it in clean, dry, pest-protected containers.",
+    "question_twi": "Mɛyɛ dɛn abɔ cowpea a magye no ho ban?",
+    "answer_twi": "Yow no yie, yi aba a asɛe na guina no wɔ ade a ɛho tew, ɛyɛ yera na ɛbɔ fi mmoawa ho."
+  },
+  {
+    "id": 128,
+    "category": "Cassava",
+    "question_en": "What value-added products can I make from cassava?",
+    "answer_en": "Cassava value-added products include: gari (fermented and roasted cassava), fufu flour, cassava flour for baking, cassava chips (dried slices), cassava starch for industrial use, kokonte (dried cassava), and high-quality fufu. Each step of processing adds value and income. Gari is especially popular and can double the income from fresh cassava. Consider forming a women's group to process together to reduce costs and increase volumes.",
+    "question_twi": "Ɛdeɛn na mede boɔ ka bankye ho sɛ menya sika dodo?",
+    "answer_twi": "Bankye ho adwuma a wɔde yɛ dodo ne: gari (bankye a wɔade na hyew), fufu mfurow, bankye mfurow ma bobe adwuma, bankye chips (slices a ayaw), bankye starch ma adwuma kuro, kokonte (bankye a ayaw), ne fufu a ɛwɔ aho pa. Adwuma biara a wɔde yɛ de boɔ ne sika ka ho. Gari pɛ pa ara na ɛtumi ma bankye foforo sika abien. Hwɛ si mmaa kuo sɛ wɔyɛ adwuma bom sɛ sua sika ne ma nnuaba dodo ba."
+  },
+  {
+    "id": 471,
+    "category": "Snail Farming",
+    "question_en": "What records are useful in snail farming?",
+    "answer_en": "Keep records of stocking, mortality, feed, growth, harvesting and sales.",
+    "question_twi": "Nsɛm bɛn na ɛho hia wɔ snail kuayɛ mu?",
+    "answer_twi": "Kyerɛw stocking, owu, feed, nyin, gyeɛ ne tɔn."
+  },
+  {
+    "id": 45,
+    "category": "Pest & Disease Control",
+    "question_en": "How can I use pesticides safely on my farm?",
+    "answer_en": "Always read the label before use. Wear protective clothing including gloves, boots, mask, and long sleeves. Mix pesticides in open air away from water sources. Never eat, drink, or smoke while handling pesticides. Store in original containers away from children.",
+    "question_twi": "Ɛdeɛn na mefa adwummakers dawuro di dwuma a ɛho tumi wɔ m'afuo mu?",
+    "answer_twi": "Kenkan krataa a ɛwɔ so ansa na wodi dwuma. Hye ntoma a ɛkora wo ho te sɛ nsatea nhoma, mbotɔ, aboa, ne ntama tenten. Ka dawuro no wɔ baabi a mframa wɔ hɔ tete fi nsuo ho. Mmu aduan, nnom nsu, anaa mfa sigaret bere a wode dawuro no di dwuma."
+  },
+  {
+    "id": 271,
+    "category": "Business & Marketing",
+    "question_en": "What documents do I need to register a farm business in Ghana?",
+    "answer_en": "To register a farm business in Ghana, you need a Ghana Card or valid national ID, a business name, your address, and a business plan. Register your business name with the Registrar General's Department. For tax purposes, register with the Ghana Revenue Authority to get a TIN. If you want to access formal credit, you may also need to open a business bank account and join a recognised farmer group.",
+    "question_twi": "Krataa bɛn na mɛhia sɛ meregyina me afuom adwuma ho wɔ Ghana?",
+    "answer_twi": "Sɛ wobɛsi wo afuom adwuma ho wɔ Ghana a, wo hia Ghana Card anaa national ID a ɛwɔ mu, adwuma din, wo address, na business plan. Si wo adwuma din ho wɔ Registrar General's Department. Ma tax ho, si ho wɔ Ghana Revenue Authority ma wo nya TIN. Sɛ wohia credit a, wobetumi nso hia sɛ wubue adwuma bank account na ka okuafo kuo a wɔakyerɛw ho."
+  },
+  {
+    "id": 353,
+    "category": "Business & Marketing",
+    "question_en": "How do I form a farmer cooperative in Ghana?",
+    "answer_en": "Form a farmer cooperative in Ghana by gathering at least 10 interested farmers, electing officers including a chairman secretary and treasurer, drafting a constitution or bylaws, opening a group bank account, registering with the Department of Cooperatives under the Ministry of Employment and Labour Relations, and obtaining a certificate of registration. A cooperative enables members to access group credit, buy inputs in bulk at lower prices, market produce collectively and access government programmes. Meet regularly and keep proper financial records.",
+    "question_twi": "Dɛn na menyɛ sɛ meyi okuafo kuo wɔ Ghana?",
+    "answer_twi": "Yi okuafo kuo wɔ Ghana de gye okuafo 10 pɛ a wɔpɛ no, yi officers a ɔpanyin, secretary ne treasurer ka ho, yɛ constitution anaa bylaws, bue group bank account, si ho wɔ Department of Cooperatives wɔ Ministry of Employment ne Labour Relations ase, na gye registration certificate. Kuo de ma members bɛtumi agye group credit, gye inputs pii wɔ bo sua, tɔ wɔn nnuaba kaa bom na gye government programmes. Gyina mu bere biara na kora financial records yie."
+  },
+  {
+    "id": 368,
+    "category": "Rice Farming",
+    "question_en": "How do I reduce bird damage in a rice field?",
+    "answer_en": "Harvest promptly when the crop is mature and use permitted bird-scaring methods. Keeping the field monitored during grain filling is especially important.",
+    "question_twi": "Mɛyɛ dɛn ate anomaa sɛe so wɔ aburow afuo mu?",
+    "answer_twi": "Gye aburow bere a awie ase ntɛm na fa akwan a wɔagye ato mu a wɔde pam anomaa di dwuma. Hwɛ afuo no so yiye titiriw bere a aba no refa hyɛ den."
+  },
+  {
+    "id": 100,
+    "category": "Maize",
+    "question_en": "How often should I weed my farm?",
+    "answer_en": "Weed at least twice per season — first weeding within 2-3 weeks of planting and second weeding 4-6 weeks after planting. After this, crop canopy usually shades out weeds. Maize is most sensitive to weeds in the first 30-40 days after planting.",
+    "question_twi": "Mmmere ahe na msɛ meyɛ nhaban foforo tia wɔ m'afuo mu?",
+    "answer_twi": "Tia nhaban foforo mmere abien pɛ wɔ bere biara — nhaban tia a ɛdi ɛkan wɔ nnawotwe 2-3 a wode aba to mu akyi na nhaban tia a ɛto so abien wɔ nnawotwe 4-6 akyi. Eyi akyi, nnuaba nhaban taa sɛɛ nhaban foforo ase."
+  },
+  {
+    "id": 390,
+    "category": "Groundnut & Legumes",
+    "question_en": "How can I reduce pod damage during groundnut harvest?",
+    "answer_en": "Loosen the soil carefully before lifting plants so pods are not left behind or broken during harvesting.",
+    "question_twi": "Mɛyɛ dɛn ate nkatie aba sɛe so bere a meregye no?",
+    "answer_twi": "Siesie asase no yiye ansa na wotwe nnua no fi fam sɛnea aba no renka fam anaa ansɛe bere a wogye no."
+  },
+  {
+    "id": 95,
+    "category": "Soil & Land Preparation",
+    "question_en": "What should I do if heavy rainfall floods my farm?",
+    "answer_en": "After flooding, make drainage channels to remove excess water quickly. Allow soil to drain before entering with heavy machinery. Check plants for root rot and remove severely damaged ones. Apply potassium fertilizer to help plants recover. Be alert for increased fungal diseases after flooding.",
+    "question_twi": "Osu tenten ma nsuo hyɛɛ m'afuo mu. Dɛn na meyɛ?",
+    "answer_twi": "Nsuo tu akyi, yɛ mmɔnkyemmonkyem sɛ nsuo no pue ntɛm. Ma asase no ntena ansa na wode egyapade kɛse ba mu. Hwɛ nnuaba ntini ho sɛ wɔasɛe na yi a wɔasɛe kɛse. De potassium ferefere to so sɛ ɛboa nnuaba no sane aba."
+  },
+  {
+    "id": 557,
+    "category": "Fish Farming",
+    "question_en": "How do I select healthy fingerlings?",
+    "answer_en": "Choose active fingerlings from a reliable source, with uniform size and no obvious deformities or signs of disease.",
+    "question_twi": "Mɛyɛ dɛn apaw fingerlings a wɔyɛ ahoɔden?",
+    "answer_twi": "Paw fingerlings a wɔyɛ active fi source a wonim, wɔn kɛse yɛ pɛ na deformity anaa yare ho nsɛnkyerɛnne nni ho."
+  },
+  {
+    "id": 345,
+    "category": "Onion",
+    "question_en": "Which onion varieties are commonly grown in Ghana?",
+    "answer_en": "Main onion varieties in Ghana include Bawku Red which is the most popular local variety adapted to northern Ghana with good storage quality, Nazifi which is an improved variety with good yields, Galmi Violet from Niger which is widely grown, and Onex which gives high yields. For the southern forest zone use short-day varieties like the Texas Grano type. Avoid long-day varieties designed for temperate climates as they will not bulb properly in Ghana.",
+    "question_twi": "Onion varieties bɛn na wɔtaa to mu wɔ Ghana?",
+    "answer_twi": "Onion varieties kɛse a wɔtaa to mu wɔ Ghana ne Bawku Red a ɛyɛ local variety pa ara a ɛbɛn Ghana atifi na ɛguina yie, Nazifi a ɛyɛ improved variety a ɛde nnoa pii ba, Galmi Violet fi Niger a wɔtaa to mu, na Onex a ɛde nnoa pii ba. Ma kwaeɛ zone a ɛwɔ apuei fam, de short-day varieties te sɛ Texas Grano nhyiamu. Gye wo ho fi long-day varieties a wɔayɛ ma temperate berɛ efisɛ wɔrenbua yie wɔ Ghana."
+  },
+  {
+    "id": 221,
+    "category": "Cassava",
+    "question_en": "How many months does cassava take to mature?",
+    "answer_en": "Cassava matures between 8 to 24 months depending on the variety. Early maturing varieties like Afisiafi take 8 to 12 months while late maturing varieties can take 18 to 24 months. CSIR improved varieties like Afisiafi, Bankye Hemaa and Abasafitaa mature in 9 to 12 months and give high yields. Cassava left in the ground beyond maturity becomes woody and loses starch content.",
+    "question_twi": "Bankye twa so sɛ wɔbɛyi no ahe?",
+    "answer_twi": "Bankye twa so wɔ sɛ mfee 8 kɔ 24 mu sɛ variety no so. Varieties a ɛtwa so ntɛm te sɛ Afisiafi twa so sɛ mfee 8 kɔ 12 na varieties a ɛtwa so nkɔɔ bɛtumi akɔsi mfee 18 kɔ 24. CSIR varieties a wɔaboa so te sɛ Afisiafi, Bankye Hemaa na Abasafitaa twa so sɛ mfee 9 kɔ 12 na wɔde nnoa aba. Bankye a wɔaagyae no wɔ asase mu akyi maturity yɛ dua na starch a ɛwɔ mu nansen."
+  },
+  {
+    "id": 160,
+    "category": "Irrigation & Water",
+    "question_en": "What can I do to store more water during the dry season?",
+    "answer_en": "Construct a farm pond or dig a larger deeper well. Install a rainwater harvesting system collecting from rooftops into tanks during rainy season. Use water-efficient irrigation methods. Alternatively identify permanent water sources like rivers and use pumps.",
+    "question_twi": "M'esre yera wɔ ɔpɛ bere mu. Ɛdeɛn na metumi guina nsuo dodo?",
+    "answer_twi": "Tu afuo pond anaa hu esre kɛse ne tenten. Si osu nsuo gye sistɛm a wɔde fi ato so gye wɔ tank mu wɔ osu bere mu. Fa nsuo ho anammɔn a ɛfa nsuo nkyɛn. Anoa, hwehwɛ nsuo a ɛda hɔ pɛ te sɛ ɔsubɔnten na de pump fa di dwuma."
+  },
+  {
+    "id": 543,
+    "category": "Oil Palm & Coconut",
+    "question_en": "Why are tree crops different from annual crops in business planning?",
+    "answer_en": "Tree crops may require substantial investment before reaching full production, so the farmer needs longer-term cash-flow planning.",
+    "question_twi": "Adɛn nti na tree crops yɛ soronko fi annual crops ho wɔ business planning mu?",
+    "answer_twi": "Tree crops tumi hia sika pii ansa na wɔafi ase bɔ aba pii, enti okuafoɔ hia cash-flow nhyehyɛe a ɛyɛ ma daakye tenten."
+  },
+  {
+    "id": 349,
+    "category": "Yam",
+    "question_en": "Can I grow yam without making traditional mounds?",
+    "answer_en": "Yes you can grow yam on flat land or ridges without traditional mounds but yields may be lower. On flat land use ridges 30 to 40 cm high. Staking is still essential. This method works better in areas with good rainfall and fertile soils. The advantage of flat or ridge planting is easier mechanization and lower labour cost. The disadvantage is that water can accumulate around the yam causing rot especially in heavy rainfall areas. Mounds remain the preferred method for most yam varieties.",
+    "question_twi": "Metumi ato bayerɛ a afe amma?",
+    "answer_twi": "Aane wobetumi ato bayerɛ wɔ asase a ɛtee anaa ridges a afe amma nanso nnoa bɛtumi ayɛ nketewa kakra. Wɔ asase a ɛtee so, de ridges a ɛtelɛ sɛntimita 30 kɔ 40 to. Staking da hia bere nyinaa. Nhyiamu yi yɛ adwuma yie wɔ hɔ a nsuo pa ne asase aduan wɔ. Mfaaso ne ɛyɛ mmerɛw sɛ wode machines yɛ adwuma na adwuma sika sua. Aho yɛ den ne sɛ nsuo bɛtumi adɔ so ho bayerɛ no ho a ɛma ɛsɛe a ɛhia pii wɔ hɔ a nsuo tɔ pii. Afe kyɛ sɛ ɛyɛ nhyiamu pa ma bayerɛ varieties bebree."
+  },
+  {
+    "id": 555,
+    "category": "Poultry Farming",
+    "question_en": "Why is ventilation important in a poultry house?",
+    "answer_en": "Good ventilation helps control heat, moisture, odours and air quality while reducing respiratory stress.",
+    "question_twi": "Adɛn nti na ventilation ho hia wɔ akokɔ fie?",
+    "answer_twi": "Ventilation pa boa ma ɔhyew, nsuo, hua ne mframa quality yɛ pɛ na ɛte respiratory stress so."
+  },
+  {
+    "id": 164,
+    "category": "Farm Management & General",
+    "question_en": "What does an agricultural extension officer do?",
+    "answer_en": "Agricultural extension officers from MOFA provide free advice and training to farmers. They can visit your farm to diagnose crop problems, recommend solutions, inform you about new varieties and technologies, connect you to government programs, and help you access subsidized inputs.",
+    "question_twi": "Dɛn na agricultural extension officer yɛ?",
+    "answer_twi": "Agricultural extension officers fi MOFA de boa ne nyansapɔ brɛ okuafo akyɛ. Wɔbetumi ba wo afuo so sɛ wuhwɛ nnuaba nsɛm, ka boa kyerɛ, kaa wo tia aba ne technology foforɔ ho, kyerɛ wo ɔman adwuma, na boa wo nya adenneɛ a wɔatwa wɔn boɔ."
+  },
+  {
+    "id": 7,
+    "category": "Soil & Land Preparation",
+    "question_en": "What can I do if my soil is too acidic?",
+    "answer_en": "Apply agricultural lime (calcium carbonate) to raise the pH of acidic soil. Typically apply 1-2 tonnes per hectare. Apply lime at least 3-4 weeks before planting and mix it well into the soil.",
+    "question_twi": "M'asase yɛ acidic dodo. Dɛn na metumi yɛ?",
+    "answer_twi": "De agricultural lime (calcium carbonate) to asase acidic no so sɛ ɛma pH no sor. Taa de tonne 1-2 to hectare biara so. De lime to asase so wiemu 3-4 ansa na wode aba to mu na ka ho yie wɔ asase mu."
+  },
+  {
+    "id": 285,
+    "category": "Cassava",
+    "question_en": "Which cassava varieties are best for making fufu in Ghana?",
+    "answer_en": "The best cassava varieties for fufu in Ghana are Afisiafi and Bankye Hemaa because they have high starch content, good texture when pounded, and stretch well. Dente and Abasafitaa are also good for fufu. Avoid watery or low-starch varieties as they produce poor-quality fufu. The cassava should be fresh and not overripe for best fufu quality.",
+    "question_twi": "Bankye variety bɛn na ɛhia pa ara ma fufu yɛ?",
+    "answer_twi": "Bankye varieties a ɛhia pa ara ma fufu yɛ wɔ Ghana ne Afisiafi ne Bankye Hemaa efisɛ wɔwɔ starch pii, texture pa bere a wode dome, na ɛtete yie. Dente ne Abasafitaa nso yɛ yie ma fufu. Gye wo ho fi watery anaa low-starch varieties efisɛ wɔde fufu a ɛnni yie yɛ. Bankye no nni yie sɛ ɛyɛ foforɔ na ɛantwa so akyi pa ara ma fufu pa."
+  },
+  {
+    "id": 460,
+    "category": "Grasscutter Farming",
+    "question_en": "What records should a grasscutter farmer keep?",
+    "answer_en": "Record breeding, births, deaths, feed use, treatments, sales and operating expenses.",
+    "question_twi": "Nsɛm bɛn na grasscutter okuafoɔ ɛsɛ sɛ ɔkyerɛw?",
+    "answer_twi": "Kyerɛw breeding, awo, owu, aduane, ayaresa, tɔn ne sika a wode yɛ adwuma."
+  },
+  {
+    "id": 226,
+    "category": "Plantain & Banana",
+    "question_en": "How do I start a plantain farm in Ghana?",
+    "answer_en": "Select a site with well-drained fertile soil and good rainfall. Get healthy suckers from disease-free plantain plants. Dig holes 60 cm wide and 60 cm deep at a spacing of 3 by 3 metres. Apply compost or well-rotted manure to each hole before planting. Plant the sucker upright, cover with topsoil and firm gently. Water if there is no rain. Plantain takes 9 to 12 months to produce its first bunch.",
+    "question_twi": "Dɛn na menyɛ sɛ mefi ase wɔ boɔde afuom adwuma wɔ Ghana?",
+    "answer_twi": "Yi asase a nsuo tew yie na asase no yɛ dɛ ne nsuo a ɛtɔ yie. Gye suckers pa fi boɔde nnuaba a yadeɛ nni ho. Boro awia a ɛteaa 60 sɛntimita tenten na 60 sɛntimita tia wɔ ahodɔ 3 ne 3 metres mu. De compost anaa aguare a ɛawie pɛpɛɛpɛ to ho wɔ awia biara mu ansa na wode to mu. De sucker no to straight, kata de asase a ɛwɔ atifi no na fi mu kakra. Quench sɛ nsuo annya so. Boɔde bɔ sɔ mu mfe baako do sɛ ɛbɛde ntama a ediɛ."
+  },
+  {
+    "id": 430,
+    "category": "Mushroom Farming",
+    "question_en": "Can mushroom farming be done in a small space?",
+    "answer_en": "Yes. Mushroom production can be carried out in controlled indoor spaces if temperature, hygiene and moisture can be managed.",
+    "question_twi": "Mushroom kuayɛ tumi yɛ wɔ beae ketewa mu anaa?",
+    "answer_twi": "Aane. Wobetumi ayɛ mushroom wɔ dan mu sɛ wobetumi ahwɛ ɔhyew, ahotew ne nsuo so."
+  },
+  {
+    "id": 204,
+    "category": "Pest & Disease Control",
+    "question_en": "What is aflatoxin and how does it affect my crops?",
+    "answer_en": "Aflatoxin is a toxic substance produced by molds that grow on grains, groundnuts, and spices when stored in humid conditions. It is harmful to humans and animals and causes liver disease. Prevent it by drying crops properly and using clean airtight storage.",
+    "question_twi": "Dɛn na aflatoxin yɛ na ɛyɛ m'nnuaba dɛn?",
+    "answer_twi": "Aflatoxin yɛ nsɛm a ɛyɛ ɔkɔm a fungus a ɛda sor wɔ nnuaba, nkatie, ne nduaba so bere a wɔaguina wɔ huhu mu na ɛba. Ɛyɛ onipa ne mmoa ɔkɔm na ɛma afu yadeɛ. Kora ase wɔ yaw nnuaba yie ansa na waguina na de nkuku a apo so yie guina."
+  },
+  {
+    "id": 28,
+    "category": "Soil & Land Preparation",
+    "question_en": "What is raised-bed farming and what are its benefits?",
+    "answer_en": "Raised bed farming means growing crops on elevated soil mounds or frames above the ground level. Benefits include better drainage, improved soil structure, easier weeding and harvesting, higher yield per square meter, better pest management, and ability to farm in poor soil areas. It is ideal for small spaces and home gardens.",
+    "question_twi": "Dɛn na asase-sor afuo farming yɛ na mfaaso bɛn na ɛwɔ?",
+    "answer_twi": "Asase-sor afuo farming kyerɛ kura nnuaba wɔ asase mounts anaa frame a ɛda sor sen asase soronko. Mfaaso ho ne: nsuo pue mu yie, asase mu siesie pa, nhaban tia ne nnuaba gye yɛ mmerɛ, nnuaba da sor dodo wɔ square meter biara mu, adwummakers hwɛ ase yie, na tumi kura wɔ asase a enni pa mu. Ɛfata afuo ketewa ne fie afuo."
+  },
+  {
+    "id": 518,
+    "category": "Climate-Smart Farming",
+    "question_en": "Why is crop diversity useful under climate uncertainty?",
+    "answer_en": "Different crops respond differently to weather conditions, so diversification can reduce the risk of losing all farm income from one weather event.",
+    "question_twi": "Adɛn nti na nnɔbae ahorow ho hia bere a ewim tebea nsakra?",
+    "answer_twi": "Nnɔbae ahorow yɛ wɔn ho wɔn ho wɔ weather ho, enti nneɛma ahorow tew ho kwan a weather event ba a wo sika nyinaa bɛyera wɔ nnɔbae baako mu."
+  },
+  {
+    "id": 239,
+    "category": "Tomato",
+    "question_en": "What causes tomato blossom-end rot and how can I manage it?",
+    "answer_en": "Blossom end rot shows as a dark brown or black sunken patch on the bottom of the tomato fruit. It is caused by calcium deficiency combined with irregular watering. Fix it by ensuring consistent irrigation so the plant can absorb calcium evenly, applying calcium nitrate or lime to the soil, avoiding excess nitrogen fertilizer which interferes with calcium uptake, and mulching to retain soil moisture.",
+    "question_twi": "Dɛn ma tomato blossom end rot na dɛn na menyɛ ho?",
+    "answer_twi": "Blossom end rot kyerɛ ho te sɛ nsono tuntum anaa owuo-tuntum a ɛwɔ tomato nsuo ase. Calcium a ɛyɛ papa annya kaa quench a ɛnte so ma ɛba. Boa ho de quench so yie sɛ nnuaba no bɛtumi agye calcium yie, de calcium nitrate anaa lime to asase mu, gye wo ho fi nitrogen ferefere a ɛboro so a ɛkyɛ calcium gye, na mulch sɛ asase nsuo aguina."
+  },
+  {
+    "id": 224,
+    "category": "Cassava",
+    "question_en": "How can I process cassava into gari?",
+    "answer_en": "Peel and wash the cassava roots thoroughly. Grate the cassava into a fine mash. Put the mash in a cloth bag and press out the liquid by placing heavy weights on top for 12 to 24 hours. Remove the cake and break it into fine granules. Fry in a clean pan over medium heat stirring continuously until dry and crispy. Sieve to remove lumps and store in airtight containers.",
+    "question_twi": "Dɛn na menyɛ bankye ho yɛ gari?",
+    "answer_twi": "Yi bankye no ho na hohoro mu yie. Grate bankye no ma ɛyɛ mash. De mash no kɔ ntama kotoku mu na wia nsuo a ɛwɔ mu de ahono kɛse ka ho awia 12 kɔ 24. Yi sponge no na bubu sɛ granules teketeke. Hyehye wɔ pan a ɛho tew wɔ ogya a ɛwɔ mfinimfini mu, ka ho sɛ ɛrenkyene kosi sɛ ɛtew na ɛkɔkɔ. Sie fi mu na sie wɔ containers a wɔato mu."
+  },
+  {
+    "id": 96,
+    "category": "Maize",
+    "question_en": "Can wind-damaged maize recover?",
+    "answer_en": "Lodging from wind can be managed by carefully straightening and mounding soil around fallen plants within 24-48 hours. However if the stem is broken recovery is unlikely. To prevent lodging choose short-stalked varieties and avoid excessive nitrogen.",
+    "question_twi": "Mframa tumi buu m'aburow nnua. Wɔtumi sane aba anaa?",
+    "answer_twi": "Wobetumi hwɛ nnua a mframa ato wɔn ase no ase wɔ de asase de si wɔn ho pɛ wɔ dafe 24-48 mu. Nanso sɛ tibo no apae a, ɛnyɛ ɔkorɔ sɛ wɔsane ba. Sɛ wohwehwɛ kora ase a, paw aba a wɔn tiboo tia na kora nitrogen ferefere ase."
+  },
+  {
+    "id": 31,
+    "category": "Pest & Disease Control",
+    "question_en": "How can I control weevils in stored grain?",
+    "answer_en": "Dry the grain properly before storage to below 13% moisture. Use hermetic airtight bags which suffocate insects. You can also mix grain with diatomite dust or apply approved grain protectant chemicals.",
+    "question_twi": "Ɛdeɛn na metumi de weevils hyɛ ase wɔ m'aduan a maguina mu?",
+    "answer_twi": "Yaw aduan no yie ansa na waguina mu na ɛsua 13% nsuku. Fa hermetic bags a wɔapo so yie a ɛkum adwummakers wɔ mu. Wobetumi de aduan ka diatomite tukutuku ho anaa de aduan adwummakers dawuro a wɔagyei no to so."
+  },
+  {
+    "id": 33,
+    "category": "Cassava",
+    "question_en": "My cassava leaves are turning yellow and curling. What should I do?",
+    "answer_en": "This could be Cassava Mosaic Disease spread by whiteflies. Symptoms include yellowing and leaf curling. There is no cure — remove and destroy infected plants immediately. Plant resistant varieties and control whitefly populations.",
+    "question_twi": "M'bankye nhaban redan sika na rekyekye. Dɛn na ɛhia?",
+    "answer_twi": "Eyi betumi yɛ Cassava Mosaic Yadeɛ a fitaa abowa adwummakers de brɛ. Ahohyenam ho ne nhaban hoho ne kyekyere. Enni dawuro — yi nnua a wɔayarɛ no na seaa won ntɛm ara. To aba a ɛtumi hyɛ ase na kora fitaa abowa adwummakers ase."
+  },
+  {
+    "id": 433,
+    "category": "Mushroom Farming",
+    "question_en": "What should I do if contamination keeps returning?",
+    "answer_en": "Review sanitation, substrate preparation, water quality, room cleanliness and handling practices to identify the source.",
+    "question_twi": "Dɛn na mɛyɛ sɛ contamination san ba bio?",
+    "answer_twi": "San hwɛ ahotew, substrate preparation, nsuo quality, dan no ho tew ne sɛnea wodi mushrooms no ho dwuma sɛnea wobɛhu baabi a ɔhaw no firi."
+  },
+  {
+    "id": 90,
+    "category": "Pest & Disease Control",
+    "question_en": "What is crop insurance and can Ghanaian farmers use it?",
+    "answer_en": "Crop insurance protects farmers against losses from drought, floods, pests, or other disasters by paying compensation when crops fail. In Ghana, the Ghana Agricultural Insurance Pool (GAIP) offers index-based weather insurance for farmers. Premiums are affordable and payouts are based on weather data not individual farm assessment. Contact MOFA or your cooperative to learn how to enroll.",
+    "question_twi": "Dɛn na nnuaba ho nsirɛ yɛ na okuafo Ghana tumi nya ase anaa?",
+    "answer_twi": "Nnuaba ho nsirɛ kora okuafo fi nnuaba ko a ɛba fi nsuo pa, nsuo tenten, adwummakers, anaa ɔkɔm foforɔ ho wɔ de sika brɛ wɔn bere a nnuaba nwu. Wɔ Ghana, Ghana Agricultural Insurance Pool (GAIP) de index-based weather insurance ma okuafo. Premium no boɔ yɛ ketewa na wɔde ɛwim nsɛm mmu ka ne afuo biara nhwɛ. Ka kyerɛ MOFA anaa wo cooperative sɛ wuhu ɛdeɛn na wosi wo din."
+  },
+  {
+    "id": 105,
+    "category": "Harvesting & Storage",
+    "question_en": "How can I reduce losses when transporting farm produce?",
+    "answer_en": "Reduce transport losses by: harvesting at the right maturity, grading and sorting produce before transport, using appropriate packaging (ventilated crates for fresh produce, strong sacks for grains), loading carefully to prevent crushing, traveling during cool hours (early morning or night), using roads that avoid excessive vibration, and selling as close to the farm as possible to reduce transport distance.",
+    "question_twi": "Ɛdeɛn na metumi sua mpoano a ɛba fi kwan so anammɔn bɔne ho?",
+    "answer_twi": "Sua kwan so mpoano wɔ: gye nnuaba bere a ɛsɛ, si ne yi nnuaba ansa na wede kɔ, fa packaging a ɛfata (afidie a mframa pue mu ma nnuaba foforo, kotoku den ma nnuaba a ayaw), de adwuma yie sɛ ɛnhow, kɔ bere a ɛhuru (owia da ano anaa anadwo), fa kwan a wonyi nnuaba no dodo, na tɔn a ɛbɛn afuo so ara sɛ sua kwan asukyerɛ."
+  },
+  {
+    "id": 143,
+    "category": "Cassava",
+    "question_en": "How should I grow sweet potatoes?",
+    "answer_en": "Sweet potato grows best in well-drained sandy loam soil. Plant vine cuttings (30-40 cm long) not seeds, inserting 2/3 of the cutting into the soil. Space 30 cm apart on ridges 90 cm apart. Apply NPK at planting. Weed early. Harvest 3-5 months after planting when leaves begin to yellow. Sweet potato is drought-tolerant and can grow in poor soils — excellent for climate resilience. The leaves are also nutritious and can be eaten as vegetables.",
+    "question_twi": "Ɛdeɛn na mekura asikyire bankye yie?",
+    "answer_twi": "Asikyire bankye da sor pa wɔ asase a nsuo pue mu yie na ɛyɛ asintiɛ loam. To vine cuttings (sɛntimita 30-40 tenten) na mfa aba, de 2/3 wɔ cutting no to asase mu. Gyae asukyerɛ sɛntimita 30 wɔ ntwaho so a ɛgyae sɛntimita 90. De NPK to mu bere a wode to. Tia nhaban foforo ntɛm. Gye abosome 3-5 akyi a wode to mu bere a nhaban reredan hoho. Asikyire bankye tumi nsuo pa ase hyɛ na ɛtumi da sor wɔ asase a enni pa — ɛyɛ ɔkorɔ pa ara ma katawere mu sɛsae ho. Nhaban no nso wɔ aduan ho nhwiren ne wobetumi di sɛ nnuan."
+  },
+  {
+    "id": 229,
+    "category": "Plantain & Banana",
+    "question_en": "How do I know when plantain is ready to harvest?",
+    "answer_en": "Plantain is ready to harvest when the fingers have rounded from angular and the fruit skin is still green but changing. The bunch should feel heavy and fingers fill out well. Harvest with a sharp cutlass by cutting the main stalk. Do not wait until the plantain turns yellow on the plant as it will be too ripe for cooking. The time from flowering to harvest is typically 3 to 4 months.",
+    "question_twi": "Dɛn na ɛkyerɛ sɛ boɔde atwa so sɛ wɔbɛyi?",
+    "answer_twi": "Boɔde atwa so sɛ wɔbɛyi bere a nsuo no atwa fi angle kɔ round na nhyiamu no ho da na ɛregyina so. Ntama no nni yie na nsuo nyinaa boro mu yie. Yi de cutlass akyer wɔ abɔ kɛse a ɛtumi so no ho. Nna ho kosi sɛ boɔde no yɛ yellow wɔ nnuaba so efisɛ ɛbɛyɛ papaa aduane wɔ asase no so. Bere a ɛfiri sɛ ɛredɛ kosi sɛ wɔbɛyi ne mfee mmiɛnsa kɔ nnan."
+  },
+  {
+    "id": 251,
+    "category": "Fish Farming",
+    "question_en": "How do I start a fish farm in Ghana?",
+    "answer_en": "Start by choosing your fish species — tilapia and catfish are most common in Ghana. Select a site with a reliable water source. You can use earthen ponds, concrete tanks or plastic tanks. Construct ponds of at least 500 square metres for commercial production. Stock fingerlings at the right density — for tilapia 3 to 5 fish per square metre and catfish 10 to 20 per square metre. Feed twice daily and harvest in 5 to 6 months.",
+    "question_twi": "Dɛn na menyɛ sɛ mefi ase apataa adwuma wɔ Ghana?",
+    "answer_twi": "Fi ase de yi wo apataa nhyiamu — tilapia ne catfish na wɔtaa to mu wɔ Ghana. Yi asase a nsuo wɔ so daadaa. Wobetumi de earthen ponds, concrete tanks anaa plastic tanks. Yɛ ponds a ɛtelɛ sɛ square metres 500 pɛ ma adwuma kɛse. De fingerlings si wɔ measure pa mu — ma tilapia, apataa 3 kɔ 5 biara square metre mu na catfish 10 kɔ 20 biara square metre mu. Didi mprɛn mmienu biara da na yi apataa mfee 5 kɔ 6 mu."
+  },
+  {
+    "id": 282,
+    "category": "Maize",
+    "question_en": "Can I grow maize during the dry season in Ghana?",
+    "answer_en": "Yes you can grow maize in the dry season but you need irrigation. Dry season maize in Ghana is most common in the Volta Basin, Afram Plains and parts of northern Ghana where irrigation schemes exist. Use short-duration varieties that mature in 75 to 90 days. Drip or furrow irrigation works well. Dry season maize often fetches higher prices because supply is low. The main challenge is the higher cost of water and risk of heat stress.",
+    "question_twi": "Metumi ato aburoɔ wɔ bone berɛ wɔ Ghana?",
+    "answer_twi": "Aane wobetumi ato aburoɔ wɔ bone berɛ nanso wohia quench. Bone berɛ aburoɔ wɔ Ghana taa ba wɔ Volta Basin, Afram Plains ne Ghana atifi ho bi a quench schemes wɔ hɔ. De short-duration varieties a ɛtwa so adays 75 kɔ 90 mu. Drip anaa furrow quench yɛ yie. Bone berɛ aburoɔ dwa bo tɔ sen paa bere biara efisɛ nnuaba nni so pii. Aho yɛ den ne nsuo sika a ɛboro so ne berɛhyɛ den yɛ haw."
+  },
+  {
+    "id": 26,
+    "category": "Soil & Land Preparation",
+    "question_en": "How should I plant crops on slopes to prevent water from washing the soil away?",
+    "answer_en": "On slopes, always plant across the slope (contour planting) rather than up and down. Make ridges along contour lines to hold water. Plant cover crops or grasses on the steepest parts. Use tied ridges (ridges with cross-ties every few meters) to capture rainwater. Mulch heavily to protect soil between plants.",
+    "question_twi": "Kwan bɛn na ɛsɛ sɛ mefa so dua nnɔbae wɔ mmepɔw so na ama nsuo anntu kɔ?",
+    "answer_twi": "Wɔ kwantempon so, to aba twa kwantempon so daa (contour planting) na mmom kɔ sor na gu ase. Yɛ ntwaho wɔ contour lines no ho na ama nsuo akora. To asase-bo nnuabas anaa atɛntɛnni wɔ beae a ɛkwan pa ara. Fa tied ridges (ntwaho a wɔne kyɛ ɛtɔ so baako biara) sɛ ɛgye osu nsuo. De mulch to so papaapa sɛ ɛkora asase nnuaba ntam."
+  },
+  {
+    "id": 115,
+    "category": "Soil & Land Preparation",
+    "question_en": "How can I make biochar to improve my soil?",
+    "answer_en": "Biochar is charcoal made from organic matter that improves soil when added. To make it: dig a pit or use a metal drum, fill with dry crop residues, wood chips, or husks, ignite and let it burn slowly with limited air (not fully exposed to oxygen), cover when partially charred to stop burning, let it cool, crush into small pieces, mix with compost before adding to soil. Biochar lasts in soil for hundreds of years and improves water and nutrient retention.",
+    "question_twi": "Ɛdeɛn na meyɛ biochar sɛ siesie asase?",
+    "answer_twi": "Biochar yɛ efi a wɔyɛ fi nhwiren foforo a ɛsiesie asase bere a wɔde ka ho. Yɛ no eyi: hu tumtum anaa fa metal drum, hye nnuaba nsennua a ayaw, dua bi anaa nkuto mu, hyew na ma ɛhye brɛ brɛ a mframa ketewa wɔ mu (amfa oxygen mu pɛpɛɛpɛ), sɛɛ bere a ɛrehye kakra sɛ ɛnhye bio, ma ɛhuru, tutu yɛ mmerɛ, ka compost ho ansa na wode ka asase ho. Biochar tena asase mu mfe ahabiri na ɛsiesie nsuo ne aduan guina."
+  }
+]

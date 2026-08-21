@@ -1,0 +1,814 @@
+{
+  "schema_version": 1,
+  "todo": 35,
+  "case_count": 80,
+  "group_counts": {
+    "topic_selection": 10,
+    "off_topic_question": 10,
+    "paraphrased_question": 10,
+    "english_question": 20,
+    "twi_question": 20,
+    "tts": 10
+  },
+  "cases": [
+    {
+      "id": "presentation_en_01",
+      "group": "english_question",
+      "language": "en",
+      "message": "What are the signs of good farming soil?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0001",
+      "expected_text": "Good farming soil is dark, crumbly, and has a pleasant earthy smell. Push your finger 5cm into the soil — if it holds shape but breaks apart easily, it is good. You can also send a sample to an agricultural office for a proper soil test."
+    },
+    {
+      "id": "presentation_en_02",
+      "group": "english_question",
+      "language": "en",
+      "message": "What fertilizer is best for maize?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0002",
+      "expected_text": "For maize, use NPK fertilizer (15-15-15) at planting, then top-dress with urea about 4-6 weeks after planting. Apply 2 bags of NPK per acre at planting and 1 bag of urea per acre when top-dressing."
+    },
+    {
+      "id": "presentation_en_03",
+      "group": "english_question",
+      "language": "en",
+      "message": "Can I use animal manure instead of chemical fertilizer?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0003",
+      "expected_text": "Yes, animal manure from cows, goats, or chickens is an excellent organic fertilizer. Apply well-composted manure 2-3 weeks before planting. It improves soil structure and provides slow-release nutrients."
+    },
+    {
+      "id": "presentation_en_04",
+      "group": "english_question",
+      "language": "en",
+      "message": "What is green manure and how do I use it?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0009",
+      "expected_text": "Green manure means growing specific crops like legumes or grasses and then plowing them back into the soil while still green. This adds organic matter and nitrogen to the soil. Common green manure crops include cowpea, mucuna, and lablab. Plow them in at least 3 weeks before planting your main crop."
+    },
+    {
+      "id": "presentation_en_05",
+      "group": "english_question",
+      "language": "en",
+      "message": "Can too much fertilizer damage my crops?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0011",
+      "expected_text": "Yes, over-fertilizing can burn plant roots and leaves, cause excessive leafy growth with poor fruiting, pollute water sources, and waste money. Always follow the recommended rates on fertilizer bags or advice from your extension officer. Start with less and increase gradually based on crop response."
+    },
+    {
+      "id": "presentation_en_06",
+      "group": "english_question",
+      "language": "en",
+      "message": "Can I grow vegetables during the dry season?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0021",
+      "expected_text": "Yes, you can grow vegetables in the dry season with irrigation. Crops like tomatoes, pepper, onions, leafy vegetables, and cucumbers grow well in dry season with proper watering."
+    },
+    {
+      "id": "presentation_en_07",
+      "group": "english_question",
+      "language": "en",
+      "message": "How can I control weevils in stored grain?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0031",
+      "expected_text": "Dry the grain properly before storage to below 13% moisture. Use hermetic airtight bags which suffocate insects. You can also mix grain with diatomite dust or apply approved grain protectant chemicals."
+    },
+    {
+      "id": "presentation_en_08",
+      "group": "english_question",
+      "language": "en",
+      "message": "My cassava leaves are turning yellow and curling. What should I do?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0033",
+      "expected_text": "This could be Cassava Mosaic Disease spread by whiteflies. Symptoms include yellowing and leaf curling. There is no cure — remove and destroy infected plants immediately. Plant resistant varieties and control whitefly populations."
+    },
+    {
+      "id": "presentation_en_09",
+      "group": "english_question",
+      "language": "en",
+      "message": "How can I control grasshoppers on my farm?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0039",
+      "expected_text": "Control grasshoppers by early morning spraying with approved insecticides like lambda-cyhalothrin. Biological control using Metarhizium fungi is also effective. Community-wide spraying is more effective than individual farm treatment."
+    },
+    {
+      "id": "presentation_en_10",
+      "group": "english_question",
+      "language": "en",
+      "message": "My beans have rust disease. What should I do?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0043",
+      "expected_text": "Bean rust appears as orange-brown powdery spots on leaves. Remove and destroy severely infected leaves. Spray with fungicides containing mancozeb or sulfur. Plant resistant varieties. Avoid overhead watering which spreads spores."
+    },
+    {
+      "id": "presentation_en_11",
+      "group": "english_question",
+      "language": "en",
+      "message": "How can I make a homemade chili pesticide spray?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0048",
+      "expected_text": "Blend 10-15 hot chili peppers with 1 litre of water. Strain through cloth, add a little liquid soap, and dilute with 5 more litres of water. Spray on affected plants in the morning or evening. The capsaicin in chili repels and kills soft-bodied insects like aphids and mites. Reapply every 3-4 days and after rain."
+    },
+    {
+      "id": "presentation_en_12",
+      "group": "english_question",
+      "language": "en",
+      "message": "How can I control thrips on onions?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0054",
+      "expected_text": "Thrips are tiny insects that feed on onion leaves causing silvery streaks and distorted growth. Control by: removing heavily infested leaves, spraying with neem oil or insecticides like spinosad or imidacloprid, mulching to prevent thrips from pupating in soil, avoiding planting near other infested crops, and using blue sticky traps for monitoring."
+    },
+    {
+      "id": "presentation_en_13",
+      "group": "english_question",
+      "language": "en",
+      "message": "What time of day is best for harvesting vegetables?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0064",
+      "expected_text": "Harvest vegetables in the early morning when temperatures are cool. This helps produce stay fresh longer. Avoid harvesting in midday heat. For leafy vegetables, harvest with dew still present for crispness."
+    },
+    {
+      "id": "presentation_en_14",
+      "group": "english_question",
+      "language": "en",
+      "message": "How do I know when palm fruits are ready to harvest?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0068",
+      "expected_text": "Palm fruits are ready when they turn reddish-orange and some fruits start falling naturally from the bunch. Use a long-handled chisel or harvesting sickle to cut the bunch from the tree. Collect fallen fruits from the ground too. Process within 24-48 hours of harvest to avoid free fatty acid buildup which reduces oil quality."
+    },
+    {
+      "id": "presentation_en_15",
+      "group": "english_question",
+      "language": "en",
+      "message": "How should I store yam properly?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0075",
+      "expected_text": "Store yams in a cool, dark, well-ventilated area. Traditional yam barns work well. Avoid contact with soil and keep yams off the ground. Inspect regularly and remove any rotting tubers. Yams can last 4-6 months."
+    },
+    {
+      "id": "presentation_en_16",
+      "group": "english_question",
+      "language": "en",
+      "message": "How can I store dried fish or meat without a refrigerator?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0079",
+      "expected_text": "Dry fish or meat thoroughly until it is very hard and dry. Wrap tightly in cloth or paper, then in a plastic bag. Store in a cool, dry, ventilated area away from moisture and insects. You can smoke the meat or fish to extend shelf life. Inspect weekly and re-dry immediately if any moisture is detected. Properly dried fish or meat can last 2-3 months."
+    },
+    {
+      "id": "presentation_en_17",
+      "group": "english_question",
+      "language": "en",
+      "message": "Where can I sell my farm produce for a better price?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0083",
+      "expected_text": "Sell directly at local markets, to aggregators or food processing companies, or form a cooperative with other farmers. Register with government programs like PFJ which helps connect farmers to buyers."
+    },
+    {
+      "id": "presentation_en_18",
+      "group": "english_question",
+      "language": "en",
+      "message": "What fertilizer is best for plantain?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0137",
+      "expected_text": "Plantain responds well to organic matter such as manure and compost plus potassium-rich fertilizers. Apply NPK 15-15-15 at planting then top-dress with muriate of potash during bunch development. Potassium is critical for good bunch weight and disease resistance."
+    },
+    {
+      "id": "presentation_en_19",
+      "group": "english_question",
+      "language": "en",
+      "message": "What are the best practices for growing garden eggs?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0147",
+      "expected_text": "Garden eggs grow best in warm conditions with well-drained fertile soil. Start seeds in a nursery and transplant 4-6 week old seedlings. Space 60x60 cm. Apply NPK at planting and top-dress with urea at 4 weeks. Stake plants when they get large. Watch for mites, aphids, and flea beetles. Harvest when fruits are still firm and glossy — over-ripe fruits become bitter. Garden eggs are popular in Ghanaian cuisine and have strong local market demand."
+    },
+    {
+      "id": "presentation_en_20",
+      "group": "english_question",
+      "language": "en",
+      "message": "What are the signs that a goat is pregnant and what should I do?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0187",
+      "expected_text": "Signs of goat pregnancy include: no return to heat after mating, enlarged abdomen especially from month 3, enlarged udder especially in the last month, behavioral changes like becoming calmer, and weight gain. Care during pregnancy: provide extra feed especially in the last 6 weeks, ensure access to clean water always, avoid rough handling, vaccinate against clostridial diseases, deworm at least 3 weeks before kidding, and prepare a clean kidding area."
+    },
+    {
+      "id": "presentation_tw_01",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Dɛn na menyɛ sɛ meto carrot wɔ Ghana?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0247",
+      "expected_text": "Carrot to yie wɔ asase a ɛte, tia, na abo nni mu sandy loam asase. Siesie bed no de boro tia sɛ sɛntimita 30 na yi abo ne nsono. Wui aba straight wɔ rows a sɛntimita 20 ntam wɔ tia sɛntimita baako. Yi seedlings kɔsi sɛ sɛntimita 5 kɔ 8 ntam akyi a wɔatua fɔw. De ferefere a phosphorus wɔ mu to ho bere a wode to mu. Carrot hia nsuo so yie nanso nsuo nni mu agyina. Ɛtwa so sɛ wɔbɛyi adays 70 kɔ 80 mu."
+    },
+    {
+      "id": "presentation_tw_02",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Dɛn na menyɛ sɛ mefi ase oguan adwuma wɔ Ghana?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0265",
+      "expected_text": "Oguan breeds a wɔpɛ wɔ Ghana ne West African Dwarf Sheep ne Djallonke. Fi ase de mmirikyi 5 kɔ 10 ne ɔbarima baako. Sie wɔn wɔ pen a ɛtele a ɛhwɛ wɔn so fi nsuo, adwummaker ne parasites. Oguan taa didi nhawan yie na wobetumi akora wɔn wɔ nnuaba a ato fɛw, nhawan ne hay so. Hware so ma PPR afe biara. Oguan twa so na wubetumi atɔ wɔn ma nam sɛ mfee nsia kɔ duodu akyi. Oguan bo tɔ sen paa bere a afenhyia ba te sɛ Eid ne Bosome Dɔ."
+    },
+    {
+      "id": "presentation_tw_03",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Mɛyɛ dɛn apaw beae a mɛdua aburow?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0364",
+      "expected_text": "Paw beae a nsuo wɔ no yie, asase no fata, nsuo tumi firi mu, na kwan kɔ hɔ yɛ mmerɛ. Mfa beae a wontumi nnya nsuo mfi mu bere a nnɔbae no awie ase."
+    },
+    {
+      "id": "presentation_tw_04",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Mɛyɛ dɛn apaw beae a mɛyɛ cocoa nursery?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0374",
+      "expected_text": "Paw beae a nsuo tumi firi mu, nsuo wɔ hɔ, mframa den nnya hɔ dodo na sunsuma wɔ hɔ. Ma nursery no ho tew na ɛnyɛ den sɛ wobɛhwɛ so."
+    },
+    {
+      "id": "presentation_tw_05",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Mɛyɛ dɛn ama nkatie nhwiren ne aba no ayɛ yie?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0384",
+      "expected_text": "Paw asase a nsuo tumi firi mu, yi nwura a ɛdɔɔso na siesie asase no yie nanso mfa mfrafra asase no dodo."
+    },
+    {
+      "id": "presentation_tw_06",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Mɛyɛ dɛn ahyɛ okra afuo ase?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0394",
+      "expected_text": "Paw asase pa a nsuo firi mu, nya aba pa, siesie asase, dua wɔ ntam a ɛfata na yɛ nhwɛso nwura ne gyeɛ daa."
+    },
+    {
+      "id": "presentation_tw_07",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Beae bɛn na ɛfata ma cucumber?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0404",
+      "expected_text": "Paw beae a owia wɔ, asase no yɛ pa na nsuo firi mu yie, na nsuo wɔ hɔ daa."
+    },
+    {
+      "id": "presentation_tw_08",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Mɛyɛ dɛn apaw asase ma watermelon?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0414",
+      "expected_text": "Paw asase a ɛyɛ hyew, owia wɔ, nsuo firi mu yie na ɛyɛ pa, na beae no yɛ kɛse ma vines no trɛw."
+    },
+    {
+      "id": "presentation_tw_09",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Tebea bɛn na ɛsɛ sɛ mushrooms nya na wɔnyin?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0424",
+      "expected_text": "Mushroom hia growing material a ɛfata, nsuo, ɔhyew a ɛfata, ahotew ne mframa a ɛkɔ mu sɛnea species no hia."
+    },
+    {
+      "id": "presentation_tw_10",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Mɛyɛ dɛn apaw piglets a wɔyɛ ahoɔden?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0434",
+      "expected_text": "Paw piglets a wɔyɛ active, wɔn ani yɛ clear, wɔn nipadua tebea yɛ pa, wɔn nan yɛ den na yare ho nsɛnkyerɛnne nni ho."
+    },
+    {
+      "id": "presentation_tw_11",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Mɛyɛ dɛn ahyɛ rabbit kuayɛ ketewa ase?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0444",
+      "expected_text": "Fi rabbits a wɔyɛ ahoɔden mu ase, nya dan a ɛfata, aduane ne nsuo a wɔde di dwuma daa, ahotew nhyehyɛe ne kyerɛwtohɔ ketewa."
+    },
+    {
+      "id": "presentation_tw_12",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Dan bɛn na grasscutter kuayɛ hia?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0454",
+      "expected_text": "Dan no ɛsɛ sɛ ɛbɔ mmoa no ho ban, ɛyɛ yera, mframa kɔ mu na wɔayɛ no sɛnea mmoa no renya kwan aguan anaa mmoa biara antwe wɔn."
+    },
+    {
+      "id": "presentation_tw_13",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Mɛyɛ dɛn apaw beae ama snail kuayɛ?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0464",
+      "expected_text": "Paw beae a ɛnwɔ ɔhyew dodo, ɛwɔ sunsuma, nsuo wɔ mu kakra, ɛbɔ mmoa no ho ban na nsuo tumi firi mu yie."
+    },
+    {
+      "id": "presentation_tw_14",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Dɛn na ɛsɛ sɛ misusuw ho ansa na mahyɛ nkyene yɛ kuayɛ ase?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0474",
+      "expected_text": "Susuw nhwiren a ɛwɔ mpɔtam, nsuo, beehive banbɔ, mpɔtam mmara, adwuma, ahobammɔ ne beae a ɛwɔ nnipa akyi kakra ho."
+    },
+    {
+      "id": "presentation_tw_15",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Mɛyɛ dɛn apaw farm tool a ɛfata adwuma bi?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0484",
+      "expected_text": "Paw no gyina adwuma no, asase tebea, nnɔbae, afuo kɛse, boɔ, baabi a wubenya no ne ahobammɔ ne maintenance so."
+    },
+    {
+      "id": "presentation_tw_16",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Nsɛmmisa bɛn na ɛsɛ sɛ mibisa ansa na mede sika ahyɛ kuayɛ adwuma foforo mu?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0494",
+      "expected_text": "Susuw kuayɛ adwuma no, gua a wopɛ, production plan, nneɛma a wowɔ, sika a wobɛbɔ, sika a wɔhwɛ kwan sɛ wobɛtɔn no, ɔhaw ne bere nhyehyɛe ho."
+    },
+    {
+      "id": "presentation_tw_17",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Adɛn nti na ɛnsɛ sɛ mede nnɔbae a magye no gyaw owia tee mu?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0504",
+      "expected_text": "Owia hyew ma nsuo firi nnɔbae mu ntɛm na ɛtew shelf life so. Fa wɔn kɔ sunsuma na ma wɔyɛ nwunu bere a wogye wɔn akyi."
+    },
+    {
+      "id": "presentation_tw_18",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Mɛyɛ dɛn asiesie m'akuayɛ ma osu bere no akyɛ?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0514",
+      "expected_text": "Hwɛ local weather nsɛm, paw bere ne variety a ɛfata, kora nsuo wɔ asase mu na mma wofiri ase dua ntɛm wɔ asase a ɛda so yɛ kusuu mu."
+    },
+    {
+      "id": "presentation_tw_19",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Farm records bɛn na beginner okuafoɔ ɛsɛ sɛ ofi ase de?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0524",
+      "expected_text": "Fi crop area, da a wotɔɔ, aba a wode dii dwuma, inputs titiriw, adwumayɛfo, harvest dodow, tɔn ne sika a wode yɛ adwuma ase."
+    },
+    {
+      "id": "presentation_tw_20",
+      "group": "twi_question",
+      "language": "tw",
+      "message": "Adɛn nti na plant spacing ho hia wɔ oil palm afuo mu?",
+      "expected_type": "answer",
+      "expected_state": "A",
+      "expected_record_id": "qa-0534",
+      "expected_text": "Ntam a ɛfata tew overcrowding so, ma owia ne mframa kɔ mu yie na ɛma palm biara nya beae a ɛsɛ."
+    },
+    {
+      "id": "presentation_para_en_01",
+      "group": "paraphrased_question",
+      "language": "en",
+      "message": "Which fertiliser should I apply to my maize crop?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ]
+    },
+    {
+      "id": "presentation_para_tw_01",
+      "group": "paraphrased_question",
+      "language": "tw",
+      "message": "Ferefere bɛn na mede mma me aburo afuo?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ]
+    },
+    {
+      "id": "presentation_para_en_02",
+      "group": "paraphrased_question",
+      "language": "en",
+      "message": "What is the right season to sow maize in Ghana?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ]
+    },
+    {
+      "id": "presentation_para_tw_02",
+      "group": "paraphrased_question",
+      "language": "tw",
+      "message": "Bere pa bɛn na ɛsɛ sɛ medua aburo wɔ Ghana?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ]
+    },
+    {
+      "id": "presentation_para_en_03",
+      "group": "paraphrased_question",
+      "language": "en",
+      "message": "What signs suggest that pond fish lack oxygen?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ]
+    },
+    {
+      "id": "presentation_para_tw_03",
+      "group": "paraphrased_question",
+      "language": "tw",
+      "message": "Ahohyɛn bɛn na ɛkyerɛ sɛ oxygen sua wɔ apataa tadeɛ mu?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ]
+    },
+    {
+      "id": "presentation_para_en_04",
+      "group": "paraphrased_question",
+      "language": "en",
+      "message": "How can I recognize illness early in my young chickens?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ]
+    },
+    {
+      "id": "presentation_para_tw_04",
+      "group": "paraphrased_question",
+      "language": "tw",
+      "message": "Mɛyɛ dɛn ahu ntɛm sɛ me nkokɔ mma ayare?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ]
+    },
+    {
+      "id": "presentation_para_en_05",
+      "group": "paraphrased_question",
+      "language": "en",
+      "message": "How can crop waste become useful compost for my farm?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ]
+    },
+    {
+      "id": "presentation_para_tw_05",
+      "group": "paraphrased_question",
+      "language": "tw",
+      "message": "Mɛyɛ dɛn de afuo mu nwura ayɛ compost ama m'afuo?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ]
+    },
+    {
+      "id": "presentation_off_01",
+      "group": "off_topic_question",
+      "language": "en",
+      "message": "What is the capital city of France?",
+      "expected_type": "off_topic",
+      "expected_state": "C"
+    },
+    {
+      "id": "presentation_off_02",
+      "group": "off_topic_question",
+      "language": "tw",
+      "message": "France ahenkurow no din de sɛn?",
+      "expected_type": "off_topic",
+      "expected_state": "C"
+    },
+    {
+      "id": "presentation_off_03",
+      "group": "off_topic_question",
+      "language": "en",
+      "message": "How can I replace a cracked laptop screen?",
+      "expected_type": "off_topic",
+      "expected_state": "C"
+    },
+    {
+      "id": "presentation_off_04",
+      "group": "off_topic_question",
+      "language": "tw",
+      "message": "Mɛyɛ dɛn asesa laptop screen a apaapae?",
+      "expected_type": "off_topic",
+      "expected_state": "C"
+    },
+    {
+      "id": "presentation_off_05",
+      "group": "off_topic_question",
+      "language": "en",
+      "message": "What was the final score in yesterday's football game?",
+      "expected_type": "off_topic",
+      "expected_state": "C"
+    },
+    {
+      "id": "presentation_off_06",
+      "group": "off_topic_question",
+      "language": "tw",
+      "message": "Bɔɔlbɔ agodie a wɔbɔe nnora no baa awiei sɛn?",
+      "expected_type": "off_topic",
+      "expected_state": "C"
+    },
+    {
+      "id": "presentation_off_07",
+      "group": "off_topic_question",
+      "language": "en",
+      "message": "How does a decorator work in Python?",
+      "expected_type": "off_topic",
+      "expected_state": "C"
+    },
+    {
+      "id": "presentation_off_08",
+      "group": "off_topic_question",
+      "language": "tw",
+      "message": "Python mu decorator yɛ adwuma sɛn?",
+      "expected_type": "off_topic",
+      "expected_state": "C"
+    },
+    {
+      "id": "presentation_off_09",
+      "group": "off_topic_question",
+      "language": "en",
+      "message": "Can you tell me a funny joke about school?",
+      "expected_type": "off_topic",
+      "expected_state": "C"
+    },
+    {
+      "id": "presentation_off_10",
+      "group": "off_topic_question",
+      "language": "tw",
+      "message": "Wubetumi aka sukuu ho aseresɛm bi akyerɛ me?",
+      "expected_type": "off_topic",
+      "expected_state": "C"
+    },
+    {
+      "id": "presentation_topic_01",
+      "group": "topic_selection",
+      "language": "en",
+      "topic": "Soil & Land Preparation",
+      "expected_suggestion_ids": [
+        "qa-0001",
+        "qa-0004",
+        "qa-0005",
+        "qa-0006",
+        "qa-0007"
+      ]
+    },
+    {
+      "id": "presentation_topic_02",
+      "group": "topic_selection",
+      "language": "tw",
+      "topic": "Fertilizer & Nutrients",
+      "expected_suggestion_ids": [
+        "qa-0011",
+        "qa-0012",
+        "qa-0040",
+        "qa-0051",
+        "qa-0125"
+      ]
+    },
+    {
+      "id": "presentation_topic_03",
+      "group": "topic_selection",
+      "language": "en",
+      "topic": "Maize",
+      "expected_suggestion_ids": [
+        "qa-0002",
+        "qa-0016",
+        "qa-0017",
+        "qa-0018",
+        "qa-0025"
+      ]
+    },
+    {
+      "id": "presentation_topic_04",
+      "group": "topic_selection",
+      "language": "tw",
+      "topic": "Cassava",
+      "expected_suggestion_ids": [
+        "qa-0033",
+        "qa-0060",
+        "qa-0066",
+        "qa-0074",
+        "qa-0087"
+      ]
+    },
+    {
+      "id": "presentation_topic_05",
+      "group": "topic_selection",
+      "language": "en",
+      "topic": "Plantain & Banana",
+      "expected_suggestion_ids": [
+        "qa-0137",
+        "qa-0138",
+        "qa-0139",
+        "qa-0226",
+        "qa-0227"
+      ]
+    },
+    {
+      "id": "presentation_topic_06",
+      "group": "topic_selection",
+      "language": "tw",
+      "topic": "Yam",
+      "expected_suggestion_ids": [
+        "qa-0075",
+        "qa-0151",
+        "qa-0231",
+        "qa-0232",
+        "qa-0233"
+      ]
+    },
+    {
+      "id": "presentation_topic_07",
+      "group": "topic_selection",
+      "language": "en",
+      "topic": "Cocoyam",
+      "expected_suggestion_ids": [
+        "qa-0235",
+        "qa-0236",
+        "qa-0316",
+        "qa-0350"
+      ]
+    },
+    {
+      "id": "presentation_topic_08",
+      "group": "topic_selection",
+      "language": "tw",
+      "topic": "Tomatoes",
+      "expected_suggestion_ids": [
+        "qa-0021",
+        "qa-0024",
+        "qa-0027",
+        "qa-0029",
+        "qa-0032"
+      ]
+    },
+    {
+      "id": "presentation_topic_09",
+      "group": "topic_selection",
+      "language": "en",
+      "topic": "Pepper",
+      "expected_suggestion_ids": [
+        "qa-0048",
+        "qa-0070",
+        "qa-0117",
+        "qa-0129",
+        "qa-0200"
+      ]
+    },
+    {
+      "id": "presentation_topic_10",
+      "group": "topic_selection",
+      "language": "tw",
+      "topic": "Onion",
+      "expected_suggestion_ids": [
+        "qa-0054",
+        "qa-0113",
+        "qa-0131",
+        "qa-0245",
+        "qa-0246"
+      ]
+    },
+    {
+      "id": "presentation_tts_en_01",
+      "group": "tts",
+      "language": "en",
+      "message": "Check the soil before planting.",
+      "expected_manual_playback": true
+    },
+    {
+      "id": "presentation_tts_en_02",
+      "group": "tts",
+      "language": "en",
+      "message": "Keep harvested maize dry and clean.",
+      "expected_manual_playback": true
+    },
+    {
+      "id": "presentation_tts_en_03",
+      "group": "tts",
+      "language": "en",
+      "message": "Observe your chickens every morning.",
+      "expected_manual_playback": true
+    },
+    {
+      "id": "presentation_tts_en_04",
+      "group": "tts",
+      "language": "en",
+      "message": "Use clean water in the fish pond.",
+      "expected_manual_playback": true
+    },
+    {
+      "id": "presentation_tts_en_05",
+      "group": "tts",
+      "language": "en",
+      "message": "Contact an extension officer when unsure.",
+      "expected_manual_playback": true
+    },
+    {
+      "id": "presentation_tts_tw_01",
+      "group": "tts",
+      "language": "tw",
+      "message": "Hwɛ asase no ansa na woadua aba.",
+      "expected_manual_playback": true
+    },
+    {
+      "id": "presentation_tts_tw_02",
+      "group": "tts",
+      "language": "tw",
+      "message": "Ma aburo a woatwa no nwo yie.",
+      "expected_manual_playback": true
+    },
+    {
+      "id": "presentation_tts_tw_03",
+      "group": "tts",
+      "language": "tw",
+      "message": "Hwɛ wo nkokɔ no anɔpa biara.",
+      "expected_manual_playback": true
+    },
+    {
+      "id": "presentation_tts_tw_04",
+      "group": "tts",
+      "language": "tw",
+      "message": "Fa nsuo pa gu apataa tadeɛ no mu.",
+      "expected_manual_playback": true
+    },
+    {
+      "id": "presentation_tts_tw_05",
+      "group": "tts",
+      "language": "tw",
+      "message": "Bisa kuayɛ ɔfotufoɔ bere a wo nnim nea wobɛyɛ.",
+      "expected_manual_playback": true
+    }
+  ]
+}

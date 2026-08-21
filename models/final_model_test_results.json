@@ -1,0 +1,653 @@
+{
+  "schema_version": 1,
+  "todo": 22,
+  "generated_at_utc": "2026-08-20T22:55:34.510894+00:00",
+  "active_model": {
+    "display_version": "AgriBotGH Retrieval Model v1.0.1",
+    "semantic_version": "1.0.1",
+    "architecture": "topic_aware_tfidf"
+  },
+  "summary": {
+    "total": 22,
+    "passed": 22,
+    "failed": 0,
+    "all_passed": true
+  },
+  "groups": {
+    "agricultural_question": {
+      "total": 2,
+      "passed": 2
+    },
+    "capitalization_and_punctuation": {
+      "total": 2,
+      "passed": 2
+    },
+    "empty_input": {
+      "total": 2,
+      "passed": 2
+    },
+    "exact_known_question": {
+      "total": 2,
+      "passed": 2
+    },
+    "extremely_short_input": {
+      "total": 2,
+      "passed": 2
+    },
+    "language_separation": {
+      "total": 2,
+      "passed": 2
+    },
+    "mixed_language_input": {
+      "total": 2,
+      "passed": 2
+    },
+    "paraphrased_question": {
+      "total": 2,
+      "passed": 2
+    },
+    "unrelated_question": {
+      "total": 2,
+      "passed": 2
+    },
+    "unsupported_agricultural_question": {
+      "total": 2,
+      "passed": 2
+    },
+    "very_long_input": {
+      "total": 2,
+      "passed": 2
+    }
+  },
+  "stability_observations": [
+    {
+      "case_id": "en_long_input",
+      "type": "off_topic",
+      "routing_state": "C",
+      "input_length": 5606
+    },
+    {
+      "case_id": "tw_long_input",
+      "type": "off_topic",
+      "routing_state": "C",
+      "input_length": 3206
+    },
+    {
+      "case_id": "mixed_twi_en",
+      "type": "off_topic",
+      "routing_state": "C",
+      "input_length": 40
+    }
+  ],
+  "known_limitations": [
+    "The conservative model routes supported paraphrases to State B instead of returning an automatic answer.",
+    "Very long keyword-repetition inputs are stability tests only; their routing state is recorded but not treated as proof of semantic quality.",
+    "Mixed-language behavior is supported defensively, but automatic cross-language retrieval is intentionally not enabled."
+  ],
+  "results": [
+    {
+      "case_id": "en_exact_known",
+      "group": "exact_known_question",
+      "language": "en",
+      "input_length": 34,
+      "expected": {
+        "status": 200,
+        "response_type": "answer",
+        "state": "A",
+        "source": "canonical_exact",
+        "record_id": "qa-0002",
+        "canonical_answer": true
+      },
+      "actual": {
+        "status": 200,
+        "type": "answer",
+        "routing_state": "A",
+        "source": "canonical_exact",
+        "record_id": "qa-0002",
+        "suggestion_count": 0,
+        "topic_count": 0,
+        "error": null,
+        "elapsed_ms": 16.091
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "en_paraphrase",
+      "group": "paraphrased_question",
+      "language": "en",
+      "input_length": 49,
+      "expected": {
+        "status": 200,
+        "response_type": "low_confidence",
+        "state": "B",
+        "minimum_suggestions": 1
+      },
+      "actual": {
+        "status": 200,
+        "type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "record_id": null,
+        "suggestion_count": 5,
+        "topic_count": 0,
+        "error": null,
+        "elapsed_ms": 21.043
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "en_agricultural",
+      "group": "agricultural_question",
+      "language": "en",
+      "input_length": 20,
+      "expected": {
+        "status": 200,
+        "response_type": "low_confidence",
+        "state": "B",
+        "minimum_suggestions": 1
+      },
+      "actual": {
+        "status": 200,
+        "type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "record_id": null,
+        "suggestion_count": 5,
+        "topic_count": 0,
+        "error": null,
+        "elapsed_ms": 21.567
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "en_unsupported_agriculture",
+      "group": "unsupported_agricultural_question",
+      "language": "en",
+      "input_length": 46,
+      "expected": {
+        "status": 200,
+        "response_type": "low_confidence",
+        "state": "B",
+        "minimum_suggestions": 1
+      },
+      "actual": {
+        "status": 200,
+        "type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "record_id": null,
+        "suggestion_count": 2,
+        "topic_count": 0,
+        "error": null,
+        "elapsed_ms": 18.934
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "en_unrelated",
+      "group": "unrelated_question",
+      "language": "en",
+      "input_length": 38,
+      "expected": {
+        "status": 200,
+        "response_type": "off_topic",
+        "state": "C"
+      },
+      "actual": {
+        "status": 200,
+        "type": "off_topic",
+        "routing_state": "C",
+        "source": "retrieval_v1",
+        "record_id": null,
+        "suggestion_count": 0,
+        "topic_count": 28,
+        "error": null,
+        "elapsed_ms": 18.74
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "tw_exact_known",
+      "group": "exact_known_question",
+      "language": "tw",
+      "input_length": 52,
+      "expected": {
+        "status": 200,
+        "response_type": "answer",
+        "state": "A",
+        "source": "canonical_exact",
+        "record_id": "qa-0016",
+        "canonical_answer": true
+      },
+      "actual": {
+        "status": 200,
+        "type": "answer",
+        "routing_state": "A",
+        "source": "canonical_exact",
+        "record_id": "qa-0016",
+        "suggestion_count": 0,
+        "topic_count": 0,
+        "error": null,
+        "elapsed_ms": 0.985
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "tw_paraphrase",
+      "group": "paraphrased_question",
+      "language": "tw",
+      "input_length": 43,
+      "expected": {
+        "status": 200,
+        "response_type": "low_confidence",
+        "state": "B",
+        "minimum_suggestions": 1
+      },
+      "actual": {
+        "status": 200,
+        "type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "record_id": null,
+        "suggestion_count": 5,
+        "topic_count": 0,
+        "error": null,
+        "elapsed_ms": 17.11
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "tw_agricultural",
+      "group": "agricultural_question",
+      "language": "tw",
+      "input_length": 32,
+      "expected": {
+        "status": 200,
+        "response_type": "low_confidence",
+        "state": "B",
+        "minimum_suggestions": 1
+      },
+      "actual": {
+        "status": 200,
+        "type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "record_id": null,
+        "suggestion_count": 5,
+        "topic_count": 0,
+        "error": null,
+        "elapsed_ms": 23.843
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "tw_unsupported_agriculture",
+      "group": "unsupported_agricultural_question",
+      "language": "tw",
+      "input_length": 30,
+      "expected": {
+        "status": 200,
+        "response_type": "low_confidence",
+        "state": "B",
+        "minimum_suggestions": 1
+      },
+      "actual": {
+        "status": 200,
+        "type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "record_id": null,
+        "suggestion_count": 3,
+        "topic_count": 0,
+        "error": null,
+        "elapsed_ms": 15.436
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "tw_unrelated",
+      "group": "unrelated_question",
+      "language": "tw",
+      "input_length": 43,
+      "expected": {
+        "status": 200,
+        "response_type": "off_topic",
+        "state": "C"
+      },
+      "actual": {
+        "status": 200,
+        "type": "off_topic",
+        "routing_state": "C",
+        "source": "retrieval_v1",
+        "record_id": null,
+        "suggestion_count": 0,
+        "topic_count": 28,
+        "error": null,
+        "elapsed_ms": 20.909
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "empty_input",
+      "group": "empty_input",
+      "language": "en",
+      "input_length": 0,
+      "expected": {
+        "status": 400,
+        "error": "No message provided"
+      },
+      "actual": {
+        "status": 400,
+        "type": null,
+        "routing_state": null,
+        "source": null,
+        "record_id": null,
+        "suggestion_count": 0,
+        "topic_count": 0,
+        "error": "No message provided",
+        "elapsed_ms": 1.71
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "whitespace_input",
+      "group": "empty_input",
+      "language": "tw",
+      "input_length": 3,
+      "expected": {
+        "status": 400,
+        "error": "No message provided"
+      },
+      "actual": {
+        "status": 400,
+        "type": null,
+        "routing_state": null,
+        "source": null,
+        "record_id": null,
+        "suggestion_count": 0,
+        "topic_count": 0,
+        "error": "No message provided",
+        "elapsed_ms": 1.279
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "en_extremely_short",
+      "group": "extremely_short_input",
+      "language": "en",
+      "input_length": 5,
+      "expected": {
+        "status": 200,
+        "response_type": "topics",
+        "topic_count": 28
+      },
+      "actual": {
+        "status": 200,
+        "type": "topics",
+        "routing_state": null,
+        "source": null,
+        "record_id": null,
+        "suggestion_count": 0,
+        "topic_count": 28,
+        "error": null,
+        "elapsed_ms": 1.71
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "tw_extremely_short",
+      "group": "extremely_short_input",
+      "language": "tw",
+      "input_length": 5,
+      "expected": {
+        "status": 200,
+        "response_type": "topics",
+        "topic_count": 28
+      },
+      "actual": {
+        "status": 200,
+        "type": "topics",
+        "routing_state": null,
+        "source": null,
+        "record_id": null,
+        "suggestion_count": 0,
+        "topic_count": 28,
+        "error": null,
+        "elapsed_ms": 1.628
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "en_capitalization_punctuation",
+      "group": "capitalization_and_punctuation",
+      "language": "en",
+      "input_length": 36,
+      "expected": {
+        "status": 200,
+        "response_type": "answer",
+        "state": "A",
+        "source": "canonical_exact",
+        "record_id": "qa-0002",
+        "canonical_answer": true
+      },
+      "actual": {
+        "status": 200,
+        "type": "answer",
+        "routing_state": "A",
+        "source": "canonical_exact",
+        "record_id": "qa-0002",
+        "suggestion_count": 0,
+        "topic_count": 0,
+        "error": null,
+        "elapsed_ms": 1.696
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "tw_capitalization_punctuation",
+      "group": "capitalization_and_punctuation",
+      "language": "tw",
+      "input_length": 54,
+      "expected": {
+        "status": 200,
+        "response_type": "answer",
+        "state": "A",
+        "source": "canonical_exact",
+        "record_id": "qa-0016",
+        "canonical_answer": true
+      },
+      "actual": {
+        "status": 200,
+        "type": "answer",
+        "routing_state": "A",
+        "source": "canonical_exact",
+        "record_id": "qa-0016",
+        "suggestion_count": 0,
+        "topic_count": 0,
+        "error": null,
+        "elapsed_ms": 4.34
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "en_long_input",
+      "group": "very_long_input",
+      "language": "en",
+      "input_length": 5606,
+      "expected": {
+        "status": 200,
+        "allowed_response_types": [
+          "answer",
+          "low_confidence",
+          "off_topic",
+          "topics"
+        ],
+        "stability_only": true
+      },
+      "actual": {
+        "status": 200,
+        "type": "off_topic",
+        "routing_state": "C",
+        "source": "retrieval_v1",
+        "record_id": null,
+        "suggestion_count": 0,
+        "topic_count": 28,
+        "error": null,
+        "elapsed_ms": 54.83
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "tw_long_input",
+      "group": "very_long_input",
+      "language": "tw",
+      "input_length": 3206,
+      "expected": {
+        "status": 200,
+        "allowed_response_types": [
+          "answer",
+          "low_confidence",
+          "off_topic",
+          "topics"
+        ],
+        "stability_only": true
+      },
+      "actual": {
+        "status": 200,
+        "type": "off_topic",
+        "routing_state": "C",
+        "source": "retrieval_v1",
+        "record_id": null,
+        "suggestion_count": 0,
+        "topic_count": 28,
+        "error": null,
+        "elapsed_ms": 38.699
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "mixed_en_twi",
+      "group": "mixed_language_input",
+      "language": "en",
+      "input_length": 49,
+      "expected": {
+        "status": 200,
+        "response_type": "low_confidence",
+        "state": "B",
+        "minimum_suggestions": 1
+      },
+      "actual": {
+        "status": 200,
+        "type": "low_confidence",
+        "routing_state": "B",
+        "source": "retrieval_v1",
+        "record_id": null,
+        "suggestion_count": 5,
+        "topic_count": 0,
+        "error": null,
+        "elapsed_ms": 23.453
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "mixed_twi_en",
+      "group": "mixed_language_input",
+      "language": "tw",
+      "input_length": 40,
+      "expected": {
+        "status": 200,
+        "allowed_response_types": [
+          "low_confidence",
+          "off_topic"
+        ],
+        "allowed_states": [
+          "B",
+          "C"
+        ],
+        "stability_only": true
+      },
+      "actual": {
+        "status": 200,
+        "type": "off_topic",
+        "routing_state": "C",
+        "source": "retrieval_v1",
+        "record_id": null,
+        "suggestion_count": 0,
+        "topic_count": 28,
+        "error": null,
+        "elapsed_ms": 17.971
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "english_sent_to_twi_channel",
+      "group": "language_separation",
+      "language": "tw",
+      "input_length": 34,
+      "expected": {
+        "status": 200,
+        "response_type": "off_topic",
+        "state": "C",
+        "forbidden_source": "canonical_exact"
+      },
+      "actual": {
+        "status": 200,
+        "type": "off_topic",
+        "routing_state": "C",
+        "source": "retrieval_v1",
+        "record_id": null,
+        "suggestion_count": 0,
+        "topic_count": 28,
+        "error": null,
+        "elapsed_ms": 22.898
+      },
+      "passed": true,
+      "failures": []
+    },
+    {
+      "case_id": "twi_sent_to_english_channel",
+      "group": "language_separation",
+      "language": "en",
+      "input_length": 34,
+      "expected": {
+        "status": 200,
+        "response_type": "off_topic",
+        "state": "C",
+        "forbidden_source": "canonical_exact"
+      },
+      "actual": {
+        "status": 200,
+        "type": "off_topic",
+        "routing_state": "C",
+        "source": "retrieval_v1",
+        "record_id": null,
+        "suggestion_count": 0,
+        "topic_count": 28,
+        "error": null,
+        "elapsed_ms": 18.302
+      },
+      "passed": true,
+      "failures": []
+    }
+  ]
+}

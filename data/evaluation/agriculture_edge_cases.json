@@ -1,0 +1,345 @@
+{
+  "schema_version": 1,
+  "todo": 24,
+  "purpose": "Independent bilingual agricultural robustness cases for ambiguous and difficult user wording.",
+  "safe_behavior": {
+    "ambiguous_agriculture": "Return State B with clarification and suggestions.",
+    "vague_or_very_short": "Return topic guidance or State B, never an unrelated response.",
+    "unsupported_confident_answers": "Not allowed for this challenge set.",
+    "off_topic_state": "Not allowed because every case has agricultural intent."
+  },
+  "pair_count": 16,
+  "case_count": 32,
+  "edge_types": [
+    "vague",
+    "incomplete",
+    "spelling_error",
+    "colloquial",
+    "short",
+    "long",
+    "paraphrase",
+    "multiple_topics"
+  ],
+  "cases": [
+    {
+      "id": "edge_en_001",
+      "pair_id": "edge_pair_001",
+      "language": "English",
+      "edge_type": "vague",
+      "question": "I have a problem",
+      "allowed_types": ["topics"],
+      "allowed_states": [null],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_tw_001",
+      "pair_id": "edge_pair_001",
+      "language": "Twi",
+      "edge_type": "vague",
+      "question": "Mhia mmoa",
+      "allowed_types": ["topics"],
+      "allowed_states": [null],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_en_002",
+      "pair_id": "edge_pair_002",
+      "language": "English",
+      "edge_type": "vague",
+      "question": "Tell me",
+      "allowed_types": ["topics"],
+      "allowed_states": [null],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_tw_002",
+      "pair_id": "edge_pair_002",
+      "language": "Twi",
+      "edge_type": "vague",
+      "question": "Kyerɛ me",
+      "allowed_types": ["topics"],
+      "allowed_states": [null],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_en_003",
+      "pair_id": "edge_pair_003",
+      "language": "English",
+      "edge_type": "incomplete",
+      "question": "Maize leaves turning yellow after the rain...",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_tw_003",
+      "pair_id": "edge_pair_003",
+      "language": "Twi",
+      "edge_type": "incomplete",
+      "question": "Osu no akyi no, aburo nhaban reyɛ kɔkɔɔ...",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_en_004",
+      "pair_id": "edge_pair_004",
+      "language": "English",
+      "edge_type": "incomplete",
+      "question": "Chickens weak and not eating since yesterday",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_tw_004",
+      "pair_id": "edge_pair_004",
+      "language": "Twi",
+      "edge_type": "incomplete",
+      "question": "Efi nnora no, akokɔ no ayɛ mmerɛw na wɔnnidi",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_en_005",
+      "pair_id": "edge_pair_005",
+      "language": "English",
+      "edge_type": "spelling_error",
+      "question": "How do I contol fall army wom in my maiz fam?",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_tw_005",
+      "pair_id": "edge_pair_005",
+      "language": "Twi",
+      "edge_type": "spelling_error",
+      "question": "Mɛyɛ dɛn akontro fall army wom wɔ me abro afuo mu?",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_en_006",
+      "pair_id": "edge_pair_006",
+      "language": "English",
+      "edge_type": "spelling_error",
+      "question": "My tomatos are rotening bfore harvist what shud I do?",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_tw_006",
+      "pair_id": "edge_pair_006",
+      "language": "Twi",
+      "edge_type": "spelling_error",
+      "question": "Me tomatto resɛe ansa na harvist, dɛn na menyɛ?",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_en_007",
+      "pair_id": "edge_pair_007",
+      "language": "English",
+      "edge_type": "colloquial",
+      "question": "Bossu, my maize no dey grow fine, wetin I go do?",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_tw_007",
+      "pair_id": "edge_pair_007",
+      "language": "Twi",
+      "edge_type": "colloquial",
+      "question": "Me nua, me aburo no nnyini yie oo, dɛn na menyɛ?",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_en_008",
+      "pair_id": "edge_pair_008",
+      "language": "English",
+      "edge_type": "colloquial",
+      "question": "Charlie, the worms chop my garden eggs plenty; help me small.",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_tw_008",
+      "pair_id": "edge_pair_008",
+      "language": "Twi",
+      "edge_type": "colloquial",
+      "question": "Chale, mmoawa awe me ntorɔ no pii; boa me kakra.",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_en_009",
+      "pair_id": "edge_pair_009",
+      "language": "English",
+      "edge_type": "short",
+      "question": "Yellow maize leaves",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_tw_009",
+      "pair_id": "edge_pair_009",
+      "language": "Twi",
+      "edge_type": "short",
+      "question": "Aburo nhaban kɔkɔɔ",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_en_010",
+      "pair_id": "edge_pair_010",
+      "language": "English",
+      "edge_type": "short",
+      "question": "Sick young chickens",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_tw_010",
+      "pair_id": "edge_pair_010",
+      "language": "Twi",
+      "edge_type": "short",
+      "question": "Akokɔ mma ayare",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_en_011",
+      "pair_id": "edge_pair_011",
+      "language": "English",
+      "edge_type": "long",
+      "question": "My maize was planted three weeks ago on a field that received compost, but after several days of heavy rain the lower leaves became pale yellow and growth slowed; the soil is still wet, and I need help deciding what details to check before taking action.",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_tw_011",
+      "pair_id": "edge_pair_011",
+      "language": "Twi",
+      "edge_type": "long",
+      "question": "Mede aburo no too afuo a mede compost guu mu nnawɔtwe mmiɛnsa ni, nanso osu kɛse akyi no nhaban a ɛwɔ fam no ayɛ kɔkɔɔ na ennyini ntɛm; asase no da so yɛ fɔtɔɔ, enti mepɛ sɛ mihunu nea ɛsɛ sɛ mehwɛ ansa na mayɛ biribi.",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_en_012",
+      "pair_id": "edge_pair_012",
+      "language": "English",
+      "edge_type": "long",
+      "question": "Several young chickens in my small flock are quiet, eating less, and standing apart, but I have not seen coughing or diarrhoea; their water was changed this morning, and I want to know what observations I should record before contacting a veterinary officer.",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_tw_012",
+      "pair_id": "edge_pair_012",
+      "language": "Twi",
+      "edge_type": "long",
+      "question": "Akokɔ mma pii a wɔwɔ me kuw ketewa no mu ayɛ komm, wɔnnidi pii na wɔgyina wɔn nko ara, nanso menhu sɛ wɔrebɔ wa anaa wɔn yam regu; mesesaa wɔn nsuo anɔpa yi, na mepɛ sɛ mihunu nea menkyerɛw ansa na mafrɛ mmoa ayaresafoɔ.",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_en_013",
+      "pair_id": "edge_pair_013",
+      "language": "English",
+      "edge_type": "paraphrase",
+      "question": "Which plant nutrients should I consider for maize, and when should an extension officer help me choose the rate?",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_tw_013",
+      "pair_id": "edge_pair_013",
+      "language": "Twi",
+      "edge_type": "paraphrase",
+      "question": "Nnuan bɛn na ɛsɛ sɛ mede ma aburo, na bere bɛn na kuayɛ ɔfotufoɔ mmoa me mpaw dodow a mede bɛma?",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_en_014",
+      "pair_id": "edge_pair_014",
+      "language": "English",
+      "edge_type": "paraphrase",
+      "question": "What signs show that pond fish may not have enough oxygen, and what information should I give a fisheries officer?",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_tw_014",
+      "pair_id": "edge_pair_014",
+      "language": "Twi",
+      "edge_type": "paraphrase",
+      "question": "Ahohyɛn bɛn na ɛkyerɛ sɛ oxygen nnɔɔso wɔ apataa tadeɛ mu, na nsɛm bɛn na memfa mma apataa ɔfotufoɔ?",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_en_015",
+      "pair_id": "edge_pair_015",
+      "language": "English",
+      "edge_type": "multiple_topics",
+      "question": "Can I use poultry manure on my maize field, and how should I store the harvested grain safely afterward?",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_tw_015",
+      "pair_id": "edge_pair_015",
+      "language": "Twi",
+      "edge_type": "multiple_topics",
+      "question": "Metumi de akokɔ dɔteɛ agu me aburo afuo mu, na akyiri no mɛyɛ dɛn de aburo a matwa no asie yie?",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_en_016",
+      "pair_id": "edge_pair_016",
+      "language": "English",
+      "edge_type": "multiple_topics",
+      "question": "My tomatoes need irrigation and pest control, but I also want advice on grading them for the market; which issue should I handle first?",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    },
+    {
+      "id": "edge_tw_016",
+      "pair_id": "edge_pair_016",
+      "language": "Twi",
+      "edge_type": "multiple_topics",
+      "question": "Me tomato hia nsuo ne mmoawa sohwɛ, na mepɛ nso sɛ mihunu sɛnea mɛkyekyɛ mu ama gua so; emu nea ɛwɔ he na minni kan?",
+      "allowed_types": ["low_confidence"],
+      "allowed_states": ["B"],
+      "allow_answer": false
+    }
+  ]
+}

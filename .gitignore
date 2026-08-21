@@ -1,9 +1,14 @@
 agribot_env/
+venv/
 __pycache__/
 *.pyc
 .env
 *.db
 node_modules/
 test-results/
+models/embedding_cache*/
+Microsoft/
+backups/
+server.log
 .DS_Store
 .vscode/
