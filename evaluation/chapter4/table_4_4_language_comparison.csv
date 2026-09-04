@@ -1,0 +1,3 @@
+﻿language,queries,exact_matches,exact_accuracy_percent,language_leakage
+en,60,58,96.667,0
+tw,60,60,100.0,0

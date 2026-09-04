@@ -1,20 +1,29 @@
 from flask import Flask, request, jsonify, send_from_directory
-from flask_cors import CORS
 import json
 import os
 import re
 from pathlib import Path
 
+from entity_guard import DatasetEntityGuard
 from retrieval_runtime import RetrievalRuntime, sha256_file
+from retrieval_assistance import attempt_retrieval_assistance
+from retrieval_semantics import has_agricultural_intent
+from services.abena_tts_service import AbenaTTSService, MAX_TTS_TEXT_LENGTH
+from services.gemini_service import GeminiService
+from services.weather_service import WeatherService
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR
 
 app = Flask(__name__, static_folder=None)
-CORS(app)
+app.config['MAX_CONTENT_LENGTH'] = 32 * 1024
+WEATHER_SERVICE = WeatherService()
+GEMINI_SERVICE = GeminiService()
+ABENA_TTS_SERVICE = AbenaTTSService()
 
 DATA_FILE = DATA_DIR / 'data' / 'agribotgh_dataset_bilingual_563.json'
 SUGGESTION_LINKS_FILE = BASE_DIR / 'models' / 'suggestion_links.json'
+QUICK_QUESTIONS_FILE = BASE_DIR / 'models' / 'quick_questions.json'
 MODEL_FREEZE_FILE = BASE_DIR / 'models' / 'production' / 'model_freeze.json'
 
 # ── MODEL LOADING ─────────────────────────────────────────────────
@@ -38,6 +47,15 @@ if not DATA_FILE.exists():
     raise RuntimeError(f'Canonical dataset is missing: {DATA_FILE}')
 print(f"Loading canonical local dataset from {DATA_FILE}")
 CANONICAL_RECORDS = load_canonical_dataset(DATA_FILE)
+ENTITY_GUARD = DatasetEntityGuard(CANONICAL_RECORDS)
+AVAILABLE_CATEGORIES = tuple(sorted(
+    {
+        str(record.get('category', '')).strip()
+        for record in CANONICAL_RECORDS
+        if str(record.get('category', '')).strip()
+    },
+    key=str.casefold,
+))
 en_qs = [record['question_en'].strip() for record in CANONICAL_RECORDS]
 en_as = [record['answer_en'].strip() for record in CANONICAL_RECORDS]
 tw_qs = [record['question_twi'].strip() for record in CANONICAL_RECORDS]
@@ -105,13 +123,34 @@ def build_known_record_registry():
 
 
 KNOWN_RECORDS = build_known_record_registry()
-KNOWN_QUESTION_RECORDS = {'en': {}, 'tw': {}}
-for record_id, record in KNOWN_RECORDS.items():
+def load_quick_questions(path):
+    """Load display-only prompts; answers are always selected by retrieval."""
+    if not path.exists():
+        raise RuntimeError(f'Missing quick-question catalogue: {path}')
+    with path.open('r', encoding='utf-8') as handle:
+        artifact = json.load(handle)
+    if artifact.get('canonical_dataset') != 'data/agribotgh_dataset_bilingual_563.json':
+        raise RuntimeError('Quick questions do not name the canonical dataset')
+    quick = artifact.get('questions')
+    if not isinstance(quick, dict):
+        raise RuntimeError('Quick-question catalogue must contain a questions object')
     for language in ('en', 'tw'):
-        normalized = normalize_known_question(record[f'question_{language}'])
-        if normalized in KNOWN_QUESTION_RECORDS[language]:
-            raise ValueError(f'Duplicate canonical {language} question: {normalized}')
-        KNOWN_QUESTION_RECORDS[language][normalized] = record_id
+        if not isinstance(quick.get(language), list):
+            raise RuntimeError(f'Quick-question catalogue is missing {language}')
+        if any(
+            not isinstance(item, dict)
+            or set(item) != {'text'}
+            or not isinstance(item['text'], str)
+            or not item['text'].strip()
+            for item in quick[language]
+        ):
+            raise RuntimeError('Quick questions must be non-empty display text only')
+    if len(quick['en']) != 8 or len(quick['tw']) != 6:
+        raise RuntimeError('Quick-question catalogue must contain 8 English and 6 Twi entries')
+    return quick
+
+
+QUICK_QUESTIONS = load_quick_questions(QUICK_QUESTIONS_FILE)
 
 # ── TOPICS ────────────────────────────────────────────────────────
 # All 28 UI topics with their retrieval keywords, Twi names, and icons.
@@ -409,40 +448,17 @@ def get_suggestions(topic, lang='en'):
     ]
 
 
-def get_known_suggestion_answer(suggestion_id, question, lang):
-    """Resolve a clicked known suggestion without fuzzy retrieval."""
+def validate_known_suggestion(suggestion_id, question, lang):
+    """Reject forged/stale suggestion IDs without bypassing retrieval."""
     record = KNOWN_RECORDS.get(str(suggestion_id or ""))
     if record is None:
-        return None, "Unknown suggestion ID"
+        return "Unknown suggestion ID"
     language = 'tw' if lang == 'tw' else 'en'
     if normalize_known_question(question) != normalize_known_question(
         record[f"question_{language}"]
     ):
-        return None, "Suggestion text does not match its record ID"
-    return {
-        "type": "answer",
-        "text": record[f"answer_{language}"],
-        "source": "known_suggestion",
-        "suggestion_id": record["id"],
-    }, None
-
-
-def get_exact_canonical_answer(question, lang):
-    """Return an exact canonical answer across all 563 supported records."""
-    language = 'tw' if lang == 'tw' else 'en'
-    record_id = KNOWN_QUESTION_RECORDS[language].get(
-        normalize_known_question(question)
-    )
-    if record_id is None:
-        return None
-    record = KNOWN_RECORDS[record_id]
-    return {
-        "type": "answer",
-        "text": record[f"answer_{language}"],
-        "source": "canonical_exact",
-        "routing_state": "A",
-        "record_id": record_id,
-    }
+        return "Suggestion text does not match its record ID"
+    return None
 
 
 def get_candidate_suggestions(candidates, lang):
@@ -469,14 +485,29 @@ def get_topic_display_name(topic, lang='en'):
     return topic
 
 
+def get_available_category_presentation():
+    """Return UI metadata for categories derived from the in-memory dataset."""
+    icons = {}
+    twi_names = {}
+    for category in AVAILABLE_CATEGORIES:
+        topic = CATEGORY_TO_TOPIC.get(category)
+        topic_info = TOPICS.get(topic, {})
+        icons[category] = topic_info.get('icon', '🌱')
+        twi_name = topic_info.get('tw_name')
+        twi_names[category] = (
+            f"{twi_name} — {category}" if twi_name else category
+        )
+    return icons, twi_names
+
+
 # High-precision non-agricultural intent markers supplement the statistical
 # domain router. They deliberately use phrases, not isolated words such as
 # "field", "seed", "feed", "plant", "crop", or "storage", because those
-# words have legitimate agricultural meanings. Exact canonical questions are
-# resolved before this guard, so known dataset answers remain reachable.
+# words have legitimate agricultural meanings. Canonical and paraphrased
+# questions still pass through the same statistical retrieval runtime.
 EXPLICIT_OFF_TOPIC_PATTERNS = {
     'en': (
-        r'\bcapital city of\b',
+        r'\bcapital (?:city )?of\b',
         r'\blaptop screen\b',
         r'\bpython\b.*\bdecorator\b|\bdecorator\b.*\bpython\b',
         r'\blinux (?:server|root|account)\b|\broot account\b',
@@ -484,6 +515,12 @@ EXPLICIT_OFF_TOPIC_PATTERNS = {
         r'\bnews feed\b.*\bsocial media\b|\bsocial media\b.*\bnews feed\b',
         r'\bchemistry (?:textbook|book|class)\b',
         r'\bcomputer virus\b|\bspreadsheet\b',
+        r'\bgit\b.*\b(?:branch|merge|commit|repository)\b|\b(?:branch|merge|commit|repository)\b.*\bgit\b',
+        r'\b(?:bitcoin|crypto(?:currency)?)\b.*\b(?:farm|farming|mining)\b',
+        r'\bserver farm\b',
+        r'\bcrop\b.*\b(?:photo|portrait|image)\b',
+        r'\bharvest\b.*\b(?:public records|website|web data)\b',
+        r'\bmanufacturing plant\b|\bplant\b.*\bphone chargers?\b',
     ),
     'tw': (
         r'\bcapital city\b',
@@ -494,6 +531,9 @@ EXPLICIT_OFF_TOPIC_PATTERNS = {
         r'\bnews feed\b.*\bsocial media\b|\bsocial media\b.*\bnews feed\b',
         r'\bchemistry (?:textbook|book|class)\b',
         r'\bcomputer virus\b|\bspreadsheet\b',
+        r'\b(?:bitcoin|crypto(?:currency)?)\b.*\b(?:farm|farming|mining)\b',
+        r'\bserver farm\b',
+        r'\bgit\b.*\b(?:branch|merge|commit|repository)\b|\b(?:branch|merge|commit|repository)\b.*\bgit\b',
     ),
 }
 
@@ -553,10 +593,51 @@ def has_agricultural_entity_signal(text, lang='en'):
     """Recognize unambiguous crop or livestock names in either UI language."""
     language = 'tw' if lang == 'tw' else 'en'
     normalized = str(text or '').casefold()
-    return any(
+    entity_match = any(
         re.search(pattern, normalized, flags=re.UNICODE)
         for pattern in AGRICULTURAL_ENTITY_PATTERNS[language]
     )
+    semantic_language = 'Twi' if language == 'tw' else 'English'
+    return entity_match or has_agricultural_intent(normalized, semantic_language)
+
+
+WEATHER_CONDITION_PATTERN = re.compile(
+    r"\b(?:weather|forecast|temperature|hot|rain(?:fall|ing)?|sunny|wind(?:y)?|"
+    r"humidity|storm|heatwave|dry\s+weather|ewiem|osuo|nsuo|ɔhyew)\b",
+    flags=re.IGNORECASE,
+)
+LIVE_WEATHER_CUE_PATTERN = re.compile(
+    r"\b(?:today|tomorrow|tonight|now|current(?:ly)?|this\s+week|next\s+week|"
+    r"nnɛ|ɔkyena|seesei)\b|\bwill\s+it\s+(?:rain|be\s+hot)",
+    flags=re.IGNORECASE,
+)
+AGRICULTURAL_WEATHER_KNOWLEDGE_PATTERN = re.compile(
+    r"\b(?:farm|farming|rearing|crop|crops|maize|poultry|snails?|irrigation|"
+    r"production|chicks?|plants?|soil)\b.*\b(?:affect|important|best|need|needs|"
+    r"increase|reduce|matter|suitable|required)\b|"
+    r"\b(?:why|how\s+does|what)\b.*\b(?:important|affect|best|matter|increase)\b.*"
+    r"\b(?:farm|farming|rearing|production|irrigation|crop|maize|poultry|snails?)\b",
+    flags=re.IGNORECASE,
+)
+
+
+def is_weather_information_request(text):
+    """Route only live/current conditions, not agricultural weather concepts."""
+    normalized = str(text or '').strip()
+    if not normalized:
+        return False
+    if not WEATHER_CONDITION_PATTERN.search(normalized):
+        return False
+    live_cue = bool(LIVE_WEATHER_CUE_PATTERN.search(normalized))
+    agricultural_explanation = bool(
+        AGRICULTURAL_WEATHER_KNOWLEDGE_PATTERN.search(normalized)
+    )
+    if agricultural_explanation and not live_cue:
+        return False
+    explicit_service_request = bool(
+        re.search(r"\b(?:weather|forecast)\b", normalized, flags=re.IGNORECASE)
+    )
+    return live_cue or explicit_service_request
 
 
 def add_safety_notice(result, question, lang='en'):
@@ -635,27 +716,53 @@ def get_answer(question, lang, username=None):
             "topic_names_tw": topic_names_tw
         }
 
-    # Exact canonical questions remain directly answerable even when their
-    # records belong to the held-out validation or test split.
-    exact_answer = get_exact_canonical_answer(q, lang)
-    if exact_answer is not None:
-        return exact_answer
-
     detected_topic = detect_topic(ql, lang)
+    entity_profile = ENTITY_GUARD.profile(q, lang)
+    agricultural_question = bool(
+        has_agricultural_entity_signal(q, lang) or entity_profile["salient"]
+    )
+    weather_question = is_weather_information_request(q)
     retrieval = RETRIEVAL_RUNTIME.retrieve(q, lang)
+    top_candidate = retrieval["candidates"][0]
+    entity_decision = ENTITY_GUARD.evaluate(
+        q, top_candidate["question"], top_candidate["category"], lang
+    )
+    if retrieval["state"] == "A" and not entity_decision.compatible:
+        retrieval = dict(retrieval)
+        retrieval["state"] = "B"
+        retrieval["entity_support_rejected"] = True
+        retrieval["entity_support_reason"] = entity_decision.reason
     if is_explicitly_off_topic(q, lang):
         retrieval["state"] = "C"
         retrieval["explicit_off_topic"] = True
-    elif retrieval["state"] == "C" and has_agricultural_entity_signal(q, lang):
+    elif retrieval["state"] == "C" and agricultural_question:
         # The statistical domain detector is intentionally strict. A known
         # farming-topic term is enough to ask for clarification, but never to
         # return an answer. Explicit non-farming phrases above keep priority.
         retrieval["state"] = "B"
         retrieval["lexical_agriculture_signal"] = True
+
+    assistance = None
+    if retrieval["state"] == "B" and not weather_question:
+        assistance = attempt_retrieval_assistance(
+            q, lang, retrieval, RETRIEVAL_RUNTIME, GEMINI_SERVICE, ENTITY_GUARD
+        )
+        retrieval = assistance["selected_retrieval"]
+        top_candidate = retrieval["candidates"][0]
+        entity_decision = ENTITY_GUARD.evaluate(
+            q, top_candidate["question"], top_candidate["category"], lang
+        )
+        if retrieval["state"] == "A" and not entity_decision.compatible:
+            retrieval = dict(retrieval)
+            retrieval["state"] = "B"
+            retrieval["entity_support_rejected"] = True
+            retrieval["entity_support_reason"] = entity_decision.reason
+            assistance["accepted"] = False
+            assistance["reason"] = "entity_incompatible_second_pass"
     top_candidate = retrieval["candidates"][0]
 
     if retrieval["state"] == "A":
-        return {
+        result = {
             "type": "answer",
             "text": top_candidate["answer"],
             "source": "retrieval_v1",
@@ -664,8 +771,62 @@ def get_answer(question, lang, username=None):
             "retrieval_score": top_candidate["final_score"],
             "score_margin": retrieval["answer_margin"],
         }
+        if assistance and assistance["accepted"]:
+            result["gemini_assisted"] = True
+            result["retrieval_assistance"] = {
+                "accepted": True,
+                "original_score": assistance["original_score"],
+                "interpreted_score": assistance["interpreted_score"],
+            }
+        return result
 
     if retrieval["state"] == "B":
+        if agricultural_question and not weather_question:
+            available_topic_icons, available_topic_names_tw = (
+                get_available_category_presentation()
+            )
+            if is_tw:
+                text = (
+                    "Mete ase sɛ eyi yɛ kuayɛ ho asɛmmisa, nanso mantumi "
+                    "annya mmuae a metumi de me ho ato so yiye wɔ me kuayɛ "
+                    "nimdeɛ a ɛwɔ hɔ mprempren no mu. Wubetumi apaw kuayɛ "
+                    "nsɛm a metumi aboa wo wɔ ho no mu biako wɔ ase ha."
+                )
+            else:
+                text = (
+                    "I understand that this is a farming question, but I "
+                    "couldn't find a sufficiently reliable answer in my "
+                    "current agricultural knowledge base. You can try one of "
+                    "the farming topics I currently support below."
+                )
+            assistance_status = {
+                "eligible": bool(assistance and assistance["eligible"]),
+                "called": bool(assistance and assistance["called"]),
+                "accepted": False,
+                "reason": (
+                    assistance["reason"] if assistance
+                    else "assistance_not_attempted"
+                ),
+            }
+            return {
+                "type": "knowledge_gap",
+                "text": text,
+                "knowledge_gap": True,
+                "available_topics": list(AVAILABLE_CATEGORIES),
+                "available_topic_icons": available_topic_icons,
+                "available_topic_names_tw": available_topic_names_tw,
+                "source": "retrieval_v1",
+                "routing_state": "D",
+                "domain_score": retrieval["domain_score"],
+                "score_margin": retrieval["answer_margin"],
+                "domain_signal": (
+                    "recognized_agricultural_topic"
+                    if retrieval.get("lexical_agriculture_signal")
+                    else "agricultural_intent_detector"
+                ),
+                "retrieval_assistance": assistance_status,
+            }
+
         topic = detected_topic or CATEGORY_TO_TOPIC.get(top_candidate["category"])
         if topic in TOPICS:
             suggestions = get_suggestions(topic, lang)
@@ -742,24 +903,30 @@ def chat():
     if not isinstance(d, dict):
         return jsonify({"error": "Invalid JSON payload"}), 400
 
-    question = d.get('message','').strip() if d.get('message') else ''
+    message = d.get('message')
+    if not isinstance(message, str):
+        return jsonify({"error": "Message must be text"}), 400
+    question = message.strip()
     language = d.get('language','en')
     username = d.get('username', None)
     suggestion_id = d.get('suggestion_id')
     if not question:
         return jsonify({"error": "No message provided"}), 400
-    if language not in {'en', 'tw'}:
+    if len(question) > 2000:
+        return jsonify({"error": "Message must not exceed 2000 characters"}), 400
+    if not isinstance(language, str) or language not in {'en', 'tw'}:
         return jsonify({"error": "Language must be 'en' or 'tw'"}), 400
+    if username is not None:
+        if not isinstance(username, str):
+            return jsonify({"error": "Username must be text"}), 400
+        username = username.strip()[:30] or None
 
     if suggestion_id is not None:
-        result, error = get_known_suggestion_answer(
+        error = validate_known_suggestion(
             suggestion_id, question, language
         )
         if error:
             return jsonify({"error": error}), 400
-        add_safety_notice(result, question, language)
-        result["language"] = language
-        return jsonify(result)
 
     result = get_answer(question, language, username)
     add_safety_notice(result, question, language)
@@ -779,6 +946,15 @@ def get_topics():
         for topic, info in TOPICS.items()
     })
 
+
+@app.route('/api/quick-suggestions', methods=['GET'])
+def quick_suggestions_route():
+    """Return reviewed right-panel questions linked to canonical records."""
+    lang = request.args.get('lang', 'en')
+    if lang not in {'en', 'tw'}:
+        return jsonify({"error": "Language must be 'en' or 'tw'"}), 400
+    return jsonify({"language": lang, "suggestions": QUICK_QUESTIONS[lang]})
+
 @app.route('/api/topic-suggestions', methods=['POST'])
 def topic_suggestions_route():
     """Return suggestions for a selected topic in the right language."""
@@ -786,7 +962,11 @@ def topic_suggestions_route():
     if not isinstance(d, dict):
         return jsonify({"error": "Invalid JSON payload"}), 400
     topic = d.get('topic','')
-    lang  = 'tw' if d.get('lang') == 'tw' else 'en'
+    lang = d.get('lang', 'en')
+    if not isinstance(topic, str):
+        return jsonify({"error": "Topic must be text"}), 400
+    if not isinstance(lang, str) or lang not in {'en', 'tw'}:
+        return jsonify({"error": "Language must be 'en' or 'tw'"}), 400
     if topic not in TOPICS:
         return jsonify({"error": "Topic not found"}), 404
     info  = TOPICS[topic]
@@ -798,6 +978,53 @@ def topic_suggestions_route():
         "icon": info['icon'],
         "suggestions": suggs
     })
+
+
+@app.route('/api/weather', methods=['GET'])
+def weather_route():
+    """Return live Open-Meteo conditions and a short location forecast."""
+    raw_location = request.args.get('location')
+    location = raw_location.strip() if isinstance(raw_location, str) else raw_location
+    app.logger.debug("Weather endpoint received location=%r", location)
+    result = WEATHER_SERVICE.get_weather(location)
+    if result.get('success'):
+        return jsonify(result)
+    status_by_code = {
+        'empty_location': 400,
+        'invalid_location': 400,
+        'location_not_found': 404,
+        'timeout': 504,
+        'api_http_error': 502,
+        'service_unavailable': 503,
+        'invalid_response': 502,
+        'unexpected_error': 500,
+    }
+    return jsonify(result), status_by_code.get(result.get('code'), 502)
+
+
+@app.route('/api/tts', methods=['POST'])
+def twi_tts_route():
+    """Return server-generated Twi audio; the browser owns playback fallback."""
+    if not request.is_json:
+        return jsonify({"error": "Content-Type must be application/json"}), 400
+    payload = request.get_json(silent=True)
+    if not isinstance(payload, dict):
+        return jsonify({"error": "Invalid JSON payload"}), 400
+
+    text = payload.get('text')
+    language = payload.get('language')
+    if not isinstance(text, str) or not text.strip():
+        return jsonify({"error": "Text must be a non-empty string"}), 400
+    if language != 'twi':
+        return jsonify({"error": "Language must be 'twi'"}), 400
+    text = text.strip()
+    if len(text) > MAX_TTS_TEXT_LENGTH:
+        return jsonify({
+            "error": f"Text must not exceed {MAX_TTS_TEXT_LENGTH} characters"
+        }), 413
+
+    result = ABENA_TTS_SERVICE.synthesize(text)
+    return jsonify(result), 200 if result.get('success') else 503
 
 @app.route('/api/health')
 def health():
@@ -814,7 +1041,14 @@ def health():
         "training_records": RETRIEVAL_RUNTIME.metadata["training_records"],
         "model_frozen": FINAL_MODEL_FREEZE["status"] == "frozen",
         "freeze_id": FINAL_MODEL_FREEZE["freeze_id"],
+        "gemini_retrieval_assistance": GEMINI_SERVICE.availability(),
+        "twi_text_to_speech": ABENA_TTS_SERVICE.availability(),
     })
+
+
+@app.errorhandler(413)
+def request_too_large(_error):
+    return jsonify({"error": "Request payload is too large"}), 413
 
 ALLOWED_STATIC_FILES = {
     'app.js',
@@ -824,12 +1058,12 @@ ALLOWED_STATIC_FILES = {
 
 @app.route('/')
 def index():
-    return send_from_directory('.', 'index.html')
+    return send_from_directory(BASE_DIR, 'index.html')
 
 @app.route('/<path:f>')
 def static_files(f):
     if f in ALLOWED_STATIC_FILES or f.startswith('css/') or f.startswith('js/'):
-        return send_from_directory('.', f)
+        return send_from_directory(BASE_DIR, f)
     return jsonify({"error": "Not found"}), 404
 
 if __name__ == '__main__':

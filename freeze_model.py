@@ -78,7 +78,14 @@ def write_once(manifest):
         if existing.get("freeze_id") == manifest["freeze_id"]:
             print(f"Already frozen with matching freeze ID: {manifest['freeze_id']}")
             return
-        raise RuntimeError("A different final-model freeze already exists; create a new model version")
+        if existing.get("semantic_version") == manifest["semantic_version"]:
+            raise RuntimeError(
+                "A different freeze exists for this semantic version; create a new model version"
+            )
+        print(
+            f"Superseding freeze for immutable v{existing.get('semantic_version')} "
+            f"with evaluated v{manifest['semantic_version']}"
+        )
     temporary = OUTPUT_PATH.with_suffix(".json.tmp")
     temporary.write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"

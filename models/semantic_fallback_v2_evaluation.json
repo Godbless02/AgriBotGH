@@ -1,0 +1,6486 @@
+{
+  "schema_version": 1,
+  "positive_cases": 85,
+  "negative_cases": 124,
+  "ambiguous_cases": 10,
+  "selection": {
+    "semantic_threshold": 0.35,
+    "semantic_minimum_margin": 0.12,
+    "correct_answers": 55,
+    "incorrect_positive_answers": 0,
+    "negative_false_accepts": 0,
+    "ambiguous_false_answers": 0,
+    "coverage": 0.6470588235294118,
+    "incorrect_positive_ids": [],
+    "negative_false_accept_ids": [],
+    "ambiguous_false_answer_ids": [],
+    "semantic_fallback_answers": 23
+  },
+  "selection_by_language": {
+    "English": {
+      "semantic_threshold": 0.3,
+      "semantic_minimum_margin": 0.12,
+      "correct_answers": 40,
+      "cases": 57,
+      "coverage": 0.7017543859649122,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "semantic_fallback_answers": 19
+    },
+    "Twi": {
+      "semantic_threshold": 0.4,
+      "semantic_minimum_margin": 0.12,
+      "correct_answers": 16,
+      "cases": 28,
+      "coverage": 0.5714285714285714,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "semantic_fallback_answers": 5
+    }
+  },
+  "dual_gate_selection_by_language": {
+    "English": {
+      "semantic_threshold": 0.3,
+      "semantic_minimum_margin": 0.12,
+      "semantic_strong_threshold": 0.7,
+      "correct_answers": 40,
+      "cases": 57,
+      "coverage": 0.7017543859649122,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "semantic_fallback_answers": 19,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": []
+    },
+    "Twi": {
+      "semantic_threshold": 0.4,
+      "semantic_minimum_margin": 0.12,
+      "semantic_strong_threshold": 0.7,
+      "correct_answers": 16,
+      "cases": 28,
+      "coverage": 0.5714285714285714,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "semantic_fallback_answers": 5,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": []
+    }
+  },
+  "gates": [
+    {
+      "semantic_threshold": 0.35,
+      "semantic_minimum_margin": 0.03,
+      "correct_answers": 64,
+      "incorrect_positive_answers": 6,
+      "negative_false_accepts": 17,
+      "ambiguous_false_answers": 2,
+      "coverage": 0.7529411764705882,
+      "incorrect_positive_ids": [
+        "v2_en_001",
+        "v2_en_003",
+        "v2_en_021",
+        "v2_tw_003",
+        "v2_tw_008",
+        "v2_tw_016"
+      ],
+      "negative_false_accept_ids": [
+        "off_en_dev_10",
+        "off_en_test_09",
+        "off_tw_dev_02",
+        "off_tw_dev_05",
+        "off_tw_test_01",
+        "off_tw_test_03",
+        "off_tw_test_08",
+        "off23_en_014",
+        "off23_en_015",
+        "edge_tw_005",
+        "edge_tw_006",
+        "edge_en_008",
+        "edge_en_010",
+        "edge_en_013",
+        "edge_en_014",
+        "edge_en_015",
+        "edge_en_016"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_en_001",
+        "v2_amb_tw_001"
+      ],
+      "semantic_fallback_answers": 38
+    },
+    {
+      "semantic_threshold": 0.35,
+      "semantic_minimum_margin": 0.05,
+      "correct_answers": 61,
+      "incorrect_positive_answers": 4,
+      "negative_false_accepts": 8,
+      "ambiguous_false_answers": 2,
+      "coverage": 0.7176470588235294,
+      "incorrect_positive_ids": [
+        "v2_en_001",
+        "v2_tw_003",
+        "v2_tw_008",
+        "v2_tw_016"
+      ],
+      "negative_false_accept_ids": [
+        "off_tw_dev_02",
+        "off_tw_dev_05",
+        "off_tw_test_01",
+        "off_tw_test_08",
+        "edge_tw_005",
+        "edge_tw_006",
+        "edge_en_013",
+        "edge_en_014"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_en_001",
+        "v2_amb_tw_001"
+      ],
+      "semantic_fallback_answers": 33
+    },
+    {
+      "semantic_threshold": 0.35,
+      "semantic_minimum_margin": 0.08,
+      "correct_answers": 58,
+      "incorrect_positive_answers": 1,
+      "negative_false_accepts": 5,
+      "ambiguous_false_answers": 2,
+      "coverage": 0.6823529411764706,
+      "incorrect_positive_ids": [
+        "v2_tw_003"
+      ],
+      "negative_false_accept_ids": [
+        "off_tw_dev_02",
+        "off_tw_dev_05",
+        "off_tw_test_01",
+        "edge_tw_005",
+        "edge_en_014"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_en_001",
+        "v2_amb_tw_001"
+      ],
+      "semantic_fallback_answers": 27
+    },
+    {
+      "semantic_threshold": 0.35,
+      "semantic_minimum_margin": 0.1,
+      "correct_answers": 55,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 2,
+      "ambiguous_false_answers": 1,
+      "coverage": 0.6470588235294118,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [
+        "off_tw_dev_02",
+        "edge_en_014"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_tw_001"
+      ],
+      "semantic_fallback_answers": 23
+    },
+    {
+      "semantic_threshold": 0.35,
+      "semantic_minimum_margin": 0.12,
+      "correct_answers": 55,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.6470588235294118,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 23
+    },
+    {
+      "semantic_threshold": 0.35,
+      "semantic_minimum_margin": 0.15,
+      "correct_answers": 46,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5411764705882353,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 14
+    },
+    {
+      "semantic_threshold": 0.4,
+      "semantic_minimum_margin": 0.03,
+      "correct_answers": 63,
+      "incorrect_positive_answers": 5,
+      "negative_false_accepts": 11,
+      "ambiguous_false_answers": 2,
+      "coverage": 0.7411764705882353,
+      "incorrect_positive_ids": [
+        "v2_en_001",
+        "v2_en_003",
+        "v2_tw_003",
+        "v2_tw_008",
+        "v2_tw_016"
+      ],
+      "negative_false_accept_ids": [
+        "off_en_dev_10",
+        "off_en_test_09",
+        "off_tw_dev_02",
+        "off_tw_dev_05",
+        "off_tw_test_01",
+        "off_tw_test_08",
+        "off23_en_014",
+        "edge_tw_005",
+        "edge_tw_006",
+        "edge_en_010",
+        "edge_en_013"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_en_001",
+        "v2_amb_tw_001"
+      ],
+      "semantic_fallback_answers": 36
+    },
+    {
+      "semantic_threshold": 0.4,
+      "semantic_minimum_margin": 0.05,
+      "correct_answers": 60,
+      "incorrect_positive_answers": 4,
+      "negative_false_accepts": 7,
+      "ambiguous_false_answers": 2,
+      "coverage": 0.7058823529411765,
+      "incorrect_positive_ids": [
+        "v2_en_001",
+        "v2_tw_003",
+        "v2_tw_008",
+        "v2_tw_016"
+      ],
+      "negative_false_accept_ids": [
+        "off_tw_dev_02",
+        "off_tw_dev_05",
+        "off_tw_test_01",
+        "off_tw_test_08",
+        "edge_tw_005",
+        "edge_tw_006",
+        "edge_en_013"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_en_001",
+        "v2_amb_tw_001"
+      ],
+      "semantic_fallback_answers": 32
+    },
+    {
+      "semantic_threshold": 0.4,
+      "semantic_minimum_margin": 0.08,
+      "correct_answers": 57,
+      "incorrect_positive_answers": 1,
+      "negative_false_accepts": 4,
+      "ambiguous_false_answers": 2,
+      "coverage": 0.6705882352941176,
+      "incorrect_positive_ids": [
+        "v2_tw_003"
+      ],
+      "negative_false_accept_ids": [
+        "off_tw_dev_02",
+        "off_tw_dev_05",
+        "off_tw_test_01",
+        "edge_tw_005"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_en_001",
+        "v2_amb_tw_001"
+      ],
+      "semantic_fallback_answers": 26
+    },
+    {
+      "semantic_threshold": 0.4,
+      "semantic_minimum_margin": 0.1,
+      "correct_answers": 54,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 1,
+      "ambiguous_false_answers": 1,
+      "coverage": 0.6352941176470588,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [
+        "off_tw_dev_02"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_tw_001"
+      ],
+      "semantic_fallback_answers": 22
+    },
+    {
+      "semantic_threshold": 0.4,
+      "semantic_minimum_margin": 0.12,
+      "correct_answers": 54,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.6352941176470588,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 22
+    },
+    {
+      "semantic_threshold": 0.4,
+      "semantic_minimum_margin": 0.15,
+      "correct_answers": 46,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5411764705882353,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 14
+    },
+    {
+      "semantic_threshold": 0.45,
+      "semantic_minimum_margin": 0.03,
+      "correct_answers": 60,
+      "incorrect_positive_answers": 5,
+      "negative_false_accepts": 9,
+      "ambiguous_false_answers": 2,
+      "coverage": 0.7058823529411765,
+      "incorrect_positive_ids": [
+        "v2_en_001",
+        "v2_en_003",
+        "v2_tw_003",
+        "v2_tw_008",
+        "v2_tw_016"
+      ],
+      "negative_false_accept_ids": [
+        "off_en_dev_10",
+        "off_en_test_09",
+        "off_tw_dev_02",
+        "off_tw_test_01",
+        "off_tw_test_08",
+        "off23_en_014",
+        "edge_tw_006",
+        "edge_en_010",
+        "edge_en_013"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_en_001",
+        "v2_amb_tw_001"
+      ],
+      "semantic_fallback_answers": 33
+    },
+    {
+      "semantic_threshold": 0.45,
+      "semantic_minimum_margin": 0.05,
+      "correct_answers": 57,
+      "incorrect_positive_answers": 4,
+      "negative_false_accepts": 5,
+      "ambiguous_false_answers": 2,
+      "coverage": 0.6705882352941176,
+      "incorrect_positive_ids": [
+        "v2_en_001",
+        "v2_tw_003",
+        "v2_tw_008",
+        "v2_tw_016"
+      ],
+      "negative_false_accept_ids": [
+        "off_tw_dev_02",
+        "off_tw_test_01",
+        "off_tw_test_08",
+        "edge_tw_006",
+        "edge_en_013"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_en_001",
+        "v2_amb_tw_001"
+      ],
+      "semantic_fallback_answers": 29
+    },
+    {
+      "semantic_threshold": 0.45,
+      "semantic_minimum_margin": 0.08,
+      "correct_answers": 54,
+      "incorrect_positive_answers": 1,
+      "negative_false_accepts": 2,
+      "ambiguous_false_answers": 2,
+      "coverage": 0.6352941176470588,
+      "incorrect_positive_ids": [
+        "v2_tw_003"
+      ],
+      "negative_false_accept_ids": [
+        "off_tw_dev_02",
+        "off_tw_test_01"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_en_001",
+        "v2_amb_tw_001"
+      ],
+      "semantic_fallback_answers": 23
+    },
+    {
+      "semantic_threshold": 0.45,
+      "semantic_minimum_margin": 0.1,
+      "correct_answers": 52,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 1,
+      "ambiguous_false_answers": 1,
+      "coverage": 0.611764705882353,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [
+        "off_tw_dev_02"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_tw_001"
+      ],
+      "semantic_fallback_answers": 20
+    },
+    {
+      "semantic_threshold": 0.45,
+      "semantic_minimum_margin": 0.12,
+      "correct_answers": 52,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.611764705882353,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 20
+    },
+    {
+      "semantic_threshold": 0.45,
+      "semantic_minimum_margin": 0.15,
+      "correct_answers": 46,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5411764705882353,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 14
+    },
+    {
+      "semantic_threshold": 0.5,
+      "semantic_minimum_margin": 0.03,
+      "correct_answers": 55,
+      "incorrect_positive_answers": 4,
+      "negative_false_accepts": 8,
+      "ambiguous_false_answers": 1,
+      "coverage": 0.6470588235294118,
+      "incorrect_positive_ids": [
+        "v2_en_003",
+        "v2_tw_003",
+        "v2_tw_008",
+        "v2_tw_016"
+      ],
+      "negative_false_accept_ids": [
+        "off_en_dev_10",
+        "off_en_test_09",
+        "off_tw_dev_02",
+        "off_tw_test_01",
+        "off_tw_test_08",
+        "edge_tw_006",
+        "edge_en_010",
+        "edge_en_013"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_en_001"
+      ],
+      "semantic_fallback_answers": 27
+    },
+    {
+      "semantic_threshold": 0.5,
+      "semantic_minimum_margin": 0.05,
+      "correct_answers": 53,
+      "incorrect_positive_answers": 3,
+      "negative_false_accepts": 5,
+      "ambiguous_false_answers": 1,
+      "coverage": 0.6235294117647059,
+      "incorrect_positive_ids": [
+        "v2_tw_003",
+        "v2_tw_008",
+        "v2_tw_016"
+      ],
+      "negative_false_accept_ids": [
+        "off_tw_dev_02",
+        "off_tw_test_01",
+        "off_tw_test_08",
+        "edge_tw_006",
+        "edge_en_013"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_en_001"
+      ],
+      "semantic_fallback_answers": 24
+    },
+    {
+      "semantic_threshold": 0.5,
+      "semantic_minimum_margin": 0.08,
+      "correct_answers": 51,
+      "incorrect_positive_answers": 1,
+      "negative_false_accepts": 2,
+      "ambiguous_false_answers": 1,
+      "coverage": 0.6,
+      "incorrect_positive_ids": [
+        "v2_tw_003"
+      ],
+      "negative_false_accept_ids": [
+        "off_tw_dev_02",
+        "off_tw_test_01"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_en_001"
+      ],
+      "semantic_fallback_answers": 20
+    },
+    {
+      "semantic_threshold": 0.5,
+      "semantic_minimum_margin": 0.1,
+      "correct_answers": 50,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 1,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5882352941176471,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [
+        "off_tw_dev_02"
+      ],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 18
+    },
+    {
+      "semantic_threshold": 0.5,
+      "semantic_minimum_margin": 0.12,
+      "correct_answers": 50,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5882352941176471,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 18
+    },
+    {
+      "semantic_threshold": 0.5,
+      "semantic_minimum_margin": 0.15,
+      "correct_answers": 46,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5411764705882353,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 14
+    },
+    {
+      "semantic_threshold": 0.55,
+      "semantic_minimum_margin": 0.03,
+      "correct_answers": 51,
+      "incorrect_positive_answers": 2,
+      "negative_false_accepts": 4,
+      "ambiguous_false_answers": 1,
+      "coverage": 0.6,
+      "incorrect_positive_ids": [
+        "v2_tw_003",
+        "v2_tw_008"
+      ],
+      "negative_false_accept_ids": [
+        "off_en_dev_10",
+        "off_en_test_09",
+        "off_tw_dev_02",
+        "off_tw_test_08"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_en_001"
+      ],
+      "semantic_fallback_answers": 21
+    },
+    {
+      "semantic_threshold": 0.55,
+      "semantic_minimum_margin": 0.05,
+      "correct_answers": 50,
+      "incorrect_positive_answers": 2,
+      "negative_false_accepts": 2,
+      "ambiguous_false_answers": 1,
+      "coverage": 0.5882352941176471,
+      "incorrect_positive_ids": [
+        "v2_tw_003",
+        "v2_tw_008"
+      ],
+      "negative_false_accept_ids": [
+        "off_tw_dev_02",
+        "off_tw_test_08"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_en_001"
+      ],
+      "semantic_fallback_answers": 20
+    },
+    {
+      "semantic_threshold": 0.55,
+      "semantic_minimum_margin": 0.08,
+      "correct_answers": 49,
+      "incorrect_positive_answers": 1,
+      "negative_false_accepts": 1,
+      "ambiguous_false_answers": 1,
+      "coverage": 0.5764705882352941,
+      "incorrect_positive_ids": [
+        "v2_tw_003"
+      ],
+      "negative_false_accept_ids": [
+        "off_tw_dev_02"
+      ],
+      "ambiguous_false_answer_ids": [
+        "v2_amb_en_001"
+      ],
+      "semantic_fallback_answers": 18
+    },
+    {
+      "semantic_threshold": 0.55,
+      "semantic_minimum_margin": 0.1,
+      "correct_answers": 48,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 1,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5647058823529412,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [
+        "off_tw_dev_02"
+      ],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 16
+    },
+    {
+      "semantic_threshold": 0.55,
+      "semantic_minimum_margin": 0.12,
+      "correct_answers": 48,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5647058823529412,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 16
+    },
+    {
+      "semantic_threshold": 0.55,
+      "semantic_minimum_margin": 0.15,
+      "correct_answers": 45,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5294117647058824,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 13
+    },
+    {
+      "semantic_threshold": 0.6,
+      "semantic_minimum_margin": 0.03,
+      "correct_answers": 47,
+      "incorrect_positive_answers": 1,
+      "negative_false_accepts": 1,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5529411764705883,
+      "incorrect_positive_ids": [
+        "v2_tw_003"
+      ],
+      "negative_false_accept_ids": [
+        "off_en_test_09"
+      ],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 16
+    },
+    {
+      "semantic_threshold": 0.6,
+      "semantic_minimum_margin": 0.05,
+      "correct_answers": 47,
+      "incorrect_positive_answers": 1,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5529411764705883,
+      "incorrect_positive_ids": [
+        "v2_tw_003"
+      ],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 16
+    },
+    {
+      "semantic_threshold": 0.6,
+      "semantic_minimum_margin": 0.08,
+      "correct_answers": 47,
+      "incorrect_positive_answers": 1,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5529411764705883,
+      "incorrect_positive_ids": [
+        "v2_tw_003"
+      ],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 16
+    },
+    {
+      "semantic_threshold": 0.6,
+      "semantic_minimum_margin": 0.1,
+      "correct_answers": 47,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5529411764705883,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 15
+    },
+    {
+      "semantic_threshold": 0.6,
+      "semantic_minimum_margin": 0.12,
+      "correct_answers": 47,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5529411764705883,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 15
+    },
+    {
+      "semantic_threshold": 0.6,
+      "semantic_minimum_margin": 0.15,
+      "correct_answers": 44,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5176470588235295,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 12
+    },
+    {
+      "semantic_threshold": 0.65,
+      "semantic_minimum_margin": 0.03,
+      "correct_answers": 46,
+      "incorrect_positive_answers": 1,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5411764705882353,
+      "incorrect_positive_ids": [
+        "v2_tw_003"
+      ],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 15
+    },
+    {
+      "semantic_threshold": 0.65,
+      "semantic_minimum_margin": 0.05,
+      "correct_answers": 46,
+      "incorrect_positive_answers": 1,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5411764705882353,
+      "incorrect_positive_ids": [
+        "v2_tw_003"
+      ],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 15
+    },
+    {
+      "semantic_threshold": 0.65,
+      "semantic_minimum_margin": 0.08,
+      "correct_answers": 46,
+      "incorrect_positive_answers": 1,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5411764705882353,
+      "incorrect_positive_ids": [
+        "v2_tw_003"
+      ],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 15
+    },
+    {
+      "semantic_threshold": 0.65,
+      "semantic_minimum_margin": 0.1,
+      "correct_answers": 46,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5411764705882353,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 14
+    },
+    {
+      "semantic_threshold": 0.65,
+      "semantic_minimum_margin": 0.12,
+      "correct_answers": 46,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5411764705882353,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 14
+    },
+    {
+      "semantic_threshold": 0.65,
+      "semantic_minimum_margin": 0.15,
+      "correct_answers": 43,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.5058823529411764,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 11
+    },
+    {
+      "semantic_threshold": 0.7,
+      "semantic_minimum_margin": 0.03,
+      "correct_answers": 39,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.4588235294117647,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 7
+    },
+    {
+      "semantic_threshold": 0.7,
+      "semantic_minimum_margin": 0.05,
+      "correct_answers": 39,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.4588235294117647,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 7
+    },
+    {
+      "semantic_threshold": 0.7,
+      "semantic_minimum_margin": 0.08,
+      "correct_answers": 39,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.4588235294117647,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 7
+    },
+    {
+      "semantic_threshold": 0.7,
+      "semantic_minimum_margin": 0.1,
+      "correct_answers": 39,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.4588235294117647,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 7
+    },
+    {
+      "semantic_threshold": 0.7,
+      "semantic_minimum_margin": 0.12,
+      "correct_answers": 39,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.4588235294117647,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 7
+    },
+    {
+      "semantic_threshold": 0.7,
+      "semantic_minimum_margin": 0.15,
+      "correct_answers": 38,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.4470588235294118,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 6
+    },
+    {
+      "semantic_threshold": 0.75,
+      "semantic_minimum_margin": 0.03,
+      "correct_answers": 37,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.43529411764705883,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 5
+    },
+    {
+      "semantic_threshold": 0.75,
+      "semantic_minimum_margin": 0.05,
+      "correct_answers": 37,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.43529411764705883,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 5
+    },
+    {
+      "semantic_threshold": 0.75,
+      "semantic_minimum_margin": 0.08,
+      "correct_answers": 37,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.43529411764705883,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 5
+    },
+    {
+      "semantic_threshold": 0.75,
+      "semantic_minimum_margin": 0.1,
+      "correct_answers": 37,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.43529411764705883,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 5
+    },
+    {
+      "semantic_threshold": 0.75,
+      "semantic_minimum_margin": 0.12,
+      "correct_answers": 37,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.43529411764705883,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 5
+    },
+    {
+      "semantic_threshold": 0.75,
+      "semantic_minimum_margin": 0.15,
+      "correct_answers": 37,
+      "incorrect_positive_answers": 0,
+      "negative_false_accepts": 0,
+      "ambiguous_false_answers": 0,
+      "coverage": 0.43529411764705883,
+      "incorrect_positive_ids": [],
+      "negative_false_accept_ids": [],
+      "ambiguous_false_answer_ids": [],
+      "semantic_fallback_answers": 5
+    }
+  ],
+  "positive_results": [
+    {
+      "id": "para_en_fert_00",
+      "language": "English",
+      "expected_record_id": 2,
+      "question": "What fertilizer is best for maize?",
+      "base_state": "A",
+      "base_id": 2,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 2,
+        "question": "What fertilizer is best for maize?",
+        "similarity": 1.0000000000000004,
+        "retrieval_score": 1.0000000000000004,
+        "margin": 0.36361632347021555,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_fert_01",
+      "language": "English",
+      "expected_record_id": 2,
+      "question": "For maize what fertilizer is best",
+      "base_state": "A",
+      "base_id": 2,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 2,
+        "question": "What fertilizer is best for maize?",
+        "similarity": 0.9504768327627522,
+        "retrieval_score": 0.9504768327627522,
+        "margin": 0.28290315379345177,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_fert_02",
+      "language": "English",
+      "expected_record_id": 2,
+      "question": "Which fertilizer is best for maize?",
+      "base_state": "A",
+      "base_id": 2,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 2,
+        "question": "What fertilizer is best for maize?",
+        "similarity": 0.9484267289698586,
+        "retrieval_score": 0.9484267289698586,
+        "margin": 0.35561681012905133,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_fert_03",
+      "language": "English",
+      "expected_record_id": 2,
+      "question": "What fertilizer should I use for maize?",
+      "base_state": "A",
+      "base_id": 2,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 2,
+        "question": "What fertilizer is best for maize?",
+        "similarity": 0.8553915603229192,
+        "retrieval_score": 0.8553915603229192,
+        "margin": 0.17851892285455795,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_fert_04",
+      "language": "English",
+      "expected_record_id": 2,
+      "question": "Best fertilizer for maize",
+      "base_state": "A",
+      "base_id": 2,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 2,
+        "question": "What fertilizer is best for maize?",
+        "similarity": 0.9126123447029704,
+        "retrieval_score": 0.9126123447029704,
+        "margin": 0.259848719133136,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_fert_05",
+      "language": "English",
+      "expected_record_id": 2,
+      "question": "For maize which fertilizer should I use?",
+      "base_state": "A",
+      "base_id": 2,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 2,
+        "question": "What fertilizer is best for maize?",
+        "similarity": 0.7701528927671213,
+        "retrieval_score": 0.7701528927671213,
+        "margin": 0.10650046659634427,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_fert_06",
+      "language": "English",
+      "expected_record_id": 2,
+      "question": "Which fertilizer is good for maize?",
+      "base_state": "A",
+      "base_id": 2,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 2,
+        "question": "What fertilizer is best for maize?",
+        "similarity": 0.8623910895521183,
+        "retrieval_score": 0.8623910895521183,
+        "margin": 0.2683553802460612,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_fert_07",
+      "language": "English",
+      "expected_record_id": 2,
+      "question": "What is the best fertiliser to use on maize?",
+      "base_state": "A",
+      "base_id": 2,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 2,
+        "question": "What fertilizer is best for maize?",
+        "similarity": 0.8413402018121858,
+        "retrieval_score": 0.8413402018121858,
+        "margin": 0.21392919454780635,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_fert_08",
+      "language": "English",
+      "expected_record_id": 2,
+      "question": "Maize fertilizer which one is best?",
+      "base_state": "A",
+      "base_id": 2,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 2,
+        "question": "What fertilizer is best for maize?",
+        "similarity": 0.8388987815415252,
+        "retrieval_score": 0.8388987815415252,
+        "margin": 0.22403198819804926,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_fert_09",
+      "language": "English",
+      "expected_record_id": 2,
+      "question": "For maize, which fertiliser should I use?",
+      "base_state": "A",
+      "base_id": 2,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 2,
+        "question": "What fertilizer is best for maize?",
+        "similarity": 0.7730728979797279,
+        "retrieval_score": 0.7730728979797279,
+        "margin": 0.11293153237295506,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_fert_10",
+      "language": "English",
+      "expected_record_id": 2,
+      "question": "For maize what fertilizer best?",
+      "base_state": "A",
+      "base_id": 2,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 2,
+        "question": "What fertilizer is best for maize?",
+        "similarity": 0.9018891401640092,
+        "retrieval_score": 0.9018891401640092,
+        "margin": 0.21384299321325895,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_time_01",
+      "language": "English",
+      "acceptable_record_ids": [
+        16,
+        207
+      ],
+      "question": "What is the best time to plant maize in Ghana?",
+      "base_state": "A",
+      "base_id": 16,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 16,
+        "question": "When is the best time to plant maize in Ghana?",
+        "similarity": 0.9570008569100702,
+        "retrieval_score": 0.9570008569100702,
+        "margin": 0.4382914074678046,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_time_02",
+      "language": "English",
+      "acceptable_record_ids": [
+        16,
+        207
+      ],
+      "question": "When is maize planting season in Ghana?",
+      "base_state": "B",
+      "base_id": 282,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 16,
+        "question": "When is the best time to plant maize in Ghana?",
+        "similarity": 0.7650005842609185,
+        "retrieval_score": 0.7650005842609185,
+        "margin": 0.16504559281720166,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_time_03",
+      "language": "English",
+      "acceptable_record_ids": [
+        16,
+        207
+      ],
+      "question": "When should maize be planted in Ghana?",
+      "base_state": "A",
+      "base_id": 207,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 207,
+        "question": "When should maize be planted in southern and northern Ghana?",
+        "similarity": 0.7142391670125865,
+        "retrieval_score": 0.7142391670125865,
+        "margin": 0.23372346934570903,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_time_04",
+      "language": "English",
+      "acceptable_record_ids": [
+        16,
+        207
+      ],
+      "question": "What month should I plant maize in Ghana?",
+      "base_state": "B",
+      "base_id": 16,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 16,
+        "question": "When is the best time to plant maize in Ghana?",
+        "similarity": 0.7875332813024928,
+        "retrieval_score": 0.7875332813024928,
+        "margin": 0.19340105201450608,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_fish_01",
+      "language": "English",
+      "expected_record_id": 251,
+      "question": "How can I start fish farming in Ghana?",
+      "base_state": "A",
+      "base_id": 251,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 251,
+        "question": "How do I start a fish farm in Ghana?",
+        "similarity": 0.747921745275104,
+        "retrieval_score": 0.747921745275104,
+        "margin": 0.261116698847888,
+        "specificity_safe": true,
+        "query_entities": [
+          "fish"
+        ],
+        "candidate_entities": [
+          "fish"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_fish_02",
+      "language": "English",
+      "expected_record_id": 251,
+      "question": "What do I need to begin a fish farm?",
+      "base_state": "B",
+      "base_id": 251,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 251,
+        "question": "How do I start a fish farm in Ghana?",
+        "similarity": 0.47084399807651656,
+        "retrieval_score": 0.47084399807651656,
+        "margin": 0.12424687515617139,
+        "specificity_safe": true,
+        "query_entities": [
+          "fish"
+        ],
+        "candidate_entities": [
+          "fish"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_fish_03",
+      "language": "English",
+      "expected_record_id": 251,
+      "question": "I want to start farming fish in Ghana, how do I begin?",
+      "base_state": "A",
+      "base_id": 251,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 251,
+        "question": "How do I start a fish farm in Ghana?",
+        "similarity": 0.6157211472799382,
+        "retrieval_score": 0.6157211472799382,
+        "margin": 0.1301697459067952,
+        "specificity_safe": true,
+        "query_entities": [
+          "fish"
+        ],
+        "candidate_entities": [
+          "fish"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_cassava_01",
+      "language": "English",
+      "expected_record_id": 220,
+      "question": "How should I plant cassava?",
+      "base_state": "A",
+      "base_id": 220,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 220,
+        "question": "What is the best way to plant cassava stems?",
+        "similarity": 0.5466570537842397,
+        "retrieval_score": 0.5466570537842397,
+        "margin": 0.08677975595436233,
+        "specificity_safe": true,
+        "query_entities": [
+          "cassava"
+        ],
+        "candidate_entities": [
+          "cassava"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_cassava_02",
+      "language": "English",
+      "expected_record_id": 220,
+      "question": "What is the right way to grow cassava stems?",
+      "base_state": "A",
+      "base_id": 220,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 220,
+        "question": "What is the best way to plant cassava stems?",
+        "similarity": 0.5566793129292678,
+        "retrieval_score": 0.5566793129292678,
+        "margin": 0.30848152389825834,
+        "specificity_safe": true,
+        "query_entities": [
+          "cassava"
+        ],
+        "candidate_entities": [
+          "cassava"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_cassava_03",
+      "language": "English",
+      "expected_record_id": 220,
+      "question": "How do I put cassava cuttings in the soil?",
+      "base_state": "B",
+      "base_id": 325,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 325,
+        "question": "What can I do with cassava peels and other cassava waste?",
+        "similarity": 0.24318082495751012,
+        "retrieval_score": 0.24318082495751012,
+        "margin": 0.015404491694528621,
+        "specificity_safe": true,
+        "query_entities": [
+          "cassava"
+        ],
+        "candidate_entities": [
+          "cassava"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_blight_01",
+      "language": "English",
+      "expected_record_id": 238,
+      "question": "How do I stop late blight on tomatoes?",
+      "base_state": "A",
+      "base_id": 238,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 238,
+        "question": "How can I prevent tomato late blight?",
+        "similarity": 0.7185140035344771,
+        "retrieval_score": 0.7185140035344771,
+        "margin": 0.32816103011568776,
+        "specificity_safe": true,
+        "query_entities": [
+          "tomato"
+        ],
+        "candidate_entities": [
+          "tomato"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_blight_02",
+      "language": "English",
+      "expected_record_id": 238,
+      "question": "What can prevent tomato late blight?",
+      "base_state": "A",
+      "base_id": 238,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 238,
+        "question": "How can I prevent tomato late blight?",
+        "similarity": 0.9691283855226768,
+        "retrieval_score": 0.9691283855226768,
+        "margin": 0.5435430366740869,
+        "specificity_safe": true,
+        "query_entities": [
+          "tomato"
+        ],
+        "candidate_entities": [
+          "tomato"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_blight_03",
+      "language": "English",
+      "expected_record_id": 238,
+      "question": "Tomato late blight prevention, what should I do?",
+      "base_state": "A",
+      "base_id": 238,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 238,
+        "question": "How can I prevent tomato late blight?",
+        "similarity": 0.6352029659969674,
+        "retrieval_score": 0.6352029659969674,
+        "margin": 0.42794060515609933,
+        "specificity_safe": true,
+        "query_entities": [
+          "tomato"
+        ],
+        "candidate_entities": [
+          "tomato"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_pest_01",
+      "language": "English",
+      "expected_record_id": 38,
+      "question": "How do I keep pests away from my crops?",
+      "base_state": "B",
+      "base_id": 38,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 38,
+        "question": "How can I prevent pests from attacking my crops?",
+        "similarity": 0.6791850349166924,
+        "retrieval_score": 0.6791850349166924,
+        "margin": 0.1783739685128296,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_pest_02",
+      "language": "English",
+      "expected_record_id": 38,
+      "question": "What can I do to prevent pest attacks on the farm?",
+      "base_state": "B",
+      "base_id": 38,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 38,
+        "question": "How can I prevent pests from attacking my crops?",
+        "similarity": 0.6397393163952543,
+        "retrieval_score": 0.6397393163952543,
+        "margin": 0.02857303853518056,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_en_pest_03",
+      "language": "English",
+      "expected_record_id": 38,
+      "question": "How can I manage pests before they damage my crops?",
+      "base_state": "B",
+      "base_id": 11,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 38,
+        "question": "How can I prevent pests from attacking my crops?",
+        "similarity": 0.5275783744982792,
+        "retrieval_score": 0.5275783744982792,
+        "margin": 0.06883145903846066,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_tw_fert_01",
+      "language": "Twi",
+      "expected_record_id": 2,
+      "question": "Aburo ferefere bɛn na ɛyɛ papa?",
+      "base_state": "A",
+      "base_id": 2,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 2,
+        "question": "Ferefere bɛn na ɛyɛ papa ma aburo?",
+        "similarity": 0.9127936599497953,
+        "retrieval_score": 0.9127936599497953,
+        "margin": 0.4276725000218269,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_tw_fert_02",
+      "language": "Twi",
+      "expected_record_id": 2,
+      "question": "Ferefere papa bɛn na mede mma aburo?",
+      "base_state": "A",
+      "base_id": 2,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 2,
+        "question": "Ferefere bɛn na ɛyɛ papa ma aburo?",
+        "similarity": 0.8662712281197809,
+        "retrieval_score": 0.8662712281197809,
+        "margin": 0.38603654700927453,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_tw_time_01",
+      "language": "Twi",
+      "acceptable_record_ids": [
+        16,
+        207
+      ],
+      "question": "Bere pa bɛn na ɛsɛ sɛ meto aburo wɔ Ghana?",
+      "base_state": "B",
+      "base_id": 207,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 248,
+        "question": "Dɛn na menyɛ sɛ meto ntorɔ wɔ Ghana?",
+        "similarity": 0.37282554329414186,
+        "retrieval_score": 0.26843439117178214,
+        "margin": 0.0014000983786676136,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_tw_time_02",
+      "language": "Twi",
+      "acceptable_record_ids": [
+        16,
+        207
+      ],
+      "question": "Aburo dua bere bɛn na ɛyɛ papa wɔ Ghana?",
+      "base_state": "A",
+      "base_id": 207,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 207,
+        "question": "Bere bɛn na ɛyɛ papa sɛ wode aburoɔ to mu wɔ Ghana?",
+        "similarity": 0.7897757182448195,
+        "retrieval_score": 0.7897757182448195,
+        "margin": 0.2594822703350904,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_tw_fish_01",
+      "language": "Twi",
+      "expected_record_id": 251,
+      "question": "Mɛyɛ dɛn afi apataa adwuma ase wɔ Ghana?",
+      "base_state": "A",
+      "base_id": 251,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 251,
+        "question": "Dɛn na menyɛ sɛ mefi ase apataa adwuma wɔ Ghana?",
+        "similarity": 0.5331484467030978,
+        "retrieval_score": 0.5331484467030978,
+        "margin": 0.11054880552450275,
+        "specificity_safe": true,
+        "query_entities": [
+          "fish"
+        ],
+        "candidate_entities": [
+          "fish"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_tw_cassava_01",
+      "language": "Twi",
+      "expected_record_id": 220,
+      "question": "Mɛyɛ dɛn ato bankye mmabaa?",
+      "base_state": "B",
+      "base_id": 286,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 286,
+        "question": "Dɛn na menyɛ bankye flour fi bankye foforɔ?",
+        "similarity": 0.3778874558884706,
+        "retrieval_score": 0.3778874558884706,
+        "margin": 0.01886899749072035,
+        "specificity_safe": true,
+        "query_entities": [
+          "cassava"
+        ],
+        "candidate_entities": [
+          "cassava"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_tw_blight_01",
+      "language": "Twi",
+      "expected_record_id": 238,
+      "question": "Mɛyɛ dɛn agye tomato afi late blight ho?",
+      "base_state": "A",
+      "base_id": 238,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 238,
+        "question": "Dɛn na menyɛ sɛ tomato late blight annya me nnuaba?",
+        "similarity": 0.5606115732507372,
+        "retrieval_score": 0.5606115732507372,
+        "margin": 0.274792027257614,
+        "specificity_safe": true,
+        "query_entities": [
+          "tomato"
+        ],
+        "candidate_entities": [
+          "tomato"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "para_tw_pest_01",
+      "language": "Twi",
+      "expected_record_id": 38,
+      "question": "Mɛyɛ dɛn amma adwummaker ansɛe me nnɔbae?",
+      "base_state": "B",
+      "base_id": 511,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 38,
+        "question": "Ɛdeɛn na mema adwummakers amma wɔnba m'nnuan afuo mu?",
+        "similarity": 0.5010379178843112,
+        "retrieval_score": 0.5010379178843112,
+        "margin": 0.12542542364697806,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_001",
+      "language": "English",
+      "question": "How can I tell whether land is fertile enough for farming?",
+      "acceptable_record_ids": [
+        1
+      ],
+      "base_state": "B",
+      "base_id": 340,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 340,
+        "question": "How can I get land for farming in Ghana?",
+        "similarity": 0.4536001490149969,
+        "retrieval_score": 0.4536001490149969,
+        "margin": 0.06661107965744967,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_002",
+      "language": "English",
+      "question": "Can I turn kitchen and garden waste into compost?",
+      "acceptable_record_ids": [
+        4,
+        114
+      ],
+      "base_state": "B",
+      "base_id": 248,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 4,
+        "question": "How can I make compost at home?",
+        "similarity": 0.32300137513867283,
+        "retrieval_score": 0.32300137513867283,
+        "margin": 0.14421937316768085,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_003",
+      "language": "English",
+      "question": "My land is mostly sand; how can I make it productive?",
+      "acceptable_record_ids": [
+        5
+      ],
+      "base_state": "B",
+      "base_id": 20,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 340,
+        "question": "How can I get land for farming in Ghana?",
+        "similarity": 0.5013437148458282,
+        "retrieval_score": 0.5013437148458282,
+        "margin": 0.04479720967618406,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_004",
+      "language": "English",
+      "question": "What can I add to land that has a very low pH?",
+      "acceptable_record_ids": [
+        7
+      ],
+      "base_state": "C",
+      "base_id": 316,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 7,
+        "question": "What can I do if my soil is too acidic?",
+        "similarity": 0.4649948850209006,
+        "retrieval_score": 0.4649948850209006,
+        "margin": 0.04911917351968076,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_005",
+      "language": "English",
+      "question": "How will I see that the fertilizer has started helping my plants?",
+      "acceptable_record_ids": [
+        10
+      ],
+      "base_state": "B",
+      "base_id": 10,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 10,
+        "question": "How do I know if my fertilizer is working?",
+        "similarity": 0.6613756766837999,
+        "retrieval_score": 0.6613756766837999,
+        "margin": 0.13767725013003096,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_006",
+      "language": "English",
+      "question": "Which part of the year should Ghanaian farmers sow maize?",
+      "acceptable_record_ids": [
+        16,
+        207
+      ],
+      "base_state": "B",
+      "base_id": 208,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 209,
+        "question": "What spacing should I use when planting maize?",
+        "similarity": 0.5628640027226769,
+        "retrieval_score": 0.5628640027226769,
+        "margin": 0.026826874603336326,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_007",
+      "language": "English",
+      "question": "How far below the soil should corn seed go?",
+      "acceptable_record_ids": [
+        17
+      ],
+      "base_state": "B",
+      "base_id": 218,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 17,
+        "question": "How deep should I plant maize seeds?",
+        "similarity": 0.6541720451108392,
+        "retrieval_score": 0.6541720451108392,
+        "margin": 0.4728719682768946,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_008",
+      "language": "English",
+      "question": "How can farmers stop insects from destroying their vegetables?",
+      "acceptable_record_ids": [
+        38
+      ],
+      "base_state": "C",
+      "base_id": 123,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 38,
+        "question": "How can I prevent pests from attacking my crops?",
+        "similarity": 0.5847943786831633,
+        "retrieval_score": 0.5847943786831633,
+        "margin": 0.03615729042110283,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_009",
+      "language": "English",
+      "question": "Where can a Ghanaian farmer borrow money for the farm?",
+      "acceptable_record_ids": [
+        84,
+        273
+      ],
+      "base_state": "B",
+      "base_id": 83,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 84,
+        "question": "How can I get an agricultural loan in Ghana?",
+        "similarity": 0.5542507224433111,
+        "retrieval_score": 0.5542507224433111,
+        "margin": 0.08785725859258542,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_010",
+      "language": "English",
+      "question": "What is the correct way to lift mature cassava roots?",
+      "acceptable_record_ids": [
+        66
+      ],
+      "base_state": "B",
+      "base_id": 220,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 66,
+        "question": "How should I harvest cassava properly?",
+        "similarity": 0.5912183338493485,
+        "retrieval_score": 0.5912183338493485,
+        "margin": 0.05154490458785821,
+        "specificity_safe": true,
+        "query_entities": [
+          "cassava"
+        ],
+        "candidate_entities": [
+          "cassava"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_011",
+      "language": "English",
+      "question": "I want to begin growing okra; what do I need to do?",
+      "acceptable_record_ids": [
+        394
+      ],
+      "base_state": "B",
+      "base_id": 398,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 394,
+        "question": "How do I start an okra farm?",
+        "similarity": 0.35502631856286077,
+        "retrieval_score": 0.35502631856286077,
+        "margin": 0.14640671143356107,
+        "specificity_safe": true,
+        "query_entities": [
+          "okra"
+        ],
+        "candidate_entities": [
+          "okra"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_012",
+      "language": "English",
+      "question": "What kind of location is suitable for growing cucumber?",
+      "acceptable_record_ids": [
+        404
+      ],
+      "base_state": "A",
+      "base_id": 404,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 404,
+        "question": "What kind of site is suitable for cucumber?",
+        "similarity": 0.8272206840040724,
+        "retrieval_score": 0.8272206840040724,
+        "margin": 0.5031280083604994,
+        "specificity_safe": true,
+        "query_entities": [
+          "cucumber"
+        ],
+        "candidate_entities": [
+          "cucumber"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_013",
+      "language": "English",
+      "question": "How do I select suitable equipment for a farm task?",
+      "acceptable_record_ids": [
+        484
+      ],
+      "base_state": "B",
+      "base_id": 162,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 492,
+        "question": "How should farm machinery be stored?",
+        "similarity": 0.6485018259754889,
+        "retrieval_score": 0.6485018259754889,
+        "margin": 0.026005949726825572,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_014",
+      "language": "English",
+      "question": "What food is suitable for young rabbits as they get bigger?",
+      "acceptable_record_ids": [
+        447
+      ],
+      "base_state": "B",
+      "base_id": 445,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 447,
+        "question": "What should I feed growing rabbits?",
+        "similarity": 0.5054340922020738,
+        "retrieval_score": 0.5054340922020738,
+        "margin": 0.22664525213331643,
+        "specificity_safe": true,
+        "query_entities": [
+          "rabbit"
+        ],
+        "candidate_entities": [
+          "rabbit"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_015",
+      "language": "English",
+      "question": "How do I keep my rice plants from falling over?",
+      "acceptable_record_ids": [
+        369
+      ],
+      "base_state": "B",
+      "base_id": 368,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 369,
+        "question": "How can I reduce lodging in rice?",
+        "similarity": 0.6531342810014008,
+        "retrieval_score": 0.6531342810014008,
+        "margin": 0.376918901718771,
+        "specificity_safe": true,
+        "query_entities": [
+          "rice"
+        ],
+        "candidate_entities": [
+          "rice"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_016",
+      "language": "English",
+      "question": "How can I recognize pregnancy in my female goat?",
+      "acceptable_record_ids": [
+        187
+      ],
+      "base_state": "B",
+      "base_id": 187,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 187,
+        "question": "What are the signs that a goat is pregnant and what should I do?",
+        "similarity": 0.7658970231902278,
+        "retrieval_score": 0.7658970231902278,
+        "margin": 0.2464690763438555,
+        "specificity_safe": true,
+        "query_entities": [
+          "goat"
+        ],
+        "candidate_entities": [
+          "goat"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_017",
+      "language": "English",
+      "question": "What food should I give my goats?",
+      "acceptable_record_ids": [
+        264
+      ],
+      "base_state": "B",
+      "base_id": 293,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 264,
+        "question": "What do goats eat and how should I feed them?",
+        "similarity": 0.6353248044519223,
+        "retrieval_score": 0.6353248044519223,
+        "margin": 0.2795346162439194,
+        "specificity_safe": true,
+        "query_entities": [
+          "goat"
+        ],
+        "candidate_entities": [
+          "goat"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_018",
+      "language": "English",
+      "question": "How do I select land for a new rice field?",
+      "acceptable_record_ids": [
+        364
+      ],
+      "base_state": "B",
+      "base_id": 368,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 364,
+        "question": "How should I choose a rice field site?",
+        "similarity": 0.6655984500518075,
+        "retrieval_score": 0.6655984500518075,
+        "margin": 0.1427612199414846,
+        "specificity_safe": true,
+        "query_entities": [
+          "rice"
+        ],
+        "candidate_entities": [
+          "rice"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_019",
+      "language": "English",
+      "question": "What can increase both the amount and quality of milk from my cows?",
+      "acceptable_record_ids": [
+        184
+      ],
+      "base_state": "B",
+      "base_id": 184,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 184,
+        "question": "How can I improve the quantity and quality of cow milk?",
+        "similarity": 0.7505282437728638,
+        "retrieval_score": 0.7505282437728638,
+        "margin": 0.6367524242597205,
+        "specificity_safe": true,
+        "query_entities": [
+          "cattle"
+        ],
+        "candidate_entities": [
+          "cattle"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_020",
+      "language": "English",
+      "question": "I want to begin keeping chickens commercially in Ghana.",
+      "acceptable_record_ids": [
+        257,
+        183
+      ],
+      "base_state": "B",
+      "base_id": 292,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 257,
+        "question": "How do I start a poultry farm in Ghana?",
+        "similarity": 0.30682166162435764,
+        "retrieval_score": 0.30682166162435764,
+        "margin": 0.08906963646172933,
+        "specificity_safe": true,
+        "query_entities": [
+          "poultry"
+        ],
+        "candidate_entities": [
+          "poultry"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_021",
+      "language": "English",
+      "question": "What should I do so late blight does not attack my tomato crop?",
+      "acceptable_record_ids": [
+        238
+      ],
+      "base_state": "B",
+      "base_id": 238,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 240,
+        "question": "How can I control tomato leaf miners and reduce leaf damage?",
+        "similarity": 0.3758191190230612,
+        "retrieval_score": 0.3758191190230612,
+        "margin": 0.03068594896631216,
+        "specificity_safe": true,
+        "query_entities": [
+          "tomato"
+        ],
+        "candidate_entities": [
+          "tomato"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_022",
+      "language": "English",
+      "question": "What is needed to set up fish production in Ghana?",
+      "acceptable_record_ids": [
+        251
+      ],
+      "base_state": "B",
+      "base_id": 251,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 251,
+        "question": "How do I start a fish farm in Ghana?",
+        "similarity": 0.408797009235182,
+        "retrieval_score": 0.408797009235182,
+        "margin": 0.09439899527134771,
+        "specificity_safe": true,
+        "query_entities": [
+          "fish"
+        ],
+        "candidate_entities": [
+          "fish"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_023",
+      "language": "English",
+      "question": "Why do fruits from my cucumber vines taste bitter?",
+      "acceptable_record_ids": [
+        410
+      ],
+      "base_state": "B",
+      "base_id": 405,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 410,
+        "question": "What causes bitter cucumber fruits?",
+        "similarity": 0.6830308232394886,
+        "retrieval_score": 0.6830308232394886,
+        "margin": 0.297517746090319,
+        "specificity_safe": true,
+        "query_entities": [
+          "cucumber"
+        ],
+        "candidate_entities": [
+          "cucumber"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_024",
+      "language": "English",
+      "question": "What must I think about before keeping bees?",
+      "acceptable_record_ids": [
+        474
+      ],
+      "base_state": "B",
+      "base_id": 474,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 474,
+        "question": "What should I consider before starting beekeeping?",
+        "similarity": 0.5683604263268133,
+        "retrieval_score": 0.5683604263268133,
+        "margin": 0.21100185727359172,
+        "specificity_safe": true,
+        "query_entities": [
+          "bee"
+        ],
+        "candidate_entities": [
+          "bee"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_025",
+      "language": "English",
+      "question": "Which basic information should a new farmer write down?",
+      "acceptable_record_ids": [
+        101,
+        524
+      ],
+      "base_state": "B",
+      "base_id": 531,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 531,
+        "question": "How can farmer groups help with information sharing?",
+        "similarity": 0.5376588857111063,
+        "retrieval_score": 0.5376588857111063,
+        "margin": 0.021169644620089745,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_026",
+      "language": "English",
+      "question": "How can I keep my farm alive when the rains fail for a long time?",
+      "acceptable_record_ids": [
+        94,
+        515,
+        516
+      ],
+      "base_state": "B",
+      "base_id": 101,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 94,
+        "question": "How can I protect my farm during drought?",
+        "similarity": 0.5463382684168665,
+        "retrieval_score": 0.5463382684168665,
+        "margin": 0.008327451946106845,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_027",
+      "language": "English",
+      "question": "How should harvested corn be dried and kept so it will not spoil?",
+      "acceptable_record_ids": [
+        73,
+        214
+      ],
+      "base_state": "B",
+      "base_id": 214,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 214,
+        "question": "How should I dry and store harvested maize to prevent spoilage?",
+        "similarity": 0.4655667481665283,
+        "retrieval_score": 0.4655667481665283,
+        "margin": 0.1394212607422804,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_028",
+      "language": "English",
+      "question": "What can stop rainwater from carrying away my topsoil?",
+      "acceptable_record_ids": [
+        6
+      ],
+      "base_state": "C",
+      "base_id": 26,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 6,
+        "question": "How can I prevent soil erosion on my farm?",
+        "similarity": 0.7385131827237084,
+        "retrieval_score": 0.7385131827237084,
+        "margin": 0.1480379096880764,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_029",
+      "language": "English",
+      "question": "Which plant food should be applied to a maize field?",
+      "acceptable_record_ids": [
+        2,
+        210
+      ],
+      "base_state": "B",
+      "base_id": 322,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 2,
+        "question": "What fertilizer is best for maize?",
+        "similarity": 0.49582601036973245,
+        "retrieval_score": 0.49582601036973245,
+        "margin": 0.010082825047365573,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_en_030",
+      "language": "English",
+      "question": "How can I know when a rabbit is unwell?",
+      "acceptable_record_ids": [
+        450
+      ],
+      "base_state": "B",
+      "base_id": 444,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 450,
+        "question": "How do I identify a sick rabbit?",
+        "similarity": 0.7289627611326203,
+        "retrieval_score": 0.7289627611326203,
+        "margin": 0.3207255697369702,
+        "specificity_safe": true,
+        "query_entities": [
+          "rabbit"
+        ],
+        "candidate_entities": [
+          "rabbit"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_001",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn ahu sɛ asase bi yɛ papa ma kuayɛ?",
+      "acceptable_record_ids": [
+        1
+      ],
+      "base_state": "B",
+      "base_id": 450,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 1,
+        "question": "Ɛdeɛn na ɛkyerɛ sɛ m'asase yɛ yɛ papa ma okuafo adwuma?",
+        "similarity": 0.7779781757350508,
+        "retrieval_score": 0.7779781757350508,
+        "margin": 0.25437257107690414,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_002",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn de fie nwura ayɛ compost?",
+      "acceptable_record_ids": [
+        4,
+        114
+      ],
+      "base_state": "C",
+      "base_id": 397,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 4,
+        "question": "Ɛdeɛn na meyɛ compost wɔ fie?",
+        "similarity": 0.36802294378702133,
+        "retrieval_score": 0.36802294378702133,
+        "margin": 0.10533919473970343,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "v2_tw_003",
+      "language": "Twi",
+      "question": "Dɛn na menyɛ de ama asase a anhwea wɔ mu ayɛ papa?",
+      "acceptable_record_ids": [
+        5
+      ],
+      "base_state": "B",
+      "base_id": 18,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 18,
+        "question": "Dea ɛyɛ sɛ wosesa nnuaba gu asase mu na adɛn na ɛyɛ papa?",
+        "similarity": 0.6824224469077181,
+        "retrieval_score": 0.6824224469077181,
+        "margin": 0.09664063006290446,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_004",
+      "language": "Twi",
+      "question": "Bere bɛn na ɛsɛ sɛ Ghanafoɔ dua aburo?",
+      "acceptable_record_ids": [
+        16,
+        207
+      ],
+      "base_state": "B",
+      "base_id": 2,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 16,
+        "question": "Bere bɛn na ɛyɛ ɔkorɔ sɛ wode aburow to mu wɔ Ghana?",
+        "similarity": 0.4961186125455652,
+        "retrieval_score": 0.4961186125455652,
+        "margin": 0.060287218629972716,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize",
+          "rice"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_005",
+      "language": "Twi",
+      "question": "Ɛsɛ sɛ mede aburo aba no kɔ asase mu tenten bɛn?",
+      "acceptable_record_ids": [
+        17
+      ],
+      "base_state": "B",
+      "base_id": 17,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 17,
+        "question": "Ɛsukyerɛ bɛn na mede aburow aba to asase mu?",
+        "similarity": 0.4605517480019056,
+        "retrieval_score": 0.4605517480019056,
+        "margin": 0.09793051063707991,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize",
+          "rice"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_006",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn agyina mmoawa a wɔsɛe me nnɔbae no ano?",
+      "acceptable_record_ids": [
+        38
+      ],
+      "base_state": "B",
+      "base_id": 513,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 527,
+        "question": "Adɛn nti na ɛsɛ sɛ mekyerɛw nnɔbae a wɔsɛe?",
+        "similarity": 0.4636847136823441,
+        "retrieval_score": 0.4636847136823441,
+        "margin": 0.023842619222976258,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_007",
+      "language": "Twi",
+      "question": "Ɛhe na okuafoɔ betumi anya bosea de ayɛ kuayɛ?",
+      "acceptable_record_ids": [
+        84,
+        273
+      ],
+      "base_state": "B",
+      "base_id": 521,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 196,
+        "question": "Ɛdeɛn na mmofra tumi ma okuafo adwuma brɛ sika?",
+        "similarity": 0.33101291537818756,
+        "retrieval_score": 0.33101291537818756,
+        "margin": 0.012353956459812354,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_008",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn atutu bankye a anyin no yie?",
+      "acceptable_record_ids": [
+        66
+      ],
+      "base_state": "B",
+      "base_id": 66,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 325,
+        "question": "Dɛn na menyɛ bankye ho ne nsononko ho adwuma yie?",
+        "similarity": 0.5581203911333797,
+        "retrieval_score": 0.5581203911333797,
+        "margin": 0.05122527892867368,
+        "specificity_safe": true,
+        "query_entities": [
+          "cassava"
+        ],
+        "candidate_entities": [
+          "cassava"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_009",
+      "language": "Twi",
+      "question": "Mepɛ sɛ mehyɛ okra kuayɛ ase; mɛyɛ dɛn?",
+      "acceptable_record_ids": [
+        394
+      ],
+      "base_state": "B",
+      "base_id": 394,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 394,
+        "question": "Mɛyɛ dɛn ahyɛ okra afuo ase?",
+        "similarity": 0.4391812751194751,
+        "retrieval_score": 0.4391812751194751,
+        "margin": 0.13210581080137573,
+        "specificity_safe": true,
+        "query_entities": [
+          "okra"
+        ],
+        "candidate_entities": [
+          "okra"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_010",
+      "language": "Twi",
+      "question": "Beae bɛn na ɛyɛ papa ma cucumber kuayɛ?",
+      "acceptable_record_ids": [
+        404
+      ],
+      "base_state": "A",
+      "base_id": 404,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 404,
+        "question": "Beae bɛn na ɛfata ma cucumber?",
+        "similarity": 0.5604720570798515,
+        "retrieval_score": 0.5604720570798515,
+        "margin": 0.15029791004497878,
+        "specificity_safe": true,
+        "query_entities": [
+          "cucumber"
+        ],
+        "candidate_entities": [
+          "cucumber"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_011",
+      "language": "Twi",
+      "question": "Aduan bɛn na mede bɛma rabbits a wɔrenyin?",
+      "acceptable_record_ids": [
+        447
+      ],
+      "base_state": "A",
+      "base_id": 447,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 447,
+        "question": "Dɛn na ɛsɛ sɛ mede ma rabbits a wɔrenyin no di?",
+        "similarity": 0.543997518403697,
+        "retrieval_score": 0.543997518403697,
+        "margin": 0.25682580383467335,
+        "specificity_safe": true,
+        "query_entities": [
+          "rabbit"
+        ],
+        "candidate_entities": [
+          "rabbit"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_012",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn amma me aburow antɔ fam?",
+      "acceptable_record_ids": [
+        369
+      ],
+      "base_state": "B",
+      "base_id": 368,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 369,
+        "question": "Mɛyɛ dɛn atumi atew aburow mu dabere so?",
+        "similarity": 0.4308571249838068,
+        "retrieval_score": 0.4308571249838068,
+        "margin": 0.14711926711528028,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize",
+          "rice"
+        ],
+        "candidate_entities": [
+          "maize",
+          "rice"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_013",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn ahu sɛ abirekyi no afa yafunu?",
+      "acceptable_record_ids": [
+        187,
+        293
+      ],
+      "base_state": "B",
+      "base_id": 187,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 187,
+        "question": "Ahohyenam bɛn na ɛkyerɛ sɛ m'abirekyi wɔ nyinsɛn na ɛdeɛn na meyɛ?",
+        "similarity": 0.6568818336368376,
+        "retrieval_score": 0.6568818336368376,
+        "margin": 0.26835805815098596,
+        "specificity_safe": true,
+        "query_entities": [
+          "goat"
+        ],
+        "candidate_entities": [
+          "goat"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_014",
+      "language": "Twi",
+      "question": "Aduan bɛn na ɛsɛ sɛ mede ma me mmirekyie?",
+      "acceptable_record_ids": [
+        264
+      ],
+      "base_state": "B",
+      "base_id": 294,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 264,
+        "question": "Dɛn na birekyie di na dɛn na mede ma wɔn yie?",
+        "similarity": 0.5289864957954874,
+        "retrieval_score": 0.5289864957954874,
+        "margin": 0.04362654605771077,
+        "specificity_safe": true,
+        "query_entities": [
+          "goat"
+        ],
+        "candidate_entities": [
+          "goat"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_015",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn apaw asase a mede bɛdua aburow?",
+      "acceptable_record_ids": [
+        364
+      ],
+      "base_state": "A",
+      "base_id": 364,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 364,
+        "question": "Mɛyɛ dɛn apaw beae a mɛdua aburow?",
+        "similarity": 0.6965912522817057,
+        "retrieval_score": 0.6965912522817057,
+        "margin": 0.29590766086813775,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize",
+          "rice"
+        ],
+        "candidate_entities": [
+          "maize",
+          "rice"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_016",
+      "language": "Twi",
+      "question": "Dɛn na mɛyɛ ama me nantwie ama nufuo pii a ɛyɛ papa?",
+      "acceptable_record_ids": [
+        184
+      ],
+      "base_state": "C",
+      "base_id": 435,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 532,
+        "question": "Dɛn na ɛma farm record book yɛ papa?",
+        "similarity": 0.5264887834095848,
+        "retrieval_score": 0.5264887834095848,
+        "margin": 0.06749416500286437,
+        "specificity_safe": true,
+        "query_entities": [
+          "cattle"
+        ],
+        "candidate_entities": [
+          "cattle"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_017",
+      "language": "Twi",
+      "question": "Mepɛ sɛ mefi akoko kuayɛ ase wɔ Ghana.",
+      "acceptable_record_ids": [
+        257,
+        183
+      ],
+      "base_state": "A",
+      "base_id": 257,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 257,
+        "question": "Dɛn na menyɛ sɛ mefi ase akoko adwuma wɔ Ghana?",
+        "similarity": 0.44875159020895644,
+        "retrieval_score": 0.44875159020895644,
+        "margin": 0.1729698423258318,
+        "specificity_safe": true,
+        "query_entities": [
+          "poultry"
+        ],
+        "candidate_entities": [
+          "poultry"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_018",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn abɔ me tomato ho ban afi late blight ho?",
+      "acceptable_record_ids": [
+        238
+      ],
+      "base_state": "A",
+      "base_id": 238,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 238,
+        "question": "Dɛn na menyɛ sɛ tomato late blight annya me nnuaba?",
+        "similarity": 0.4534565642057251,
+        "retrieval_score": 0.4534565642057251,
+        "margin": 0.01655226979900959,
+        "specificity_safe": true,
+        "query_entities": [
+          "tomato"
+        ],
+        "candidate_entities": [
+          "tomato"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_019",
+      "language": "Twi",
+      "question": "Dɛn na mehia de afi apataa kuayɛ ase?",
+      "acceptable_record_ids": [
+        251
+      ],
+      "base_state": "B",
+      "base_id": 251,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 251,
+        "question": "Dɛn na menyɛ sɛ mefi ase apataa adwuma wɔ Ghana?",
+        "similarity": 0.25188805069551756,
+        "retrieval_score": 0.25188805069551756,
+        "margin": 0.011471342435959597,
+        "specificity_safe": true,
+        "query_entities": [
+          "fish"
+        ],
+        "candidate_entities": [
+          "fish"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_tw_020",
+      "language": "Twi",
+      "question": "Dɛn nti na me cucumber no yɛ nwene?",
+      "acceptable_record_ids": [
+        410
+      ],
+      "base_state": "A",
+      "base_id": 410,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 410,
+        "question": "Dɛn na ɛma cucumber yɛ nwene?",
+        "similarity": 0.7394398643384673,
+        "retrieval_score": 0.7394398643384673,
+        "margin": 0.4094746459765907,
+        "specificity_safe": true,
+        "query_entities": [
+          "cucumber"
+        ],
+        "candidate_entities": [
+          "cucumber"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    }
+  ],
+  "negative_results": [
+    {
+      "id": "off_en_dev_01",
+      "split": "development",
+      "language": "English",
+      "question": "Who won the football match last night?",
+      "base_state": "C",
+      "base_id": 300,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 300,
+        "question": "How do I choose crops that match my soil type?",
+        "similarity": 0.24027896775521596,
+        "retrieval_score": 0.24027896775521596,
+        "margin": 0.04915564216763299,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_en_dev_02",
+      "split": "development",
+      "language": "English",
+      "question": "How can I fix my phone battery?",
+      "base_state": "C",
+      "base_id": 303,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 303,
+        "question": "How can I use phone apps to support my farming business?",
+        "similarity": 0.2764014419640579,
+        "retrieval_score": 0.2764014419640579,
+        "margin": 0.01957951934132529,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_en_dev_03",
+      "split": "development",
+      "language": "English",
+      "question": "Help me solve this algebra equation.",
+      "base_state": "C",
+      "base_id": 178,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 112,
+        "question": "How does mulching help my farm?",
+        "similarity": 0.25283949289121593,
+        "retrieval_score": 0.25283949289121593,
+        "margin": 0.029396710229710993,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_en_dev_04",
+      "split": "development",
+      "language": "English",
+      "question": "How do I reset my email password?",
+      "base_state": "B",
+      "base_id": 10,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 85,
+        "question": "How do I calculate the profit from my farm?",
+        "similarity": 0.18436365259859908,
+        "retrieval_score": 0.18436365259859908,
+        "margin": 0.004428996676544811,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_en_dev_05",
+      "split": "development",
+      "language": "English",
+      "question": "How can I grow my social media audience?",
+      "base_state": "B",
+      "base_id": 144,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 144,
+        "question": "How can I grow pineapple commercially?",
+        "similarity": 0.3640005533638815,
+        "retrieval_score": 0.3640005533638815,
+        "margin": 0.014258930760663924,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_en_dev_06",
+      "split": "development",
+      "language": "English",
+      "question": "What is cloud storage on a computer?",
+      "base_state": "B",
+      "base_id": 205,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 205,
+        "question": "What is cold storage and can a small farmer use it?",
+        "similarity": 0.5786970407354034,
+        "retrieval_score": 0.5786970407354034,
+        "margin": 0.02431536489632069,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_en_dev_07",
+      "split": "development",
+      "language": "English",
+      "question": "Which medicine should I take for a headache?",
+      "base_state": "C",
+      "base_id": 130,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 178,
+        "question": "Which farming apps can help farmers in Ghana?",
+        "similarity": 0.18001185031709666,
+        "retrieval_score": 0.18001185031709666,
+        "margin": 0.027921827888271272,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_en_dev_08",
+      "split": "development",
+      "language": "English",
+      "question": "Please write a job application letter for me.",
+      "base_state": "C",
+      "base_id": 484,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 484,
+        "question": "How do I choose the right farm tool for a job?",
+        "similarity": 0.158726719206431,
+        "retrieval_score": 0.158726719206431,
+        "margin": 0.006934222428484765,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_en_dev_09",
+      "split": "development",
+      "language": "English",
+      "question": "How do I remove bugs from my Python code?",
+      "base_state": "B",
+      "base_id": 203,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 38,
+        "question": "How can I prevent pests from attacking my crops?",
+        "similarity": 0.4929693975161479,
+        "retrieval_score": 0.4929693975161479,
+        "margin": 0.012473161963462653,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_en_dev_10",
+      "split": "development",
+      "language": "English",
+      "question": "What does field mean in physics?",
+      "base_state": "B",
+      "base_id": 12,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 340,
+        "question": "How can I get land for farming in Ghana?",
+        "similarity": 0.5564867274588722,
+        "retrieval_score": 0.5564867274588722,
+        "margin": 0.04531401658450418,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_en_test_01",
+      "split": "test",
+      "language": "English",
+      "question": "How do I repair a noisy car engine?",
+      "base_state": "C",
+      "base_id": 114,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 114,
+        "question": "What is composting and how do I do it?",
+        "similarity": 0.20808542838468982,
+        "retrieval_score": 0.20808542838468982,
+        "margin": 0.01725602556834238,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_en_test_02",
+      "split": "test",
+      "language": "English",
+      "question": "Recommend some music for a birthday party.",
+      "base_state": "C",
+      "base_id": 101,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 142,
+        "question": "How can I grow soybean commercially for profit?",
+        "similarity": 0.1340399488644528,
+        "retrieval_score": 0.1340399488644528,
+        "margin": 0.020335624172390737,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_en_test_03",
+      "split": "test",
+      "language": "English",
+      "question": "How can I sort a list in Python?",
+      "base_state": "B",
+      "base_id": 340,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 519,
+        "question": "How can trees support a farm?",
+        "similarity": 0.17124326688777836,
+        "retrieval_score": 0.17124326688777836,
+        "margin": 0.014862256004367635,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_en_test_04",
+      "split": "test",
+      "language": "English",
+      "question": "Where can I book an affordable hotel?",
+      "base_state": "C",
+      "base_id": 193,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 193,
+        "question": "Where can I buy certified seeds in Ghana?",
+        "similarity": 0.2664369168239801,
+        "retrieval_score": 0.2664369168239801,
+        "margin": 0.0016733963127919527,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_en_test_05",
+      "split": "test",
+      "language": "English",
+      "question": "How do I crop and brighten a photograph?",
+      "base_state": "C",
+      "base_id": 114,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 18,
+        "question": "What is crop rotation and why is it important?",
+        "similarity": 0.19658468728075798,
+        "retrieval_score": 0.19658468728075798,
+        "margin": 0.0063784248186673775,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "off_en_test_06",
+      "split": "test",
+      "language": "English",
+      "question": "What products does that manufacturing plant produce?",
+      "base_state": "C",
+      "base_id": 505,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 19,
+        "question": "How do I choose good seeds for planting?",
+        "similarity": 0.30666208064054395,
+        "retrieval_score": 0.30666208064054395,
+        "margin": 0.007851923545389827,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "off_en_test_07",
+      "split": "test",
+      "language": "English",
+      "question": "Can you help me calculate interest on a bank loan?",
+      "base_state": "C",
+      "base_id": 501,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 84,
+        "question": "How can I get an agricultural loan in Ghana?",
+        "similarity": 0.5909573028597256,
+        "retrieval_score": 0.5909573028597256,
+        "margin": 0.039352335018201345,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_en_test_08",
+      "split": "test",
+      "language": "English",
+      "question": "Write a short essay about Ghanaian history.",
+      "base_state": "C",
+      "base_id": 90,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 90,
+        "question": "What is crop insurance and can Ghanaian farmers use it?",
+        "similarity": 0.3036922344997307,
+        "retrieval_score": 0.3036922344997307,
+        "margin": 0.17965090587609844,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_en_test_09",
+      "split": "test",
+      "language": "English",
+      "question": "How can I harvest data from a website?",
+      "base_state": "B",
+      "base_id": 120,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 120,
+        "question": "How can I reduce post-harvest losses?",
+        "similarity": 0.6121496605351866,
+        "retrieval_score": 0.6121496605351866,
+        "margin": 0.04027311116105692,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "off_en_test_10",
+      "split": "test",
+      "language": "English",
+      "question": "How do I change the root password on Linux?",
+      "base_state": "C",
+      "base_id": 53,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 343,
+        "question": "How does climate change affect farming in Ghana?",
+        "similarity": 0.25968418078921685,
+        "retrieval_score": 0.25968418078921685,
+        "margin": 0.0472510123109649,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_dev_01",
+      "split": "development",
+      "language": "Twi",
+      "question": "Hena na odii bɔɔlbɔ no mu nkonim anadwo no?",
+      "base_state": "C",
+      "base_id": 390,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 120,
+        "question": "Ɛdeɛn na metumi yɛ na m'aduan a megye no akyi anko mpoano?",
+        "similarity": 0.28310107087560465,
+        "retrieval_score": 0.28310107087560465,
+        "margin": 0.013433940526395294,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_dev_02",
+      "split": "development",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn asiesie me fon battery?",
+      "base_state": "B",
+      "base_id": 517,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 442,
+        "question": "Mɛyɛ dɛn asiesie pig ama gua?",
+        "similarity": 0.5584482126204834,
+        "retrieval_score": 0.5584482126204834,
+        "margin": 0.1003141341211573,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_dev_03",
+      "split": "development",
+      "language": "Twi",
+      "question": "Boa me ma menyɛ algebra equation yi.",
+      "base_state": "C",
+      "base_id": 303,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 303,
+        "question": "Dɛn na menyɛ sɛ mede phone apps boa me okuafo adwuma?",
+        "similarity": 0.32445600097032934,
+        "retrieval_score": 0.32445600097032934,
+        "margin": 0.10121635528833142,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_dev_04",
+      "split": "development",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn asesa me email password?",
+      "base_state": "C",
+      "base_id": 468,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 468,
+        "question": "Mɛyɛ dɛn ate snail owu so?",
+        "similarity": 0.3092611535636278,
+        "retrieval_score": 0.3092611535636278,
+        "margin": 0.03202490761948562,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_dev_05",
+      "split": "development",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn ama nnipa pii ahwɛ me social media page?",
+      "base_state": "B",
+      "base_id": 486,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 124,
+        "question": "Dɛn na grading yɛ na ɛsɛ sɛ ɛyɛ papa sɛ wotɔn nnuaba?",
+        "similarity": 0.44955025361136,
+        "retrieval_score": 0.44955025361136,
+        "margin": 0.08436736259241578,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_dev_06",
+      "split": "development",
+      "language": "Twi",
+      "question": "Dɛn ne cloud storage wɔ computer so?",
+      "base_state": "C",
+      "base_id": 205,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 205,
+        "question": "Dɛn na cold storage yɛ na okuafo ketewa tumi nya ase anaa?",
+        "similarity": 0.2790710615162215,
+        "retrieval_score": 0.2790710615162215,
+        "margin": 0.09466061299021811,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_dev_07",
+      "split": "development",
+      "language": "Twi",
+      "question": "Aduru bɛn na menom ma tiyɛ?",
+      "base_state": "C",
+      "base_id": 252,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 8,
+        "question": "Asase pH bɛn na ɛyɛ ɔkorɔ ma nnuan?",
+        "similarity": 0.19171589998072328,
+        "retrieval_score": 0.19171589998072328,
+        "margin": 0.015973566923892263,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_dev_08",
+      "split": "development",
+      "language": "Twi",
+      "question": "Kyerɛw adwuma application letter ma me.",
+      "base_state": "C",
+      "base_id": 155,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 155,
+        "question": "Ɛdeɛn na mede m'afuo kyerɛw sɛ adwuma wɔ Ghana?",
+        "similarity": 0.5517018891119875,
+        "retrieval_score": 0.5517018891119875,
+        "margin": 0.10266744902279379,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_dev_09",
+      "split": "development",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn ayi bugs afi me Python code mu?",
+      "base_state": "C",
+      "base_id": 483,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 483,
+        "question": "Mɛyɛ dɛn akyerɛ honey production dodow afi hive kyerɛwtohɔ mu?",
+        "similarity": 0.2965213815086954,
+        "retrieval_score": 0.2965213815086954,
+        "margin": 0.030604721315279804,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_dev_10",
+      "split": "development",
+      "language": "Twi",
+      "question": "Dɛn na field kyerɛ wɔ physics mu?",
+      "base_state": "C",
+      "base_id": 197,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 12,
+        "question": "Dɛn na NPK kyerɛ wɔ ferefere bag so?",
+        "similarity": 0.2875955720776047,
+        "retrieval_score": 0.2875955720776047,
+        "margin": 0.08486491382871456,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_test_01",
+      "split": "test",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn asiesie car engine a ɛreyɛ dede?",
+      "base_state": "B",
+      "base_id": 442,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 442,
+        "question": "Mɛyɛ dɛn asiesie pig ama gua?",
+        "similarity": 0.5180500848124852,
+        "retrieval_score": 0.5180500848124852,
+        "margin": 0.08423470551776086,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_test_02",
+      "split": "test",
+      "language": "Twi",
+      "question": "Fa nnwom bi ma me ma awoda party.",
+      "base_state": "C",
+      "base_id": 337,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 337,
+        "question": "Fodder nnuaba bɛn na mede ato mu sɛ mede ma me nnwan wɔ Ghana?",
+        "similarity": 0.15855571904056887,
+        "retrieval_score": 0.15855571904056887,
+        "margin": 0.012129178944806807,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_test_03",
+      "split": "test",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn asort list wɔ Python mu?",
+      "base_state": "B",
+      "base_id": 500,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 559,
+        "question": "Mɛyɛ dɛn ate mpataa dodo so wɔ pond mu?",
+        "similarity": 0.3692080495133407,
+        "retrieval_score": 0.3692080495133407,
+        "margin": 0.04248884522189156,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_test_04",
+      "split": "test",
+      "language": "Twi",
+      "question": "Ɛhe na metumi anya hotel a ne bo nyɛ den?",
+      "base_state": "C",
+      "base_id": 273,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 273,
+        "question": "Ɛhɔ na metumi anya okuafo mfɛdomhyɛw wɔ Ghana?",
+        "similarity": 0.3038567461012454,
+        "retrieval_score": 0.3038567461012454,
+        "margin": 0.019928372431950447,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_test_05",
+      "split": "test",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn acrop na mama mfonini ayɛ hann?",
+      "base_state": "C",
+      "base_id": 449,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 458,
+        "question": "Mɛyɛ dɛn apaw grasscutters a mɛde ayɛ breeding?",
+        "similarity": 0.25028225561047934,
+        "retrieval_score": 0.25028225561047934,
+        "margin": 0.01672146903494881,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_test_06",
+      "split": "test",
+      "language": "Twi",
+      "question": "Nneɛma bɛn na manufacturing plant no yɛ?",
+      "base_state": "C",
+      "base_id": 319,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 426,
+        "question": "Mɛyɛ dɛn asiesie nneɛma a mede bɛyɛ mushroom?",
+        "similarity": 0.26289641523599033,
+        "retrieval_score": 0.26289641523599033,
+        "margin": 0.006358958674349824,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_test_07",
+      "split": "test",
+      "language": "Twi",
+      "question": "Boa me ma menkan interest a ɛwɔ bank loan so.",
+      "base_state": "C",
+      "base_id": 92,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 316,
+        "question": "Dɛn na menyɛ sɛ kɔkɔnte bo kɔ so ma sika pa?",
+        "similarity": 0.36828821425666475,
+        "retrieval_score": 0.36828821425666475,
+        "margin": 0.03048541719780523,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_test_08",
+      "split": "test",
+      "language": "Twi",
+      "question": "Kyerɛw Ghana abakɔsɛm ho essay tiawa.",
+      "base_state": "C",
+      "base_id": 155,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 155,
+        "question": "Ɛdeɛn na mede m'afuo kyerɛw sɛ adwuma wɔ Ghana?",
+        "similarity": 0.5779406661048523,
+        "retrieval_score": 0.5779406661048523,
+        "margin": 0.07705730061114957,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "off_tw_test_09",
+      "split": "test",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn aharvest data afi website bi so?",
+      "base_state": "C",
+      "base_id": 450,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 468,
+        "question": "Mɛyɛ dɛn ate snail owu so?",
+        "similarity": 0.3257207916265828,
+        "retrieval_score": 0.3257207916265828,
+        "margin": 0.03616035348164309,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off_tw_test_10",
+      "split": "test",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn asesa root password wɔ Linux so?",
+      "base_state": "C",
+      "base_id": 244,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 468,
+        "question": "Mɛyɛ dɛn ate snail owu so?",
+        "similarity": 0.3339707016955233,
+        "retrieval_score": 0.3339707016955233,
+        "margin": 0.05155503908815795,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_001",
+      "pair_id": "off23_pair_001",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "general_knowledge",
+      "question": "What is the capital city of France?",
+      "expected_state": "C",
+      "base_state": "B",
+      "base_id": 118,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 522,
+        "question": "What is the benefit of planting windbreaks?",
+        "similarity": 0.24965457944723232,
+        "retrieval_score": 0.24965457944723232,
+        "margin": 0.031167046056809616,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_001",
+      "pair_id": "off23_pair_001",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "general_knowledge",
+      "question": "France ahenkurow no din de sɛn?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 366,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 455,
+        "question": "Dɛn na ɛsɛ sɛ mede ma grasscutters di?",
+        "similarity": 0.2513081341977385,
+        "retrieval_score": 0.2513081341977385,
+        "margin": 0.002631184102064088,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_002",
+      "pair_id": "off23_pair_002",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "technology",
+      "question": "How can I replace a cracked laptop screen?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 132,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 340,
+        "question": "How can I get land for farming in Ghana?",
+        "similarity": 0.1460096384988624,
+        "retrieval_score": 0.1460096384988624,
+        "margin": 0.004117675034301188,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_002",
+      "pair_id": "off23_pair_002",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "technology",
+      "question": "Mɛyɛ dɛn asesa laptop screen a apaapae?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 374,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 468,
+        "question": "Mɛyɛ dɛn ate snail owu so?",
+        "similarity": 0.2639502683398483,
+        "retrieval_score": 0.2639502683398483,
+        "margin": 0.0008117314641335471,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_003",
+      "pair_id": "off23_pair_003",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "sports",
+      "question": "What was the final score in yesterday's football game?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 358,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 317,
+        "question": "What are the common problems in carrot farming?",
+        "similarity": 0.15705944123211876,
+        "retrieval_score": 0.15705944123211876,
+        "margin": 0.00451108092098787,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_003",
+      "pair_id": "off23_pair_003",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "sports",
+      "question": "Bɔɔlbɔ agodie a wɔbɔe nnora no baa awiei sɛn?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 519,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 455,
+        "question": "Dɛn na ɛsɛ sɛ mede ma grasscutters di?",
+        "similarity": 0.26023592233343906,
+        "retrieval_score": 0.26023592233343906,
+        "margin": 0.008753409793629374,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_004",
+      "pair_id": "off23_pair_004",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "programming",
+      "question": "How does a decorator work in Python?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 112,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 10,
+        "question": "How do I know if my fertilizer is working?",
+        "similarity": 0.4408226502269673,
+        "retrieval_score": 0.4408226502269673,
+        "margin": 0.11553338702101157,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_004",
+      "pair_id": "off23_pair_004",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "programming",
+      "question": "Python mu decorator yɛ adwuma sɛn?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 10,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 150,
+        "question": "Dɛn na contract farming yɛ na ɛboa me sɛn?",
+        "similarity": 0.30939982504468666,
+        "retrieval_score": 0.30939982504468666,
+        "margin": 0.037602687937955404,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_005",
+      "pair_id": "off23_pair_005",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "entertainment",
+      "question": "Can you tell me a funny joke about school?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 197,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 197,
+        "question": "What is a Farmer Field School and how can I join one?",
+        "similarity": 0.22092860765347094,
+        "retrieval_score": 0.22092860765347094,
+        "margin": 0.05971029093660807,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_005",
+      "pair_id": "off23_pair_005",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "entertainment",
+      "question": "Wubetumi aka sukuu ho aseresɛm bi akyerɛ me?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 496,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 496,
+        "question": "Mɛyɛ dɛn akyerɛ farm production cost?",
+        "similarity": 0.1842813580077487,
+        "retrieval_score": 0.1842813580077487,
+        "margin": 0.03224275121137829,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_006",
+      "pair_id": "off23_pair_006",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "music",
+      "question": "Which songs should I add to a wedding playlist?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 316,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 316,
+        "question": "How can I add value to cocoyam to increase income?",
+        "similarity": 0.23516406926970054,
+        "retrieval_score": 0.23516406926970054,
+        "margin": 0.017498536091247935,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_006",
+      "pair_id": "off23_pair_006",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "music",
+      "question": "Nnwom bɛn na mede nka ayeforohyia playlist ho?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 210,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 337,
+        "question": "Fodder nnuaba bɛn na mede ato mu sɛ mede ma me nnwan wɔ Ghana?",
+        "similarity": 0.2172848046654792,
+        "retrieval_score": 0.2172848046654792,
+        "margin": 0.0518096559786404,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_007",
+      "pair_id": "off23_pair_007",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "travel",
+      "question": "Where can I reserve a quiet hotel room in London?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 273,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 273,
+        "question": "Where can I get agricultural loans in Ghana?",
+        "similarity": 0.28447749914648407,
+        "retrieval_score": 0.28447749914648407,
+        "margin": 0.009040152367772225,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_007",
+      "pair_id": "off23_pair_007",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "travel",
+      "question": "Ɛhe na metumi afa hotel dan a ɛhɔ yɛ dinn wɔ London?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 193,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 7,
+        "question": "M'asase yɛ acidic dodo. Dɛn na metumi yɛ?",
+        "similarity": 0.2565935104711579,
+        "retrieval_score": 0.2565935104711579,
+        "margin": 0.011584013744519533,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_008",
+      "pair_id": "off23_pair_008",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "cooking",
+      "question": "How do I bake a chocolate birthday cake?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 85,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 114,
+        "question": "What is composting and how do I do it?",
+        "similarity": 0.19946665801191574,
+        "retrieval_score": 0.19946665801191574,
+        "margin": 0.0011526835835026228,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_008",
+      "pair_id": "off23_pair_008",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "cooking",
+      "question": "Mɛyɛ dɛn ato chocolate awoda cake?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 374,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 468,
+        "question": "Mɛyɛ dɛn ate snail owu so?",
+        "similarity": 0.27555040359009486,
+        "retrieval_score": 0.27555040359009486,
+        "margin": 0.034392510207856886,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_009",
+      "pair_id": "off23_pair_009",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "mathematics",
+      "question": "Can you solve this quadratic equation for me?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 151,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 151,
+        "question": "What advice would you give a young person starting farming?",
+        "similarity": 0.20188506612531495,
+        "retrieval_score": 0.20188506612531495,
+        "margin": 0.1092132440736594,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_009",
+      "pair_id": "off23_pair_009",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "mathematics",
+      "question": "Wubetumi adi quadratic equation yi ama me?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 3,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 541,
+        "question": "Mɛyɛ dɛn de coconut husks adi dwuma wɔ afuo mu?",
+        "similarity": 0.2582892729559731,
+        "retrieval_score": 0.2582892729559731,
+        "margin": 0.027175254223140766,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_010",
+      "pair_id": "off23_pair_010",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "finance",
+      "question": "How much interest will my savings account earn?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 59,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 288,
+        "question": "How much palm oil can one hectare produce in Ghana?",
+        "similarity": 0.20032125782164192,
+        "retrieval_score": 0.20032125782164192,
+        "margin": 0.004603822632218063,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_010",
+      "pair_id": "off23_pair_010",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "finance",
+      "question": "Interest dodow bɛn na mɛnya wɔ me savings account mu?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 212,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 483,
+        "question": "Mɛyɛ dɛn akyerɛ honey production dodow afi hive kyerɛwtohɔ mu?",
+        "similarity": 0.17243058366149958,
+        "retrieval_score": 0.17243058366149958,
+        "margin": 0.06327576774653625,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_011",
+      "pair_id": "off23_pair_011",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "health",
+      "question": "Why does my head hurt whenever I read at night?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 112,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 112,
+        "question": "How does mulching help my farm?",
+        "similarity": 0.1537801873075076,
+        "retrieval_score": 0.1537801873075076,
+        "margin": 0.02738216187234574,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_011",
+      "pair_id": "off23_pair_011",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "health",
+      "question": "Adɛn nti na me ti yɛ me yaw bere biara a mekenkan ade anadwo?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 510,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 536,
+        "question": "Adɛn nti na ɛsɛ sɛ yɛgye oil palm bunches bere a ɛsɛ?",
+        "similarity": 0.21450835326589715,
+        "retrieval_score": 0.21450835326589715,
+        "margin": 0.019029554557912,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_012",
+      "pair_id": "off23_pair_012",
+      "language": "English",
+      "difficulty": "ordinary",
+      "domain": "employment",
+      "question": "Please help me format a CV for an office job.",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 89,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 164,
+        "question": "What does an agricultural extension officer do?",
+        "similarity": 0.1936586051842245,
+        "retrieval_score": 0.1936586051842245,
+        "margin": 0.05018705406586696,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_012",
+      "pair_id": "off23_pair_012",
+      "language": "Twi",
+      "difficulty": "ordinary",
+      "domain": "employment",
+      "question": "Boa me ma mensiesie CV ma office adwuma bi.",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 303,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 303,
+        "question": "Dɛn na menyɛ sɛ mede phone apps boa me okuafo adwuma?",
+        "similarity": 0.26120369973347385,
+        "retrieval_score": 0.26120369973347385,
+        "margin": 0.05990966409012202,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_013",
+      "pair_id": "off23_pair_013",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "photography",
+      "question": "How do I crop a portrait photo without losing quality?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 14,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 184,
+        "question": "How can I improve the quantity and quality of cow milk?",
+        "similarity": 0.6799656828141705,
+        "retrieval_score": 0.2719862731256682,
+        "margin": 0.036950427150525156,
+        "specificity_safe": false,
+        "query_entities": [],
+        "candidate_entities": [
+          "cattle"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "off23_tw_013",
+      "pair_id": "off23_pair_013",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "photography",
+      "question": "Mɛyɛ dɛn acrop portrait mfonini a ne quality remmɔ?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 384,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 435,
+        "question": "Dɛn na ɛma pig pen yɛ papa?",
+        "similarity": 0.20970709102382704,
+        "retrieval_score": 0.20970709102382704,
+        "margin": 0.0016254053540228075,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_014",
+      "pair_id": "off23_pair_014",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "web_technology",
+      "question": "Which tool can harvest public records from a website?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 524,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 492,
+        "question": "How should farm machinery be stored?",
+        "similarity": 0.480662471423067,
+        "retrieval_score": 0.480662471423067,
+        "margin": 0.03766766879672523,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "off23_tw_014",
+      "pair_id": "off23_pair_014",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "web_technology",
+      "question": "Tool bɛn na ebetumi aharvest public records afi website so?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 524,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 561,
+        "question": "Mɛyɛ dɛn akyerɛw fish pond records?",
+        "similarity": 0.4216847646998554,
+        "retrieval_score": 0.4216847646998554,
+        "margin": 0.01921694838205973,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_015",
+      "pair_id": "off23_pair_015",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "manufacturing",
+      "question": "Why did the manufacturing plant stop producing phone chargers?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 303,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 26,
+        "question": "How should I plant crops on slopes to prevent water from washing the soil away?",
+        "similarity": 0.399345673619866,
+        "retrieval_score": 0.399345673619866,
+        "margin": 0.048323673413015966,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "off23_tw_015",
+      "pair_id": "off23_pair_015",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "manufacturing",
+      "question": "Adɛn nti na manufacturing plant no gyaee phone charger yɛ?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 534,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 303,
+        "question": "Dɛn na menyɛ sɛ mede phone apps boa me okuafo adwuma?",
+        "similarity": 0.2645316986521863,
+        "retrieval_score": 0.2645316986521863,
+        "margin": 0.0350878109774424,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_016",
+      "pair_id": "off23_pair_016",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "physics",
+      "question": "How is an electric field measured in physics?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 102,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 340,
+        "question": "How can I get land for farming in Ghana?",
+        "similarity": 0.5305736648749031,
+        "retrieval_score": 0.5305736648749031,
+        "margin": 0.04383521224137377,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_016",
+      "pair_id": "off23_pair_016",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "physics",
+      "question": "Wɔsusuw electric field wɔ physics mu sɛn?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 530,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 170,
+        "question": "Dɛn na agroforestry yɛ na ɛboa m'afuo sɛn?",
+        "similarity": 0.1963334078275336,
+        "retrieval_score": 0.1963334078275336,
+        "margin": 0.026096390452642337,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_017",
+      "pair_id": "off23_pair_017",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "cybersecurity",
+      "question": "How should I protect the root account on my Linux server?",
+      "expected_state": "C",
+      "base_state": "B",
+      "base_id": 109,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 98,
+        "question": "How can I control weeds on my farm?",
+        "similarity": 0.5326786985005768,
+        "retrieval_score": 0.5326786985005768,
+        "margin": 0.028800099561384185,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_017",
+      "pair_id": "off23_pair_017",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "cybersecurity",
+      "question": "Mɛyɛ dɛn abɔ root account a ɛwɔ me Linux server so no ho ban?",
+      "expected_state": "C",
+      "base_state": "B",
+      "base_id": 388,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 388,
+        "question": "Mɛyɛ dɛn abɔ cowpea a magye no ho ban?",
+        "similarity": 0.46086927643910913,
+        "retrieval_score": 0.46086927643910913,
+        "margin": 0.19322417031318023,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_018",
+      "pair_id": "off23_pair_018",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "programming",
+      "question": "Why does this bug crash my JavaScript application?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 194,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 38,
+        "question": "How can I prevent pests from attacking my crops?",
+        "similarity": 0.4552951852929791,
+        "retrieval_score": 0.4552951852929791,
+        "margin": 0.015486899649259644,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_018",
+      "pair_id": "off23_pair_018",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "programming",
+      "question": "Adɛn nti na bug yi ma me JavaScript application no crash?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 508,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 520,
+        "question": "Adɛn nti na ɛsɛ sɛ akuafoɔ ma asase no kata?",
+        "similarity": 0.21939780636692457,
+        "retrieval_score": 0.21939780636692457,
+        "margin": 0.0026420315458052235,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_019",
+      "pair_id": "off23_pair_019",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "software_development",
+      "question": "How do I merge a branch safely in Git?",
+      "expected_state": "C",
+      "base_state": "B",
+      "base_id": 186,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 45,
+        "question": "How can I use pesticides safely on my farm?",
+        "similarity": 0.32903108345152654,
+        "retrieval_score": 0.32903108345152654,
+        "margin": 0.07814477960930394,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_019",
+      "pair_id": "off23_pair_019",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "software_development",
+      "question": "Mɛyɛ dɛn de branch abɔ mu yie wɔ Git mu?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 541,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 235,
+        "question": "Dɛn na menyɛ sɛ meto kɔkɔnte yie wɔ Ghana?",
+        "similarity": 0.4809978784905775,
+        "retrieval_score": 0.4809978784905775,
+        "margin": 0.01694761539381917,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "off23_en_020",
+      "pair_id": "off23_pair_020",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "statistics",
+      "question": "Why should I set a random seed before a simulation?",
+      "expected_state": "C",
+      "base_state": "B",
+      "base_id": 495,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 489,
+        "question": "What should I consider before hiring a tractor?",
+        "similarity": 0.4754686519406223,
+        "retrieval_score": 0.4754686519406223,
+        "margin": 0.02170243144059958,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": true
+    },
+    {
+      "id": "off23_tw_020",
+      "pair_id": "off23_pair_020",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "statistics",
+      "question": "Adɛn nti na ɛsɛ sɛ mede random seed si simulation anim?",
+      "expected_state": "C",
+      "base_state": "B",
+      "base_id": 497,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 485,
+        "question": "Adɛn nti na ɛsɛ sɛ mehohoro farm tools akyi a mede di dwuma?",
+        "similarity": 0.2549595595070805,
+        "retrieval_score": 0.2549595595070805,
+        "margin": 0.005964772842545291,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_021",
+      "pair_id": "off23_pair_021",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "social_media",
+      "question": "How can I organize the news feed on my social media account?",
+      "expected_state": "C",
+      "base_state": "B",
+      "base_id": 6,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 80,
+        "question": "How can I prevent mold from growing on stored food?",
+        "similarity": 0.4308803329756904,
+        "retrieval_score": 0.4308803329756904,
+        "margin": 0.004479258215744963,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_021",
+      "pair_id": "off23_pair_021",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "social_media",
+      "question": "Mɛyɛ dɛn asiesie news feed a ɛwɔ me social media account so?",
+      "expected_state": "C",
+      "base_state": "B",
+      "base_id": 442,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 442,
+        "question": "Mɛyɛ dɛn asiesie pig ama gua?",
+        "similarity": 0.3790348599688884,
+        "retrieval_score": 0.3790348599688884,
+        "margin": 0.04654498229291487,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_022",
+      "pair_id": "off23_pair_022",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "chemistry",
+      "question": "What does organic mean in a chemistry textbook?",
+      "expected_state": "C",
+      "base_state": "B",
+      "base_id": 12,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 111,
+        "question": "What is organic farming?",
+        "similarity": 0.362908907814192,
+        "retrieval_score": 0.362908907814192,
+        "margin": 0.12335794428627803,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_022",
+      "pair_id": "off23_pair_022",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "chemistry",
+      "question": "Dɛn na organic kyerɛ wɔ chemistry textbook mu?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 12,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 153,
+        "question": "Ɛdeɛn na menya kratafa sɛ metɔn organic nnuaba?",
+        "similarity": 0.24631063152017638,
+        "retrieval_score": 0.17734365469452698,
+        "margin": 0.004596703850691469,
+        "specificity_safe": true,
+        "query_entities": [
+          "cattle"
+        ],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": true
+    },
+    {
+      "id": "off23_en_023",
+      "pair_id": "off23_pair_023",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "cloud_computing",
+      "question": "Is cloud storage suitable for backing up family videos?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 205,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 205,
+        "question": "What is cold storage and can a small farmer use it?",
+        "similarity": 0.4459825685743696,
+        "retrieval_score": 0.4459825685743696,
+        "margin": 0.018918110360532037,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_tw_023",
+      "pair_id": "off23_pair_023",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "cloud_computing",
+      "question": "Cloud storage fata sɛ mede sie abusua videos anaa?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 205,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 195,
+        "question": "Ɛdeɛn na menim sɛ aba no da sor na ɛfata sɛ mede to mu?",
+        "similarity": 0.3633197243483329,
+        "retrieval_score": 0.3633197243483329,
+        "margin": 0.022400833829190836,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "off23_en_024",
+      "pair_id": "off23_pair_024",
+      "language": "English",
+      "difficulty": "hard_negative",
+      "domain": "computer_security",
+      "question": "Can a computer virus damage my maize sales spreadsheet?",
+      "expected_state": "C",
+      "base_state": "B",
+      "base_id": 280,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 322,
+        "question": "How can I scout my maize field for pests?",
+        "similarity": 0.44274238594702703,
+        "retrieval_score": 0.44274238594702703,
+        "margin": 0.0004390842976881304,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": true,
+      "agricultural_intent": true
+    },
+    {
+      "id": "off23_tw_024",
+      "pair_id": "off23_pair_024",
+      "language": "Twi",
+      "difficulty": "hard_negative",
+      "domain": "computer_security",
+      "question": "Computer virus betumi asɛe me aburo adetɔn spreadsheet no anaa?",
+      "expected_state": "C",
+      "base_state": "C",
+      "base_id": 280,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 368,
+        "question": "Mɛyɛ dɛn ate anomaa sɛe so wɔ aburow afuo mu?",
+        "similarity": 0.3087153064702012,
+        "retrieval_score": 0.3087153064702012,
+        "margin": 0.032802808981548304,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize",
+          "rice"
+        ]
+      },
+      "prehandled": true,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_en_001",
+      "pair_id": "edge_pair_001",
+      "language": "English",
+      "edge_type": "vague",
+      "question": "I have a problem",
+      "allowed_types": [
+        "topics"
+      ],
+      "allowed_states": [
+        null
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 507,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 507,
+        "question": "How can I tell if stored grain may have a mould problem?",
+        "similarity": 0.4540175713142399,
+        "retrieval_score": 0.4540175713142399,
+        "margin": 0.2638603699213964,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": false
+    },
+    {
+      "id": "edge_tw_001",
+      "pair_id": "edge_pair_001",
+      "language": "Twi",
+      "edge_type": "vague",
+      "question": "Mhia mmoa",
+      "allowed_types": [
+        "topics"
+      ],
+      "allowed_states": [
+        null
+      ],
+      "allow_answer": false,
+      "base_state": "C",
+      "base_id": 3,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 301,
+        "question": "Aban mmoa bɛn na ɛwɔ ma mmerante okuafo wɔ Ghana?",
+        "similarity": 0.2905326138809657,
+        "retrieval_score": 0.2905326138809657,
+        "margin": 0.005056009187237309,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": false
+    },
+    {
+      "id": "edge_en_002",
+      "pair_id": "edge_pair_002",
+      "language": "English",
+      "edge_type": "vague",
+      "question": "Tell me",
+      "allowed_types": [
+        "topics"
+      ],
+      "allowed_states": [
+        null
+      ],
+      "allow_answer": false,
+      "base_state": "C",
+      "base_id": 470,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 507,
+        "question": "How can I tell if stored grain may have a mould problem?",
+        "similarity": 0.2034496234136833,
+        "retrieval_score": 0.2034496234136833,
+        "margin": 0.011457398514091943,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": false
+    },
+    {
+      "id": "edge_tw_002",
+      "pair_id": "edge_pair_002",
+      "language": "Twi",
+      "edge_type": "vague",
+      "question": "Kyerɛ me",
+      "allowed_types": [
+        "topics"
+      ],
+      "allowed_states": [
+        null
+      ],
+      "allow_answer": false,
+      "base_state": "C",
+      "base_id": 12,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 12,
+        "question": "Dɛn na NPK kyerɛ wɔ ferefere bag so?",
+        "similarity": 0.24007300194370984,
+        "retrieval_score": 0.24007300194370984,
+        "margin": 0.10319988927540455,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": false
+    },
+    {
+      "id": "edge_en_003",
+      "pair_id": "edge_pair_003",
+      "language": "English",
+      "edge_type": "incomplete",
+      "question": "Maize leaves turning yellow after the rain...",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 30,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 61,
+        "question": "What is the best irrigation method for a small farm?",
+        "similarity": 0.3678352294917313,
+        "retrieval_score": 0.26484136523404656,
+        "margin": 0.022091097239698987,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_tw_003",
+      "pair_id": "edge_pair_003",
+      "language": "Twi",
+      "edge_type": "incomplete",
+      "question": "Osu no akyi no, aburo nhaban reyɛ kɔkɔɔ...",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "C",
+      "base_id": 212,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 212,
+        "question": "Dɛn na menyɛ nhaban foforo a wɔ me aburoɔ afuom mu?",
+        "similarity": 0.21759682894954094,
+        "retrieval_score": 0.21759682894954094,
+        "margin": 0.05988964974134425,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_en_004",
+      "pair_id": "edge_pair_004",
+      "language": "English",
+      "edge_type": "incomplete",
+      "question": "Chickens weak and not eating since yesterday",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 556,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 357,
+        "question": "How often should I vaccinate my chickens against Newcastle Disease?",
+        "similarity": 0.44749283483823876,
+        "retrieval_score": 0.44749283483823876,
+        "margin": 0.001934567110511598,
+        "specificity_safe": true,
+        "query_entities": [
+          "poultry"
+        ],
+        "candidate_entities": [
+          "poultry"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_tw_004",
+      "pair_id": "edge_pair_004",
+      "language": "Twi",
+      "edge_type": "incomplete",
+      "question": "Efi nnora no, akokɔ no ayɛ mmerɛw na wɔnnidi",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "C",
+      "base_id": 555,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 458,
+        "question": "Mɛyɛ dɛn apaw grasscutters a mɛde ayɛ breeding?",
+        "similarity": 0.2639664452121462,
+        "retrieval_score": 0.2639664452121462,
+        "margin": 0.018259252503320278,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "edge_en_005",
+      "pair_id": "edge_pair_005",
+      "language": "English",
+      "edge_type": "spelling_error",
+      "question": "How do I contol fall army wom in my maiz fam?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 211,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 34,
+        "question": "What is Fall Armyworm and how can I control it?",
+        "similarity": 0.25981866145724125,
+        "retrieval_score": 0.25981866145724125,
+        "margin": 0.12275479374760243,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "edge_tw_005",
+      "pair_id": "edge_pair_005",
+      "language": "Twi",
+      "edge_type": "spelling_error",
+      "question": "Mɛyɛ dɛn akontro fall army wom wɔ me abro afuo mu?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 211,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 438,
+        "question": "Mɛyɛ dɛn ate hua bɔne so wɔ pig afuo mu?",
+        "similarity": 0.42808202485954655,
+        "retrieval_score": 0.42808202485954655,
+        "margin": 0.08065494552856217,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_en_006",
+      "pair_id": "edge_pair_006",
+      "language": "English",
+      "edge_type": "spelling_error",
+      "question": "My tomatos are rotening bfore harvist what shud I do?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 122,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 49,
+        "question": "What are nematodes and how do they affect crops?",
+        "similarity": 0.16074742799228914,
+        "retrieval_score": 0.16074742799228914,
+        "margin": 0.010662819853952343,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "edge_tw_006",
+      "pair_id": "edge_pair_006",
+      "language": "Twi",
+      "edge_type": "spelling_error",
+      "question": "Me tomatto resɛe ansa na harvist, dɛn na menyɛ?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 122,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 44,
+        "question": "Striga nhaban foforo resɛe m'ɔtɛ. Dɛn na metumi yɛ?",
+        "similarity": 0.5261012062893629,
+        "retrieval_score": 0.5261012062893629,
+        "margin": 0.05965109183448125,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "edge_en_007",
+      "pair_id": "edge_pair_007",
+      "language": "English",
+      "edge_type": "colloquial",
+      "question": "Bossu, my maize no dey grow fine, wetin I go do?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 212,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 282,
+        "question": "Can I grow maize during the dry season in Ghana?",
+        "similarity": 0.22621062845535658,
+        "retrieval_score": 0.22621062845535658,
+        "margin": 0.023232900590293898,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_tw_007",
+      "pair_id": "edge_pair_007",
+      "language": "Twi",
+      "edge_type": "colloquial",
+      "question": "Me nua, me aburo no nnyini yie oo, dɛn na menyɛ?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 324,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 235,
+        "question": "Dɛn na menyɛ sɛ meto kɔkɔnte yie wɔ Ghana?",
+        "similarity": 0.4969747270555552,
+        "retrieval_score": 0.3578218034799997,
+        "margin": 0.007683485262935663,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_en_008",
+      "pair_id": "edge_pair_008",
+      "language": "English",
+      "edge_type": "colloquial",
+      "question": "Charlie, the worms chop my garden eggs plenty; help me small.",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 248,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 248,
+        "question": "How do I grow garden eggs successfully in Ghana?",
+        "similarity": 0.39317759724606594,
+        "retrieval_score": 0.39317759724606594,
+        "margin": 0.032212807238334695,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "edge_tw_008",
+      "pair_id": "edge_pair_008",
+      "language": "Twi",
+      "edge_type": "colloquial",
+      "question": "Chale, mmoawa awe me ntorɔ no pii; boa me kakra.",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "C",
+      "base_id": 248,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 318,
+        "question": "Adwummaker bɛn na ɛtaa tu mako ntorɔ na dɛn na menyɛ wɔn ho?",
+        "similarity": 0.2919717810504891,
+        "retrieval_score": 0.2919717810504891,
+        "margin": 0.020365439883786196,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_en_009",
+      "pair_id": "edge_pair_009",
+      "language": "English",
+      "edge_type": "short",
+      "question": "Yellow maize leaves",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 30,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 30,
+        "question": "My maize leaves have dark areas and insects are eating them. What should I do?",
+        "similarity": 0.2699367839026222,
+        "retrieval_score": 0.2699367839026222,
+        "margin": 0.1561187553518948,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_tw_009",
+      "pair_id": "edge_pair_009",
+      "language": "Twi",
+      "edge_type": "short",
+      "question": "Aburo nhaban kɔkɔɔ",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 212,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 212,
+        "question": "Dɛn na menyɛ nhaban foforo a wɔ me aburoɔ afuom mu?",
+        "similarity": 0.2863191679299906,
+        "retrieval_score": 0.2863191679299906,
+        "margin": 0.08972638991053972,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_en_010",
+      "pair_id": "edge_pair_010",
+      "language": "English",
+      "edge_type": "short",
+      "question": "Sick young chickens",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 556,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 331,
+        "question": "What is the Newcastle disease vaccination schedule for chickens?",
+        "similarity": 0.5380677666243343,
+        "retrieval_score": 0.5380677666243343,
+        "margin": 0.04633950539583365,
+        "specificity_safe": true,
+        "query_entities": [
+          "poultry"
+        ],
+        "candidate_entities": [
+          "poultry"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_tw_010",
+      "pair_id": "edge_pair_010",
+      "language": "Twi",
+      "edge_type": "short",
+      "question": "Akokɔ mma ayare",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "C",
+      "base_id": 356,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 356,
+        "question": "Yare bɛn na ɛtaa yɛ akokɔ wɔ Ghana na yɛbɛyɛ dɛn atua ano?",
+        "similarity": 0.5018034435366049,
+        "retrieval_score": 0.5018034435366049,
+        "margin": 0.10580177813626968,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "edge_en_011",
+      "pair_id": "edge_pair_011",
+      "language": "English",
+      "edge_type": "long",
+      "question": "My maize was planted three weeks ago on a field that received compost, but after several days of heavy rain the lower leaves became pale yellow and growth slowed; the soil is still wet, and I need help deciding what details to check before taking action.",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 208,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 20,
+        "question": "How should I prepare my land before planting?",
+        "similarity": 0.3817423434368445,
+        "retrieval_score": 0.27485448727452805,
+        "margin": 0.00893478787458224,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_tw_011",
+      "pair_id": "edge_pair_011",
+      "language": "Twi",
+      "edge_type": "long",
+      "question": "Mede aburo no too afuo a mede compost guu mu nnawɔtwe mmiɛnsa ni, nanso osu kɛse akyi no nhaban a ɛwɔ fam no ayɛ kɔkɔɔ na ennyini ntɛm; asase no da so yɛ fɔtɔɔ, enti mepɛ sɛ mihunu nea ɛsɛ sɛ mehwɛ ansa na mayɛ biribi.",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 370,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 208,
+        "question": "Dɛn na menyɛ asase no so ansa na meto aburoɔ?",
+        "similarity": 0.3480854790763752,
+        "retrieval_score": 0.3480854790763752,
+        "margin": 0.028800980779272234,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_en_012",
+      "pair_id": "edge_pair_012",
+      "language": "English",
+      "edge_type": "long",
+      "question": "Several young chickens in my small flock are quiet, eating less, and standing apart, but I have not seen coughing or diarrhoea; their water was changed this morning, and I want to know what observations I should record before contacting a veterinary officer.",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "C",
+      "base_id": 556,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 416,
+        "question": "When should I reduce irrigation before harvest?",
+        "similarity": 0.34204534926043345,
+        "retrieval_score": 0.24627265146751207,
+        "margin": 0.013840330213177737,
+        "specificity_safe": true,
+        "query_entities": [
+          "poultry"
+        ],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_tw_012",
+      "pair_id": "edge_pair_012",
+      "language": "Twi",
+      "edge_type": "long",
+      "question": "Akokɔ mma pii a wɔwɔ me kuw ketewa no mu ayɛ komm, wɔnnidi pii na wɔgyina wɔn nko ara, nanso menhu sɛ wɔrebɔ wa anaa wɔn yam regu; mesesaa wɔn nsuo anɔpa yi, na mepɛ sɛ mihunu nea menkyerɛw ansa na mafrɛ mmoa ayaresafoɔ.",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "C",
+      "base_id": 159,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 361,
+        "question": "Akwan bɛn na akuafo nketewa betumi afa so de nsuo gu fam nkakrankakra (drip irrigation) nhyehyɛe a ɛnsɛ sika pii adi dwuma?",
+        "similarity": 0.2657631522101486,
+        "retrieval_score": 0.2657631522101486,
+        "margin": 0.020970110107618706,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_en_013",
+      "pair_id": "edge_pair_013",
+      "language": "English",
+      "edge_type": "paraphrase",
+      "question": "Which plant nutrients should I consider for maize, and when should an extension officer help me choose the rate?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 210,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 210,
+        "question": "What fertilizer should I apply to maize and when?",
+        "similarity": 0.5173844702389188,
+        "retrieval_score": 0.5173844702389188,
+        "margin": 0.059612438901316955,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_tw_013",
+      "pair_id": "edge_pair_013",
+      "language": "Twi",
+      "edge_type": "paraphrase",
+      "question": "Nnuan bɛn na ɛsɛ sɛ mede ma aburo, na bere bɛn na kuayɛ ɔfotufoɔ mmoa me mpaw dodow a mede bɛma?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 210,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 372,
+        "question": "Bere bɛn na ɛsɛ sɛ meyow aburow akyi a magye no?",
+        "similarity": 0.3408482077812143,
+        "retrieval_score": 0.3408482077812143,
+        "margin": 0.006003161326621098,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize",
+          "rice"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_en_014",
+      "pair_id": "edge_pair_014",
+      "language": "English",
+      "edge_type": "paraphrase",
+      "question": "What signs show that pond fish may not have enough oxygen, and what information should I give a fisheries officer?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 561,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 561,
+        "question": "How should a fish farmer keep pond records?",
+        "similarity": 0.36225453844228656,
+        "retrieval_score": 0.36225453844228656,
+        "margin": 0.11825634375326774,
+        "specificity_safe": true,
+        "query_entities": [
+          "fish"
+        ],
+        "candidate_entities": [
+          "fish"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_tw_014",
+      "pair_id": "edge_pair_014",
+      "language": "Twi",
+      "edge_type": "paraphrase",
+      "question": "Ahohyɛn bɛn na ɛkyerɛ sɛ oxygen nnɔɔso wɔ apataa tadeɛ mu, na nsɛm bɛn na memfa mma apataa ɔfotufoɔ?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 297,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 471,
+        "question": "Nsɛm bɛn na ɛho hia wɔ snail kuayɛ mu?",
+        "similarity": 0.43339468579091095,
+        "retrieval_score": 0.31204417376945587,
+        "margin": 0.025256998165766764,
+        "specificity_safe": true,
+        "query_entities": [
+          "fish"
+        ],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_en_015",
+      "pair_id": "edge_pair_015",
+      "language": "English",
+      "edge_type": "multiple_topics",
+      "question": "Can I use poultry manure on my maize field, and how should I store the harvested grain safely afterward?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 322,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 322,
+        "question": "How can I scout my maize field for pests?",
+        "similarity": 0.38685304929233316,
+        "retrieval_score": 0.38685304929233316,
+        "margin": 0.04396797101315303,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize",
+          "poultry"
+        ],
+        "candidate_entities": [
+          "maize"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_tw_015",
+      "pair_id": "edge_pair_015",
+      "language": "Twi",
+      "edge_type": "multiple_topics",
+      "question": "Metumi de akokɔ dɔteɛ agu me aburo afuo mu, na akyiri no mɛyɛ dɛn de aburo a matwa no asie yie?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 366,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 366,
+        "question": "Mɛyɛ dɛn asiesie aburow afuo no ma asase no yɛ pɛ ansa na madu?",
+        "similarity": 0.25497954360859226,
+        "retrieval_score": 0.25497954360859226,
+        "margin": 0.0036804181894870003,
+        "specificity_safe": true,
+        "query_entities": [
+          "maize"
+        ],
+        "candidate_entities": [
+          "maize",
+          "rice"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_en_016",
+      "pair_id": "edge_pair_016",
+      "language": "English",
+      "edge_type": "multiple_topics",
+      "question": "My tomatoes need irrigation and pest control, but I also want advice on grading them for the market; which issue should I handle first?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "B",
+      "base_id": 308,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 240,
+        "question": "How can I control tomato leaf miners and reduce leaf damage?",
+        "similarity": 0.3955871073950332,
+        "retrieval_score": 0.3955871073950332,
+        "margin": 0.04332466282856717,
+        "specificity_safe": true,
+        "query_entities": [
+          "tomato"
+        ],
+        "candidate_entities": [
+          "tomato"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "edge_tw_016",
+      "pair_id": "edge_pair_016",
+      "language": "Twi",
+      "edge_type": "multiple_topics",
+      "question": "Me tomato hia nsuo ne mmoawa sohwɛ, na mepɛ nso sɛ mihunu sɛnea mɛkyekyɛ mu ama gua so; emu nea ɛwɔ he na minni kan?",
+      "allowed_types": [
+        "low_confidence"
+      ],
+      "allowed_states": [
+        "B"
+      ],
+      "allow_answer": false,
+      "base_state": "C",
+      "base_id": 240,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 60,
+        "question": "Ɛdeɛn na menim bere a m'nnuaba hia nsuo?",
+        "similarity": 0.3171288915921748,
+        "retrieval_score": 0.22833280194636582,
+        "margin": 0.0027519052925069343,
+        "specificity_safe": true,
+        "query_entities": [
+          "tomato"
+        ],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "fallback_neg_capital",
+      "language": "English",
+      "question": "What is the capital of France?",
+      "base_state": "B",
+      "base_id": 118,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 522,
+        "question": "What is the benefit of planting windbreaks?",
+        "similarity": 0.2583452311167518,
+        "retrieval_score": 0.2583452311167518,
+        "margin": 0.03235728011071537,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": false
+    },
+    {
+      "id": "fallback_neg_joke",
+      "language": "English",
+      "question": "Tell me a joke.",
+      "base_state": "C",
+      "base_id": 470,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 507,
+        "question": "How can I tell if stored grain may have a mould problem?",
+        "similarity": 0.18781128271154418,
+        "retrieval_score": 0.18781128271154418,
+        "margin": 0.014932804883391132,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": false
+    },
+    {
+      "id": "fallback_neg_bitcoin",
+      "language": "English",
+      "question": "How can I start Bitcoin farming?",
+      "base_state": "B",
+      "base_id": 265,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 270,
+        "question": "How can I start farming in Ghana with little money?",
+        "similarity": 0.5104469711305042,
+        "retrieval_score": 0.5104469711305042,
+        "margin": 0.10968388567740728,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": true
+    },
+    {
+      "id": "fallback_neg_server",
+      "language": "English",
+      "question": "How do I maintain a server farm?",
+      "base_state": "B",
+      "base_id": 486,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 520,
+        "question": "Why should farmers maintain soil cover?",
+        "similarity": 0.33702500646118605,
+        "retrieval_score": 0.33702500646118605,
+        "margin": 0.012967200412336954,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": true,
+      "agricultural_intent": true
+    }
+  ],
+  "ambiguous_results": [
+    {
+      "id": "v2_amb_en_001",
+      "language": "English",
+      "question": "How often should I water crops?",
+      "base_state": "A",
+      "base_id": 415,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 62,
+        "question": "Can I use borehole water to irrigate my crops?",
+        "similarity": 0.5888948660739075,
+        "retrieval_score": 0.5888948660739075,
+        "margin": 0.08744506680779518,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_amb_en_002",
+      "language": "English",
+      "question": "There are insects on my vegetables.",
+      "base_state": "C",
+      "base_id": 8,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 117,
+        "question": "How can I control vegetable pests using organic methods?",
+        "similarity": 0.44056106228472086,
+        "retrieval_score": 0.44056106228472086,
+        "margin": 0.0017534342474213038,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_amb_en_003",
+      "language": "English",
+      "question": "My cow refuses to eat.",
+      "base_state": "C",
+      "base_id": 264,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 296,
+        "question": "What signs show that cattle may be sick?",
+        "similarity": 0.2817041844359646,
+        "retrieval_score": 0.2817041844359646,
+        "margin": 0.008082503804990815,
+        "specificity_safe": true,
+        "query_entities": [
+          "cattle"
+        ],
+        "candidate_entities": [
+          "cattle"
+        ]
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_amb_en_004",
+      "language": "English",
+      "question": "How much seed should I buy?",
+      "base_state": "C",
+      "base_id": 59,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 288,
+        "question": "How much palm oil can one hectare produce in Ghana?",
+        "similarity": 0.23329379951319304,
+        "retrieval_score": 0.23329379951319304,
+        "margin": 0.010611688633040184,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_amb_en_005",
+      "language": "English",
+      "question": "The rains have stopped on my farm.",
+      "base_state": "B",
+      "base_id": 39,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 39,
+        "question": "How can I control grasshoppers on my farm?",
+        "similarity": 0.25943484473166056,
+        "retrieval_score": 0.25943484473166056,
+        "margin": 0.0224912907558297,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_amb_en_006",
+      "language": "English",
+      "question": "What crop works on sandy land?",
+      "base_state": "C",
+      "base_id": 5,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 198,
+        "question": "How can I access land for farming if I do not own land?",
+        "similarity": 0.5358202842260531,
+        "retrieval_score": 0.5358202842260531,
+        "margin": 0.006552393745882457,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_amb_tw_001",
+      "language": "Twi",
+      "question": "Mmoawa wɔ me nnɔbae so.",
+      "base_state": "B",
+      "base_id": 513,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 203,
+        "question": "Mɛyɛ dɛn yi adwummakers fitaa fi m'nnɔbae so?",
+        "similarity": 0.4802020831524728,
+        "retrieval_score": 0.4802020831524728,
+        "margin": 0.11813423965849601,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_amb_tw_002",
+      "language": "Twi",
+      "question": "Me nantwie mpɛ sɛ ɔdidi.",
+      "base_state": "C",
+      "base_id": 563,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 455,
+        "question": "Dɛn na ɛsɛ sɛ mede ma grasscutters di?",
+        "similarity": 0.30695693698785825,
+        "retrieval_score": 0.22100899463125792,
+        "margin": 0.025994983212490747,
+        "specificity_safe": true,
+        "query_entities": [
+          "cattle"
+        ],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_amb_tw_003",
+      "language": "Twi",
+      "question": "Osuo no agyae wɔ m'afuo mu.",
+      "base_state": "B",
+      "base_id": 161,
+      "base_safe": true,
+      "semantic": {
+        "record_id": 94,
+        "question": "Ɛdeɛn na mehwɛ m'afuo so bere a nsuo pa?",
+        "similarity": 0.68629246112562,
+        "retrieval_score": 0.68629246112562,
+        "margin": 0.00599438421026377,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    },
+    {
+      "id": "v2_amb_tw_004",
+      "language": "Twi",
+      "question": "Aba dodow bɛn na mentɔ?",
+      "base_state": "C",
+      "base_id": 17,
+      "base_safe": false,
+      "semantic": {
+        "record_id": 483,
+        "question": "Mɛyɛ dɛn akyerɛ honey production dodow afi hive kyerɛwtohɔ mu?",
+        "similarity": 0.1974506040820214,
+        "retrieval_score": 0.1974506040820214,
+        "margin": 0.048034740466013304,
+        "specificity_safe": true,
+        "query_entities": [],
+        "candidate_entities": []
+      },
+      "prehandled": false,
+      "agricultural_intent": true
+    }
+  ]
+}

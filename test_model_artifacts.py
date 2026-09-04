@@ -7,7 +7,7 @@ import unittest
 from pathlib import Path
 
 from activate_model import activate_version
-from build_retrieval_artifacts import MODEL_VERSION, build_bundle
+from build_retrieval_artifacts import MODEL_VERSION as LEGACY_MODEL_VERSION, build_bundle
 from retrieval_runtime import RetrievalRuntime, sha256_file
 
 
@@ -26,7 +26,7 @@ class ModelArtifactTests(unittest.TestCase):
 
     def test_active_manifest_and_metadata_are_complete(self):
         self.assertEqual(self.manifest["manifest_schema_version"], 1)
-        self.assertEqual(self.manifest["active_semantic_version"], MODEL_VERSION)
+        self.assertEqual(self.manifest["active_semantic_version"], "1.3.1")
         self.assertEqual(
             sha256_file(self.metadata_file), self.manifest["metadata_sha256"]
         )
@@ -50,9 +50,11 @@ class ModelArtifactTests(unittest.TestCase):
             "source_sha256",
         }
         self.assertTrue(required.issubset(self.metadata))
-        self.assertEqual(self.metadata["semantic_version"], MODEL_VERSION)
+        self.assertEqual(self.metadata["semantic_version"], "1.3.1")
         self.assertEqual(self.metadata["canonical_dataset_records"], 563)
-        self.assertEqual(self.metadata["training_records"], 394)
+        self.assertEqual(self.metadata["training_records"], 563)
+        self.assertEqual(self.metadata["selection_training_records"], 394)
+        self.assertEqual(self.metadata["production_index_records"], 563)
 
     def test_dataset_splits_support_files_and_artifacts_match_checksums(self):
         self.assertEqual(
@@ -82,7 +84,7 @@ class ModelArtifactTests(unittest.TestCase):
         self.assertEqual(
             evaluation["retrieval_selection"]["macro_top_1_accuracy"], 0.5
         )
-        self.assertEqual(evaluation["threshold_validation"]["threshold"], 0.27)
+        self.assertEqual(evaluation["threshold_validation"]["threshold"], 0.5)
         self.assertEqual(evaluation["router_test"]["total"], 104)
         self.assertTrue(evaluation["limitations"])
 
@@ -113,17 +115,19 @@ class ModelArtifactTests(unittest.TestCase):
                 self.metadata["canonical_dataset_sha256"],
             )
             self.assertEqual(rebuilt["splits"], self.metadata["splits"])
-            self.assertEqual(
-                rebuilt["configuration_sha256"],
-                self.metadata["configuration_sha256"],
+            legacy_metadata = json.loads(
+                (PRODUCTION_DIR / LEGACY_MODEL_VERSION / "model_metadata.json").read_text(
+                    encoding="utf-8"
+                )
             )
+            self.assertEqual(rebuilt["configuration_sha256"], legacy_metadata["configuration_sha256"])
             self.assertEqual(
-                rebuilt["evaluation_sha256"], self.metadata["evaluation_sha256"]
+                rebuilt["evaluation_sha256"], legacy_metadata["evaluation_sha256"]
             )
             for language in ("English", "Twi"):
                 self.assertEqual(
                     rebuilt["artifacts"][language]["semantic_sha256"],
-                    self.metadata["artifacts"][language]["semantic_sha256"],
+                    legacy_metadata["artifacts"][language]["semantic_sha256"],
                 )
 
     def test_runtime_rejects_corrupted_artifact(self):
@@ -131,14 +135,15 @@ class ModelArtifactTests(unittest.TestCase):
             fake_base = Path(temp_dir)
             fake_production = fake_base / "models" / "production"
             shutil.copytree(PRODUCTION_DIR, fake_production)
+            active_version = self.manifest["active_semantic_version"]
             fake_metadata = json.loads(
-                (fake_production / MODEL_VERSION / "model_metadata.json").read_text(
+                (fake_production / active_version / "model_metadata.json").read_text(
                     encoding="utf-8"
                 )
             )
             artifact_path = (
                 fake_production
-                / MODEL_VERSION
+                / active_version
                 / fake_metadata["artifacts"]["English"]["file"]
             )
             with artifact_path.open("ab") as handle:
@@ -151,7 +156,8 @@ class ModelArtifactTests(unittest.TestCase):
             fake_base = Path(temp_dir)
             fake_production = fake_base / "models" / "production"
             shutil.copytree(PRODUCTION_DIR, fake_production)
-            metadata_path = fake_production / MODEL_VERSION / "model_metadata.json"
+            active_version = self.manifest["active_semantic_version"]
+            metadata_path = fake_production / active_version / "model_metadata.json"
             with metadata_path.open("a", encoding="utf-8") as handle:
                 handle.write("\n")
             with self.assertRaisesRegex(RuntimeError, "metadata checksum mismatch"):

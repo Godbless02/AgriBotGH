@@ -1,0 +1,63 @@
+{
+  "checks": [
+    {
+      "area": "Paraphrase robustness",
+      "evidence": "English and conservative Twi variations",
+      "result": "FAIL",
+      "passed": false
+    },
+    {
+      "area": "Language robustness",
+      "evidence": "No English/Twi canonical-answer leakage",
+      "result": "PASS",
+      "passed": true
+    },
+    {
+      "area": "Entity generalization",
+      "evidence": "Fifteen dataset-absent agricultural topics",
+      "result": "PASS",
+      "passed": true
+    },
+    {
+      "area": "Weather intent robustness",
+      "evidence": "Weather vocabulary in agricultural questions remains agricultural",
+      "result": "PASS",
+      "passed": true
+    },
+    {
+      "area": "Gemini failure robustness",
+      "evidence": "Missing, timeout, malformed and unsafe interpretations fail safely",
+      "result": "PASS",
+      "passed": true
+    },
+    {
+      "area": "Off-topic robustness",
+      "evidence": "Fifteen non-agricultural domains",
+      "result": "FAIL",
+      "passed": false
+    },
+    {
+      "area": "Browser robustness",
+      "evidence": "Chromium functional suite; Edge not separately measured",
+      "result": "PASS",
+      "passed": true
+    },
+    {
+      "area": "Accessibility robustness",
+      "evidence": "TTS/STT unsupported-feature fallbacks",
+      "result": "PASS",
+      "passed": true
+    },
+    {
+      "area": "UI robustness",
+      "evidence": "Desktop, mobile and dark-mode browser coverage",
+      "result": "PASS",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 9,
+    "passed": 7,
+    "failed": 2
+  }
+}

@@ -15,6 +15,17 @@ const REPORT_PATH = path.join(ROOT, "models", "presentation_test_results.json");
 test("executes all 10 presentation TTS cases and completes the 80-case report", async ({
   page,
 }) => {
+  await page.route("**/api/tts", async (route) => {
+    await route.fulfill({
+      status: 503,
+      contentType: "application/json",
+      body: JSON.stringify({
+        success: false,
+        code: "disabled_for_automated_test",
+        fallback_allowed: true,
+      }),
+    });
+  });
   await page.addInitScript(() => {
     window.__presentationSpeech = { speak: 0, cancel: 0, lastLang: null };
     class MockUtterance {

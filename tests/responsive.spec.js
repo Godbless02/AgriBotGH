@@ -14,6 +14,7 @@ for (const width of WIDTHS) {
     await page.click(".start-btn");
 
     await expect(page.locator("#chatInput")).toBeVisible();
+    await expect(page.locator("#micBtn")).toBeVisible();
     await expect(page.locator("#sendBtn")).toBeVisible();
     await expect(page.locator(".topic-toggle-btn")).toBeVisible();
     await expect(page.locator("#suggestionsList .suggestion-pill").first()).toBeVisible({
@@ -36,6 +37,7 @@ for (const width of WIDTHS) {
         ".chat-area",
         ".input-bar",
         "#chatInput",
+        "#micBtn",
         "#sendBtn",
         ".topic-toggle-btn",
         ".suggestions-bar",
@@ -95,9 +97,11 @@ for (const width of WIDTHS) {
     }
 
     await page.click(".topic-toggle-btn");
+    await expect(page.locator("#topicsPanel")).toHaveClass(/show/);
     await expect(page.locator("#topicsGridPanel .topic-btn")).toHaveCount(28, {
       timeout: 15000,
     });
+    await page.waitForTimeout(250);
     const topicsBounds = await page.locator("#topicsPanel").boundingBox();
     expect(topicsBounds.x).toBeGreaterThanOrEqual(-1);
     expect(topicsBounds.x + topicsBounds.width).toBeLessThanOrEqual(width + 1);

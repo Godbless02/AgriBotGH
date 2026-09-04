@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "todo": 33,
-  "generated_at_utc": "2026-08-21T00:09:07.274630+00:00",
-  "active_model": "AgriBotGH Retrieval Model v1.0.1",
-  "freeze_id": "204b2fee6a158e7e782b581c93b0b02b908b5ba12e3c3ac467241205de2d4aa1",
+  "generated_at_utc": "2026-08-23T17:43:21.592332+00:00",
+  "active_model": "AgriBotGH Retrieval Model v1.2.0",
+  "freeze_id": "c7e8a7d158503b9a8dea7ca9f31a87c93de792839f1f590227ff83a73772afd0",
   "summary": {
     "total_checks": 7,
     "passed": 7,
@@ -15,14 +15,14 @@
       "passed": true,
       "evidence": {
         "en_pairs": 563,
-        "freeze_id": "204b2fee6a158e7e782b581c93b0b02b908b5ba12e3c3ac467241205de2d4aa1",
+        "freeze_id": "c7e8a7d158503b9a8dea7ca9f31a87c93de792839f1f590227ff83a73772afd0",
         "model_frozen": true,
-        "model_version": "AgriBotGH Retrieval Model v1.0.1",
+        "model_version": "AgriBotGH Retrieval Model v1.2.0",
         "retrieval_architecture": "topic_aware_tfidf",
-        "semantic_version": "1.0.1",
+        "semantic_version": "1.2.0",
         "status": "ok",
         "topics": 28,
-        "training_records": 394,
+        "training_records": 563,
         "tw_pairs": 563
       }
     },
@@ -68,7 +68,7 @@
       "evidence": {
         "topic": "Maize",
         "suggestion_id": "qa-0002",
-        "clicked_source": "known_suggestion"
+        "clicked_source": "retrieval_v1"
       }
     },
     {

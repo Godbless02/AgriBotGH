@@ -19,16 +19,16 @@ test.describe("Topic and quick-question panels", () => {
       "My maize leaves are changing colour and I am not sure why",
     );
     await page.click("#sendBtn");
-    await expect(
-      page.locator(".suggestions-wrapper .suggestion-btn").first(),
-    ).toBeVisible({ timeout: 15000 });
+    await expect(page.locator(".knowledge-gap-topic-btn")).toHaveCount(40, {
+      timeout: 15000,
+    });
     await expect(page.locator(".message-card.bot-message").last()).toContainText(
-      "not fully confident",
+      "couldn't find a sufficiently reliable answer",
     );
 
     await page.fill("#chatInput", "Who won the football match last night?");
     await page.click("#sendBtn");
-    await expect(page.locator(".topics-grid .topic-btn")).toHaveCount(28, {
+    await expect(page.locator(".topics-grid-wrapper .topic-btn")).toHaveCount(28, {
       timeout: 15000,
     });
     await expect(page.locator(".message-card.bot-message").last()).toContainText(
@@ -246,5 +246,53 @@ test.describe("Topic and quick-question panels", () => {
       return botMessages.at(-1).text;
     });
     expect(storedSafetyNotice).toContain("Safety note");
+  });
+
+  test("history survives refresh and clear starts a new session without data loss", async ({
+    page,
+  }) => {
+    await page.goto(BASE + "/index.html");
+    await page.fill("#nameInput", "HistoryAuditUser");
+    await page.click(".start-btn");
+
+    await page.fill(
+      "#chatInput",
+      "How should I prepare the soil before planting maize?",
+    );
+    await page.click("#sendBtn");
+    await expect(page.locator("#enHistory .history-item")).toHaveCount(1, {
+      timeout: 15000,
+    });
+
+    await page.reload();
+    await expect(page.locator("#appShell")).toBeVisible();
+    await expect(page.locator("#enHistory .history-item")).toHaveCount(1);
+    await page.locator("#enHistory .history-item").click();
+    await expect(page.locator(".message-card.bot-message").last()).toContainText(
+      /clear the land/i,
+    );
+
+    await page.click(".clear-btn");
+    await expect(page.locator(".message-card.bot-message")).toHaveCount(0);
+    await expect(page.locator("#enHistory .history-item")).toHaveCount(1);
+
+    await page.fill("#chatInput", "What are the signs of good farming soil?");
+    await page.click("#sendBtn");
+    await expect(page.locator("#enHistory .history-item")).toHaveCount(2, {
+      timeout: 15000,
+    });
+
+    const sessions = await page.evaluate(() => {
+      const users = JSON.parse(localStorage.getItem("agribot_all_users"));
+      return Object.values(users.historyaudituser.sessions).map((session) => ({
+        lang: session.lang,
+        title: session.title,
+        messages: session.messages.length,
+      }));
+    });
+    expect(sessions).toHaveLength(2);
+    expect(sessions.every((session) => session.lang === "en")).toBeTruthy();
+    expect(sessions.every((session) => session.title.length > 0)).toBeTruthy();
+    expect(sessions.every((session) => session.messages === 2)).toBeTruthy();
   });
 });

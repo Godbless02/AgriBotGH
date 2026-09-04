@@ -1,0 +1,67 @@
+{
+  "generated_at_utc": "2026-09-01T23:28:23.571299+00:00",
+  "dataset": {
+    "total_records": 563,
+    "total_categories": 40,
+    "missing_field_counts": {
+      "id": 0,
+      "category": 0,
+      "question_en": 0,
+      "answer_en": 0,
+      "question_twi": 0,
+      "answer_twi": 0
+    },
+    "duplicate_id_count": 0
+  },
+  "objective_1": {
+    "direct_english_exact_accuracy_percent": 100.0,
+    "direct_twi_exact_accuracy_percent": 100.0,
+    "english_paraphrase_exact_accuracy_percent": 90.0,
+    "twi_variation_exact_accuracy_percent": 100.0,
+    "overall_supported_exact_accuracy_percent": 98.333,
+    "number_of_mismatches_pending_intent_review": 2
+  },
+  "objective_2": {
+    "knowledge_gap_detection_rate_percent": 100.0,
+    "off_topic_rejection_rate_percent": 93.333,
+    "false_state_a_unsupported": 0,
+    "false_state_c_unsupported": 0,
+    "unresolved_state_b_unsupported": 0,
+    "generated_agricultural_answer_count": 0,
+    "weather_routing_test_result": "PASS",
+    "tts_test_result": "PASS: 10/10 browser tests",
+    "stt_english_test_result": "PASS: 17/17 browser tests; Twi recognition remains disabled",
+    "stt_twi_status": "DISABLED_BROWSER_SUPPORT_NOT_RELIABLY_DEMONSTRATED",
+    "gemini_controlled_test_result": "PASS",
+    "gemini_live_evaluation": "NOT_RUN",
+    "gemini_live_rescue_rate": null
+  },
+  "objective_3": {
+    "supported_false_rejection_rate_percent": 0.833,
+    "strong_state_exact_precision_percent": 99.16,
+    "high_confidence_incorrect_state_a_count": 1,
+    "language_leakage_count": 0,
+    "full_python_result": "PASS: 126 tests run, 125 passed, 1 opt-in live Gemini test skipped",
+    "full_browser_result": "PASS: 58 tests discovered, 57 passed, 1 opt-in live Open-Meteo test skipped",
+    "diagnostic_pass_rate_percent": 94.444,
+    "robustness_results": {
+      "Paraphrase robustness": "FAIL",
+      "Language robustness": "PASS",
+      "Entity generalization": "PASS",
+      "Weather intent robustness": "PASS",
+      "Gemini failure robustness": "PASS",
+      "Off-topic robustness": "FAIL",
+      "Browser robustness": "PASS",
+      "Accessibility robustness": "PASS",
+      "UI robustness": "PASS"
+    }
+  },
+  "benchmark_counts": {
+    "A": 40,
+    "B": 40,
+    "C": 20,
+    "D": 20,
+    "E": 15,
+    "F": 15
+  }
+}

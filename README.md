@@ -4,7 +4,7 @@ A bilingual (English–Twi) agricultural chatbot for Ghanaian farmers.
 
 ## Project Overview
 
-AgriBotGH is a Flask web application that answers farming questions in English and Twi using a validated topic-aware TF-IDF retrieval model and three-state response router.
+AgriBotGH is a Flask web application that answers farming questions in English and Twi using a validated topic-aware TF-IDF retrieval model and four-state response router.
 
 ## System Architecture
 
@@ -14,16 +14,15 @@ Browser UI (HTML/CSS/JavaScript, localStorage history, Web Speech API)
         v
 Flask JSON API
         |
-        +--> exact canonical/suggestion identity --> verified bilingual answer
-        |
-        +--> saved English or Twi retrieval artifact
+        +--> saved English or Twi retrieval artifact (all 563 records)
                  |
                  +--> word + character TF-IDF similarity (weight 0.38)
                  +--> training-category centroid relevance (weight 0.62)
-                 +--> domain and confidence routing
-                         A: answer
-                         B: clarification + canonical suggestions
-                         C: agricultural-scope recovery path
+                 +--> raw-similarity + margin confidence routing
+                         A: strong canonical dataset answer
+                         B: internal weak retrieval / controlled Gemini retry
+                         C: off-topic response
+                         D: agricultural knowledge-gap response
 ```
 
 Flask verifies the canonical dataset, active metadata, configuration,
@@ -38,6 +37,9 @@ startup. It never trains a model while serving requests.
 - `style.css` — UI styling and responsive layout.
 - `data/agribotgh_dataset_bilingual_563.json` — canonical 563-record bilingual dataset used by the app.
 - `models/production/active_model.json` — checksum-protected pointer to the active versioned model bundle.
+- `models/quick_questions.json` — display-only canonical prompts with no answer IDs or routing shortcuts.
+- `evaluate_retrieval_robustness.py` — reproducible n-gram, normalization, top-k, margin, and negative-control benchmark.
+- `debug_retrieval.py` — local-only top-3 diagnostics; it is not exposed by Flask.
 - `build_retrieval_artifacts.py` — reproducible production model builder.
 - `activate_model.py` — validated model activation and rollback utility.
 - `requirements.txt` — Python dependencies.
@@ -64,7 +66,8 @@ queues to `data/evaluation/dataset_quality_report.json`.
 
 The final `train_model.py` runs that validation itself, recreates and verifies
 the deterministic 70/15/15 split, trains the selected topic-aware TF-IDF model,
-evaluates both languages against the gold standard, and atomically saves a new
+evaluates both languages against the gold standard, builds the deployment
+index from all 563 canonical records, and atomically saves a new
 checksum-protected semantic version. It refuses to overwrite an existing
 version and does not activate a candidate unless `--activate` is explicit.
 
@@ -98,18 +101,23 @@ candidate question/answer fields never cross languages. Run
 `models/language_separation_results.json`. Browser history and speech controls
 also retain the language of the original request when users switch languages.
 
-Browser text-to-speech is manual and never starts automatically. Each bot
-message has Play/Pause/Resume and Stop controls, starting another message stops
-the previous one, and switching languages cancels active speech. English voices
-are selected for English; Twi prefers a browser-provided Twi/Akan voice. When no
-such voice exists, the interface explicitly warns that fallback pronunciation
-may be inaccurate. Retrieval does not depend on speech support.
+Text-to-speech is manual and never starts automatically. Each bot message has
+Play/Pause/Resume and Stop controls, starting another message stops the previous
+one, and switching languages cancels active speech. English remains entirely
+browser-native. Twi first requests the server-side Abena `abena_twi_lite` voice;
+if it is disabled or unavailable, browser speech remains as an explicitly
+labelled fallback. Retrieval does not depend on speech support.
 
 The browser regression suite covers the complete responsive matrix at widths
 1920, 1440, 1366, 1280, 1024, 768, 480, 390, and 375 pixels. It verifies the
 desktop collapsible sidebar, mobile history drawer, quick-question panel,
 topics, suggestions, input/send controls, TTS controls, language selector,
 history, and absence of horizontal overflow.
+
+Typed questions, starter suggestions, topic suggestions, and right-panel quick
+questions all use the same frontend `submitQuestion()` path. The theme system
+prioritizes a saved manual choice, then the browser colour scheme, then a
+night-time fallback when browser theme detection is unavailable.
 
 TODOs 29–30 are measured by `evaluate_response_quality.py`. It audits all 1,126
 language-specific canonical answers, composes the agricultural-edge, off-topic,
@@ -123,8 +131,8 @@ TODO 31's source-traceable architecture comparison is generated by
 `create_final_model_comparison.py`. TODO 32 freezes the selected active bundle
 with `freeze_model.py`; the freeze manifest hashes the dataset, metadata,
 configuration, evaluation, comparison, and both language artifacts. Frozen
-version 1.0.1 must never be modified in place—future model changes require a new
-semantic version and complete evaluation.
+versions 1.0.1 and 1.1.1 must never be modified in place—future model changes
+require a new semantic version and complete evaluation.
 
 TODO 33's Flask/model parity report is generated by
 `evaluate_integration_regression.py`. TODO 34's reproducible local benchmark is
@@ -154,17 +162,21 @@ The complete Chapter Four source data is in
 | Ranking coverage | 100.00% | 100.00% |
 | Category-match rate | 47.62% | 53.57% |
 
-The final normalized score-margin threshold is `0.27`. Validation measured
-100% response precision with approximately 0.60% automatic-answer coverage;
-the system deliberately sends uncertain questions to State B. A similarity
-score or margin is not described as a probability.
+The v1.1.1 confidence gate requires raw TF-IDF similarity of at least `0.50`
+and a raw top-1 margin of at least `0.05`. On 35 reviewed paraphrases it reached
+85.71% top-1 and 94.29% top-3 accuracy; 24/35 were confidently answered, all
+24 accepted answers were correct, and 120 negative controls produced zero
+false accepts. The system sends weaker evidence to State B. Similarity and
+margin are not probabilities.
 
 Independent challenges pass 48/48 off-topic cases, 32/32 agricultural edge
 cases, 80/80 language-separation cases, and 80/80 presentation cases.
 
 ## Python Environment
 
-The application uses Python 3.13.5, recorded in `runtime.txt`. The project
+The application uses Python 3.13.5, recorded in `.python-version` (the format
+currently supported by Render). `runtime.txt` is retained only as a legacy
+deployment reference. The project
 virtual-environment name is `agribot_env`.
 
 ### Windows PowerShell
@@ -211,8 +223,101 @@ The application reads these variables from the process environment:
 
 - `FLASK_DEBUG` — set `true` only for local debugging.
 - `PORT` — listening port; defaults to `5000`.
-The application does not load `.env` files automatically; set these variables
-in the shell or deployment dashboard.
+- `GEMINI_API_KEY` — optional server-side key for low-confidence retrieval
+  assistance. Leave unset to disable the feature safely.
+- `GEMINI_MODEL` — optional model override; defaults to
+  `gemini-3.5-flash-lite`.
+- `ABENA_TTS_ENABLED` — set `true` to enable server-side natural Twi audio.
+- `ABENA_TTS_API_URL`, `ABENA_TTS_TWI_VOICE`, and `ABENA_TTS_SPEED` —
+  server-owned provider settings documented in `.env.example`.
+- `ABENA_API_KEY` — optional server-side bearer credential; never expose it to
+  frontend JavaScript.
+For local development, the server loads the project-root `.env` file when it
+exists. Values already supplied by the operating system or deployment platform
+are never overwritten. On Render, configure secrets in the service environment;
+the ignored local `.env` file is not required or deployed.
+Ordinary unit-test runs do not load the project `.env`, preventing accidental
+live API usage. The explicitly opted-in live test loads it when
+`RUN_GEMINI_LIVE_TESTS=true` or `RUN_LIVE_ABENA_TTS=1` is set for the relevant
+explicit live test.
+
+Gemini is not an answering engine in this application. It is called at most
+once, and only after the local router produces an uncertain agricultural State
+B result. It may rewrite that query for a second pass through the same frozen
+local retriever. The second pass is used only when it becomes a strong State A
+match without lowering the raw TF-IDF score; the displayed answer still comes
+verbatim from `data/agribotgh_dataset_bilingual_563.json`. Strong matches,
+off-topic requests, and live-weather requests bypass Gemini. Missing keys,
+timeouts, rate limits, malformed output, or unsafe entity changes fail safely.
+If a question remains weak and is clearly agricultural, the user receives the
+State D knowledge-gap response rather than a generated answer.
+
+### Retrieval States and Knowledge Gaps
+
+- **State A** is a strong supported match and returns the canonical answer from
+  the 563-record bilingual dataset.
+- **State B** is an internal weak-retrieval stage. Where allowed, Gemini may
+  interpret the wording once in the same language before the unchanged local
+  retriever runs again.
+- **State C** is a clearly off-topic request and keeps the existing
+  agricultural-scope response.
+- **State D** is a farming question for which no sufficiently reliable dataset
+  answer could be retrieved after the permitted assistance step.
+
+State D does not trigger unrestricted Gemini agricultural answer generation.
+Its wording deliberately does not claim that knowledge is certainly absent: a
+State D result can mean either a true dataset knowledge gap or wording that the
+retriever cannot confidently connect to existing knowledge. The displayed
+available topics are built once from the nonblank, deduplicated `category`
+values in the already-loaded canonical dataset, so they remain synchronized
+with that dataset. Selecting one of these semantic buttons places the topic in
+the editable chat input; it does not invent or auto-submit an answer.
+
+### Hybrid Text-to-Speech
+
+Bot response cards include Listen, Pause/Resume, and Stop controls. Playback is
+user initiated and limited to one response at a time. English uses browser
+`SpeechSynthesis`. Twi posts cleaned text to `/api/tts`; Flask keeps provider
+configuration private, chunks Unicode text in memory, and returns ordered Abena
+audio clips for browser playback. Each historical response retains its text and
+language association.
+
+Voice discovery supports both immediately available and asynchronously loaded
+browser voices. English selects an available `en-*` voice without depending on
+a vendor-specific name. If Abena is disabled, fails, or returns unusable audio,
+Twi falls back once to a `tw-*`, Akan `ak-*`, or final browser voice with an
+accuracy warning. Intentional cancellation never starts fallback. If both
+engines are unavailable, the response stays readable. Full configuration,
+contract, and test details are in `docs/ABENA_TWI_TTS_INTEGRATION.md`.
+
+### Browser Speech-to-Text
+
+In English mode, browsers that expose `window.SpeechRecognition` or
+`window.webkitSpeechRecognition` provide a user-initiated microphone control.
+One short question is recognized with the `en-GH` locale and placed in the
+existing editable chat input. Recognition never auto-submits: the user reviews
+or corrects crop, product, pest, and location names before pressing Send. Send
+then uses the unchanged Flask, weather, TF-IDF, and optional Gemini-assisted
+chat pipeline used for typed questions.
+
+Recognition stops when the user submits, clears chat, changes language or
+session, resets the application, or starts response playback. Starting voice
+input first cancels response playback so AgriBot does not listen to itself.
+Permission, unavailable-device, no-speech, network, and unsupported-browser
+failures leave typed input available. No microphone audio is uploaded to Flask,
+stored by the application, or logged, and there is no speech-to-text backend or
+credential.
+
+Browser-native Twi/Akan recognition is not claimed. Direct release testing found
+that Chrome 152 reports both `tw-GH` and `ak-GH` unavailable for local
+recognition; Edge 151 also reports both unavailable and neither browser produced
+a usable Twi/Akan transcript. The microphone is therefore disabled in Twi mode
+with a clear explanation; curated Twi text input and the existing Twi
+Gemini-assisted retrieval path remain fully supported. Full evidence and the
+safe future evaluation path are recorded in
+`docs/TWI_STT_INVESTIGATION.md`. Web Speech recognition support varies by
+browser and normally requires HTTPS in production (or localhost during
+development).
 
 ## Notes
 
@@ -223,8 +328,13 @@ in the shell or deployment dashboard.
 - There is no database, server-side authentication, email/SMTP, or Paystack
   integration in the current application. User names and chat history are kept
   in browser `localStorage` only.
-- The active Python runtime dependencies are Flask, Flask-Cors, scikit-learn,
-  NumPy, joblib, and Gunicorn; their versions are pinned in
+- English and Twi sessions are stored separately per browser user. Refreshing
+  restores the history list; **Clear Chat** starts a new blank session without
+  deleting earlier history. The current UI does not provide permanent history
+  deletion.
+- The active Python runtime dependencies are Flask, scikit-learn, NumPy,
+  joblib, Gunicorn, Requests, and the optional server-side Google Gen AI SDK;
+  their versions are pinned in
   `requirements.txt`.
 
 ## Evaluation and Reproduction
@@ -243,16 +353,30 @@ python evaluate_integration_regression.py
 python measure_performance.py
 python evaluate_presentation.py
 python generate_final_project_report.py
+python evaluate_gemini_assistance.py
 python -m unittest discover -v
 npm test
 ```
 
+`evaluate_gemini_assistance.py` is a live, opt-in six-case English/Twi
+evaluation. Without `GEMINI_API_KEY` it writes an honest skipped report and
+makes no network call. The optional one-request live unit test additionally
+requires `RUN_GEMINI_LIVE_TESTS=true`. All ordinary tests use mocks.
+
 ## Deployment
 
-`Procfile` starts Gunicorn for deployment. Configure `PORT` in the hosting
-environment and keep `FLASK_DEBUG` disabled. The app has no database migration,
-SMTP, Paystack, or authentication service requirements. Static frontend files
-are served by Flask from the project directory.
+For Render, create a Python 3 web service with build command
+`pip install -r requirements.txt`, start command `gunicorn app:app`, and health
+check path `/api/health`. `.python-version` pins Python 3.13.5. Render supplies
+`PORT`. Keep `FLASK_DEBUG` disabled. To enable retrieval assistance, add
+`GEMINI_API_KEY` as a secret environment variable and optionally set
+`GEMINI_MODEL`; never place the key in frontend code or commit it.
+To enable natural Twi playback, set `ABENA_TTS_ENABLED=true` and the Abena
+settings shown in `.env.example`; add `ABENA_API_KEY` only if the provider
+requires it. Render injects these values at runtime and does not need `.env`.
+The app has no database migration, SMTP, Paystack, or authentication service
+requirements. Static frontend files are served by Flask from the project
+directory.
 
 ## Limitations
 
@@ -268,8 +392,9 @@ are served by Flask from the project directory.
   needs review by native Twi speakers.
 - Agricultural answers and the high-risk keyword policy still need periodic
   review by qualified extension, veterinary, and crop-protection professionals.
-- Twi speech quality depends on whether the user's browser/operating system
-  provides a Twi or Akan voice. The UI discloses fallback pronunciation.
+- Natural Twi playback depends on Abena availability and quota. Browser
+  fallback quality still depends on installed voices, and the UI discloses
+  potentially inaccurate fallback pronunciation.
 - No human-participant usability study results were supplied.
 
 ## Future Work

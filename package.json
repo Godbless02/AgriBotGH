@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "http-server -p 8080",
+    "start": "python app.py",
+    "start:static": "http-server -p 8080",
     "test": "playwright test",
     "test:headed": "playwright test --headed"
   },

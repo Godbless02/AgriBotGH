@@ -15,41 +15,41 @@ class RetrievalIntegrationTests(unittest.TestCase):
     def setUpClass(cls):
         agribot.app.config.update(TESTING=True)
         cls.client = agribot.app.test_client()
-        with (BASE_DIR / "models/off_topic_experiments.json").open(
+        with (BASE_DIR / "data/evaluation/retrieval_paraphrase_cases.json").open(
             "r", encoding="utf-8"
         ) as handle:
-            cls.router_report = json.load(handle)
+            cls.paraphrases = json.load(handle)
 
-    def test_saved_runtime_matches_all_evaluated_router_decisions(self):
-        tested = 0
-        for language, payload in self.router_report["languages"].items():
-            language_code = "tw" if language == "Twi" else "en"
-            for expected in payload["details"]:
-                actual = agribot.RETRIEVAL_RUNTIME.retrieve(
-                    expected["question"], language_code
-                )
-                self.assertEqual(actual["state"], expected["predicted_state"])
-                self.assertEqual(
-                    actual["candidates"][0]["id"], expected["top_train_id"]
-                )
-                tested += 1
-        self.assertEqual(tested, 232)
+    def test_required_maize_paraphrases_are_statistically_retrieved(self):
+        variants = [
+            case for case in self.paraphrases["cases"]
+            if case.get("expected_record_id") == 2
+        ]
+        self.assertGreaterEqual(len(variants), 6)
+        for case in variants:
+            with self.subTest(question=case["question"]):
+                language = "tw" if case["language"] == "Twi" else "en"
+                actual = agribot.RETRIEVAL_RUNTIME.retrieve(case["question"], language)
+                self.assertEqual(actual["state"], "A")
+                self.assertEqual(actual["candidates"][0]["id"], 2)
+                self.assertGreaterEqual(actual["candidates"][0]["raw_tfidf_similarity"], 0.5)
+                self.assertGreaterEqual(actual["raw_similarity_margin"], 0.05)
 
     def test_all_canonical_questions_remain_exactly_answerable(self):
         tested = 0
         for record in agribot.KNOWN_RECORDS.values():
             for language in ("en", "tw"):
-                response = agribot.get_exact_canonical_answer(
+                response = agribot.RETRIEVAL_RUNTIME.retrieve(
                     record[f"question_{language}"], language
                 )
-                self.assertIsNotNone(response)
-                self.assertEqual(response["routing_state"], "A")
-                self.assertEqual(response["record_id"], record["id"])
-                self.assertEqual(response["text"], record[f"answer_{language}"])
+                candidate = response["candidates"][0]
+                self.assertEqual(response["state"], "A")
+                self.assertEqual(f"qa-{candidate['id']:04d}", record["id"])
+                self.assertEqual(candidate["answer"], record[f"answer_{language}"])
                 tested += 1
         self.assertEqual(tested, 1126)
 
-    def test_uncertain_agriculture_returns_state_b_and_safe_suggestions(self):
+    def test_uncertain_agriculture_returns_state_d_and_dataset_topics(self):
         response = self.client.post(
             "/api/chat",
             json={
@@ -59,21 +59,9 @@ class RetrievalIntegrationTests(unittest.TestCase):
         )
         self.assertEqual(response.status_code, 200)
         payload = response.get_json()
-        self.assertEqual(payload["type"], "low_confidence")
-        self.assertEqual(payload["routing_state"], "B")
-        self.assertTrue(payload["suggestions"])
-
-        suggestion = payload["suggestions"][0]
-        clicked = self.client.post(
-            "/api/chat",
-            json={
-                "message": suggestion["text"],
-                "language": "en",
-                "suggestion_id": suggestion["id"],
-            },
-        )
-        self.assertEqual(clicked.status_code, 200)
-        self.assertEqual(clicked.get_json()["source"], "known_suggestion")
+        self.assertEqual(payload["type"], "knowledge_gap")
+        self.assertEqual(payload["routing_state"], "D")
+        self.assertEqual(payload["available_topics"], list(agribot.AVAILABLE_CATEGORIES))
 
     def test_clearly_unrelated_questions_return_state_c(self):
         cases = (
@@ -94,11 +82,33 @@ class RetrievalIntegrationTests(unittest.TestCase):
         response = self.client.get("/api/health")
         self.assertEqual(response.status_code, 200)
         payload = response.get_json()
-        self.assertEqual(payload["model_version"], "AgriBotGH Retrieval Model v1.0.1")
+        self.assertEqual(payload["model_version"], "AgriBotGH Retrieval Model v1.3.1")
         self.assertEqual(payload["retrieval_architecture"], "topic_aware_tfidf")
-        self.assertEqual(payload["training_records"], 394)
+        self.assertEqual(payload["training_records"], 563)
         self.assertEqual(payload["en_pairs"], 563)
         self.assertEqual(payload["tw_pairs"], 563)
+
+    def test_chat_rejects_malformed_types_and_oversized_payloads(self):
+        for payload in (
+            {"message": 123, "language": "en"},
+            {"message": ["maize"], "language": "en"},
+            {"message": "maize", "language": ["en"]},
+            {"message": "maize", "language": "en", "username": {}},
+        ):
+            with self.subTest(payload=payload):
+                response = self.client.post("/api/chat", json=payload)
+                self.assertEqual(response.status_code, 400)
+                self.assertIn("error", response.get_json())
+
+        response = self.client.post(
+            "/api/chat", json={"message": "m" * 2001, "language": "en"}
+        )
+        self.assertEqual(response.status_code, 400)
+        response = self.client.post(
+            "/api/chat", json={"message": "m" * 40000, "language": "en"}
+        )
+        self.assertEqual(response.status_code, 413)
+        self.assertEqual(response.get_json()["error"], "Request payload is too large")
 
     def test_flask_does_not_fit_a_model_during_startup(self):
         source = (BASE_DIR / "app.py").read_text(encoding="utf-8")

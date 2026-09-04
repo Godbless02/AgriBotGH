@@ -46,8 +46,11 @@ def create_comparison():
     embedding = load("embedding_experiments.json")
     hybrid = load("hybrid_experiments.json")
     active = load("production/active_model.json")
-    production_eval = load("production/1.0.1/evaluation_summary.json")
-    production_config = load("production/1.0.1/retrieval_config.json")
+    active_version = active["active_semantic_version"]
+    production_eval = load(f"production/{active_version}/evaluation_summary.json")
+    production_config = load(f"production/{active_version}/retrieval_config.json")
+    confidence = production_config["answer_confidence"]
+    confidence_threshold = confidence.get("similarity_threshold", confidence.get("threshold"))
 
     baseline_source = tfidf["experiments"]["B_word_unigram_bigram"]["languages"]
     improved_source = tfidf["experiments"][tfidf["winner"]["configuration"]]["languages"]
@@ -97,8 +100,8 @@ def create_comparison():
                 "top_3_accuracy": topic["winner"]["macro_top_3_accuracy"],
                 "category_match_rate": topic["winner"]["macro_category_match_rate"],
             },
-            "threshold": production_config["answer_confidence"]["threshold"],
-            "weaknesses": ["Automatic answer coverage is deliberately very low at the zero-observed-false-positive threshold", "Some unsupported questions still require State B clarification"],
+            "threshold": confidence_threshold,
+            "weaknesses": ["Lexically distant paraphrases still require State B clarification", "The reviewed paraphrase benchmark needs expansion with real farmer queries"],
             "computational_cost": "Moderate CPU-only sparse retrieval; no external model download",
             "source": "models/topic_aware_experiments.json",
         },
@@ -127,7 +130,7 @@ def create_comparison():
                 "top_3_accuracy": hybrid["winner"]["macro_top_3_accuracy"],
                 "category_match_rate": hybrid["winner"]["macro_category_match_rate"],
             },
-            "threshold": production_config["answer_confidence"]["threshold"],
+            "threshold": confidence_threshold,
             "weaknesses": ["Best validated hybrid assigned zero weight to embeddings", "Adding an embedding component increased complexity without measured benefit"],
             "computational_cost": "Winning weights collapse to the topic-aware sparse model, avoiding dense runtime cost",
             "source": "models/hybrid_experiments.json",
@@ -164,7 +167,8 @@ def create_comparison():
                 "Highest validated macro top-1 and top-3 accuracy with the highest category-match rate, "
                 "tied by the hybrid grid only when embedding weight is zero; practical CPU-only deployment."
             ),
-            "answer_confidence_threshold": production_config["answer_confidence"]["threshold"],
+            "answer_confidence_threshold": confidence_threshold,
+            "answer_confidence_minimum_margin": confidence.get("minimum_margin"),
             "threshold_response_precision": production_eval["threshold_validation"]["response_precision"],
             "threshold_response_coverage": production_eval["threshold_validation"]["coverage"],
         },

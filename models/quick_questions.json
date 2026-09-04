@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "canonical_dataset": "data/agribotgh_dataset_bilingual_563.json",
+  "description": "Display-only prompts. They contain no answer IDs and use the normal statistical retrieval path.",
+  "questions": {
+    "en": [
+      {"text": "How should I prepare the soil before planting maize?"},
+      {"text": "When is the best time to plant maize in Ghana?"},
+      {"text": "What fertilizer programme should I use for tomatoes?"},
+      {"text": "How can I prevent pests from attacking my crops?"},
+      {"text": "What is composting and how do I do it?"},
+      {"text": "How do I start a fish farm in Ghana?"},
+      {"text": "What is the best way to plant cassava stems?"},
+      {"text": "How can I prevent tomato late blight?"}
+    ],
+    "tw": [
+      {"text": "Dɛn na menyɛ asase no so ansa na meto aburoɔ?"},
+      {"text": "Ɛdeɛn na mema adwummakers amma wɔnba m'nnuan afuo mu?"},
+      {"text": "Dɛn na composting yɛ na ɛdeɛn na meyɛ no?"},
+      {"text": "Dɛn na menyɛ sɛ mefi ase apataa adwuma wɔ Ghana?"},
+      {"text": "Dɛn na ɛyɛ ɛkwan pa sɛ mede bankye abɔ to mu?"},
+      {"text": "Ferefere bɛn na ɛyɛ papa ma aburo?"}
+    ]
+  }
+}

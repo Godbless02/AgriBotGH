@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-08-21T00:39:47.081405+00:00",
+  "generated_at_utc": "2026-08-23T17:43:22.759526+00:00",
   "status": "pass",
   "checks": {
     "python_syntax": true,
@@ -12,13 +12,14 @@
     "configuration_safe": true
   },
   "details": {
-    "python_files_checked": 50,
-    "runtime_files_checked": 57,
+    "python_files_checked": 57,
+    "runtime_files_checked": 65,
     "syntax_errors": [],
     "duplicate_definitions": [],
     "missing_files": [],
     "noncanonical_dataset_references": [],
     "canonical_dataset_references": [
+      "app.py",
       "build_retrieval_artifacts.py",
       "build_suggestion_links.py",
       "evaluate_language_separation.py",
@@ -30,7 +31,7 @@
     "hardcoded_secret_findings": [],
     "dependency_checks": {
       "flask_declared": true,
-      "flask_cors_declared": true,
+      "unnecessary_flask_cors_removed": true,
       "numpy_declared": true,
       "scikit_learn_declared": true,
       "joblib_declared": true,
@@ -41,6 +42,7 @@
       "canonical_dataset_used_by_app": true,
       "debug_disabled_by_default": true,
       "production_startup_declared": true,
+      "render_python_version_declared": true,
       "model_freeze_enforced": true
     },
     "not_in_project_scope": [

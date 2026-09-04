@@ -1,4 +1,5 @@
 import json
+import sys
 from pathlib import Path
 
 import joblib
@@ -276,6 +277,10 @@ def calculate_threshold_stats(results, language):
 # ============================================================
 
 def main():
+    # Windows PowerShell can expose a legacy CP-1252 stdout even though the
+    # bilingual report is UTF-8. Preserve Twi characters in console output.
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
 
     print("=" * 80)
     print("AgriBotGH TOP-3 RETRIEVAL EVALUATION")

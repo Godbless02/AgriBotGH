@@ -1,0 +1,995 @@
+{
+  "schema_version": 1,
+  "active_model": "AgriBotGH Retrieval Model v1.3.1",
+  "case_file": "data/evaluation/retrieval_challenge_v2.json",
+  "languages": {
+    "English": {
+      "cases": 30,
+      "top_1_correct": 24,
+      "top_1_accuracy": 0.8,
+      "correct_answers": 16,
+      "answer_coverage": 0.5333333333333333,
+      "unsafe_answers": 0,
+      "states": {
+        "D": 14,
+        "A": 16
+      }
+    },
+    "Twi": {
+      "cases": 20,
+      "top_1_correct": 14,
+      "top_1_accuracy": 0.7,
+      "correct_answers": 10,
+      "answer_coverage": 0.5,
+      "unsafe_answers": 0,
+      "states": {
+        "A": 10,
+        "D": 10
+      }
+    }
+  },
+  "ambiguous_agriculture": {
+    "cases": 10,
+    "safe_uncertain": 10,
+    "unsafe_answers": 0,
+    "incorrect_off_topic": 0
+  },
+  "positive_results": [
+    {
+      "id": "v2_en_001",
+      "language": "English",
+      "question": "How can I tell whether land is fertile enough for farming?",
+      "acceptable_record_ids": [
+        1
+      ],
+      "state": "D",
+      "top_record_id": 340,
+      "top_correct": false,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.3190585504223219,
+      "term_coverage": 0.31530454949252135,
+      "raw_margin": 0.053689901165505705,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_en_002",
+      "language": "English",
+      "question": "Can I turn kitchen and garden waste into compost?",
+      "acceptable_record_ids": [
+        4,
+        114
+      ],
+      "state": "A",
+      "top_record_id": 4,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.24686060370964485,
+      "term_coverage": 0.16891657523842307,
+      "raw_margin": 0.01929923834997893,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_en_003",
+      "language": "English",
+      "question": "My land is mostly sand; how can I make it productive?",
+      "acceptable_record_ids": [
+        5
+      ],
+      "state": "D",
+      "top_record_id": 340,
+      "top_correct": false,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.1849913044930026,
+      "term_coverage": 0.18108958298212033,
+      "raw_margin": 0.06157869850951969,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_en_004",
+      "language": "English",
+      "question": "What can I add to land that has a very low pH?",
+      "acceptable_record_ids": [
+        7
+      ],
+      "state": "D",
+      "top_record_id": 7,
+      "top_correct": true,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.08337864321860128,
+      "term_coverage": 0.0,
+      "raw_margin": 0.05672316104077221,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_en_005",
+      "language": "English",
+      "question": "How will I see that the fertilizer has started helping my plants?",
+      "acceptable_record_ids": [
+        10
+      ],
+      "state": "A",
+      "top_record_id": 10,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.24441167659433102,
+      "term_coverage": 0.09954365587805973,
+      "raw_margin": 0.03383691963440552,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_en_006",
+      "language": "English",
+      "question": "Which part of the year should Ghanaian farmers sow maize?",
+      "acceptable_record_ids": [
+        16,
+        207
+      ],
+      "state": "D",
+      "top_record_id": 209,
+      "top_correct": false,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.146455187781184,
+      "term_coverage": 0.1145044504168613,
+      "raw_margin": 0.04705291599859038,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_en_007",
+      "language": "English",
+      "question": "How far below the soil should corn seed go?",
+      "acceptable_record_ids": [
+        17
+      ],
+      "state": "A",
+      "top_record_id": 17,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.2326196116015767,
+      "term_coverage": 0.11710707812913874,
+      "raw_margin": 0.020925091444240373,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_en_008",
+      "language": "English",
+      "question": "How can farmers stop insects from destroying their vegetables?",
+      "acceptable_record_ids": [
+        38
+      ],
+      "state": "D",
+      "top_record_id": 38,
+      "top_correct": true,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.09382973590431035,
+      "term_coverage": 0.0,
+      "raw_margin": 0.018165125532488557,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_en_009",
+      "language": "English",
+      "question": "Where can a Ghanaian farmer borrow money for the farm?",
+      "acceptable_record_ids": [
+        84,
+        273
+      ],
+      "state": "D",
+      "top_record_id": 84,
+      "top_correct": true,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.04221152804709634,
+      "term_coverage": 0.0,
+      "raw_margin": 0.041848486269791735,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_en_010",
+      "language": "English",
+      "question": "What is the correct way to lift mature cassava roots?",
+      "acceptable_record_ids": [
+        66
+      ],
+      "state": "D",
+      "top_record_id": 66,
+      "top_correct": true,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.16684271649880297,
+      "term_coverage": 0.12255133644951888,
+      "raw_margin": 0.19809882047467403,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_en_011",
+      "language": "English",
+      "question": "I want to begin growing okra; what do I need to do?",
+      "acceptable_record_ids": [
+        394
+      ],
+      "state": "A",
+      "top_record_id": 394,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.1714269480952404,
+      "term_coverage": 0.1730249693534215,
+      "raw_margin": 0.01926283382932681,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_en_012",
+      "language": "English",
+      "question": "What kind of location is suitable for growing cucumber?",
+      "acceptable_record_ids": [
+        404
+      ],
+      "state": "A",
+      "top_record_id": 404,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.7348510272697305,
+      "term_coverage": 0.5855778478113972,
+      "raw_margin": 0.5540689609250905,
+      "match_level": "strong_similarity"
+    },
+    {
+      "id": "v2_en_013",
+      "language": "English",
+      "question": "How do I select suitable equipment for a farm task?",
+      "acceptable_record_ids": [
+        484
+      ],
+      "state": "D",
+      "top_record_id": 492,
+      "top_correct": false,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.04982463485945116,
+      "term_coverage": 0.1092936507860823,
+      "raw_margin": 0.0830535417046861,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_en_014",
+      "language": "English",
+      "question": "What food is suitable for young rabbits as they get bigger?",
+      "acceptable_record_ids": [
+        447
+      ],
+      "state": "A",
+      "top_record_id": 447,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.1880792904279907,
+      "term_coverage": 0.12389065412485058,
+      "raw_margin": 0.035743244499073845,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_en_015",
+      "language": "English",
+      "question": "How do I keep my rice plants from falling over?",
+      "acceptable_record_ids": [
+        369
+      ],
+      "state": "A",
+      "top_record_id": 369,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.12264202206671279,
+      "term_coverage": 0.16555963291250583,
+      "raw_margin": 0.01149855070965719,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_en_016",
+      "language": "English",
+      "question": "How can I recognize pregnancy in my female goat?",
+      "acceptable_record_ids": [
+        187
+      ],
+      "state": "A",
+      "top_record_id": 187,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.28894305120464125,
+      "term_coverage": 0.21288456546497,
+      "raw_margin": 0.07025511856312189,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_en_017",
+      "language": "English",
+      "question": "What food should I give my goats?",
+      "acceptable_record_ids": [
+        264
+      ],
+      "state": "A",
+      "top_record_id": 264,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.23929136235774517,
+      "term_coverage": 0.31923941979728987,
+      "raw_margin": 0.0619842667585383,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_en_018",
+      "language": "English",
+      "question": "How do I select land for a new rice field?",
+      "acceptable_record_ids": [
+        364
+      ],
+      "state": "A",
+      "top_record_id": 364,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.3060586487298631,
+      "term_coverage": 0.3814250275603057,
+      "raw_margin": 0.06858018862286014,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_en_019",
+      "language": "English",
+      "question": "What can increase both the amount and quality of milk from my cows?",
+      "acceptable_record_ids": [
+        184
+      ],
+      "state": "A",
+      "top_record_id": 184,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.4665993434831182,
+      "term_coverage": 0.3342448427433016,
+      "raw_margin": 0.16784120355737742,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_en_020",
+      "language": "English",
+      "question": "I want to begin keeping chickens commercially in Ghana.",
+      "acceptable_record_ids": [
+        257,
+        183
+      ],
+      "state": "D",
+      "top_record_id": 257,
+      "top_correct": true,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.11126843462286938,
+      "term_coverage": 0.09324656635204237,
+      "raw_margin": 0.049044782125169994,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_en_021",
+      "language": "English",
+      "question": "What should I do so late blight does not attack my tomato crop?",
+      "acceptable_record_ids": [
+        238
+      ],
+      "state": "D",
+      "top_record_id": 240,
+      "top_correct": false,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.08852488795551164,
+      "term_coverage": 0.12435405508546785,
+      "raw_margin": 0.31639354479386883,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_en_022",
+      "language": "English",
+      "question": "What is needed to set up fish production in Ghana?",
+      "acceptable_record_ids": [
+        251
+      ],
+      "state": "D",
+      "top_record_id": 251,
+      "top_correct": true,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.2556011103354189,
+      "term_coverage": 0.24087527601745945,
+      "raw_margin": 0.06407813357797326,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_en_023",
+      "language": "English",
+      "question": "Why do fruits from my cucumber vines taste bitter?",
+      "acceptable_record_ids": [
+        410
+      ],
+      "state": "A",
+      "top_record_id": 410,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.4804209707196228,
+      "term_coverage": 0.5644863168142011,
+      "raw_margin": 0.034202768290142516,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_en_024",
+      "language": "English",
+      "question": "What must I think about before keeping bees?",
+      "acceptable_record_ids": [
+        474
+      ],
+      "state": "A",
+      "top_record_id": 474,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.26081299371165395,
+      "term_coverage": 0.11349048738049265,
+      "raw_margin": 0.02288466707575723,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_en_025",
+      "language": "English",
+      "question": "Which basic information should a new farmer write down?",
+      "acceptable_record_ids": [
+        101,
+        524
+      ],
+      "state": "D",
+      "top_record_id": 531,
+      "top_correct": false,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.2995624254391376,
+      "term_coverage": 0.29900109744120984,
+      "raw_margin": 0.04542524543716919,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_en_026",
+      "language": "English",
+      "question": "How can I keep my farm alive when the rains fail for a long time?",
+      "acceptable_record_ids": [
+        94,
+        515,
+        516
+      ],
+      "state": "D",
+      "top_record_id": 94,
+      "top_correct": true,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.13704839203043345,
+      "term_coverage": 0.07472942804246048,
+      "raw_margin": 0.10364731930955626,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_en_027",
+      "language": "English",
+      "question": "How should harvested corn be dried and kept so it will not spoil?",
+      "acceptable_record_ids": [
+        73,
+        214
+      ],
+      "state": "A",
+      "top_record_id": 214,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.3445802691277528,
+      "term_coverage": 0.18885100752617326,
+      "raw_margin": -0.012410059596795808,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_en_028",
+      "language": "English",
+      "question": "What can stop rainwater from carrying away my topsoil?",
+      "acceptable_record_ids": [
+        6
+      ],
+      "state": "A",
+      "top_record_id": 6,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.06337724614963337,
+      "term_coverage": 0.0,
+      "raw_margin": 0.07885474040265647,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_en_029",
+      "language": "English",
+      "question": "Which plant food should be applied to a maize field?",
+      "acceptable_record_ids": [
+        2,
+        210
+      ],
+      "state": "D",
+      "top_record_id": 2,
+      "top_correct": true,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.08770846338294722,
+      "term_coverage": 0.1480632998935297,
+      "raw_margin": 0.021023180420437326,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_en_030",
+      "language": "English",
+      "question": "How can I know when a rabbit is unwell?",
+      "acceptable_record_ids": [
+        450
+      ],
+      "state": "A",
+      "top_record_id": 450,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.20877175921081093,
+      "term_coverage": 0.31923941979728987,
+      "raw_margin": 0.04125072787122319,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_tw_001",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn ahu sɛ asase bi yɛ papa ma kuayɛ?",
+      "acceptable_record_ids": [
+        1
+      ],
+      "state": "A",
+      "top_record_id": 1,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.4054238003249196,
+      "term_coverage": 0.43663615814526147,
+      "raw_margin": 0.07298256251198659,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_tw_002",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn de fie nwura ayɛ compost?",
+      "acceptable_record_ids": [
+        4,
+        114
+      ],
+      "state": "D",
+      "top_record_id": 397,
+      "top_correct": false,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.2529230639351654,
+      "term_coverage": 0.2685084874473276,
+      "raw_margin": 0.029322103215974643,
+      "match_level": "off_topic"
+    },
+    {
+      "id": "v2_tw_003",
+      "language": "Twi",
+      "question": "Dɛn na menyɛ de ama asase a anhwea wɔ mu ayɛ papa?",
+      "acceptable_record_ids": [
+        5
+      ],
+      "state": "D",
+      "top_record_id": 18,
+      "top_correct": false,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.26891406453275496,
+      "term_coverage": 0.4097831973888272,
+      "raw_margin": 0.0348290179835741,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_tw_004",
+      "language": "Twi",
+      "question": "Bere bɛn na ɛsɛ sɛ Ghanafoɔ dua aburo?",
+      "acceptable_record_ids": [
+        16,
+        207
+      ],
+      "state": "D",
+      "top_record_id": 16,
+      "top_correct": true,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.252316310885196,
+      "term_coverage": 0.12535808975068052,
+      "raw_margin": 0.057455087642214464,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_tw_005",
+      "language": "Twi",
+      "question": "Ɛsɛ sɛ mede aburo aba no kɔ asase mu tenten bɛn?",
+      "acceptable_record_ids": [
+        17
+      ],
+      "state": "D",
+      "top_record_id": 17,
+      "top_correct": true,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.3118421615454714,
+      "term_coverage": 0.3249208853797135,
+      "raw_margin": 0.11760508788988694,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_tw_006",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn agyina mmoawa a wɔsɛe me nnɔbae no ano?",
+      "acceptable_record_ids": [
+        38
+      ],
+      "state": "D",
+      "top_record_id": 527,
+      "top_correct": false,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.34749966379127667,
+      "term_coverage": 0.3694545057261983,
+      "raw_margin": 0.0031441779317387397,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_tw_007",
+      "language": "Twi",
+      "question": "Ɛhe na okuafoɔ betumi anya bosea de ayɛ kuayɛ?",
+      "acceptable_record_ids": [
+        84,
+        273
+      ],
+      "state": "D",
+      "top_record_id": 196,
+      "top_correct": false,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.07356820738646562,
+      "term_coverage": 0.0,
+      "raw_margin": 0.058051929454224105,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_tw_008",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn atutu bankye a anyin no yie?",
+      "acceptable_record_ids": [
+        66
+      ],
+      "state": "D",
+      "top_record_id": 325,
+      "top_correct": false,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.2847060119862387,
+      "term_coverage": 0.3815738182460452,
+      "raw_margin": 0.05522190576021119,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_tw_009",
+      "language": "Twi",
+      "question": "Mepɛ sɛ mehyɛ okra kuayɛ ase; mɛyɛ dɛn?",
+      "acceptable_record_ids": [
+        394
+      ],
+      "state": "A",
+      "top_record_id": 394,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.3116473559447144,
+      "term_coverage": 0.32885225170443777,
+      "raw_margin": 0.05716771577520863,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_tw_010",
+      "language": "Twi",
+      "question": "Beae bɛn na ɛyɛ papa ma cucumber kuayɛ?",
+      "acceptable_record_ids": [
+        404
+      ],
+      "state": "A",
+      "top_record_id": 404,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.5726861925089274,
+      "term_coverage": 0.5437035540947739,
+      "raw_margin": 0.27795278650250305,
+      "match_level": "strong_similarity"
+    },
+    {
+      "id": "v2_tw_011",
+      "language": "Twi",
+      "question": "Aduan bɛn na mede bɛma rabbits a wɔrenyin?",
+      "acceptable_record_ids": [
+        447
+      ],
+      "state": "A",
+      "top_record_id": 447,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.5674396566302294,
+      "term_coverage": 0.5183462744882003,
+      "raw_margin": 0.37454321080866293,
+      "match_level": "strong_similarity"
+    },
+    {
+      "id": "v2_tw_012",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn amma me aburow antɔ fam?",
+      "acceptable_record_ids": [
+        369
+      ],
+      "state": "A",
+      "top_record_id": 369,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.2101061003725132,
+      "term_coverage": 0.19246735955975858,
+      "raw_margin": 0.013786621434981605,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_tw_013",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn ahu sɛ abirekyi no afa yafunu?",
+      "acceptable_record_ids": [
+        187,
+        293
+      ],
+      "state": "A",
+      "top_record_id": 187,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.26687298655338304,
+      "term_coverage": 0.27051608323457066,
+      "raw_margin": 0.12140496165243989,
+      "match_level": "semantic_fallback"
+    },
+    {
+      "id": "v2_tw_014",
+      "language": "Twi",
+      "question": "Aduan bɛn na ɛsɛ sɛ mede ma me mmirekyie?",
+      "acceptable_record_ids": [
+        264
+      ],
+      "state": "D",
+      "top_record_id": 264,
+      "top_correct": true,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.3499136246773319,
+      "term_coverage": 0.0,
+      "raw_margin": 0.0622280349225767,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_tw_015",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn apaw asase a mede bɛdua aburow?",
+      "acceptable_record_ids": [
+        364
+      ],
+      "state": "A",
+      "top_record_id": 364,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.5570077247971269,
+      "term_coverage": 0.4649239900995893,
+      "raw_margin": 0.33356663401693787,
+      "match_level": "strong_similarity"
+    },
+    {
+      "id": "v2_tw_016",
+      "language": "Twi",
+      "question": "Dɛn na mɛyɛ ama me nantwie ama nufuo pii a ɛyɛ papa?",
+      "acceptable_record_ids": [
+        184
+      ],
+      "state": "D",
+      "top_record_id": 532,
+      "top_correct": false,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.14130903122905591,
+      "term_coverage": 0.1674067969615601,
+      "raw_margin": 0.008142686930493137,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_tw_017",
+      "language": "Twi",
+      "question": "Mepɛ sɛ mefi akoko kuayɛ ase wɔ Ghana.",
+      "acceptable_record_ids": [
+        257,
+        183
+      ],
+      "state": "A",
+      "top_record_id": 257,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.5850631386767218,
+      "term_coverage": 0.6112151516716585,
+      "raw_margin": 0.38823148660352136,
+      "match_level": "strong_similarity"
+    },
+    {
+      "id": "v2_tw_018",
+      "language": "Twi",
+      "question": "Mɛyɛ dɛn abɔ me tomato ho ban afi late blight ho?",
+      "acceptable_record_ids": [
+        238
+      ],
+      "state": "A",
+      "top_record_id": 238,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.5482059048562914,
+      "term_coverage": 0.49564576374760727,
+      "raw_margin": 0.34266691127290144,
+      "match_level": "strong_similarity"
+    },
+    {
+      "id": "v2_tw_019",
+      "language": "Twi",
+      "question": "Dɛn na mehia de afi apataa kuayɛ ase?",
+      "acceptable_record_ids": [
+        251
+      ],
+      "state": "D",
+      "top_record_id": 251,
+      "top_correct": true,
+      "answered_correctly": false,
+      "unsafe_answer": false,
+      "raw_similarity": 0.2528921795993375,
+      "term_coverage": 0.3318121581476912,
+      "raw_margin": 0.04983175898359177,
+      "match_level": "semantic_suggestion"
+    },
+    {
+      "id": "v2_tw_020",
+      "language": "Twi",
+      "question": "Dɛn nti na me cucumber no yɛ nwene?",
+      "acceptable_record_ids": [
+        410
+      ],
+      "state": "A",
+      "top_record_id": 410,
+      "top_correct": true,
+      "answered_correctly": true,
+      "unsafe_answer": false,
+      "raw_similarity": 0.6831441917103946,
+      "term_coverage": 1.0,
+      "raw_margin": 0.3995334628852385,
+      "match_level": "strong_similarity"
+    }
+  ],
+  "ambiguous_results": [
+    {
+      "id": "v2_amb_en_001",
+      "language": "English",
+      "question": "How often should I water crops?",
+      "state": "D",
+      "type": "knowledge_gap",
+      "record_id": null,
+      "safe_uncertain": true
+    },
+    {
+      "id": "v2_amb_en_002",
+      "language": "English",
+      "question": "There are insects on my vegetables.",
+      "state": "D",
+      "type": "knowledge_gap",
+      "record_id": null,
+      "safe_uncertain": true
+    },
+    {
+      "id": "v2_amb_en_003",
+      "language": "English",
+      "question": "My cow refuses to eat.",
+      "state": "D",
+      "type": "knowledge_gap",
+      "record_id": null,
+      "safe_uncertain": true
+    },
+    {
+      "id": "v2_amb_en_004",
+      "language": "English",
+      "question": "How much seed should I buy?",
+      "state": "D",
+      "type": "knowledge_gap",
+      "record_id": null,
+      "safe_uncertain": true
+    },
+    {
+      "id": "v2_amb_en_005",
+      "language": "English",
+      "question": "The rains have stopped on my farm.",
+      "state": "D",
+      "type": "knowledge_gap",
+      "record_id": null,
+      "safe_uncertain": true
+    },
+    {
+      "id": "v2_amb_en_006",
+      "language": "English",
+      "question": "What crop works on sandy land?",
+      "state": "D",
+      "type": "knowledge_gap",
+      "record_id": null,
+      "safe_uncertain": true
+    },
+    {
+      "id": "v2_amb_tw_001",
+      "language": "Twi",
+      "question": "Mmoawa wɔ me nnɔbae so.",
+      "state": "D",
+      "type": "knowledge_gap",
+      "record_id": null,
+      "safe_uncertain": true
+    },
+    {
+      "id": "v2_amb_tw_002",
+      "language": "Twi",
+      "question": "Me nantwie mpɛ sɛ ɔdidi.",
+      "state": "D",
+      "type": "knowledge_gap",
+      "record_id": null,
+      "safe_uncertain": true
+    },
+    {
+      "id": "v2_amb_tw_003",
+      "language": "Twi",
+      "question": "Osuo no agyae wɔ m'afuo mu.",
+      "state": "D",
+      "type": "knowledge_gap",
+      "record_id": null,
+      "safe_uncertain": true
+    },
+    {
+      "id": "v2_amb_tw_004",
+      "language": "Twi",
+      "question": "Aba dodow bɛn na mentɔ?",
+      "state": "D",
+      "type": "knowledge_gap",
+      "record_id": null,
+      "safe_uncertain": true
+    }
+  ]
+}

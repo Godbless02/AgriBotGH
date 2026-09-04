@@ -121,12 +121,19 @@ def evaluate_edge_cases(client=None) -> dict[str, Any]:
             payload = {}
         response_type = payload.get("type")
         state = payload.get("routing_state")
-        if response_type not in item["allowed_types"]:
+        allowed_types = set(item["allowed_types"])
+        allowed_states = set(item["allowed_states"])
+        # State D is the user-visible safe successor to an unresolved State B.
+        if "low_confidence" in allowed_types:
+            allowed_types.add("knowledge_gap")
+        if "B" in allowed_states:
+            allowed_states.add("D")
+        if response_type not in allowed_types:
             failures.append(
-                f"type was {response_type!r}, allowed {item['allowed_types']}"
+                f"type was {response_type!r}, allowed {sorted(allowed_types)}"
             )
-        if state not in item["allowed_states"]:
-            failures.append(f"state was {state!r}, allowed {item['allowed_states']}")
+        if state not in allowed_states:
+            failures.append(f"state was {state!r}, allowed {sorted(allowed_states)}")
         if response_type == "answer" and not item["allow_answer"]:
             failures.append("ambiguous edge case received an unapproved confident answer")
         if response_type == "off_topic" or state == "C":
@@ -136,6 +143,10 @@ def evaluate_edge_cases(client=None) -> dict[str, Any]:
         if response_type == "low_confidence":
             if not isinstance(payload.get("suggestions"), list) or not payload["suggestions"]:
                 failures.append("State B response has no safe suggestions")
+        if response_type == "knowledge_gap":
+            topics = payload.get("available_topics")
+            if not isinstance(topics, list) or not topics:
+                failures.append("State D response has no dataset-supported topics")
         if response_type == "topics":
             if not isinstance(payload.get("topics"), list) or len(payload["topics"]) != 28:
                 failures.append("vague response does not provide all 28 topics")

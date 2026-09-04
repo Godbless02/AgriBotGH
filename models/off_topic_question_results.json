@@ -1,31 +1,31 @@
 {
   "schema_version": 1,
   "todo": 23,
-  "generated_at_utc": "2026-08-20T23:31:21.433743+00:00",
+  "generated_at_utc": "2026-08-23T18:59:58.865123+00:00",
   "challenge_file": "data/evaluation/off_topic_questions.json",
-  "active_model": "1.0.1",
+  "active_model": "1.3.1",
   "summary": {
     "total": 48,
-    "passed": 48,
-    "failed": 0,
-    "state_c_recall": 1.0,
+    "passed": 44,
+    "failed": 4,
+    "state_c_recall": 0.9166666666666666,
     "agricultural_answers_returned": 0
   },
   "groups": {
     "language": {
       "English": {
         "total": 24,
-        "passed": 24
+        "passed": 21
       },
       "Twi": {
         "total": 24,
-        "passed": 24
+        "passed": 23
       }
     },
     "difficulty": {
       "hard_negative": {
         "total": 24,
-        "passed": 24
+        "passed": 20
       },
       "ordinary": {
         "total": 24,
@@ -46,8 +46,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.2354658414218298,
-        "elapsed_ms": 30.884
+        "domain_score": 0.23046549820151618,
+        "elapsed_ms": 35.415
       },
       "passed": true,
       "failures": []
@@ -64,8 +64,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.1389709835868425,
-        "elapsed_ms": 18.883
+        "domain_score": 0.12980841810935523,
+        "elapsed_ms": 28.259
       },
       "passed": true,
       "failures": []
@@ -82,8 +82,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.1915384793579693,
-        "elapsed_ms": 11.195
+        "domain_score": 0.1851760954152729,
+        "elapsed_ms": 20.134
       },
       "passed": true,
       "failures": []
@@ -100,8 +100,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.22161473218327682,
-        "elapsed_ms": 11.971
+        "domain_score": 0.2008949190145693,
+        "elapsed_ms": 20.789
       },
       "passed": true,
       "failures": []
@@ -118,8 +118,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.17643065241060324,
-        "elapsed_ms": 9.574
+        "domain_score": 0.17213431889723796,
+        "elapsed_ms": 24.482
       },
       "passed": true,
       "failures": []
@@ -136,8 +136,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.1394423787359728,
-        "elapsed_ms": 12.223
+        "domain_score": 0.140012073257089,
+        "elapsed_ms": 22.021
       },
       "passed": true,
       "failures": []
@@ -154,8 +154,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.19028205530557496,
-        "elapsed_ms": 15.61
+        "domain_score": 0.18472158063531374,
+        "elapsed_ms": 23.771
       },
       "passed": true,
       "failures": []
@@ -172,8 +172,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.22244929267747138,
-        "elapsed_ms": 12.984
+        "domain_score": 0.21204811872557286,
+        "elapsed_ms": 26.041
       },
       "passed": true,
       "failures": []
@@ -190,8 +190,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.16206496629372744,
-        "elapsed_ms": 14.788
+        "domain_score": 0.1933797586711496,
+        "elapsed_ms": 28.82
       },
       "passed": true,
       "failures": []
@@ -208,8 +208,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.12618944725616632,
-        "elapsed_ms": 10.715
+        "domain_score": 0.1327015543952883,
+        "elapsed_ms": 24.894
       },
       "passed": true,
       "failures": []
@@ -226,8 +226,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.17705537277908712,
-        "elapsed_ms": 10.186
+        "domain_score": 0.18228327594653454,
+        "elapsed_ms": 25.42
       },
       "passed": true,
       "failures": []
@@ -244,8 +244,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.2182184403312058,
-        "elapsed_ms": 13.983
+        "domain_score": 0.20036245014089485,
+        "elapsed_ms": 24.442
       },
       "passed": true,
       "failures": []
@@ -262,8 +262,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.21886566056507734,
-        "elapsed_ms": 17.999
+        "domain_score": 0.19410858398524888,
+        "elapsed_ms": 29.625
       },
       "passed": true,
       "failures": []
@@ -280,8 +280,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.1960696947670485,
-        "elapsed_ms": 12.29
+        "domain_score": 0.19399938296657665,
+        "elapsed_ms": 28.617
       },
       "passed": true,
       "failures": []
@@ -298,8 +298,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.1937392139031534,
-        "elapsed_ms": 8.075
+        "domain_score": 0.19101167255738272,
+        "elapsed_ms": 25.549
       },
       "passed": true,
       "failures": []
@@ -316,8 +316,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.15824193152144178,
-        "elapsed_ms": 11.217
+        "domain_score": 0.17583198014167026,
+        "elapsed_ms": 29.002
       },
       "passed": true,
       "failures": []
@@ -334,8 +334,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.15939977904066668,
-        "elapsed_ms": 13.363
+        "domain_score": 0.14896943963772463,
+        "elapsed_ms": 30.338
       },
       "passed": true,
       "failures": []
@@ -352,8 +352,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.0990049290825738,
-        "elapsed_ms": 9.832
+        "domain_score": 0.09404215996999743,
+        "elapsed_ms": 27.041
       },
       "passed": true,
       "failures": []
@@ -370,8 +370,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.18449834110585503,
-        "elapsed_ms": 15.75
+        "domain_score": 0.1696733255196227,
+        "elapsed_ms": 28.109
       },
       "passed": true,
       "failures": []
@@ -388,8 +388,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.19442702073726104,
-        "elapsed_ms": 11.936
+        "domain_score": 0.1824765704419757,
+        "elapsed_ms": 24.02
       },
       "passed": true,
       "failures": []
@@ -406,8 +406,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.17672674170793456,
-        "elapsed_ms": 10.289
+        "domain_score": 0.1750705415145385,
+        "elapsed_ms": 26.642
       },
       "passed": true,
       "failures": []
@@ -424,8 +424,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.20184333346237382,
-        "elapsed_ms": 12.316
+        "domain_score": 0.21786563363001232,
+        "elapsed_ms": 23.57
       },
       "passed": true,
       "failures": []
@@ -442,8 +442,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.14877964590788684,
-        "elapsed_ms": 18.147
+        "domain_score": 0.15090829816313212,
+        "elapsed_ms": 19.164
       },
       "passed": true,
       "failures": []
@@ -460,8 +460,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.2180004147475157,
-        "elapsed_ms": 9.57
+        "domain_score": 0.17918708715805057,
+        "elapsed_ms": 18.288
       },
       "passed": true,
       "failures": []
@@ -476,13 +476,17 @@
       "expected_state": "C",
       "actual": {
         "http_status": 200,
-        "response_type": "off_topic",
-        "routing_state": "C",
-        "domain_score": 0.18208943543484407,
-        "elapsed_ms": 11.909
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "domain_score": 0.17771931620053882,
+        "elapsed_ms": 21.421
       },
-      "passed": true,
-      "failures": []
+      "passed": false,
+      "failures": [
+        "type was 'low_confidence', expected 'off_topic'",
+        "state was 'B', expected 'C'",
+        "off-topic response did not provide the 28-topic recovery path"
+      ]
     },
     {
       "id": "off23_tw_013",
@@ -496,8 +500,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.1825044406369171,
-        "elapsed_ms": 14.415
+        "domain_score": 0.17095066360782182,
+        "elapsed_ms": 23.548
       },
       "passed": true,
       "failures": []
@@ -512,13 +516,17 @@
       "expected_state": "C",
       "actual": {
         "http_status": 200,
-        "response_type": "off_topic",
-        "routing_state": "C",
-        "domain_score": 0.19647157508302848,
-        "elapsed_ms": 16.26
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "domain_score": 0.18174785217763978,
+        "elapsed_ms": 21.274
       },
-      "passed": true,
-      "failures": []
+      "passed": false,
+      "failures": [
+        "type was 'low_confidence', expected 'off_topic'",
+        "state was 'B', expected 'C'",
+        "off-topic response did not provide the 28-topic recovery path"
+      ]
     },
     {
       "id": "off23_tw_014",
@@ -532,8 +540,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.1970661926822655,
-        "elapsed_ms": 20.782
+        "domain_score": 0.19032318155529077,
+        "elapsed_ms": 16.325
       },
       "passed": true,
       "failures": []
@@ -548,13 +556,17 @@
       "expected_state": "C",
       "actual": {
         "http_status": 200,
-        "response_type": "off_topic",
-        "routing_state": "C",
-        "domain_score": 0.14644048334040655,
-        "elapsed_ms": 15.856
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "domain_score": 0.15344988328493658,
+        "elapsed_ms": 19.02
       },
-      "passed": true,
-      "failures": []
+      "passed": false,
+      "failures": [
+        "type was 'low_confidence', expected 'off_topic'",
+        "state was 'B', expected 'C'",
+        "off-topic response did not provide the 28-topic recovery path"
+      ]
     },
     {
       "id": "off23_tw_015",
@@ -568,8 +580,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.19410878824732994,
-        "elapsed_ms": 19.711
+        "domain_score": 0.203065254297272,
+        "elapsed_ms": 17.638
       },
       "passed": true,
       "failures": []
@@ -586,8 +598,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.19155851357908105,
-        "elapsed_ms": 15.458
+        "domain_score": 0.17777962323010832,
+        "elapsed_ms": 16.307
       },
       "passed": true,
       "failures": []
@@ -604,8 +616,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.12244186157825945,
-        "elapsed_ms": 16.624
+        "domain_score": 0.15417429404897112,
+        "elapsed_ms": 15.035
       },
       "passed": true,
       "failures": []
@@ -622,8 +634,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.21990588860266638,
-        "elapsed_ms": 21.325
+        "domain_score": 0.2339691767704439,
+        "elapsed_ms": 16.626
       },
       "passed": true,
       "failures": []
@@ -640,8 +652,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.222210548134241,
-        "elapsed_ms": 29.211
+        "domain_score": 0.2822008666011441,
+        "elapsed_ms": 16.815
       },
       "passed": true,
       "failures": []
@@ -658,8 +670,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.17993772002963634,
-        "elapsed_ms": 22.561
+        "domain_score": 0.17964209513685822,
+        "elapsed_ms": 18.548
       },
       "passed": true,
       "failures": []
@@ -676,8 +688,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.2157130362228796,
-        "elapsed_ms": 20.712
+        "domain_score": 0.20375848882232145,
+        "elapsed_ms": 15.363
       },
       "passed": true,
       "failures": []
@@ -694,8 +706,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.21386213977886476,
-        "elapsed_ms": 15.708
+        "domain_score": 0.23495489343041434,
+        "elapsed_ms": 15.453
       },
       "passed": true,
       "failures": []
@@ -710,13 +722,17 @@
       "expected_state": "C",
       "actual": {
         "http_status": 200,
-        "response_type": "off_topic",
-        "routing_state": "C",
-        "domain_score": 0.18836768748971522,
-        "elapsed_ms": 15.258
+        "response_type": "low_confidence",
+        "routing_state": "B",
+        "domain_score": 0.20787829578382727,
+        "elapsed_ms": 16.74
       },
-      "passed": true,
-      "failures": []
+      "passed": false,
+      "failures": [
+        "type was 'low_confidence', expected 'off_topic'",
+        "state was 'B', expected 'C'",
+        "off-topic response did not provide the 28-topic recovery path"
+      ]
     },
     {
       "id": "off23_en_020",
@@ -730,8 +746,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.2939013084636211,
-        "elapsed_ms": 12.871
+        "domain_score": 0.2826997340008036,
+        "elapsed_ms": 15.646
       },
       "passed": true,
       "failures": []
@@ -748,8 +764,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.2915649471446693,
-        "elapsed_ms": 23.42
+        "domain_score": 0.2515954206629313,
+        "elapsed_ms": 15.545
       },
       "passed": true,
       "failures": []
@@ -766,8 +782,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.2465374923852237,
-        "elapsed_ms": 21.279
+        "domain_score": 0.23619111087732558,
+        "elapsed_ms": 17.386
       },
       "passed": true,
       "failures": []
@@ -784,8 +800,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.27984223219721577,
-        "elapsed_ms": 23.252
+        "domain_score": 0.23449518908138767,
+        "elapsed_ms": 15.51
       },
       "passed": true,
       "failures": []
@@ -802,8 +818,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.26617536096279176,
-        "elapsed_ms": 14.09
+        "domain_score": 0.2464861355119542,
+        "elapsed_ms": 16.783
       },
       "passed": true,
       "failures": []
@@ -820,8 +836,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.1717652797661388,
-        "elapsed_ms": 12.002
+        "domain_score": 0.15695200991643976,
+        "elapsed_ms": 17.936
       },
       "passed": true,
       "failures": []
@@ -838,8 +854,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.21924157024524582,
-        "elapsed_ms": 13.403
+        "domain_score": 0.2128355731410626,
+        "elapsed_ms": 15.801
       },
       "passed": true,
       "failures": []
@@ -856,8 +872,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.1472044467681983,
-        "elapsed_ms": 13.285
+        "domain_score": 0.201294936169002,
+        "elapsed_ms": 14.697
       },
       "passed": true,
       "failures": []
@@ -874,8 +890,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.27845032190292063,
-        "elapsed_ms": 13.982
+        "domain_score": 0.28507068850939266,
+        "elapsed_ms": 17.085
       },
       "passed": true,
       "failures": []
@@ -892,8 +908,8 @@
         "http_status": 200,
         "response_type": "off_topic",
         "routing_state": "C",
-        "domain_score": 0.16155054346688638,
-        "elapsed_ms": 12.116
+        "domain_score": 0.17137237082139736,
+        "elapsed_ms": 17.607
       },
       "passed": true,
       "failures": []

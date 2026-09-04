@@ -1,0 +1,19 @@
+﻿diagnostic,expected,actual,passed
+State A strong supported retrieval,Supported direct questions end in State A,PASS,True
+State B weak retrieval,Eligible weak queries are not answered without accepted evidence,PASS,True
+State C off-topic rejection,All Group F cases end in State C,FAIL,False
+State D knowledge gap,All Group E cases end in State D,PASS,True
+Language separation,No English/Twi answer leakage,PASS,True
+Gemini missing key,Missing configuration safely preserves uncertainty,PASS,True
+Gemini timeout,Mocked timeout safely preserves uncertainty,PASS,True
+Gemini malformed response,Malformed response is rejected,PASS,True
+Gemini provider/quota failure,Mocked provider/rate-limit failures are contained,PASS,True
+Weather valid route,Live weather wording is identified,PASS,True
+Weather invalid location,Invalid locations produce stable service errors in mocked tests,PASS,True
+Weather provider failure,Provider failure is not converted to a knowledge gap,PASS,True
+Weather/agriculture collision,Agricultural explanations are not routed as live weather,PASS,True
+TTS unsupported browser,Readable fallback is covered by browser tests,PASS,True
+STT unsupported browser,Typing remains available and fallback is readable,PASS,True
+Twi microphone limitation,Twi native STT remains explicitly disabled,PASS,True
+Entity compatibility,Known aliases remain compatible and conflicts are rejected,PASS,True
+Unseen agricultural entities,All verified absent topics end in State D,PASS,True

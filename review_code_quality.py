@@ -31,6 +31,7 @@ REQUIRED_FILES = {
     "style.css",
     "requirements.txt",
     "Procfile",
+    ".python-version",
     "runtime.txt",
     ".env.example",
     CANONICAL_DATASET,
@@ -122,7 +123,8 @@ def audit_code_quality(write_report: bool = True) -> dict:
     }
     dependency_checks = {
         "flask_declared": "flask" in requirements,
-        "flask_cors_declared": "flask-cors" in requirements,
+        "unnecessary_flask_cors_removed": "flask-cors" not in requirements
+        and "flask_cors" not in app_text,
         "numpy_declared": "numpy" in requirements,
         "scikit_learn_declared": "scikit-learn" in requirements,
         "joblib_declared": "joblib" in requirements,
@@ -133,6 +135,7 @@ def audit_code_quality(write_report: bool = True) -> dict:
         "canonical_dataset_used_by_app": "agribotgh_dataset_bilingual_563.json" in app_text,
         "debug_disabled_by_default": "FLASK_DEBUG=false" in (ROOT / ".env.example").read_text(),
         "production_startup_declared": (ROOT / "Procfile").read_text().strip() == "web: gunicorn app:app",
+        "render_python_version_declared": (ROOT / ".python-version").read_text().strip() == "3.13.5",
         "model_freeze_enforced": "load_final_model_freeze" in app_text,
     }
 

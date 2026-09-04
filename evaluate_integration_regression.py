@@ -30,7 +30,7 @@ def evaluate_integration(client=None):
         "frozen_model_health",
         health_response.status_code == 200
         and health.get("model_frozen") is True
-        and health.get("semantic_version") == "1.0.1"
+        and health.get("semantic_version") == agribot.RETRIEVAL_RUNTIME.metadata["semantic_version"]
         and health.get("freeze_id") == agribot.FINAL_MODEL_FREEZE["freeze_id"],
         health,
     )
@@ -61,7 +61,7 @@ def evaluate_integration(client=None):
         topic_response.status_code == 200
         and len(topic.get("suggestions", [])) > 0
         and clicked_response.status_code == 200
-        and clicked.get("source") == "known_suggestion",
+        and clicked.get("source") == "retrieval_v1",
         {"topic": topic.get("topic"), "suggestion_id": suggestion.get("id"), "clicked_source": clicked.get("source")},
     )
 

@@ -2,6 +2,7 @@ agribot_env/
 venv/
 __pycache__/
 *.pyc
+*.wav
 .env
 *.db
 node_modules/
@@ -12,3 +13,4 @@ backups/
 server.log
 .DS_Store
 .vscode/
+*.env

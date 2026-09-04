@@ -1,0 +1,163 @@
+{
+  "generated_at_utc": "2026-09-01T23:28:14.111657+00:00",
+  "dataset": "data/agribotgh_dataset_bilingual_563.json",
+  "schema_fields_verified": [
+    "id",
+    "category",
+    "question_en",
+    "answer_en",
+    "question_twi",
+    "answer_twi"
+  ],
+  "all_records_have_exact_schema": true,
+  "total_records": 563,
+  "total_unique_ids": 563,
+  "minimum_id": 1,
+  "maximum_id": 563,
+  "missing_ids": [],
+  "duplicate_ids": [],
+  "duplicate_id_count": 0,
+  "unique_categories": 40,
+  "records_per_category": {
+    "Beekeeping": 10,
+    "Business & Marketing": 16,
+    "Carrot": 2,
+    "Cassava": 21,
+    "Cattle Rearing": 10,
+    "Climate-Smart Farming": 10,
+    "Cocoa Farming": 10,
+    "Cucumber Farming": 10,
+    "Farm Business Planning": 10,
+    "Farm Management & General": 7,
+    "Farm Mechanization & Tools": 10,
+    "Farm Records & Extension": 10,
+    "Fertilizer & Nutrients": 11,
+    "Fish Farming": 18,
+    "Garden Eggs": 3,
+    "Goat Rearing": 9,
+    "Grasscutter Farming": 10,
+    "Groundnut & Legumes": 10,
+    "Harvesting & Storage": 14,
+    "Irrigation & Water": 9,
+    "Maize": 47,
+    "Mushroom Farming": 10,
+    "Oil Palm & Coconut": 10,
+    "Okra Farming": 10,
+    "Onion": 8,
+    "Palm & Coconut": 7,
+    "Pepper": 10,
+    "Pest & Disease Control": 20,
+    "Pig Farming": 10,
+    "Plantain & Banana": 22,
+    "Post-Harvest & Food Safety": 10,
+    "Poultry Farming": 23,
+    "Rabbit Farming": 10,
+    "Rice Farming": 10,
+    "Sheep Rearing": 3,
+    "Snail Farming": 10,
+    "Soil & Land Preparation": 90,
+    "Tomato": 19,
+    "Watermelon Farming": 10,
+    "Yam": 14
+  },
+  "blank_or_null_values": {
+    "id": 0,
+    "category": 0,
+    "question_en": 0,
+    "answer_en": 0,
+    "question_twi": 0,
+    "answer_twi": 0
+  },
+  "duplicates": {
+    "english_questions": [],
+    "twi_questions": [],
+    "english_answers": [
+      {
+        "value": "on slopes, always plant across the slope (contour planting) rather than up and down. make ridges along contour lines to hold water. plant cover crops or grasses on the steepest parts. use tied ridges (ridges with cross-ties every few meters) to capture rainwater. mulch heavily to protect soil between plants.",
+        "record_ids": [
+          26,
+          201
+        ],
+        "count": 2
+      },
+      {
+        "value": "fall armyworm is a highly destructive caterpillar that mainly attacks maize. it can destroy an entire field within days. control with insecticides like emamectin benzoate, apply early morning, and target the whorls where larvae hide.",
+        "record_ids": [
+          34,
+          202
+        ],
+        "count": 2
+      },
+      {
+        "value": "whiteflies are tiny white insects that suck plant sap and spread viruses. control them by spraying insecticidal soap, neem oil, or imidacloprid. yellow sticky traps also help. avoid excessive nitrogen fertilizer which attracts them.",
+        "record_ids": [
+          40,
+          203
+        ],
+        "count": 2
+      },
+      {
+        "value": "aflatoxin is a toxic substance produced by molds that grow on grains, groundnuts, and spices when stored in humid conditions. it is harmful to humans and animals and causes liver disease. prevent it by drying crops properly and using clean airtight storage.",
+        "record_ids": [
+          46,
+          204
+        ],
+        "count": 2
+      },
+      {
+        "value": "cold storage is refrigerated storage that keeps produce at low temperatures to extend shelf life. small farmers can access it through: farmer cooperatives that own shared cold storage facilities, government-run cold storage centers, private cold storage services that charge per crate or kilogram, mobile cold storage trucks, and evaporative coolers which are low-cost non-electrical cooling structures.",
+        "record_ids": [
+          81,
+          205
+        ],
+        "count": 2
+      },
+      {
+        "value": "if your farm floods regularly, take these steps: dig drainage channels around and through the field to direct water away, create raised beds to keep plant roots above waterline, plant flood-tolerant crop varieties, install water pumps to remove standing water quickly, build earthen bunds around the field perimeter, and consider planting floating rice varieties if flooding is very severe and frequent.",
+        "record_ids": [
+          108,
+          206
+        ],
+        "count": 2
+      }
+    ],
+    "twi_answers": []
+  },
+  "word_count_statistics": {
+    "question_en": {
+      "minimum": 4,
+      "maximum": 16,
+      "mean": 8.661,
+      "median": 9,
+      "standard_deviation": 2.005
+    },
+    "question_twi": {
+      "minimum": 4,
+      "maximum": 22,
+      "mean": 9.533,
+      "median": 9,
+      "standard_deviation": 2.39
+    },
+    "answer_en": {
+      "minimum": 10,
+      "maximum": 99,
+      "mean": 43.714,
+      "median": 41,
+      "standard_deviation": 23.9
+    },
+    "answer_twi": {
+      "minimum": 8,
+      "maximum": 111,
+      "mean": 52.069,
+      "median": 50,
+      "standard_deviation": 26.388
+    }
+  },
+  "completeness_rates_percent": {
+    "question_en": 100.0,
+    "answer_en": 100.0,
+    "question_twi": 100.0,
+    "answer_twi": 100.0
+  },
+  "scope_note": "This is a structural and retrieval-corpus analysis. It is not an independent validation of agronomic correctness or professional Twi-language quality."
+}

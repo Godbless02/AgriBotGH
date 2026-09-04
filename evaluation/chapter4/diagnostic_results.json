@@ -1,0 +1,117 @@
+{
+  "diagnostics": [
+    {
+      "diagnostic": "State A strong supported retrieval",
+      "expected": "Supported direct questions end in State A",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "diagnostic": "State B weak retrieval",
+      "expected": "Eligible weak queries are not answered without accepted evidence",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "diagnostic": "State C off-topic rejection",
+      "expected": "All Group F cases end in State C",
+      "actual": "FAIL",
+      "passed": false
+    },
+    {
+      "diagnostic": "State D knowledge gap",
+      "expected": "All Group E cases end in State D",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "diagnostic": "Language separation",
+      "expected": "No English/Twi answer leakage",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "diagnostic": "Gemini missing key",
+      "expected": "Missing configuration safely preserves uncertainty",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "diagnostic": "Gemini timeout",
+      "expected": "Mocked timeout safely preserves uncertainty",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "diagnostic": "Gemini malformed response",
+      "expected": "Malformed response is rejected",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "diagnostic": "Gemini provider/quota failure",
+      "expected": "Mocked provider/rate-limit failures are contained",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "diagnostic": "Weather valid route",
+      "expected": "Live weather wording is identified",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "diagnostic": "Weather invalid location",
+      "expected": "Invalid locations produce stable service errors in mocked tests",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "diagnostic": "Weather provider failure",
+      "expected": "Provider failure is not converted to a knowledge gap",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "diagnostic": "Weather/agriculture collision",
+      "expected": "Agricultural explanations are not routed as live weather",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "diagnostic": "TTS unsupported browser",
+      "expected": "Readable fallback is covered by browser tests",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "diagnostic": "STT unsupported browser",
+      "expected": "Typing remains available and fallback is readable",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "diagnostic": "Twi microphone limitation",
+      "expected": "Twi native STT remains explicitly disabled",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "diagnostic": "Entity compatibility",
+      "expected": "Known aliases remain compatible and conflicts are rejected",
+      "actual": "PASS",
+      "passed": true
+    },
+    {
+      "diagnostic": "Unseen agricultural entities",
+      "expected": "All verified absent topics end in State D",
+      "actual": "PASS",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 18,
+    "passed": 17,
+    "failed": 1
+  }
+}

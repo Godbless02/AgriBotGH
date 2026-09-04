@@ -47,7 +47,8 @@ class AgricultureEdgeCaseTests(unittest.TestCase):
             "/api/chat",
             json={"message": "Akokɔ mma ayare", "language": "tw"},
         ).get_json()
-        self.assertEqual(agricultural["routing_state"], "B")
+        self.assertEqual(agricultural["routing_state"], "D")
+        self.assertEqual(agricultural["type"], "knowledge_gap")
         self.assertEqual(
             agricultural["domain_signal"], "recognized_agricultural_topic"
         )

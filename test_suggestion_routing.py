@@ -7,6 +7,17 @@ import app as agribot
 
 
 class SuggestionRoutingTests(unittest.TestCase):
+    RIGHT_PANEL_ENGLISH = (
+        ("How should I prepare the soil before planting maize?", "qa-0208"),
+        ("When is the best time to plant maize in Ghana?", "qa-0016"),
+        ("What fertilizer programme should I use for tomatoes?", "qa-0344"),
+        ("How can I prevent pests from attacking my crops?", "qa-0038"),
+        ("What is composting and how do I do it?", "qa-0114"),
+        ("How do I start a fish farm in Ghana?", "qa-0251"),
+        ("What is the best way to plant cassava stems?", "qa-0220"),
+        ("How can I prevent tomato late blight?", "qa-0238"),
+    )
+
     @classmethod
     def setUpClass(cls):
         agribot.app.config.update(TESTING=True)
@@ -32,8 +43,8 @@ class SuggestionRoutingTests(unittest.TestCase):
                     self.assertEqual(response.status_code, 200)
                     payload = response.get_json()
                     self.assertEqual(payload["type"], "answer")
-                    self.assertEqual(payload["source"], "known_suggestion")
-                    self.assertEqual(payload["suggestion_id"], suggestion["id"])
+                    self.assertEqual(payload["source"], "retrieval_v1")
+                    self.assertEqual(payload["record_id"], suggestion["id"])
                     self.assertEqual(
                         payload["text"],
                         agribot.KNOWN_RECORDS[suggestion["id"]][answer_key],
@@ -114,6 +125,76 @@ class SuggestionRoutingTests(unittest.TestCase):
         payload = response.get_json()
         self.assertEqual(payload["type"], "answer")
         self.assertNotEqual(payload.get("source"), "known_suggestion")
+
+    def test_right_panel_questions_use_canonical_answers_when_typed(self):
+        for question, record_id in self.RIGHT_PANEL_ENGLISH:
+            with self.subTest(question=question):
+                response = self.client.post(
+                    "/api/chat", json={"message": question, "language": "en"}
+                )
+                self.assertEqual(response.status_code, 200)
+                payload = response.get_json()
+                self.assertEqual(payload["type"], "answer")
+                self.assertEqual(payload["language"], "en")
+                self.assertEqual(payload["routing_state"], "A")
+                self.assertEqual(payload["source"], "retrieval_v1")
+                self.assertEqual(payload["record_id"], record_id)
+                self.assertEqual(
+                    payload["text"], agribot.KNOWN_RECORDS[record_id]["answer_en"]
+                )
+
+    def test_quick_question_catalogue_is_valid_in_both_languages(self):
+        for language, expected_count in (("en", 8), ("tw", 6)):
+            response = self.client.get(f"/api/quick-suggestions?lang={language}")
+            self.assertEqual(response.status_code, 200)
+            suggestions = response.get_json()["suggestions"]
+            self.assertEqual(len(suggestions), expected_count)
+            for suggestion in suggestions:
+                answer = self.client.post(
+                    "/api/chat",
+                    json={"message": suggestion["text"], "language": language},
+                )
+                self.assertEqual(answer.status_code, 200)
+                payload = answer.get_json()
+                self.assertEqual(payload["type"], "answer")
+                self.assertEqual(payload["language"], language)
+                self.assertEqual(set(suggestion), {"text"})
+                self.assertEqual(payload["source"], "retrieval_v1")
+
+    def test_fertilizer_word_order_variants_normalize_to_same_record(self):
+        variants = (
+            "What fertilizer is best for maize?",
+            "Which fertilizer should I use for maize?",
+            "For maize what fertilizer should I use?",
+            "What is the best fertilizer for maize?",
+            "For maize what is the best fertilizer it?",
+        )
+        for question in variants:
+            with self.subTest(question=question):
+                payload = self.client.post(
+                    "/api/chat", json={"message": question, "language": "en"}
+                ).get_json()
+                self.assertEqual(payload["type"], "answer")
+                self.assertEqual(payload["record_id"], "qa-0002")
+
+    def test_uncertain_agriculture_and_off_topic_guards_are_preserved(self):
+        uncertain = self.client.post(
+            "/api/chat",
+            json={
+                "message": "My maize leaves are changing colour and I am not sure why",
+                "language": "en",
+            },
+        ).get_json()
+        self.assertEqual(uncertain["type"], "knowledge_gap")
+        self.assertEqual(uncertain["routing_state"], "D")
+        self.assertTrue(uncertain["available_topics"])
+
+        off_topic = self.client.post(
+            "/api/chat",
+            json={"message": "How do I repair a laptop screen?", "language": "en"},
+        ).get_json()
+        self.assertEqual(off_topic["type"], "off_topic")
+        self.assertEqual(off_topic["routing_state"], "C")
 
 
 if __name__ == "__main__":

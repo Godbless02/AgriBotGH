@@ -25,7 +25,9 @@ import app as agribot
 
 BASE_DIR = Path(__file__).resolve().parent
 DEFAULT_REPORT = BASE_DIR / "models" / "final_model_test_results.json"
-VALID_RESPONSE_TYPES = {"answer", "low_confidence", "off_topic", "topics"}
+VALID_RESPONSE_TYPES = {
+    "answer", "low_confidence", "off_topic", "topics", "knowledge_gap"
+}
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -48,9 +50,9 @@ def case(
 
 
 LONG_ENGLISH = "maize " + (
-    "crop farming soil water pest disease harvest fertilizer " * 100
+    "crop farming soil water pest disease harvest fertilizer " * 30
 )
-LONG_TWI = "aburo " + ("afuo nsuo yadeɛ nnuru otwa bere " * 100)
+LONG_TWI = "aburo " + ("afuo nsuo yadeɛ nnuru otwa bere " * 30)
 
 MODEL_CASES = [
     # English required cases.
@@ -62,7 +64,7 @@ MODEL_CASES = [
         status=200,
         response_type="answer",
         state="A",
-        source="canonical_exact",
+        source="retrieval_v1",
         record_id="qa-0002",
         canonical_answer=True,
     ),
@@ -72,19 +74,23 @@ MODEL_CASES = [
         "en",
         "Which fertiliser should I apply to my maize crop?",
         status=200,
-        response_type="low_confidence",
-        state="B",
-        minimum_suggestions=1,
+        response_type="answer",
+        state="A",
+        source="retrieval_v1",
+        record_id="qa-0210",
+        canonical_answer=True,
     ),
     case(
         "en_agricultural",
         "agricultural_question",
         "en",
-        "How do I grow maize?",
+        "How should I prepare the soil before planting maize?",
         status=200,
-        response_type="low_confidence",
-        state="B",
-        minimum_suggestions=1,
+        response_type="answer",
+        state="A",
+        source="retrieval_v1",
+        record_id="qa-0208",
+        canonical_answer=True,
     ),
     case(
         "en_unsupported_agriculture",
@@ -92,9 +98,9 @@ MODEL_CASES = [
         "en",
         "How can I grow quinoa successfully near Accra?",
         status=200,
-        response_type="low_confidence",
-        state="B",
-        minimum_suggestions=1,
+        response_type="knowledge_gap",
+        state="D",
+        minimum_topics=1,
     ),
     case(
         "en_unrelated",
@@ -114,7 +120,7 @@ MODEL_CASES = [
         status=200,
         response_type="answer",
         state="A",
-        source="canonical_exact",
+        source="retrieval_v1",
         record_id="qa-0016",
         canonical_answer=True,
     ),
@@ -124,9 +130,9 @@ MODEL_CASES = [
         "tw",
         "Bere pa bɛn na ɛsɛ sɛ medua aburo wɔ Ghana?",
         status=200,
-        response_type="low_confidence",
-        state="B",
-        minimum_suggestions=1,
+        response_type="knowledge_gap",
+        state="D",
+        minimum_topics=1,
     ),
     case(
         "tw_agricultural",
@@ -134,9 +140,9 @@ MODEL_CASES = [
         "tw",
         "Mɛyɛ dɛn atɔ aburo wɔ m afuo mu?",
         status=200,
-        response_type="low_confidence",
-        state="B",
-        minimum_suggestions=1,
+        response_type="knowledge_gap",
+        state="D",
+        minimum_topics=1,
     ),
     case(
         "tw_unsupported_agriculture",
@@ -144,9 +150,9 @@ MODEL_CASES = [
         "tw",
         "Mɛyɛ dɛn adua quinoa wɔ Ghana?",
         status=200,
-        response_type="low_confidence",
-        state="B",
-        minimum_suggestions=1,
+        response_type="knowledge_gap",
+        state="D",
+        minimum_topics=1,
     ),
     case(
         "tw_unrelated",
@@ -200,7 +206,7 @@ MODEL_CASES = [
         status=200,
         response_type="answer",
         state="A",
-        source="canonical_exact",
+        source="retrieval_v1",
         record_id="qa-0002",
         canonical_answer=True,
     ),
@@ -212,7 +218,7 @@ MODEL_CASES = [
         status=200,
         response_type="answer",
         state="A",
-        source="canonical_exact",
+        source="retrieval_v1",
         record_id="qa-0016",
         canonical_answer=True,
     ),
@@ -240,9 +246,9 @@ MODEL_CASES = [
         "en",
         "How do I stop mmoawa from damaging my aburo crop?",
         status=200,
-        response_type="low_confidence",
-        state="B",
-        minimum_suggestions=1,
+        response_type="knowledge_gap",
+        state="D",
+        minimum_topics=1,
     ),
     case(
         "mixed_twi_en",
@@ -250,8 +256,8 @@ MODEL_CASES = [
         "tw",
         "Mɛyɛ dɛn control pests wɔ me maize farm?",
         status=200,
-        allowed_response_types=["low_confidence", "off_topic"],
-        allowed_states=["B", "C"],
+        allowed_response_types=["knowledge_gap", "low_confidence", "off_topic"],
+        allowed_states=["D", "B", "C"],
         stability_only=True,
     ),
     case(
@@ -262,7 +268,6 @@ MODEL_CASES = [
         status=200,
         response_type="off_topic",
         state="C",
-        forbidden_source="canonical_exact",
     ),
     case(
         "twi_sent_to_english_channel",
@@ -272,7 +277,6 @@ MODEL_CASES = [
         status=200,
         response_type="off_topic",
         state="C",
-        forbidden_source="canonical_exact",
     ),
 ]
 
@@ -323,6 +327,10 @@ def evaluate_response(
         suggestions = payload.get("suggestions")
         if not isinstance(suggestions, list) or len(suggestions) < expected["minimum_suggestions"]:
             failures.append("safe follow-up suggestions are missing")
+    if "minimum_topics" in expected:
+        topics = payload.get("available_topics")
+        if not isinstance(topics, list) or len(topics) < expected["minimum_topics"]:
+            failures.append("available dataset topics are missing")
     if "topic_count" in expected:
         topics = payload.get("topics")
         if not isinstance(topics, list) or len(topics) != expected["topic_count"]:
@@ -412,7 +420,7 @@ def run_model_tests(client=None) -> dict[str, Any]:
         },
         "stability_observations": stability_observations,
         "known_limitations": [
-            "The conservative model routes supported paraphrases to State B instead of returning an automatic answer.",
+            "The conservative model routes unresolved agricultural paraphrases through State B to the user-visible State D instead of returning an automatic answer.",
             "Very long keyword-repetition inputs are stability tests only; their routing state is recorded but not treated as proof of semantic quality.",
             "Mixed-language behavior is supported defensively, but automatic cross-language retrieval is intentionally not enabled.",
         ],

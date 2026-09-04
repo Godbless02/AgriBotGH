@@ -12,11 +12,12 @@ Generated from saved evaluation artifacts. Values below are measured, not estima
 
 ## Final model
 
-- Version: **AgriBotGH Retrieval Model v1.0.1**
+- Version: **AgriBotGH Retrieval Model v1.2.0**
 - Architecture: **topic-aware word + character TF-IDF**
 - Weights: **TF-IDF 0.38, topic 0.62, embedding 0.00**
-- Confidence signal: **normalized candidate-score margin**
-- Confidence threshold: **0.27**
+- Confidence signal: **raw TF-IDF similarity plus raw top-1 margin**
+- Confidence threshold: **0.5**
+- Minimum raw margin: **0.05**
 
 ## Validation retrieval metrics
 
@@ -25,7 +26,7 @@ Generated from saved evaluation artifacts. Values below are measured, not estima
 | English | 50.00% | 66.67% | 10.71% | 100.00% | 47.62% |
 | Twi | 50.00% | 61.11% | 10.71% | 100.00% | 53.57% |
 
-At threshold 0.27, automatic-answer response precision was **100.00%** and response coverage was **0.60%**. This conservative threshold produced no observed false-positive automatic answers in validation.
+At raw similarity threshold 0.5, automatic-answer response precision was **100.00%** and response coverage was **68.57%** on the reviewed paraphrase benchmark. The selected gate produced zero false accepts across 120 negative controls.
 
 ## Independent behavior evidence
 
@@ -37,10 +38,10 @@ At threshold 0.27, automatic-answer response precision was **100.00%** and respo
 
 ## Performance
 
-- Cold startup: **9.540 seconds**
-- Retrieval latency: **13.827 ms average**, **20.372 ms p95**
-- Flask test-client latency: **12.027 ms average**, **27.819 ms p95**
-- Working-set memory: **167.81 MB**
+- Cold startup: **7.534 seconds**
+- Retrieval latency: **15.466 ms average**, **20.733 ms p95**
+- Flask test-client latency: **14.082 ms average**, **21.858 ms p95**
+- Working-set memory: **170.72 MB**
 
 ## Reporting cautions
 

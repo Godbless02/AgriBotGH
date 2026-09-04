@@ -1,36 +1,36 @@
 {
   "schema_version": 1,
   "todo": 34,
-  "generated_at_utc": "2026-08-21T00:39:45.136048+00:00",
+  "generated_at_utc": "2026-08-30T14:24:23.598337+00:00",
   "environment": {
     "python": "3.13.5",
     "platform": "win32",
-    "model": "AgriBotGH Retrieval Model v1.0.1",
+    "model": "AgriBotGH Retrieval Model v1.3.1",
     "training_records_per_language": 394
   },
   "cold_start": {
-    "seconds": 9.54,
+    "seconds": 8.466,
     "exit_code": 0,
     "stderr_tail": ""
   },
   "retrieval_latency": {
     "samples": 100,
-    "minimum_ms": 7.19,
-    "average_ms": 13.827,
-    "median_ms": 13.197,
-    "p95_ms": 20.372,
-    "maximum_ms": 33.199
+    "minimum_ms": 14.215,
+    "average_ms": 22.2,
+    "median_ms": 20.588,
+    "p95_ms": 32.177,
+    "maximum_ms": 86.733
   },
   "flask_test_client_latency": {
     "samples": 60,
-    "minimum_ms": 0.634,
-    "average_ms": 12.027,
-    "median_ms": 12.461,
-    "p95_ms": 27.819,
-    "maximum_ms": 31.602
+    "minimum_ms": 15.44,
+    "average_ms": 23.819,
+    "median_ms": 22.795,
+    "p95_ms": 34.643,
+    "maximum_ms": 59.535
   },
   "memory": {
-    "working_set_mb": 167.81,
+    "working_set_mb": 186.55,
     "measurement": "current process resident working set"
   },
   "limits": {

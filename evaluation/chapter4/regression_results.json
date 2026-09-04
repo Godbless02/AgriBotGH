@@ -1,0 +1,21 @@
+{
+  "generated_at_utc": "2026-09-01T23:38:00+00:00",
+  "full_python": "PASS: 126 tests run, 125 passed, 1 opt-in live Gemini test skipped",
+  "full_browser": "PASS: 58 tests discovered, 57 passed, 1 opt-in live Open-Meteo test skipped",
+  "retrieval_gemini_focused": "PASS: 24/24",
+  "knowledge_gap_suite": "PASS: 8/8",
+  "entity_generalization_suite": "PASS: 8/8",
+  "off_topic_challenge_suite": "PASS: 3/3 tests; embedded challenge remains 48/48",
+  "weather_suite": "PASS: 11/11",
+  "tts_suite": "PASS: 10/10 browser tests",
+  "stt_suite": "PASS: 17/17 browser tests; Twi recognition remains disabled",
+  "javascript_syntax": "PASS: node --check app.js",
+  "python_compilation": "PASS: all project Python files",
+  "pip_check": "PASS: no broken requirements",
+  "npm_dependency_check": "PASS: @playwright/test 1.62.1 and http-server 14.1.1 resolved",
+  "git_diff_check": "PASS",
+  "live_gemini": "NOT_RUN",
+  "live_open_meteo": "NOT_RUN",
+  "suite_overlap_notice": "Counts overlap and must not be summed as system accuracy.",
+  "evaluation_tooling_note": "The first full Python attempt reported one static-audit false positive because the required evaluation output filename dataset_profile.json was parsed as an alternate production dataset reference. Only the evaluation script's literal construction was adjusted; the required filename, benchmark, frozen application, and measured retrieval results were unchanged. The final full suite then passed."
+}

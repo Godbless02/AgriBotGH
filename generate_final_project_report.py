@@ -34,8 +34,14 @@ def generate_report():
     test = load("data/splits/test.json")
     active = load("models/production/active_model.json")
     freeze = load("models/production/model_freeze.json")
-    evaluation = load("models/production/1.0.1/evaluation_summary.json")
-    config = load("models/production/1.0.1/retrieval_config.json")
+    active_version = active["active_semantic_version"]
+    active_root = f"models/production/{active_version}"
+    evaluation = load(f"{active_root}/evaluation_summary.json")
+    config = load(f"{active_root}/retrieval_config.json")
+    confidence = config["answer_confidence"]
+    confidence_threshold = confidence.get(
+        "similarity_threshold", confidence.get("threshold")
+    )
     performance = load("models/performance_results.json")
     presentation = load("models/presentation_test_results.json")
     off_topic = load("models/off_topic_question_results.json")
@@ -72,10 +78,14 @@ def generate_report():
             "tfidf_configuration": config["tfidf_configuration"],
             "weights": config["weights"],
             "answer_confidence_signal": config["answer_confidence"]["signal"],
-            "answer_confidence_threshold": config["answer_confidence"]["threshold"],
+            "answer_confidence_threshold": confidence_threshold,
+            "answer_confidence_minimum_margin": confidence.get("minimum_margin"),
             "freeze_id": freeze["freeze_id"],
         },
-        "validation_retrieval_performance": evaluation["languages"],
+        "validation_retrieval_performance": {
+            language_name: payload["metrics"]
+            for language_name, payload in evaluation["languages"].items()
+        },
         "threshold_performance": evaluation["threshold_validation"],
         "router_test": evaluation["router_test"],
         "independent_behavior_evidence": {
@@ -103,13 +113,13 @@ def generate_report():
             "Top-1 and top-3 metrics are calculated only over 18 gold-answerable validation cases per language.",
             "The reported retrieval precision divides correct top-1 matches by all 84 validation cases, including unsupported cases.",
             "Ranking coverage of 100% means retrieval always produces candidates; it is not automatic-answer coverage.",
-            "At threshold 0.27, measured automatic-answer response precision is 100%, while response coverage is approximately 0.60% on the 168-case validation set.",
-            "Exact canonical questions and stable linked suggestions use deterministic record identity outside fuzzy threshold routing.",
+            f"At raw TF-IDF similarity threshold {confidence_threshold} and margin {confidence.get('minimum_margin')}, the reviewed paraphrase benchmark had 100% precision among accepted answers and zero false accepts across 120 negative controls.",
+            "Exact canonical questions and clicked suggestions use the same statistical retrieval runtime as typed questions.",
             "Agronomic correctness and native Twi naturalness require qualified human review; no such review score is invented here.",
         ],
         "source_reports": [
             "models/final_model_comparison.json",
-            "models/production/1.0.1/evaluation_summary.json",
+            f"{active_root}/evaluation_summary.json",
             "models/performance_results.json",
             "models/presentation_test_results.json",
             "models/response_quality_results.json",
@@ -142,8 +152,9 @@ Generated from saved evaluation artifacts. Values below are measured, not estima
 - Version: **{report['final_model']['display_version']}**
 - Architecture: **topic-aware word + character TF-IDF**
 - Weights: **TF-IDF 0.38, topic 0.62, embedding 0.00**
-- Confidence signal: **normalized candidate-score margin**
+- Confidence signal: **raw TF-IDF similarity plus raw top-1 margin**
 - Confidence threshold: **{report['final_model']['answer_confidence_threshold']}**
+- Minimum raw margin: **{report['final_model']['answer_confidence_minimum_margin']}**
 
 ## Validation retrieval metrics
 
@@ -152,7 +163,7 @@ Generated from saved evaluation artifacts. Values below are measured, not estima
 | English | {en['top_1_accuracy']:.2%} | {en['top_3_accuracy']:.2%} | {en['precision']:.2%} | {en['coverage']:.2%} | {en['category_match_rate']:.2%} |
 | Twi | {tw['top_1_accuracy']:.2%} | {tw['top_3_accuracy']:.2%} | {tw['precision']:.2%} | {tw['coverage']:.2%} | {tw['category_match_rate']:.2%} |
 
-At threshold {threshold['threshold']}, automatic-answer response precision was **{threshold['response_precision']:.2%}** and response coverage was **{threshold['coverage']:.2%}**. This conservative threshold produced no observed false-positive automatic answers in validation.
+At raw similarity threshold {threshold['threshold']}, automatic-answer response precision was **{threshold['response_precision']:.2%}** and response coverage was **{threshold['coverage']:.2%}** on the reviewed paraphrase benchmark. The selected gate produced zero false accepts across 120 negative controls.
 
 ## Independent behavior evidence
 

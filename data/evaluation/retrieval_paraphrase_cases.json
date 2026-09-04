@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "purpose": "Reviewed natural-language variants used to evaluate full-dataset production retrieval without hardcoded answers.",
+  "case_count": 35,
+  "cases": [
+    {"id": "para_en_fert_00", "language": "English", "expected_record_id": 2, "question": "What fertilizer is best for maize?"},
+    {"id": "para_en_fert_01", "language": "English", "expected_record_id": 2, "question": "For maize what fertilizer is best"},
+    {"id": "para_en_fert_02", "language": "English", "expected_record_id": 2, "question": "Which fertilizer is best for maize?"},
+    {"id": "para_en_fert_03", "language": "English", "expected_record_id": 2, "question": "What fertilizer should I use for maize?"},
+    {"id": "para_en_fert_04", "language": "English", "expected_record_id": 2, "question": "Best fertilizer for maize"},
+    {"id": "para_en_fert_05", "language": "English", "expected_record_id": 2, "question": "For maize which fertilizer should I use?"},
+    {"id": "para_en_fert_06", "language": "English", "expected_record_id": 2, "question": "Which fertilizer is good for maize?"},
+    {"id": "para_en_fert_07", "language": "English", "expected_record_id": 2, "question": "What is the best fertiliser to use on maize?"},
+    {"id": "para_en_fert_08", "language": "English", "expected_record_id": 2, "question": "Maize fertilizer which one is best?"},
+    {"id": "para_en_fert_09", "language": "English", "expected_record_id": 2, "question": "For maize, which fertiliser should I use?"},
+    {"id": "para_en_fert_10", "language": "English", "expected_record_id": 2, "question": "For maize what fertilizer best?"},
+
+    {"id": "para_en_time_01", "language": "English", "acceptable_record_ids": [16, 207], "question": "What is the best time to plant maize in Ghana?"},
+    {"id": "para_en_time_02", "language": "English", "acceptable_record_ids": [16, 207], "question": "When is maize planting season in Ghana?"},
+    {"id": "para_en_time_03", "language": "English", "acceptable_record_ids": [16, 207], "question": "When should maize be planted in Ghana?"},
+    {"id": "para_en_time_04", "language": "English", "acceptable_record_ids": [16, 207], "question": "What month should I plant maize in Ghana?"},
+
+    {"id": "para_en_fish_01", "language": "English", "expected_record_id": 251, "question": "How can I start fish farming in Ghana?"},
+    {"id": "para_en_fish_02", "language": "English", "expected_record_id": 251, "question": "What do I need to begin a fish farm?"},
+    {"id": "para_en_fish_03", "language": "English", "expected_record_id": 251, "question": "I want to start farming fish in Ghana, how do I begin?"},
+
+    {"id": "para_en_cassava_01", "language": "English", "expected_record_id": 220, "question": "How should I plant cassava?"},
+    {"id": "para_en_cassava_02", "language": "English", "expected_record_id": 220, "question": "What is the right way to grow cassava stems?"},
+    {"id": "para_en_cassava_03", "language": "English", "expected_record_id": 220, "question": "How do I put cassava cuttings in the soil?"},
+
+    {"id": "para_en_blight_01", "language": "English", "expected_record_id": 238, "question": "How do I stop late blight on tomatoes?"},
+    {"id": "para_en_blight_02", "language": "English", "expected_record_id": 238, "question": "What can prevent tomato late blight?"},
+    {"id": "para_en_blight_03", "language": "English", "expected_record_id": 238, "question": "Tomato late blight prevention, what should I do?"},
+
+    {"id": "para_en_pest_01", "language": "English", "expected_record_id": 38, "question": "How do I keep pests away from my crops?"},
+    {"id": "para_en_pest_02", "language": "English", "expected_record_id": 38, "question": "What can I do to prevent pest attacks on the farm?"},
+    {"id": "para_en_pest_03", "language": "English", "expected_record_id": 38, "question": "How can I manage pests before they damage my crops?"},
+
+    {"id": "para_tw_fert_01", "language": "Twi", "expected_record_id": 2, "question": "Aburo ferefere bɛn na ɛyɛ papa?"},
+    {"id": "para_tw_fert_02", "language": "Twi", "expected_record_id": 2, "question": "Ferefere papa bɛn na mede mma aburo?"},
+    {"id": "para_tw_time_01", "language": "Twi", "acceptable_record_ids": [16, 207], "question": "Bere pa bɛn na ɛsɛ sɛ meto aburo wɔ Ghana?"},
+    {"id": "para_tw_time_02", "language": "Twi", "acceptable_record_ids": [16, 207], "question": "Aburo dua bere bɛn na ɛyɛ papa wɔ Ghana?"},
+    {"id": "para_tw_fish_01", "language": "Twi", "expected_record_id": 251, "question": "Mɛyɛ dɛn afi apataa adwuma ase wɔ Ghana?"},
+    {"id": "para_tw_cassava_01", "language": "Twi", "expected_record_id": 220, "question": "Mɛyɛ dɛn ato bankye mmabaa?"},
+    {"id": "para_tw_blight_01", "language": "Twi", "expected_record_id": 238, "question": "Mɛyɛ dɛn agye tomato afi late blight ho?"},
+    {"id": "para_tw_pest_01", "language": "Twi", "expected_record_id": 38, "question": "Mɛyɛ dɛn amma adwummaker ansɛe me nnɔbae?"}
+  ]
+}

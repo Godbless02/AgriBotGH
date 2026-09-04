@@ -14,7 +14,7 @@ Each immutable semantic-version directory contains:
 Build a new bundle with:
 
 ```powershell
-.\agribot_env\Scripts\python.exe build_retrieval_artifacts.py
+.\agribot_env\Scripts\python.exe train_model.py --version 1.1.2
 ```
 
 The builder refuses to overwrite an existing semantic version. Change the
@@ -24,7 +24,7 @@ is written only after every file in the new bundle has been created.
 Activate or roll back to a checksum-valid existing bundle with:
 
 ```powershell
-.\agribot_env\Scripts\python.exe activate_model.py 1.0.0
+.\agribot_env\Scripts\python.exe activate_model.py 1.1.1
 ```
 
 The activation manifest is replaced atomically only after the dataset,

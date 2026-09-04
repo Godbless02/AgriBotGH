@@ -71,6 +71,15 @@ class TopicSelectionTests(unittest.TestCase):
         self.assertEqual(invalid_json.status_code, 400)
         self.assertEqual(invalid_json.get_json()["error"], "Invalid JSON payload")
 
+        malformed_topic = self.client.post(
+            "/api/topic-suggestions", json={"topic": ["Maize"], "lang": "en"}
+        )
+        self.assertEqual(malformed_topic.status_code, 400)
+        invalid_language = self.client.post(
+            "/api/topic-suggestions", json={"topic": "Maize", "lang": "fr"}
+        )
+        self.assertEqual(invalid_language.status_code, 400)
+
 
 if __name__ == "__main__":
     unittest.main()

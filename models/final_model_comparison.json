@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "todo": 31,
-  "generated_at_utc": "2026-08-21T00:06:34.680853+00:00",
+  "generated_at_utc": "2026-08-23T18:56:57.988630+00:00",
   "evaluation_basis": {
     "validation_records_per_language": 84,
     "gold_answerable_per_language": 18,
@@ -145,10 +145,10 @@
         "top_3_accuracy": 0.6388888888888888,
         "category_match_rate": 0.5059523809523809
       },
-      "threshold": 0.27,
+      "threshold": 0.5,
       "weaknesses": [
-        "Automatic answer coverage is deliberately very low at the zero-observed-false-positive threshold",
-        "Some unsupported questions still require State B clarification"
+        "Lexically distant paraphrases still require State B clarification",
+        "The reviewed paraphrase benchmark needs expansion with real farmer queries"
       ],
       "computational_cost": "Moderate CPU-only sparse retrieval; no external model download",
       "source": "models/topic_aware_experiments.json"
@@ -249,7 +249,7 @@
         "top_3_accuracy": 0.6388888888888888,
         "category_match_rate": 0.5059523809523809
       },
-      "threshold": 0.27,
+      "threshold": 0.5,
       "weaknesses": [
         "Best validated hybrid assigned zero weight to embeddings",
         "Adding an embedding component increased complexity without measured benefit"
@@ -260,10 +260,11 @@
   ],
   "selection": {
     "architecture_id": "topic_aware_tfidf",
-    "active_semantic_version": "1.0.1",
+    "active_semantic_version": "1.3.1",
     "reason": "Highest validated macro top-1 and top-3 accuracy with the highest category-match rate, tied by the hybrid grid only when embedding weight is zero; practical CPU-only deployment.",
-    "answer_confidence_threshold": 0.27,
+    "answer_confidence_threshold": 0.5,
+    "answer_confidence_minimum_margin": 0.05,
     "threshold_response_precision": 1.0,
-    "threshold_response_coverage": 0.005952380952380952
+    "threshold_response_coverage": 0.6857142857142857
   }
 }

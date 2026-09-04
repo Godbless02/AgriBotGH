@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "todo": 25,
-  "generated_at_utc": "2026-08-20T23:42:50.858411+00:00",
+  "generated_at_utc": "2026-08-23T17:42:50.495561+00:00",
   "canonical_dataset": "data/agribotgh_dataset_bilingual_563.json",
   "categories_tested": 40,
   "summary": {
@@ -46,7 +46,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "English",
-      "top_candidate_id": 210,
+      "top_candidate_id": 2,
       "passed": true,
       "failures": []
     },
@@ -58,7 +58,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "Twi",
-      "top_candidate_id": 210,
+      "top_candidate_id": 2,
       "passed": true,
       "failures": []
     },
@@ -166,7 +166,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "English",
-      "top_candidate_id": 35,
+      "top_candidate_id": 31,
       "passed": true,
       "failures": []
     },
@@ -178,7 +178,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "Twi",
-      "top_candidate_id": 80,
+      "top_candidate_id": 31,
       "passed": true,
       "failures": []
     },
@@ -190,7 +190,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "English",
-      "top_candidate_id": 325,
+      "top_candidate_id": 33,
       "passed": true,
       "failures": []
     },
@@ -202,7 +202,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "Twi",
-      "top_candidate_id": 66,
+      "top_candidate_id": 33,
       "passed": true,
       "failures": []
     },
@@ -382,7 +382,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "English",
-      "top_candidate_id": 77,
+      "top_candidate_id": 79,
       "passed": true,
       "failures": []
     },
@@ -394,7 +394,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "Twi",
-      "top_candidate_id": 14,
+      "top_candidate_id": 79,
       "passed": true,
       "failures": []
     },
@@ -430,7 +430,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "English",
-      "top_candidate_id": 227,
+      "top_candidate_id": 137,
       "passed": true,
       "failures": []
     },
@@ -442,7 +442,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "Twi",
-      "top_candidate_id": 210,
+      "top_candidate_id": 137,
       "passed": true,
       "failures": []
     },
@@ -478,7 +478,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "English",
-      "top_candidate_id": 1,
+      "top_candidate_id": 187,
       "passed": true,
       "failures": []
     },
@@ -490,7 +490,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "Twi",
-      "top_candidate_id": 1,
+      "top_candidate_id": 187,
       "passed": true,
       "failures": []
     },
@@ -574,7 +574,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "English",
-      "top_candidate_id": 364,
+      "top_candidate_id": 374,
       "passed": true,
       "failures": []
     },
@@ -586,7 +586,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "Twi",
-      "top_candidate_id": 380,
+      "top_candidate_id": 374,
       "passed": true,
       "failures": []
     },
@@ -622,7 +622,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "English",
-      "top_candidate_id": 265,
+      "top_candidate_id": 394,
       "passed": true,
       "failures": []
     },
@@ -634,7 +634,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "Twi",
-      "top_candidate_id": 400,
+      "top_candidate_id": 394,
       "passed": true,
       "failures": []
     },
@@ -814,7 +814,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "English",
-      "top_candidate_id": 542,
+      "top_candidate_id": 474,
       "passed": true,
       "failures": []
     },
@@ -826,7 +826,7 @@
       "response_type": "answer",
       "routing_state": "A",
       "retrieval_language": "Twi",
-      "top_candidate_id": 542,
+      "top_candidate_id": 474,
       "passed": true,
       "failures": []
     },

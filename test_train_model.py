@@ -59,7 +59,9 @@ class FinalTrainingTests(unittest.TestCase):
             self.assertEqual(metadata["semantic_version"], "9.9.9")
             self.assertEqual(metadata["activation_status"], "candidate_not_activated")
             self.assertEqual(metadata["dataset_validation"]["blocking_errors"], 0)
-            self.assertEqual(metadata["training_records"], 394)
+            self.assertEqual(metadata["training_records"], 563)
+            self.assertEqual(metadata["selection_training_records"], 394)
+            self.assertEqual(metadata["production_index_records"], 563)
             for language in ("English", "Twi"):
                 self.assertEqual(
                     metadata["evaluation"]["languages"][language]["metrics"]["total_cases"],

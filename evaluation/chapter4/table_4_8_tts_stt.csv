@@ -1,0 +1,4 @@
+﻿feature,scope,result,limitation
+TTS,functional browser API and controls,PASS,Audible Twi pronunciation quality not measured
+English STT,browser-native recognition interaction,PASS,Recognition accuracy in field noise not measured
+Twi STT,native browser recognition,DISABLED,Reliable Akan/Twi support not demonstrated

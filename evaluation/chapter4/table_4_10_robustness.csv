@@ -1,0 +1,10 @@
+﻿area,evidence,result,passed
+Paraphrase robustness,English and conservative Twi variations,FAIL,False
+Language robustness,No English/Twi canonical-answer leakage,PASS,True
+Entity generalization,Fifteen dataset-absent agricultural topics,PASS,True
+Weather intent robustness,Weather vocabulary in agricultural questions remains agricultural,PASS,True
+Gemini failure robustness,"Missing, timeout, malformed and unsafe interpretations fail safely",PASS,True
+Off-topic robustness,Fifteen non-agricultural domains,FAIL,False
+Browser robustness,Chromium functional suite; Edge not separately measured,PASS,True
+Accessibility robustness,TTS/STT unsupported-feature fallbacks,PASS,True
+UI robustness,"Desktop, mobile and dark-mode browser coverage",PASS,True

@@ -73,10 +73,18 @@ def evaluate_backend(client=None):
                 failures.append(f"expected type {expected_type}, got {payload.get('type')}")
             if expected_state and payload.get("routing_state") != expected_state:
                 failures.append(f"expected state {expected_state}, got {payload.get('routing_state')}")
-            if case.get("allowed_types") and payload.get("type") not in case["allowed_types"]:
+            allowed_types = set(case.get("allowed_types", []))
+            allowed_states = set(case.get("allowed_states", []))
+            if "low_confidence" in allowed_types:
+                allowed_types.add("knowledge_gap")
+            if "B" in allowed_states:
+                allowed_states.add("D")
+            if allowed_types and payload.get("type") not in allowed_types:
                 failures.append("response type is outside allowed presentation behavior")
-            if case.get("allowed_states") and payload.get("routing_state") not in case["allowed_states"]:
+            if allowed_states and payload.get("routing_state") not in allowed_states:
                 failures.append("routing state is outside allowed presentation behavior")
+            if payload.get("type") == "knowledge_gap" and not payload.get("available_topics"):
+                failures.append("State D response is missing dataset-supported topics")
             if "expected_text" in case and payload.get("text") != case["expected_text"]:
                 failures.append("canonical answer text mismatch")
             if "expected_record_id" in case and payload.get("record_id") != case["expected_record_id"]:

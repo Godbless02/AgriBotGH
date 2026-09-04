@@ -1,0 +1,93 @@
+{
+  "architecture": "topic_aware_tfidf",
+  "weights": {
+    "tfidf": 0.38,
+    "embedding": 0.0,
+    "topic": 0.62
+  },
+  "score_normalization": "per_query_nonnegative_max",
+  "tfidf_configuration": "C_word_and_character",
+  "vectorizer": {
+    "description": "Word (1,2) plus character-within-word (3,5) TF-IDF.",
+    "components": [
+      {
+        "name": "word",
+        "analyzer": "word",
+        "ngram_range": [
+          1,
+          2
+        ],
+        "sublinear_tf": true,
+        "min_df": 1,
+        "max_df": 0.95
+      },
+      {
+        "name": "character",
+        "analyzer": "char_wb",
+        "ngram_range": [
+          3,
+          5
+        ],
+        "sublinear_tf": true,
+        "min_df": 1,
+        "max_df": 1.0
+      }
+    ]
+  },
+  "answer_confidence": {
+    "signal": "raw_tfidf_similarity_with_raw_margin",
+    "similarity_threshold": 0.5,
+    "minimum_margin": 0.05,
+    "exact_match_override": "top_raw_tfidf_similarity >= 1 - 1e-12",
+    "source_report": "models/retrieval_robustness_experiments.json",
+    "supplemental_acceptance": {
+      "signal": "idf_weighted_substantive_query_term_coverage",
+      "similarity_threshold": 0.3,
+      "term_coverage_threshold": 0.85,
+      "minimum_margin": 0.05,
+      "minimum_substantive_terms": 2,
+      "source_report": "models/retrieval_hybrid_signal_experiments.json"
+    }
+  },
+  "domain_detection": {
+    "English": {
+      "text_weight": 0.45,
+      "topic_weight": 0.55,
+      "threshold": 0.22,
+      "metrics": {
+        "threshold": 0.22,
+        "agriculture_true": 38,
+        "agriculture_false_negative": 4,
+        "off_topic_true": 8,
+        "off_topic_false_negative": 2,
+        "agriculture_recall": 0.9047619047619048,
+        "off_topic_recall": 0.8,
+        "off_topic_precision": 0.6666666666666666,
+        "balanced_accuracy": 0.8523809523809525,
+        "agriculture_weighted_accuracy": 0.8698412698412699
+      }
+    },
+    "Twi": {
+      "text_weight": 0.25,
+      "topic_weight": 0.75,
+      "threshold": 0.22,
+      "metrics": {
+        "threshold": 0.22,
+        "agriculture_true": 41,
+        "agriculture_false_negative": 1,
+        "off_topic_true": 9,
+        "off_topic_false_negative": 1,
+        "agriculture_recall": 0.9761904761904762,
+        "off_topic_recall": 0.9,
+        "off_topic_precision": 0.9,
+        "balanced_accuracy": 0.9380952380952381,
+        "agriculture_weighted_accuracy": 0.9507936507936509
+      }
+    }
+  },
+  "states": {
+    "A": "return_answer",
+    "B": "uncertain_agriculture_rephrase_and_suggestions",
+    "C": "agriculture_only_response"
+  }
+}

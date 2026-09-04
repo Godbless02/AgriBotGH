@@ -1,8 +1,8 @@
 {
   "manifest_schema_version": 1,
-  "active_semantic_version": "1.0.1",
-  "model_version": "AgriBotGH Retrieval Model v1.0.1",
-  "metadata_file": "models/production/1.0.1/model_metadata.json",
-  "metadata_sha256": "9e86932a9cc9caf5f6b8f9640ab92e487be30533935039028cde0df6c638617f",
-  "activated_at_utc": "2026-08-20T21:56:32.557613+00:00"
+  "active_semantic_version": "1.3.1",
+  "model_version": "AgriBotGH Retrieval Model v1.3.1",
+  "metadata_file": "models/production/1.3.1/model_metadata.json",
+  "metadata_sha256": "d53b0aa51fce39ba9bd0dffbbb6175285fb2c7449a18a7e64aa9c644b0bed32e",
+  "activated_at_utc": "2026-08-23T18:56:56.946887+00:00"
 }

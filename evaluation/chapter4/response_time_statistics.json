@@ -1,0 +1,19 @@
+{
+  "initial_local_retrieval": {
+    "samples": 150,
+    "minimum_ms": 14.821,
+    "mean_ms": 22.405,
+    "median_ms": 18.807,
+    "p95_ms": 53.142,
+    "maximum_ms": 72.517
+  },
+  "controlled_final_pipeline": {
+    "samples": 150,
+    "minimum_ms": 15.075,
+    "mean_ms": 22.997,
+    "median_ms": 19.292,
+    "p95_ms": 45.805,
+    "maximum_ms": 77.069
+  },
+  "external_provider_latency_included": false
+}

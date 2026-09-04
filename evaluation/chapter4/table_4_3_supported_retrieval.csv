@@ -1,0 +1,5 @@
+﻿group,query_type,queries,exact_matches,exact_accuracy_percent,final_state_a
+A,Direct English,40,40,100.0,40
+B,Direct Twi,40,40,100.0,40
+C,English paraphrase,20,18,90.0,19
+D,Twi variation,20,20,100.0,20

@@ -10,7 +10,7 @@ class IntegrationRegressionTests(unittest.TestCase):
         report = evaluate_integration()
         self.assertEqual(report["summary"]["failed"], 0)
         self.assertEqual(report["summary"]["passed"], report["summary"]["total_checks"])
-        self.assertEqual(report["active_model"], "AgriBotGH Retrieval Model v1.0.1")
+        self.assertEqual(report["active_model"], "AgriBotGH Retrieval Model v1.3.1")
         self.assertEqual(len(report["freeze_id"]), 64)
 
 

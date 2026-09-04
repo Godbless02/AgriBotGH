@@ -1,0 +1,151 @@
+﻿benchmark_id,group,group_name,language,expected_record_id,expected_category,canonical_question,test_query,query_type,expected_routing_behavior,human_twi_review_required
+C4-A-001,A,Direct English,en,474,Beekeeping,What should I consider before starting beekeeping?,What should I consider before starting beekeeping?,canonical_direct,A,False
+C4-A-002,A,Direct English,en,83,Business & Marketing,Where can I sell my farm produce for a better price?,Where can I sell my farm produce for a better price?,canonical_direct,A,False
+C4-A-003,A,Direct English,en,247,Carrot,How can I grow carrots successfully in Ghana?,How can I grow carrots successfully in Ghana?,canonical_direct,A,False
+C4-A-004,A,Direct English,en,33,Cassava,My cassava leaves are turning yellow and curling. What should I do?,My cassava leaves are turning yellow and curling. What should I do?,canonical_direct,A,False
+C4-A-005,A,Direct English,en,9,Cattle Rearing,What is green manure and how do I use it?,What is green manure and how do I use it?,canonical_direct,A,False
+C4-A-006,A,Direct English,en,514,Climate-Smart Farming,How can farmers prepare for a late rainy season?,How can farmers prepare for a late rainy season?,canonical_direct,A,False
+C4-A-007,A,Direct English,en,374,Cocoa Farming,How should I choose a cocoa nursery site?,How should I choose a cocoa nursery site?,canonical_direct,A,False
+C4-A-008,A,Direct English,en,404,Cucumber Farming,What kind of site is suitable for cucumber?,What kind of site is suitable for cucumber?,canonical_direct,A,False
+C4-A-009,A,Direct English,en,494,Farm Business Planning,What questions should I ask before investing money in a new farm enterprise?,What questions should I ask before investing money in a new farm enterprise?,canonical_direct,A,False
+C4-A-010,A,Direct English,en,39,Farm Management & General,How can I control grasshoppers on my farm?,How can I control grasshoppers on my farm?,canonical_direct,A,False
+C4-A-011,A,Direct English,en,484,Farm Mechanization & Tools,How do I choose the right farm tool for a job?,How do I choose the right farm tool for a job?,canonical_direct,A,False
+C4-A-012,A,Direct English,en,524,Farm Records & Extension,What farm records should a beginner start with?,What farm records should a beginner start with?,canonical_direct,A,False
+C4-A-013,A,Direct English,en,11,Fertilizer & Nutrients,Can too much fertilizer damage my crops?,Can too much fertilizer damage my crops?,canonical_direct,A,False
+C4-A-014,A,Direct English,en,79,Fish Farming,How can I store dried fish or meat without a refrigerator?,How can I store dried fish or meat without a refrigerator?,canonical_direct,A,False
+C4-A-015,A,Direct English,en,147,Garden Eggs,What are the best practices for growing garden eggs?,What are the best practices for growing garden eggs?,canonical_direct,A,False
+C4-A-016,A,Direct English,en,187,Goat Rearing,What are the signs that a goat is pregnant and what should I do?,What are the signs that a goat is pregnant and what should I do?,canonical_direct,A,False
+C4-A-017,A,Direct English,en,454,Grasscutter Farming,What housing does grasscutter farming require?,What housing does grasscutter farming require?,canonical_direct,A,False
+C4-A-018,A,Direct English,en,384,Groundnut & Legumes,How can I improve groundnut flowering and pod formation?,How can I improve groundnut flowering and pod formation?,canonical_direct,A,False
+C4-A-019,A,Direct English,en,64,Harvesting & Storage,What time of day is best for harvesting vegetables?,What time of day is best for harvesting vegetables?,canonical_direct,A,False
+C4-A-020,A,Direct English,en,43,Irrigation & Water,My beans have rust disease. What should I do?,My beans have rust disease. What should I do?,canonical_direct,A,False
+C4-A-021,A,Direct English,en,2,Maize,What fertilizer is best for maize?,What fertilizer is best for maize?,canonical_direct,A,False
+C4-A-022,A,Direct English,en,424,Mushroom Farming,What basic conditions do mushrooms need to grow?,What basic conditions do mushrooms need to grow?,canonical_direct,A,False
+C4-A-023,A,Direct English,en,534,Oil Palm & Coconut,Why is spacing important in oil palm plantations?,Why is spacing important in oil palm plantations?,canonical_direct,A,False
+C4-A-024,A,Direct English,en,394,Okra Farming,How do I start an okra farm?,How do I start an okra farm?,canonical_direct,A,False
+C4-A-025,A,Direct English,en,54,Onion,How can I control thrips on onions?,How can I control thrips on onions?,canonical_direct,A,False
+C4-A-026,A,Direct English,en,68,Palm & Coconut,How do I know when palm fruits are ready to harvest?,How do I know when palm fruits are ready to harvest?,canonical_direct,A,False
+C4-A-027,A,Direct English,en,48,Pepper,How can I make a homemade chili pesticide spray?,How can I make a homemade chili pesticide spray?,canonical_direct,A,False
+C4-A-028,A,Direct English,en,31,Pest & Disease Control,How can I control weevils in stored grain?,How can I control weevils in stored grain?,canonical_direct,A,False
+C4-A-029,A,Direct English,en,434,Pig Farming,How do I choose healthy piglets?,How do I choose healthy piglets?,canonical_direct,A,False
+C4-A-030,A,Direct English,en,137,Plantain & Banana,What fertilizer is best for plantain?,What fertilizer is best for plantain?,canonical_direct,A,False
+C4-A-031,A,Direct English,en,504,Post-Harvest & Food Safety,Why should harvested vegetables not be left in direct sun?,Why should harvested vegetables not be left in direct sun?,canonical_direct,A,False
+C4-A-032,A,Direct English,en,3,Poultry Farming,Can I use animal manure instead of chemical fertilizer?,Can I use animal manure instead of chemical fertilizer?,canonical_direct,A,False
+C4-A-033,A,Direct English,en,444,Rabbit Farming,How do I start a small rabbit farm?,How do I start a small rabbit farm?,canonical_direct,A,False
+C4-A-034,A,Direct English,en,364,Rice Farming,How should I choose a rice field site?,How should I choose a rice field site?,canonical_direct,A,False
+C4-A-035,A,Direct English,en,265,Sheep Rearing,How do I start sheep farming in Ghana?,How do I start sheep farming in Ghana?,canonical_direct,A,False
+C4-A-036,A,Direct English,en,464,Snail Farming,How do I choose a site for snail farming?,How do I choose a site for snail farming?,canonical_direct,A,False
+C4-A-037,A,Direct English,en,1,Soil & Land Preparation,What are the signs of good farming soil?,What are the signs of good farming soil?,canonical_direct,A,False
+C4-A-038,A,Direct English,en,21,Tomato,Can I grow vegetables during the dry season?,Can I grow vegetables during the dry season?,canonical_direct,A,False
+C4-A-039,A,Direct English,en,414,Watermelon Farming,How do I select land for watermelon?,How do I select land for watermelon?,canonical_direct,A,False
+C4-A-040,A,Direct English,en,75,Yam,How should I store yam properly?,How should I store yam properly?,canonical_direct,A,False
+C4-B-001,B,Direct Twi,tw,474,Beekeeping,Dɛn na ɛsɛ sɛ misusuw ho ansa na mahyɛ nkyene yɛ kuayɛ ase?,Dɛn na ɛsɛ sɛ misusuw ho ansa na mahyɛ nkyene yɛ kuayɛ ase?,canonical_direct,A,False
+C4-B-002,B,Direct Twi,tw,83,Business & Marketing,Ɛhe na metumi de m'afuo nnuaba tɔn na nya boɔ pa?,Ɛhe na metumi de m'afuo nnuaba tɔn na nya boɔ pa?,canonical_direct,A,False
+C4-B-003,B,Direct Twi,tw,247,Carrot,Dɛn na menyɛ sɛ meto carrot wɔ Ghana?,Dɛn na menyɛ sɛ meto carrot wɔ Ghana?,canonical_direct,A,False
+C4-B-004,B,Direct Twi,tw,33,Cassava,M'bankye nhaban redan sika na rekyekye. Dɛn na ɛhia?,M'bankye nhaban redan sika na rekyekye. Dɛn na ɛhia?,canonical_direct,A,False
+C4-B-005,B,Direct Twi,tw,9,Cattle Rearing,Dɛn na nhwiren-tew ferefere yɛ na ɛdeɛn na mefa di dwuma?,Dɛn na nhwiren-tew ferefere yɛ na ɛdeɛn na mefa di dwuma?,canonical_direct,A,False
+C4-B-006,B,Direct Twi,tw,514,Climate-Smart Farming,Mɛyɛ dɛn asiesie m'akuayɛ ma osu bere no akyɛ?,Mɛyɛ dɛn asiesie m'akuayɛ ma osu bere no akyɛ?,canonical_direct,A,False
+C4-B-007,B,Direct Twi,tw,374,Cocoa Farming,Mɛyɛ dɛn apaw beae a mɛyɛ cocoa nursery?,Mɛyɛ dɛn apaw beae a mɛyɛ cocoa nursery?,canonical_direct,A,False
+C4-B-008,B,Direct Twi,tw,404,Cucumber Farming,Beae bɛn na ɛfata ma cucumber?,Beae bɛn na ɛfata ma cucumber?,canonical_direct,A,False
+C4-B-009,B,Direct Twi,tw,494,Farm Business Planning,Nsɛmmisa bɛn na ɛsɛ sɛ mibisa ansa na mede sika ahyɛ kuayɛ adwuma foforo mu?,Nsɛmmisa bɛn na ɛsɛ sɛ mibisa ansa na mede sika ahyɛ kuayɛ adwuma foforo mu?,canonical_direct,A,False
+C4-B-010,B,Direct Twi,tw,39,Farm Management & General,Ɛdeɛn na metumi kora totrobonini ase wɔ m'afuo so?,Ɛdeɛn na metumi kora totrobonini ase wɔ m'afuo so?,canonical_direct,A,False
+C4-B-011,B,Direct Twi,tw,484,Farm Mechanization & Tools,Mɛyɛ dɛn apaw farm tool a ɛfata adwuma bi?,Mɛyɛ dɛn apaw farm tool a ɛfata adwuma bi?,canonical_direct,A,False
+C4-B-012,B,Direct Twi,tw,524,Farm Records & Extension,Farm records bɛn na beginner okuafoɔ ɛsɛ sɛ ofi ase de?,Farm records bɛn na beginner okuafoɔ ɛsɛ sɛ ofi ase de?,canonical_direct,A,False
+C4-B-013,B,Direct Twi,tw,11,Fertilizer & Nutrients,Ferefere dodo tumi sɛe m'nnuaba anaa?,Ferefere dodo tumi sɛe m'nnuaba anaa?,canonical_direct,A,False
+C4-B-014,B,Direct Twi,tw,79,Fish Farming,Ɛdeɛn na meguina nsuomnam anaa nam a ayaw wɔ afuo so a menwɔ fridge?,Ɛdeɛn na meguina nsuomnam anaa nam a ayaw wɔ afuo so a menwɔ fridge?,canonical_direct,A,False
+C4-B-015,B,Direct Twi,tw,147,Garden Eggs,Anammɔn bɛn na ɛyɛ pa wɔ kura garden egg (Afrika ntrɔba)?,Anammɔn bɛn na ɛyɛ pa wɔ kura garden egg (Afrika ntrɔba)?,canonical_direct,A,False
+C4-B-016,B,Direct Twi,tw,187,Goat Rearing,Ahohyenam bɛn na ɛkyerɛ sɛ m'abirekyi wɔ nyinsɛn na ɛdeɛn na meyɛ?,Ahohyenam bɛn na ɛkyerɛ sɛ m'abirekyi wɔ nyinsɛn na ɛdeɛn na meyɛ?,canonical_direct,A,False
+C4-B-017,B,Direct Twi,tw,454,Grasscutter Farming,Dan bɛn na grasscutter kuayɛ hia?,Dan bɛn na grasscutter kuayɛ hia?,canonical_direct,A,False
+C4-B-018,B,Direct Twi,tw,384,Groundnut & Legumes,Mɛyɛ dɛn ama nkatie nhwiren ne aba no ayɛ yie?,Mɛyɛ dɛn ama nkatie nhwiren ne aba no ayɛ yie?,canonical_direct,A,False
+C4-B-019,B,Direct Twi,tw,64,Harvesting & Storage,Bere bɛn wɔ da mu na ɛyɛ ɔkorɔ sɛ wogye nnuan?,Bere bɛn wɔ da mu na ɛyɛ ɔkorɔ sɛ wogye nnuan?,canonical_direct,A,False
+C4-B-020,B,Direct Twi,tw,43,Irrigation & Water,M'abɔdweɛ wɔ rust yadeɛ. Ɛdeɛn na meyɛ?,M'abɔdweɛ wɔ rust yadeɛ. Ɛdeɛn na meyɛ?,canonical_direct,A,False
+C4-B-021,B,Direct Twi,tw,2,Maize,Ferefere bɛn na ɛyɛ papa ma aburo?,Ferefere bɛn na ɛyɛ papa ma aburo?,canonical_direct,A,False
+C4-B-022,B,Direct Twi,tw,424,Mushroom Farming,Tebea bɛn na ɛsɛ sɛ mushrooms nya na wɔnyin?,Tebea bɛn na ɛsɛ sɛ mushrooms nya na wɔnyin?,canonical_direct,A,False
+C4-B-023,B,Direct Twi,tw,534,Oil Palm & Coconut,Adɛn nti na plant spacing ho hia wɔ oil palm afuo mu?,Adɛn nti na plant spacing ho hia wɔ oil palm afuo mu?,canonical_direct,A,False
+C4-B-024,B,Direct Twi,tw,394,Okra Farming,Mɛyɛ dɛn ahyɛ okra afuo ase?,Mɛyɛ dɛn ahyɛ okra afuo ase?,canonical_direct,A,False
+C4-B-025,B,Direct Twi,tw,54,Onion,Ɛdeɛn na metumi kora thrips ase wɔ m'gyene so?,Ɛdeɛn na metumi kora thrips ase wɔ m'gyene so?,canonical_direct,A,False
+C4-B-026,B,Direct Twi,tw,68,Palm & Coconut,Ɛdeɛn na megye abe aba yie?,Ɛdeɛn na megye abe aba yie?,canonical_direct,A,False
+C4-B-027,B,Direct Twi,tw,48,Pepper,Ɛdeɛn na meyɛ fie nhwiren adwummakers dawuro fi mako?,Ɛdeɛn na meyɛ fie nhwiren adwummakers dawuro fi mako?,canonical_direct,A,False
+C4-B-028,B,Direct Twi,tw,31,Pest & Disease Control,Ɛdeɛn na metumi de weevils hyɛ ase wɔ m'aduan a maguina mu?,Ɛdeɛn na metumi de weevils hyɛ ase wɔ m'aduan a maguina mu?,canonical_direct,A,False
+C4-B-029,B,Direct Twi,tw,434,Pig Farming,Mɛyɛ dɛn apaw piglets a wɔyɛ ahoɔden?,Mɛyɛ dɛn apaw piglets a wɔyɛ ahoɔden?,canonical_direct,A,False
+C4-B-030,B,Direct Twi,tw,137,Plantain & Banana,Ferefere bɛn na ɛyɛ ɔkorɔ ma borɔdɔ?,Ferefere bɛn na ɛyɛ ɔkorɔ ma borɔdɔ?,canonical_direct,A,False
+C4-B-031,B,Direct Twi,tw,504,Post-Harvest & Food Safety,Adɛn nti na ɛnsɛ sɛ mede nnɔbae a magye no gyaw owia tee mu?,Adɛn nti na ɛnsɛ sɛ mede nnɔbae a magye no gyaw owia tee mu?,canonical_direct,A,False
+C4-B-032,B,Direct Twi,tw,3,Poultry Farming,Metumi de mmoa dɔteɛ adi dwuma mmom sen nnuru ferefere?,Metumi de mmoa dɔteɛ adi dwuma mmom sen nnuru ferefere?,canonical_direct,A,False
+C4-B-033,B,Direct Twi,tw,444,Rabbit Farming,Mɛyɛ dɛn ahyɛ rabbit kuayɛ ketewa ase?,Mɛyɛ dɛn ahyɛ rabbit kuayɛ ketewa ase?,canonical_direct,A,False
+C4-B-034,B,Direct Twi,tw,364,Rice Farming,Mɛyɛ dɛn apaw beae a mɛdua aburow?,Mɛyɛ dɛn apaw beae a mɛdua aburow?,canonical_direct,A,False
+C4-B-035,B,Direct Twi,tw,265,Sheep Rearing,Dɛn na menyɛ sɛ mefi ase oguan adwuma wɔ Ghana?,Dɛn na menyɛ sɛ mefi ase oguan adwuma wɔ Ghana?,canonical_direct,A,False
+C4-B-036,B,Direct Twi,tw,464,Snail Farming,Mɛyɛ dɛn apaw beae ama snail kuayɛ?,Mɛyɛ dɛn apaw beae ama snail kuayɛ?,canonical_direct,A,False
+C4-B-037,B,Direct Twi,tw,1,Soil & Land Preparation,Ɛdeɛn na ɛkyerɛ sɛ m'asase yɛ yɛ papa ma okuafo adwuma?,Ɛdeɛn na ɛkyerɛ sɛ m'asase yɛ yɛ papa ma okuafo adwuma?,canonical_direct,A,False
+C4-B-038,B,Direct Twi,tw,21,Tomato,Metumi adua nnɔbae wɔ ɔpɛ bere mu?,Metumi adua nnɔbae wɔ ɔpɛ bere mu?,canonical_direct,A,False
+C4-B-039,B,Direct Twi,tw,414,Watermelon Farming,Mɛyɛ dɛn apaw asase ma watermelon?,Mɛyɛ dɛn apaw asase ma watermelon?,canonical_direct,A,False
+C4-B-040,B,Direct Twi,tw,75,Yam,Ɛdeɛn na meguina m'bayerɛ yie?,Ɛdeɛn na meguina m'bayerɛ yie?,canonical_direct,A,False
+C4-C-001,C,English paraphrase,en,2,Maize,What fertilizer is best for maize?,Which fertilizer works well for corn?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-002,C,English paraphrase,en,219,Cassava,How do I select healthy cassava stems for planting?,How do I pick healthy cassava cuttings for planting?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-003,C,English paraphrase,en,245,Onion,How do I grow onions successfully in Ghana?,What is a successful way to grow onion in Ghana?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-004,C,English paraphrase,en,465,Snail Farming,Why does humidity matter in snail farming?,Why is humidity important when rearing snails?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-005,C,English paraphrase,en,424,Mushroom Farming,What basic conditions do mushrooms need to grow?,Which basic environment helps mushrooms grow?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-006,C,English paraphrase,en,474,Beekeeping,What should I consider before starting beekeeping?,What should I consider before keeping bees?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-007,C,English paraphrase,en,61,Irrigation & Water,What is the best irrigation method for a small farm?,Which irrigation method suits a small farm?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-008,C,English paraphrase,en,524,Farm Records & Extension,What farm records should a beginner start with?,Which farm records should a new farmer keep first?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-009,C,English paraphrase,en,444,Rabbit Farming,How do I start a small rabbit farm?,I want to begin a small rabbit enterprise; how do I start?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-010,C,English paraphrase,en,265,Sheep Rearing,How do I start sheep farming in Ghana?,How can a farmer begin raising sheep in Ghana?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-011,C,English paraphrase,en,297,Fish Farming,What water quality should I maintain in a fish pond?,What water condition must I keep in my fish pond?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-012,C,English paraphrase,en,292,Poultry Farming,What housing system is best for layer chickens in Ghana?,Which housing setup is suitable for layer chickens in Ghana?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-013,C,English paraphrase,en,267,Cattle Rearing,How do I start cattle farming in Ghana?,I want to go into cattle rearing in Ghana; where do I begin?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-014,C,English paraphrase,en,237,Tomato,How can I grow tomatoes successfully in Ghana for high yield?,How can I successfully produce plenty of tomatoes in Ghana?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-015,C,English paraphrase,en,1,Soil & Land Preparation,What are the signs of good farming soil?,How can I tell whether soil is good for farming?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-016,C,English paraphrase,en,73,Maize,How can I store maize to prevent aflatoxin?,How should I keep maize after harvest to avoid aflatoxin?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-017,C,English paraphrase,en,322,Maize,How can I scout my maize field for pests?,How do I check my corn field for pest attacks?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-018,C,English paraphrase,en,375,Cocoa Farming,How can I improve survival of cocoa seedlings after planting?,How can more cocoa seedlings survive after I plant them?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-019,C,English paraphrase,en,447,Rabbit Farming,What should I feed growing rabbits?,What food should I give rabbits that are still growing?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-C-020,C,English paraphrase,en,563,Cattle Rearing,Why should cattle have access to shade and clean water?,Why do cows need clean water and a shaded place?,farmer_style_paraphrase,A_or_B_to_A,False
+C4-D-001,D,Twi variation,tw,2,Maize,Ferefere bɛn na ɛyɛ papa ma aburo?,"Mesrɛ wo, Ferefere bɛn na ɛyɛ papa ma aburo?",conservative_twi_variation,A_or_B_to_A,True
+C4-D-002,D,Twi variation,tw,219,Cassava,Dɛn na menyɛ sɛ mepick bankye abɔ pa sɛ mede to mu?,Dɛn na menyɛ sɛ mepick bankye abɔ pa sɛ mede to mu? Mesrɛ wo.,conservative_twi_variation,A_or_B_to_A,True
+C4-D-003,D,Twi variation,tw,245,Onion,Dɛn na menyɛ sɛ meto abɔnkɔ wɔ Ghana?,"Mesrɛ wo, Dɛn na menyɛ sɛ meto abɔnkɔ wɔ Ghana?",conservative_twi_variation,A_or_B_to_A,True
+C4-D-004,D,Twi variation,tw,465,Snail Farming,Adɛn nti na humidity ho hia wɔ snail kuayɛ mu?,Adɛn nti na humidity ho hia wɔ snail kuayɛ mu? Mesrɛ wo.,conservative_twi_variation,A_or_B_to_A,True
+C4-D-005,D,Twi variation,tw,424,Mushroom Farming,Tebea bɛn na ɛsɛ sɛ mushrooms nya na wɔnyin?,"Mesrɛ wo, Tebea bɛn na ɛsɛ sɛ mushrooms nya na wɔnyin?",conservative_twi_variation,A_or_B_to_A,True
+C4-D-006,D,Twi variation,tw,474,Beekeeping,Dɛn na ɛsɛ sɛ misusuw ho ansa na mahyɛ nkyene yɛ kuayɛ ase?,Dɛn na ɛsɛ sɛ misusuw ho ansa na mahyɛ nkyene yɛ kuayɛ ase? Mesrɛ wo.,conservative_twi_variation,A_or_B_to_A,True
+C4-D-007,D,Twi variation,tw,61,Irrigation & Water,Nsuo to anammɔn bɛn na ɛyɛ ɔkorɔ wɔ afuo ketewa mu?,"Mesrɛ wo, Nsuo to anammɔn bɛn na ɛyɛ ɔkorɔ wɔ afuo ketewa mu?",conservative_twi_variation,A_or_B_to_A,True
+C4-D-008,D,Twi variation,tw,524,Farm Records & Extension,Farm records bɛn na beginner okuafoɔ ɛsɛ sɛ ofi ase de?,Farm records bɛn na beginner okuafoɔ ɛsɛ sɛ ofi ase de? Mesrɛ wo.,conservative_twi_variation,A_or_B_to_A,True
+C4-D-009,D,Twi variation,tw,444,Rabbit Farming,Mɛyɛ dɛn ahyɛ rabbit kuayɛ ketewa ase?,"Mesrɛ wo, Mɛyɛ dɛn ahyɛ rabbit kuayɛ ketewa ase?",conservative_twi_variation,A_or_B_to_A,True
+C4-D-010,D,Twi variation,tw,265,Sheep Rearing,Dɛn na menyɛ sɛ mefi ase oguan adwuma wɔ Ghana?,Dɛn na menyɛ sɛ mefi ase oguan adwuma wɔ Ghana? Mesrɛ wo.,conservative_twi_variation,A_or_B_to_A,True
+C4-D-011,D,Twi variation,tw,297,Fish Farming,Dɛn na menyɛ sɛ nsuo pa wɔ me apataa pond mu?,"Mesrɛ wo, Dɛn na menyɛ sɛ nsuo pa wɔ me apataa pond mu?",conservative_twi_variation,A_or_B_to_A,True
+C4-D-012,D,Twi variation,tw,292,Poultry Farming,Housing nhyiamu bɛn na ɛhia pa ara ma layers wɔ Ghana?,Housing nhyiamu bɛn na ɛhia pa ara ma layers wɔ Ghana? Mesrɛ wo.,conservative_twi_variation,A_or_B_to_A,True
+C4-D-013,D,Twi variation,tw,267,Cattle Rearing,Dɛn na menyɛ sɛ mefi ase nnwan adwuma wɔ Ghana?,"Mesrɛ wo, Dɛn na menyɛ sɛ mefi ase nnwan adwuma wɔ Ghana?",conservative_twi_variation,A_or_B_to_A,True
+C4-D-014,D,Twi variation,tw,237,Tomato,Dɛn na menyɛ sɛ meto tomatoes yie wɔ Ghana sɛ nnoa pii aba?,Dɛn na menyɛ sɛ meto tomatoes yie wɔ Ghana sɛ nnoa pii aba? Mesrɛ wo.,conservative_twi_variation,A_or_B_to_A,True
+C4-D-015,D,Twi variation,tw,1,Soil & Land Preparation,Ɛdeɛn na ɛkyerɛ sɛ m'asase yɛ yɛ papa ma okuafo adwuma?,"Mesrɛ wo, Ɛdeɛn na ɛkyerɛ sɛ m'asase yɛ yɛ papa ma okuafo adwuma?",conservative_twi_variation,A_or_B_to_A,True
+C4-D-016,D,Twi variation,tw,73,Maize,Ɛdeɛn na meguina m'aburow na aflatoxin dze nka ho?,Ɛdeɛn na meguina m'aburow na aflatoxin dze nka ho? Mesrɛ wo.,conservative_twi_variation,A_or_B_to_A,True
+C4-D-017,D,Twi variation,tw,322,Maize,Dɛn na menyɛ sɛ mehwɛ me aburoɔ afuom mu hwɛ adwummaker?,"Mesrɛ wo, Dɛn na menyɛ sɛ mehwɛ me aburoɔ afuom mu hwɛ adwummaker?",conservative_twi_variation,A_or_B_to_A,True
+C4-D-018,D,Twi variation,tw,375,Cocoa Farming,Mɛyɛ dɛn ama cocoa aba nketewa no atena ase yie bere a madu wɔn?,Mɛyɛ dɛn ama cocoa aba nketewa no atena ase yie bere a madu wɔn? Mesrɛ wo.,conservative_twi_variation,A_or_B_to_A,True
+C4-D-019,D,Twi variation,tw,447,Rabbit Farming,Dɛn na ɛsɛ sɛ mede ma rabbits a wɔrenyin no di?,"Mesrɛ wo, Dɛn na ɛsɛ sɛ mede ma rabbits a wɔrenyin no di?",conservative_twi_variation,A_or_B_to_A,True
+C4-D-020,D,Twi variation,tw,563,Cattle Rearing,Adɛn nti na ɛsɛ sɛ anantwi nya sunsuma ne nsuo pa?,Adɛn nti na ɛsɛ sɛ anantwi nya sunsuma ne nsuo pa? Mesrɛ wo.,conservative_twi_variation,A_or_B_to_A,True
+C4-E-001,E,Unsupported agriculture,en,,,,How can I start raising reindeer commercially on a farm?,verified_absent_agricultural_topic,D,False
+C4-E-002,E,Unsupported agriculture,en,,,,What housing do chinchillas need on a small farm?,verified_absent_agricultural_topic,D,False
+C4-E-003,E,Unsupported agriculture,en,,,,How should I rear mink for fibre production?,verified_absent_agricultural_topic,D,False
+C4-E-004,E,Unsupported agriculture,en,,,,How can I grow kiwifruit commercially?,verified_absent_agricultural_topic,D,False
+C4-E-005,E,Unsupported agriculture,en,,,,What soil conditions suit blueberry farming?,verified_absent_agricultural_topic,D,False
+C4-E-006,E,Unsupported agriculture,en,,,,How do I grow raspberries on an organic farm?,verified_absent_agricultural_topic,D,False
+C4-E-007,E,Unsupported agriculture,en,,,,What climate is best for pistachio farming?,verified_absent_agricultural_topic,D,False
+C4-E-008,E,Unsupported agriculture,en,,,,How can I establish a hazelnut farm?,verified_absent_agricultural_topic,D,False
+C4-E-009,E,Unsupported agriculture,en,,,,What irrigation does cranberry farming require?,verified_absent_agricultural_topic,D,False
+C4-E-010,E,Unsupported agriculture,en,,,,How do I grow beetroot for the market?,verified_absent_agricultural_topic,D,False
+C4-E-011,E,Unsupported agriculture,en,,,,What fertilizer should I use when growing celery?,verified_absent_agricultural_topic,D,False
+C4-E-012,E,Unsupported agriculture,en,,,,How can I control pests when growing turnips?,verified_absent_agricultural_topic,D,False
+C4-E-013,E,Unsupported agriculture,en,,,,How do I start zucchini farming in Ghana?,verified_absent_agricultural_topic,D,False
+C4-E-014,E,Unsupported agriculture,en,,,,How can I start mealworm farming for animal feed?,verified_absent_agricultural_topic,D,False
+C4-E-015,E,Unsupported agriculture,en,,,,What do I need to start oyster farming near the coast?,verified_absent_agricultural_topic,D,False
+C4-F-001,F,Off-topic,en,,,,What is the capital city of France?,clearly_off_topic,C,False
+C4-F-002,F,Off-topic,en,,,,How can I replace a cracked laptop screen?,clearly_off_topic,C,False
+C4-F-003,F,Off-topic,en,,,,What was the final score in yesterday's football game?,clearly_off_topic,C,False
+C4-F-004,F,Off-topic,en,,,,How does a decorator work in Python?,clearly_off_topic,C,False
+C4-F-005,F,Off-topic,en,,,,Can you recommend a funny comedy film?,clearly_off_topic,C,False
+C4-F-006,F,Off-topic,en,,,,Which songs should I add to a wedding playlist?,clearly_off_topic,C,False
+C4-F-007,F,Off-topic,en,,,,Where can I reserve a quiet hotel room in London?,clearly_off_topic,C,False
+C4-F-008,F,Off-topic,en,,,,Can you solve this quadratic equation for me?,clearly_off_topic,C,False
+C4-F-009,F,Off-topic,en,,,,How much interest will my savings account earn?,clearly_off_topic,C,False
+C4-F-010,F,Off-topic,en,,,,What is the current price of Bitcoin?,clearly_off_topic,C,False
+C4-F-011,F,Off-topic,en,,,,How should I apologize to my partner after an argument?,clearly_off_topic,C,False
+C4-F-012,F,Off-topic,en,,,,Please help me format a CV for an office job.,clearly_off_topic,C,False
+C4-F-013,F,Off-topic,en,,,,How do I crop a portrait photo without losing quality?,clearly_off_topic,C,False
+C4-F-014,F,Off-topic,en,,,,How should I protect the root account on my Linux server?,clearly_off_topic,C,False
+C4-F-015,F,Off-topic,en,,,,How do I merge a branch safely in Git?,clearly_off_topic,C,False

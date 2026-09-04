@@ -4,11 +4,11 @@
   "case_count": 80,
   "group_counts": {
     "topic_selection": 10,
-    "off_topic_question": 10,
+    "tts": 10,
     "paraphrased_question": 10,
+    "off_topic_question": 10,
     "english_question": 20,
-    "twi_question": 20,
-    "tts": 10
+    "twi_question": 20
   },
   "cases": [
     {
@@ -417,11 +417,12 @@
       "language": "en",
       "message": "Which fertiliser should I apply to my maize crop?",
       "allowed_types": [
-        "low_confidence"
+        "answer"
       ],
       "allowed_states": [
-        "B"
-      ]
+        "A"
+      ],
+      "expected_record_id": "qa-0210"
     },
     {
       "id": "presentation_para_tw_01",
@@ -441,11 +442,12 @@
       "language": "en",
       "message": "What is the right season to sow maize in Ghana?",
       "allowed_types": [
-        "low_confidence"
+        "answer"
       ],
       "allowed_states": [
-        "B"
-      ]
+        "A"
+      ],
+      "expected_record_id": "qa-0016"
     },
     {
       "id": "presentation_para_tw_02",

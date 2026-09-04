@@ -1,0 +1,5 @@
+﻿case_type,cases,passed,result
+valid_weather_intent,5,5,PASS
+agricultural_non_weather,4,4,PASS
+mocked_error_handling,3,3,PASS
+live_open_meteo,0,0,NOT_RUN

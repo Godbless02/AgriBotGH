@@ -12,19 +12,43 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: ".python-version"
+          cache: "pip"
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
+          cache: "npm"
 
-      - name: Install dependencies
-        run: npm ci || npm install
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Python tests
+        env:
+          AGRIBOT_TEST_MODE: "1"
+        run: python -m unittest discover -v
+
+      - name: Install JavaScript dependencies
+        run: npm ci
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Start static server
-        run: npx http-server -p 8080 & sleep 3
+      - name: Start Flask application
+        run: |
+          PORT=8080 FLASK_DEBUG=false AGRIBOT_TEST_MODE=1 ABENA_TTS_ENABLED=false python app.py > flask.log 2>&1 &
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:8080/api/health; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat flask.log
+          exit 1
 
       - name: Run Playwright tests
         env:

@@ -13,6 +13,7 @@ import joblib
 import numpy as np
 
 from experiment_tfidf import CONFIGURATIONS, build_vectorizer, clean_text
+from retrieval_semantics import expand_semantic_text, extract_entities
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -127,12 +128,22 @@ def validate_inputs(canonical, splits, hybrid, threshold, router):
         raise ValueError("Domain configuration must contain English and Twi")
 
 
-def build_language_artifact(train, language, dataset_hash, retrieval_config):
+def build_language_artifact(
+    train, language, dataset_hash, retrieval_config, normalizer=None
+):
     question_field = "question_en" if language == "English" else "question_twi"
     answer_field = "answer_en" if language == "English" else "answer_twi"
-    questions = [clean_text(record[question_field]) for record in train]
+    questions = [
+        normalizer(record[question_field], language)
+        if normalizer else clean_text(record[question_field])
+        for record in train
+    ]
     vectorizer = build_vectorizer(CONFIGURATIONS["C_word_and_character"])
     matrix = vectorizer.fit_transform(questions)
+    semantic_vectorizer = build_vectorizer(CONFIGURATIONS["C_word_and_character"])
+    semantic_matrix = semantic_vectorizer.fit_transform([
+        expand_semantic_text(question, language) for question in questions
+    ])
 
     category_indices = defaultdict(list)
     for index, record in enumerate(train):
@@ -156,6 +167,11 @@ def build_language_artifact(train, language, dataset_hash, retrieval_config):
         "answer_field": answer_field,
         "vectorizer": vectorizer,
         "matrix": matrix,
+        "semantic_vectorizer": semantic_vectorizer,
+        "semantic_matrix": semantic_matrix,
+        "record_entities": [
+            sorted(extract_entities(question, language)) for question in questions
+        ],
         "category_names": category_names,
         "category_centroids": centroids,
         "records": [

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "todo": 36,
-  "generated_at_utc": "2026-08-21T00:39:47.532871+00:00",
+  "generated_at_utc": "2026-08-23T17:43:23.381437+00:00",
   "project": "AgriBotGH — Bilingual English–Twi AI-Powered Agricultural Chatbot for Farmer Support in Ghana",
   "dataset": {
     "file": "data/agribotgh_dataset_bilingual_563.json",
@@ -19,8 +19,8 @@
     "random_seed": 42
   },
   "final_model": {
-    "display_version": "AgriBotGH Retrieval Model v1.0.1",
-    "semantic_version": "1.0.1",
+    "display_version": "AgriBotGH Retrieval Model v1.2.0",
+    "semantic_version": "1.2.0",
     "architecture": "topic_aware_tfidf",
     "tfidf_configuration": "C_word_and_character",
     "weights": {
@@ -28,57 +28,54 @@
       "embedding": 0.0,
       "topic": 0.62
     },
-    "answer_confidence_signal": "normalized_score_margin",
-    "answer_confidence_threshold": 0.27,
-    "freeze_id": "204b2fee6a158e7e782b581c93b0b02b908b5ba12e3c3ac467241205de2d4aa1"
+    "answer_confidence_signal": "raw_tfidf_similarity_with_raw_margin",
+    "answer_confidence_threshold": 0.5,
+    "answer_confidence_minimum_margin": 0.05,
+    "freeze_id": "c7e8a7d158503b9a8dea7ca9f31a87c93de792839f1f590227ff83a73772afd0"
   },
   "validation_retrieval_performance": {
     "English": {
       "total_cases": 84,
       "answerable_cases": 18,
+      "unsupported_cases": 66,
       "top_1_correct": 9,
       "top_3_correct": 12,
       "top_1_accuracy": 0.5,
       "top_3_accuracy": 0.6666666666666666,
       "precision": 0.10714285714285714,
       "coverage": 1.0,
-      "category_match_rate": 0.47619047619047616
+      "category_match_rate": 0.47619047619047616,
+      "average_top_1_score": 0.9487802055596626,
+      "average_score_margin": 0.0969662099608743
     },
     "Twi": {
       "total_cases": 84,
       "answerable_cases": 18,
+      "unsupported_cases": 66,
       "top_1_correct": 9,
       "top_3_correct": 11,
       "top_1_accuracy": 0.5,
       "top_3_accuracy": 0.6111111111111112,
       "precision": 0.10714285714285714,
       "coverage": 1.0,
-      "category_match_rate": 0.5357142857142857
+      "category_match_rate": 0.5357142857142857,
+      "average_top_1_score": 0.9539021868717695,
+      "average_score_margin": 0.07518214057352955
     }
   },
   "threshold_performance": {
-    "threshold": 0.27,
-    "total_cases": 168,
-    "accepted": 1,
-    "rejected": 167,
-    "coverage": 0.005952380952380952,
-    "true_positives_reliable_answers": 1,
-    "false_positives_unreliable_answers": 0,
-    "false_negatives_missed_reliable_answers": 17,
-    "true_negatives_unreliable_answers_rejected": 150,
+    "threshold": 0.5,
+    "minimum_raw_margin": 0.05,
+    "positive_coverage": 0.6857142857142857,
+    "correct_positive_coverage": 0.6857142857142857,
+    "accepted_positive": 24,
+    "correct_accepted_positive": 24,
+    "incorrect_accepted_positive": 0,
+    "negative_false_accepts": 0,
+    "negative_cases": 120,
     "response_precision": 1.0,
-    "response_recall": 0.05555555555555555,
-    "response_f0_5": 0.22727272727272727,
-    "correct_answer_coverage": 0.005952380952380952,
-    "answerability": {
-      "gold_answerable": 36,
-      "accepted_answerable": 1,
-      "accepted_unsupported": 0,
-      "accepted_answerable_but_wrong_match": 0,
-      "rejected_answerable": 35,
-      "precision": 1.0,
-      "recall": 0.027777777777777776
-    }
+    "coverage": 0.6857142857142857,
+    "evaluation_set": "35 reviewed paraphrases and 120 negative controls"
   },
   "router_test": {
     "total": 104,
@@ -185,12 +182,12 @@
     }
   },
   "performance": {
-    "cold_start_seconds": 9.54,
-    "retrieval_average_ms": 13.827,
-    "retrieval_p95_ms": 20.372,
-    "api_average_ms": 12.027,
-    "api_p95_ms": 27.819,
-    "working_set_mb": 167.81
+    "cold_start_seconds": 7.534,
+    "retrieval_average_ms": 15.466,
+    "retrieval_p95_ms": 20.733,
+    "api_average_ms": 14.082,
+    "api_p95_ms": 21.858,
+    "working_set_mb": 170.72
   },
   "usability": {
     "automated_browser_viewports": [
@@ -212,13 +209,13 @@
     "Top-1 and top-3 metrics are calculated only over 18 gold-answerable validation cases per language.",
     "The reported retrieval precision divides correct top-1 matches by all 84 validation cases, including unsupported cases.",
     "Ranking coverage of 100% means retrieval always produces candidates; it is not automatic-answer coverage.",
-    "At threshold 0.27, measured automatic-answer response precision is 100%, while response coverage is approximately 0.60% on the 168-case validation set.",
-    "Exact canonical questions and stable linked suggestions use deterministic record identity outside fuzzy threshold routing.",
+    "At raw TF-IDF similarity threshold 0.5 and margin 0.05, the reviewed paraphrase benchmark had 100% precision among accepted answers and zero false accepts across 120 negative controls.",
+    "Exact canonical questions and clicked suggestions use the same statistical retrieval runtime as typed questions.",
     "Agronomic correctness and native Twi naturalness require qualified human review; no such review score is invented here."
   ],
   "source_reports": [
     "models/final_model_comparison.json",
-    "models/production/1.0.1/evaluation_summary.json",
+    "models/production/1.2.0/evaluation_summary.json",
     "models/performance_results.json",
     "models/presentation_test_results.json",
     "models/response_quality_results.json",

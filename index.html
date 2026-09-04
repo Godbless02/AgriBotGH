@@ -4,10 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🌿AgriBotGH</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -106,10 +102,22 @@
         <div class="topbar-right">
           <span id="userBadge" class="user-badge"></span>
           <button
+            class="weather-btn"
+            type="button"
+            onclick="openWeatherPanel()"
+            id="weatherBtn"
+            aria-haspopup="dialog"
+            aria-controls="weatherPanel"
+          >
+            <span aria-hidden="true">☀️</span>
+            <span id="weatherBtnLabel">Weather</span>
+          </button>
+          <button
             class="theme-btn"
             onclick="toggleTheme()"
             id="themeBtn"
             title="Switch theme"
+            aria-label="Switch to dark theme"
           >
             🌙
           </button>
@@ -205,6 +213,25 @@
               autocomplete="off"
               aria-label="Farming question"
             />
+            <button
+              type="button"
+              class="mic-btn"
+              id="micBtn"
+              onclick="toggleSpeechRecognition()"
+              aria-label="Speak your question"
+              aria-pressed="false"
+              title="Speak your question"
+            >
+              <span class="mic-icon" aria-hidden="true">🎤</span>
+              <span class="mic-label">Speak</span>
+            </button>
+            <span
+              class="stt-status"
+              id="sttStatus"
+              role="status"
+              aria-live="polite"
+              hidden
+            ></span>
             <span class="char-count" id="charCount">0/2000</span>
             <button type="button" class="send-btn" id="sendBtn" onclick="handleSend()">
               Send
@@ -228,53 +255,9 @@
             <span>💡 Try asking</span>
             <button type="button" class="chips-close" onclick="closeChips()" aria-label="Close quick questions">✕</button>
           </div>
-          <p class="chips-desc">Tap any question to fill the input.</p>
-          <div id="enChips" class="chips-group">
-            <button class="chip" onclick="fillChip(this)">
-              How do I grow maize?
-            </button>
-            <button class="chip" onclick="fillChip(this)">
-              When should I plant maize in Ghana?
-            </button>
-            <button class="chip" onclick="fillChip(this)">
-              What is the best fertilizer for tomatoes?
-            </button>
-            <button class="chip" onclick="fillChip(this)">
-              How do I control pests on my farm?
-            </button>
-            <button class="chip" onclick="fillChip(this)">
-              How do I improve my soil?
-            </button>
-            <button class="chip" onclick="fillChip(this)">
-              How do I start fish farming?
-            </button>
-            <button class="chip" onclick="fillChip(this)">
-              How do I grow cassava?
-            </button>
-            <button class="chip" onclick="fillChip(this)">
-              What causes tomato blight?
-            </button>
-          </div>
-          <div id="twChips" class="chips-group" style="display: none">
-            <button class="chip" onclick="fillChip(this)">
-              Dɛn na menyɛ sɛ meto aburoɔ?
-            </button>
-            <button class="chip" onclick="fillChip(this)">
-              Ferefere bɛn na ɛyɛ papa ma aburo?
-            </button>
-            <button class="chip" onclick="fillChip(this)">
-              Dɛn na menyɛ sɛ m'asase yɛ pa?
-            </button>
-            <button class="chip" onclick="fillChip(this)">
-              Dɛn na menyɛ adwummaker ho?
-            </button>
-            <button class="chip" onclick="fillChip(this)">
-              Dɛn na menyɛ sɛ meto bankye?
-            </button>
-            <button class="chip" onclick="fillChip(this)">
-              Dɛn na menyɛ apataa adwuma?
-            </button>
-          </div>
+          <p class="chips-desc">Tap any question to ask AgriBot.</p>
+          <div id="enChips" class="chips-group" aria-live="polite"></div>
+          <div id="twChips" class="chips-group" style="display: none" aria-live="polite"></div>
         </aside>
         <button
           type="button"
@@ -288,6 +271,61 @@
         </button>
       </div>
       <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+      <div class="weather-overlay" id="weatherOverlay" hidden>
+        <section
+          class="weather-panel"
+          id="weatherPanel"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="weatherTitle"
+        >
+          <div class="weather-panel-header">
+            <div>
+              <p class="weather-eyebrow" id="weatherEyebrow">Farm planning</p>
+              <h2 id="weatherTitle">Local weather</h2>
+            </div>
+            <button
+              class="weather-close"
+              type="button"
+              onclick="closeWeatherPanel()"
+              aria-label="Close weather"
+            >✕</button>
+          </div>
+
+          <form class="weather-search" id="weatherForm">
+            <label for="weatherLocation" id="weatherLocationLabel">Town or city</label>
+            <div class="weather-search-row">
+              <input
+                id="weatherLocation"
+                name="location"
+                type="search"
+                maxlength="100"
+                autocomplete="address-level2"
+                placeholder="e.g. Kumasi"
+                required
+              />
+              <button type="submit" id="weatherSubmit">Check weather</button>
+            </div>
+          </form>
+
+          <p class="weather-status" id="weatherStatus" role="status" aria-live="polite"></p>
+          <div class="weather-results" id="weatherResults" hidden>
+            <div class="weather-location-row">
+              <div>
+                <p class="weather-eyebrow" id="weatherCurrentLabel">Current conditions</p>
+                <h3 id="weatherPlace"></h3>
+              </div>
+              <span class="weather-condition" id="weatherCondition"></span>
+            </div>
+            <div class="weather-metrics" id="weatherMetrics"></div>
+            <div class="weather-guidance" id="weatherGuidance"></div>
+            <h3 class="weather-forecast-title" id="weatherForecastTitle">3-day forecast</h3>
+            <div class="weather-forecast" id="weatherForecast"></div>
+            <p class="weather-source" id="weatherSource">Weather data: Open-Meteo</p>
+          </div>
+        </section>
+      </div>
     </div>
 
     <script src="app.js"></script>

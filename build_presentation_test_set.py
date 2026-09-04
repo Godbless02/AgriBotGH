@@ -72,14 +72,27 @@ def build_set():
             "expected_text": record["answer_twi"],
         })
     for case_id, language, message in PARAPHRASES:
-        cases.append({
+        item = {
             "id": case_id,
             "group": "paraphrased_question",
             "language": language,
             "message": message,
-            "allowed_types": ["low_confidence"],
-            "allowed_states": ["B"],
-        })
+            "allowed_types": ["low_confidence", "knowledge_gap"],
+            "allowed_states": ["B", "D"],
+        }
+        if case_id == "presentation_para_en_01":
+            item.update({
+                "allowed_types": ["answer"],
+                "allowed_states": ["A"],
+                "expected_record_id": "qa-0210",
+            })
+        elif case_id == "presentation_para_en_02":
+            item.update({
+                "allowed_types": ["answer"],
+                "allowed_states": ["A"],
+                "expected_record_id": "qa-0016",
+            })
+        cases.append(item)
     with OFF_TOPIC_PATH.open("r", encoding="utf-8") as handle:
         off_topic = json.load(handle)["cases"][:10]
     for position, source in enumerate(off_topic, start=1):

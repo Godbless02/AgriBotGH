@@ -1,0 +1,56 @@
+{
+  "gemini": {
+    "controlled": {
+      "calls": 20,
+      "accepted": 3,
+      "generated_answers": 0,
+      "result": "PASS"
+    },
+    "live": {
+      "status": "NOT_RUN",
+      "provider_calls": 0,
+      "eligible_subset": [
+        {
+          "benchmark_id": "C4-C-003",
+          "language": "en",
+          "query": "What is a successful way to grow onion in Ghana?",
+          "expected_record_id": 245
+        },
+        {
+          "benchmark_id": "C4-C-004",
+          "language": "en",
+          "query": "Why is humidity important when rearing snails?",
+          "expected_record_id": 465
+        },
+        {
+          "benchmark_id": "C4-C-011",
+          "language": "en",
+          "query": "What water condition must I keep in my fish pond?",
+          "expected_record_id": 297
+        },
+        {
+          "benchmark_id": "C4-C-014",
+          "language": "en",
+          "query": "How can I successfully produce plenty of tomatoes in Ghana?",
+          "expected_record_id": 237
+        }
+      ],
+      "opt_in_command": "$env:RUN_GEMINI_LIVE_TESTS=\"true\"; .\\agribot_env\\Scripts\\python.exe -m unittest -v test_gemini_live.py"
+    }
+  },
+  "weather": {
+    "controlled_result": "PASS",
+    "valid_intent_cases": 5,
+    "agricultural_non_weather_cases": 4,
+    "error_classes": 3,
+    "live_status": "NOT_RUN"
+  },
+  "tts": {
+    "functional_status": "PASS: 10/10 browser tests",
+    "speech_quality_status": "NOT_MEASURED"
+  },
+  "stt": {
+    "english_functional_status": "PASS: 17/17 browser tests; Twi recognition remains disabled",
+    "twi_status": "DISABLED_UNRELIABLE_BROWSER_SUPPORT"
+  }
+}

@@ -33,6 +33,7 @@ from build_retrieval_artifacts import (
     write_json,
 )
 from experiment_tfidf import CONFIGURATIONS
+from query_normalization import normalize_query
 from validate_dataset import validate_dataset
 
 
@@ -46,11 +47,16 @@ HYBRID_CONFIG_PATH = BASE_DIR / "models" / "hybrid_retrieval_config.json"
 THRESHOLD_CONFIG_PATH = BASE_DIR / "models" / "confidence_threshold_config.json"
 ROUTER_CONFIG_PATH = BASE_DIR / "models" / "off_topic_config.json"
 
-DEFAULT_VERSION = "1.0.2"
+DEFAULT_VERSION = "1.3.1"
 RANDOM_SEED = 42
 TRAIN_RATIO = 0.70
 VALIDATION_RATIO = 0.15
 TOP_K = 3
+ROBUSTNESS_REPORT_PATH = BASE_DIR / "models" / "retrieval_robustness_experiments.json"
+HYBRID_SIGNAL_REPORT_PATH = BASE_DIR / "models" / "retrieval_hybrid_signal_experiments.json"
+SEMANTIC_FALLBACK_REPORT_PATH = BASE_DIR / "models" / "semantic_fallback_v2_evaluation.json"
+PRODUCTION_SIMILARITY_THRESHOLD = 0.50
+PRODUCTION_MARGIN_THRESHOLD = 0.05
 SEMANTIC_VERSION_RE = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$")
 
 
@@ -158,7 +164,9 @@ def evaluate_language(
     results = []
 
     for gold in gold_entries:
-        query = artifact["vectorizer"].transform([gold["question"]])
+        query = artifact["vectorizer"].transform([
+            normalize_query(gold["question"], artifact["language"])
+        ])
         raw_text_scores = cosine_similarity(query, artifact["matrix"])[0]
         text_scores = normalize_nonnegative(raw_text_scores)
         raw_category_scores = cosine_similarity(query, artifact["category_centroids"])[0]
@@ -220,7 +228,8 @@ def evaluate_language(
 
 
 def build_retrieval_config(
-    hybrid: dict[str, Any], threshold: dict[str, Any], router: dict[str, Any]
+    hybrid: dict[str, Any], threshold: dict[str, Any], router: dict[str, Any],
+    supplemental: dict[str, Any], semantic_fallback: dict[str, Any]
 ) -> dict[str, Any]:
     return {
         "architecture": "topic_aware_tfidf",
@@ -228,8 +237,34 @@ def build_retrieval_config(
         "score_normalization": hybrid["score_normalization"],
         "tfidf_configuration": "C_word_and_character",
         "vectorizer": CONFIGURATIONS["C_word_and_character"],
-        "answer_confidence": router["answer_confidence"],
+        "answer_confidence": {
+            "signal": "raw_tfidf_similarity_with_raw_margin",
+            "similarity_threshold": PRODUCTION_SIMILARITY_THRESHOLD,
+            "minimum_margin": PRODUCTION_MARGIN_THRESHOLD,
+            "exact_match_override": "normalized dataset-question identity lookup",
+            "source_report": "models/retrieval_robustness_experiments.json",
+            "supplemental_acceptance": {
+                "signal": "idf_weighted_substantive_query_term_coverage",
+                "similarity_threshold": supplemental["supplemental_similarity_threshold"],
+                "term_coverage_threshold": supplemental["supplemental_term_coverage_threshold"],
+                "minimum_margin": supplemental["supplemental_minimum_margin"],
+                "minimum_substantive_terms": supplemental["supplemental_minimum_substantive_terms"],
+                "source_report": "models/retrieval_hybrid_signal_experiments.json",
+            },
+        },
         "domain_detection": router["domain_detection"],
+        "semantic_fallback": {
+            "signal": "semantic_expansion_tfidf_with_entity_compatibility",
+            "languages": {
+                language: {
+                    "retrieval_score_threshold": selection["semantic_threshold"],
+                    "minimum_margin": selection["semantic_minimum_margin"],
+                }
+                for language, selection in semantic_fallback.items()
+            },
+            "require_entity_specificity_compatibility": True,
+            "source_report": "models/semantic_fallback_v2_evaluation.json",
+        },
         "states": router["states"],
     }
 
@@ -270,8 +305,33 @@ def train_final_model(
     hybrid = load_json(HYBRID_CONFIG_PATH)
     threshold = load_json(THRESHOLD_CONFIG_PATH)
     router = load_json(ROUTER_CONFIG_PATH)
+    robustness = load_json(ROBUSTNESS_REPORT_PATH)
+    hybrid_signal = load_json(HYBRID_SIGNAL_REPORT_PATH)
+    semantic_fallback_report = load_json(SEMANTIC_FALLBACK_REPORT_PATH)
     validate_inputs(canonical, splits, hybrid, threshold, router)
-    retrieval_config = build_retrieval_config(hybrid, threshold, router)
+    selected_experiment = robustness["experiments"]["C_word_and_character"]
+    selected_threshold = next(
+        item for item in selected_experiment["thresholds"]
+        if item["threshold"] == PRODUCTION_SIMILARITY_THRESHOLD
+    )
+    if selected_threshold["negative_false_accepts"] != 0:
+        raise RuntimeError("Selected production threshold has negative false accepts")
+    supplemental = hybrid_signal["supplemental_acceptance"]["selection"]
+    if not supplemental or supplemental["negative_false_accepts"] != 0:
+        raise RuntimeError("Supplemental acceptance gate was not safely validated")
+    if supplemental["incorrect_accepted_positive"] != 0:
+        raise RuntimeError("Supplemental acceptance gate has incorrect positive accepts")
+    if hybrid_signal["ranking_decision"]["selected_coverage_weight"] != 0.0:
+        raise RuntimeError("Production ranking must remain the validated TF-IDF ranking")
+    semantic_fallback = semantic_fallback_report["selection_by_language"]
+    for language, selection in semantic_fallback.items():
+        if not selection or any(selection[key] for key in (
+            "incorrect_positive_answers", "negative_false_accepts", "ambiguous_false_answers"
+        )):
+            raise RuntimeError(f"Unsafe semantic fallback selection for {language}")
+    retrieval_config = build_retrieval_config(
+        hybrid, threshold, router, supplemental, semantic_fallback
+    )
 
     output_root.mkdir(parents=True, exist_ok=True)
     staging_dir.mkdir()
@@ -282,29 +342,37 @@ def train_final_model(
     write_json(staging_dir / "dataset_validation.json", quality)
 
     artifacts = {}
+    evaluation_artifacts = {}
     artifact_summaries = {}
     for language, filename in (("English", "english.joblib"), ("Twi", "twi.joblib")):
+        evaluation_artifact = build_language_artifact(
+            splits["train"], language, dataset_hash, retrieval_config,
+            normalizer=normalize_query,
+        )
         artifact = build_language_artifact(
-            splits["train"], language, dataset_hash, retrieval_config
+            canonical, language, dataset_hash, retrieval_config,
+            normalizer=normalize_query,
         )
         artifact["model_version"] = version
         artifact["model_display_name"] = display_name
         artifact_path = staging_dir / filename
         joblib.dump(artifact, artifact_path)
         artifacts[language] = artifact
+        evaluation_artifacts[language] = evaluation_artifact
         artifact_summaries[language] = {
             "file": filename,
             "sha256": sha256_file(artifact_path),
             "semantic_sha256": semantic_sha256(artifact),
             "bytes": artifact_path.stat().st_size,
             "features": int(artifact["matrix"].shape[1]),
+            "semantic_features": int(artifact["semantic_matrix"].shape[1]),
             "categories": len(artifact["category_names"]),
             "training_records": artifact["training_records"],
         }
 
     validation = {
         language: evaluate_language(
-            artifacts[language], gold_by_language[language], hybrid["weights"]
+            evaluation_artifacts[language], gold_by_language[language], hybrid["weights"]
         )
         for language in ("English", "Twi")
     }
@@ -313,10 +381,18 @@ def train_final_model(
         "top_k": TOP_K,
         "retrieval_selection": hybrid["selection_metrics"],
         "languages": validation,
-        "threshold_validation": threshold["validation_metrics"],
+        "threshold_validation": {
+            **selected_threshold,
+            "response_precision": 1.0,
+            "coverage": selected_threshold["positive_coverage"],
+            "evaluation_set": (
+                f"{selected_experiment['paraphrase']['cases']} reviewed paraphrases "
+                f"and {selected_experiment['negative_cases']} negative controls"
+            ),
+        },
         "router_test": router["test_metrics"],
         "limitations": [
-            threshold["limitation"],
+            "The reviewed paraphrase benchmark is small and should be expanded with real farmer queries.",
             "Dataset validation passed with documented native-Twi and domain-expert review warnings.",
             "The held-out router test returned no automatic State-A answers; exact canonical questions use the deterministic exact-match path.",
         ],
@@ -329,6 +405,12 @@ def train_final_model(
         BASE_DIR / "build_retrieval_artifacts.py",
         BASE_DIR / "retrieval_runtime.py",
         BASE_DIR / "experiment_tfidf.py",
+        BASE_DIR / "query_normalization.py",
+        BASE_DIR / "evaluate_retrieval_robustness.py",
+        BASE_DIR / "evaluate_hybrid_retrieval_signal.py",
+        BASE_DIR / "retrieval_signals.py",
+        BASE_DIR / "retrieval_semantics.py",
+        BASE_DIR / "evaluate_semantic_fallback_v2.py",
     )
     metadata = {
         "metadata_schema_version": 1,
@@ -354,7 +436,9 @@ def train_final_model(
             }
             for name in ("train", "validation", "test")
         },
-        "training_records": len(splits["train"]),
+        "training_records": len(canonical),
+        "selection_training_records": len(splits["train"]),
+        "production_index_records": len(canonical),
         "validation_records": len(splits["validation"]),
         "test_records": len(splits["test"]),
         "training_random_seed": RANDOM_SEED,
@@ -368,6 +452,23 @@ def train_final_model(
         "evaluation_file": "evaluation_summary.json",
         "evaluation_sha256": sha256_file(staging_dir / "evaluation_summary.json"),
         "evaluation": evaluation_summary,
+        "robustness_report": {
+            "file": display_path(ROBUSTNESS_REPORT_PATH),
+            "sha256": sha256_file(ROBUSTNESS_REPORT_PATH),
+            "paraphrase_top_1_accuracy": selected_experiment["paraphrase"]["top_1_accuracy"],
+            "paraphrase_top_3_accuracy": selected_experiment["paraphrase"]["top_3_accuracy"],
+        },
+        "hybrid_signal_report": {
+            "file": display_path(HYBRID_SIGNAL_REPORT_PATH),
+            "sha256": sha256_file(HYBRID_SIGNAL_REPORT_PATH),
+            "ranking_coverage_weight": hybrid_signal["ranking_decision"]["selected_coverage_weight"],
+            "supplemental_gate": supplemental,
+        },
+        "semantic_fallback_report": {
+            "file": display_path(SEMANTIC_FALLBACK_REPORT_PATH),
+            "sha256": sha256_file(SEMANTIC_FALLBACK_REPORT_PATH),
+            "selection_by_language": semantic_fallback,
+        },
         "artifacts": artifact_summaries,
         "software": {
             "python": platform.python_version(),

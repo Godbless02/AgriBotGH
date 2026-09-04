@@ -1,0 +1,8 @@
+[
+  {"case_id": "gemini-en-weeds-maize", "language": "en", "query": "I have some troublesome plants mixed among my maize", "expected_record_id": 212},
+  {"case_id": "gemini-en-maize-leaf-damage", "language": "en", "query": "My maize leaves are changing colour and something keeps eating them", "expected_record_id": 30},
+  {"case_id": "gemini-en-vegetable-harvest-time", "language": "en", "query": "I need to know when during the day I should gather my vegetables", "expected_record_id": 64},
+  {"case_id": "gemini-tw-weeds-maize", "language": "tw", "query": "Aburo no mu nwura haw me paa", "expected_record_id": 212},
+  {"case_id": "gemini-tw-maize-fertilizer", "language": "tw", "query": "Me pɛ aduan ama m'aburo na mennim deɛ ɛfata", "expected_record_id": 2},
+  {"case_id": "gemini-tw-maize-leaf-damage", "language": "tw", "query": "M'aburo nhaban sesa kɔla na biribi redi", "expected_record_id": 30}
+]

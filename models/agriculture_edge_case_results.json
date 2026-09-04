@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "todo": 24,
-  "generated_at_utc": "2026-08-20T23:28:33.002902+00:00",
+  "generated_at_utc": "2026-08-23T17:42:28.517036+00:00",
   "edge_case_file": "data/evaluation/agriculture_edge_cases.json",
-  "active_model": "1.0.1",
+  "active_model": "1.2.0",
   "summary": {
     "total": 32,
     "passed": 32,
@@ -84,7 +84,7 @@
         "domain_score": null,
         "domain_signal": null,
         "suggestion_count": 0,
-        "elapsed_ms": 13.35
+        "elapsed_ms": 10.245
       },
       "passed": true,
       "failures": []
@@ -110,7 +110,7 @@
         "domain_score": null,
         "domain_signal": null,
         "suggestion_count": 0,
-        "elapsed_ms": 1.669
+        "elapsed_ms": 0.916
       },
       "passed": true,
       "failures": []
@@ -136,7 +136,7 @@
         "domain_score": null,
         "domain_signal": null,
         "suggestion_count": 0,
-        "elapsed_ms": 1.38
+        "elapsed_ms": 0.77
       },
       "passed": true,
       "failures": []
@@ -162,7 +162,7 @@
         "domain_score": null,
         "domain_signal": null,
         "suggestion_count": 0,
-        "elapsed_ms": 1.323
+        "elapsed_ms": 0.718
       },
       "passed": true,
       "failures": []
@@ -185,10 +185,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.24141425375212772,
+        "domain_score": 0.31445773845887576,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 18.88
+        "elapsed_ms": 23.296
       },
       "passed": true,
       "failures": []
@@ -211,10 +211,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.18119999333883555,
+        "domain_score": 0.16763050103629298,
         "domain_signal": "recognized_agricultural_topic",
         "suggestion_count": 5,
-        "elapsed_ms": 19.933
+        "elapsed_ms": 18.369
       },
       "passed": true,
       "failures": []
@@ -237,10 +237,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.33255782519691107,
+        "domain_score": 0.3178605359115497,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 8.914
+        "elapsed_ms": 17.333
       },
       "passed": true,
       "failures": []
@@ -263,10 +263,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.16868301651484185,
+        "domain_score": 0.17201948377382797,
         "domain_signal": "recognized_agricultural_topic",
         "suggestion_count": 5,
-        "elapsed_ms": 14.042
+        "elapsed_ms": 14.97
       },
       "passed": true,
       "failures": []
@@ -289,10 +289,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.3250273316141673,
+        "domain_score": 0.32679811177443097,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 14.003
+        "elapsed_ms": 19.479
       },
       "passed": true,
       "failures": []
@@ -315,10 +315,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.2342670452550164,
+        "domain_score": 0.23747653194264567,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 13.43
+        "elapsed_ms": 15.699
       },
       "passed": true,
       "failures": []
@@ -341,10 +341,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.31271632403569094,
+        "domain_score": 0.2921872234130815,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 23.421
+        "elapsed_ms": 13.714
       },
       "passed": true,
       "failures": []
@@ -367,10 +367,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.29577414851127126,
+        "domain_score": 0.2963463302693064,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 18.451
+        "elapsed_ms": 16.51
       },
       "passed": true,
       "failures": []
@@ -393,10 +393,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.30130758297423976,
+        "domain_score": 0.3232929046013954,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 14.401
+        "elapsed_ms": 22.842
       },
       "passed": true,
       "failures": []
@@ -419,10 +419,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.3177617703524277,
+        "domain_score": 0.28887855812213786,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 27.751
+        "elapsed_ms": 25.171
       },
       "passed": true,
       "failures": []
@@ -445,10 +445,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.42220978916896773,
+        "domain_score": 0.4313786561028078,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 3,
-        "elapsed_ms": 18.217
+        "elapsed_ms": 22.221
       },
       "passed": true,
       "failures": []
@@ -471,10 +471,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.16087131670427884,
+        "domain_score": 0.16745862323584335,
         "domain_signal": "recognized_agricultural_topic",
         "suggestion_count": 3,
-        "elapsed_ms": 22.546
+        "elapsed_ms": 25.418
       },
       "passed": true,
       "failures": []
@@ -497,10 +497,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.3051382418428688,
+        "domain_score": 0.29515466454427103,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 14.323
+        "elapsed_ms": 19.682
       },
       "passed": true,
       "failures": []
@@ -523,10 +523,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.23119194987519734,
+        "domain_score": 0.22367779869568752,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 12.167
+        "elapsed_ms": 22.772
       },
       "passed": true,
       "failures": []
@@ -549,10 +549,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.26051456737025014,
+        "domain_score": 0.2515231510532347,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 9.706
+        "elapsed_ms": 20.84
       },
       "passed": true,
       "failures": []
@@ -575,10 +575,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.17991481544721621,
+        "domain_score": 0.19843295506385517,
         "domain_signal": "recognized_agricultural_topic",
         "suggestion_count": 5,
-        "elapsed_ms": 16.049
+        "elapsed_ms": 23.033
       },
       "passed": true,
       "failures": []
@@ -601,10 +601,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.25183567693465897,
+        "domain_score": 0.24191643833233428,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 23.445
+        "elapsed_ms": 25.319
       },
       "passed": true,
       "failures": []
@@ -627,10 +627,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.22251455575278495,
+        "domain_score": 0.23698173143073142,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 19.273
+        "elapsed_ms": 22.507
       },
       "passed": true,
       "failures": []
@@ -653,10 +653,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.2289079604416127,
-        "domain_signal": "statistical_domain_router",
+        "domain_score": 0.21996270494503592,
+        "domain_signal": "recognized_agricultural_topic",
         "suggestion_count": 5,
-        "elapsed_ms": 12.291
+        "elapsed_ms": 22.893
       },
       "passed": true,
       "failures": []
@@ -679,10 +679,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.16676160084807998,
+        "domain_score": 0.17822146905773711,
         "domain_signal": "recognized_agricultural_topic",
         "suggestion_count": 5,
-        "elapsed_ms": 12.196
+        "elapsed_ms": 16.699
       },
       "passed": true,
       "failures": []
@@ -705,10 +705,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.24221361429950572,
+        "domain_score": 0.3042993828820748,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 17.159
+        "elapsed_ms": 17.914
       },
       "passed": true,
       "failures": []
@@ -731,10 +731,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.2869300004725819,
+        "domain_score": 0.27488269829448225,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 22.994
+        "elapsed_ms": 18.072
       },
       "passed": true,
       "failures": []
@@ -757,10 +757,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.3549343935609218,
+        "domain_score": 0.3137569788583223,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 13.937
+        "elapsed_ms": 17.63
       },
       "passed": true,
       "failures": []
@@ -783,10 +783,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.3209903898513635,
+        "domain_score": 0.34431584073390864,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 9.959
+        "elapsed_ms": 18.24
       },
       "passed": true,
       "failures": []
@@ -809,10 +809,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.2826923117939323,
+        "domain_score": 0.3098132257745945,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 13.729
+        "elapsed_ms": 15.259
       },
       "passed": true,
       "failures": []
@@ -835,10 +835,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.22160564914166786,
+        "domain_score": 0.240736758009038,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 14.326
+        "elapsed_ms": 14.84
       },
       "passed": true,
       "failures": []
@@ -861,10 +861,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.27666806202857663,
+        "domain_score": 0.257948941247036,
         "domain_signal": "statistical_domain_router",
         "suggestion_count": 5,
-        "elapsed_ms": 14.632
+        "elapsed_ms": 19.943
       },
       "passed": true,
       "failures": []
@@ -887,10 +887,10 @@
         "response_type": "low_confidence",
         "routing_state": "B",
         "source": "retrieval_v1",
-        "domain_score": 0.17860849926562206,
+        "domain_score": 0.19431248055167255,
         "domain_signal": "recognized_agricultural_topic",
         "suggestion_count": 5,
-        "elapsed_ms": 11.306
+        "elapsed_ms": 24.205
       },
       "passed": true,
       "failures": []
