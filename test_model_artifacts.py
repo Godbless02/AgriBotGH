@@ -120,9 +120,30 @@ class ModelArtifactTests(unittest.TestCase):
                     encoding="utf-8"
                 )
             )
-            self.assertEqual(rebuilt["configuration_sha256"], legacy_metadata["configuration_sha256"])
+            legacy_dir = PRODUCTION_DIR / LEGACY_MODEL_VERSION
+            rebuilt_configuration = json.loads(
+                (rebuilt_dir / rebuilt["configuration_file"]).read_text(
+                    encoding="utf-8"
+                )
+            )
+            legacy_configuration = json.loads(
+                (legacy_dir / legacy_metadata["configuration_file"]).read_text(
+                    encoding="utf-8"
+                )
+            )
+            self.assertEqual(rebuilt_configuration, legacy_configuration)
+            rebuilt_evaluation = json.loads(
+                (rebuilt_dir / rebuilt["evaluation_file"]).read_text(
+                    encoding="utf-8"
+                )
+            )
+            legacy_evaluation = json.loads(
+                (legacy_dir / legacy_metadata["evaluation_file"]).read_text(
+                    encoding="utf-8"
+                )
+            )
             self.assertEqual(
-                rebuilt["evaluation_sha256"], legacy_metadata["evaluation_sha256"]
+                rebuilt_evaluation, legacy_evaluation
             )
             for language in ("English", "Twi"):
                 self.assertEqual(
