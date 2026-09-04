@@ -1,0 +1,5 @@
+# These checksum-protected JSON artifacts were frozen from their exact CRLF
+# byte representation. Keep Git from normalizing them on any platform.
+/models/production/**/*.json -text whitespace=cr-at-eol
+/data/splits/*.json -text whitespace=cr-at-eol
+/models/final_model_comparison.json -text whitespace=cr-at-eol
