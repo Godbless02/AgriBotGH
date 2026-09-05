@@ -34,6 +34,11 @@ let activeSpeech = {
 let availableSpeechVoices = [];
 let speechVoiceListenerRegistered = false;
 let activeRecognition = null;
+let twiSpeechStatusTimer = null;
+
+const TWI_SPEECH_UNAVAILABLE_MESSAGE =
+  "Twi voice input is not available in the browsers tested for this release. Please type your Twi question.";
+const TWI_SPEECH_STATUS_DURATION_MS = 8000;
 
 const WEATHER_TEXT = {
   en: {
@@ -518,6 +523,25 @@ function setSpeechRecognitionStatus(message = "", visible = Boolean(message)) {
   status.hidden = !visible;
 }
 
+function hideTwiSpeechRecognitionUnavailable() {
+  const hadTwiStatusTimer = Boolean(twiSpeechStatusTimer);
+  if (twiSpeechStatusTimer) {
+    window.clearTimeout(twiSpeechStatusTimer);
+    twiSpeechStatusTimer = null;
+  }
+  if (currentLang === "tw" || hadTwiStatusTimer) setSpeechRecognitionStatus("", false);
+}
+
+function showTwiSpeechRecognitionUnavailable() {
+  if (currentLang !== "tw") return;
+  if (twiSpeechStatusTimer) window.clearTimeout(twiSpeechStatusTimer);
+  setSpeechRecognitionStatus(TWI_SPEECH_UNAVAILABLE_MESSAGE, true);
+  twiSpeechStatusTimer = window.setTimeout(() => {
+    twiSpeechStatusTimer = null;
+    if (currentLang === "tw") setSpeechRecognitionStatus("", false);
+  }, TWI_SPEECH_STATUS_DURATION_MS);
+}
+
 function setMicrophoneButtonState(state = "idle") {
   const button = document.getElementById("micBtn");
   if (!button) return;
@@ -551,21 +575,24 @@ function updateSpeechRecognitionAvailability({ clearStatus = true } = {}) {
   if (!button || activeRecognition) return;
 
   setMicrophoneButtonState("idle");
+  if (currentLang === "tw") {
+    button.disabled = false;
+    button.classList.add("is-unavailable");
+    button.setAttribute("aria-disabled", "true");
+    button.setAttribute("aria-label", "Twi voice input unavailable. Activate for details.");
+    button.title = TWI_SPEECH_UNAVAILABLE_MESSAGE;
+    if (clearStatus) hideTwiSpeechRecognitionUnavailable();
+    return;
+  }
+
+  hideTwiSpeechRecognitionUnavailable();
+  button.classList.remove("is-unavailable");
+  button.removeAttribute("aria-disabled");
   if (!supportsSpeechRecognition()) {
     button.disabled = true;
     button.title = "Voice input is not supported in this browser. You can still type your question.";
     setSpeechRecognitionStatus(
       "Voice input is not supported in this browser. Please type your question.",
-      true,
-    );
-    return;
-  }
-
-  if (currentLang === "tw") {
-    button.disabled = true;
-    button.title = "Twi voice input is not available in the browsers tested for this release. Please type your Twi question.";
-    setSpeechRecognitionStatus(
-      "Twi voice input is not available in the browsers tested for this release. Please type your Twi question.",
       true,
     );
     return;
@@ -590,11 +617,35 @@ function speechRecognitionErrorMessage(errorCode) {
 }
 
 function initializeSpeechRecognition() {
+  const button = document.getElementById("micBtn");
+  const hasFineHover = () =>
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (button) {
+    button.addEventListener("pointerenter", () => {
+      if (currentLang === "tw" && hasFineHover()) showTwiSpeechRecognitionUnavailable();
+    });
+    button.addEventListener("pointerleave", () => {
+      if (currentLang === "tw" && hasFineHover() && document.activeElement !== button) {
+        hideTwiSpeechRecognitionUnavailable();
+      }
+    });
+    button.addEventListener("focus", () => {
+      if (currentLang === "tw") showTwiSpeechRecognitionUnavailable();
+    });
+    button.addEventListener("blur", () => {
+      if (currentLang === "tw") hideTwiSpeechRecognitionUnavailable();
+    });
+  }
   updateSpeechRecognitionAvailability();
 }
 
 function startSpeechRecognition() {
-  if (activeRecognition || currentLang !== "en") {
+  if (currentLang === "tw") {
+    showTwiSpeechRecognitionUnavailable();
+    return;
+  }
+  if (activeRecognition) {
     updateSpeechRecognitionAvailability({ clearStatus: false });
     return;
   }

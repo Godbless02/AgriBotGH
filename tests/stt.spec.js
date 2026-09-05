@@ -222,14 +222,15 @@ test.describe("Browser-native speech-to-text", () => {
     await expect(page.locator("#micBtn")).toHaveAttribute("data-state", "idle");
   });
 
-  test("language changes and chat reset abort recognition; Twi stays honestly disabled", async ({ page }) => {
+  test("language changes and chat reset abort recognition; Twi stays honestly unavailable", async ({ page }) => {
     await installRecognitionMock(page);
     await enterApp(page, "LifecycleReset");
     await page.click("#micBtn");
     await page.click("#twBtn");
     expect(await page.evaluate(() => window.__sttTest.aborts)).toBe(1);
-    await expect(page.locator("#micBtn")).toBeDisabled();
-    await expect(page.locator("#sttStatus")).toContainText("Twi voice input is not available");
+    expect(await page.locator("#micBtn").evaluate((button) => button.disabled)).toBeFalsy();
+    await expect(page.locator("#micBtn")).toHaveAttribute("aria-disabled", "true");
+    await expect(page.locator("#sttStatus")).toBeHidden();
 
     await page.click("#enBtn");
     await page.click("#micBtn");
