@@ -217,12 +217,13 @@ test.describe("Text-to-speech controls", () => {
     await enterApp(page, "TwiVoiceUser");
     await page.evaluate(() => appendMessage("Akwaaba okuafo", "bot", "tw"));
     await page.locator(".tts-button").click();
+    await expect(page.locator(".tts-status")).toContainText("browser fallback");
 
     const speech = await page.evaluate(() => window.__speechTest);
+    expect(speech.speak).toBe(1);
     expect(speech.lastVoice).toBe("Akan Voice");
     expect(speech.lastLang).toBe("ak-GH");
     expect(speech.lastText).toBe("Akwaaba okuafo");
-    await expect(page.locator(".tts-status")).toContainText("browser fallback");
   });
 
   test("discloses when Twi must use a fallback voice", async ({ page }) => {
@@ -479,6 +480,10 @@ test.describe("Abena Twi audio with browser fallback", () => {
     await enterApp(page, "MalformedFallbackUser");
     await page.evaluate(() => appendMessage("Akwaaba", "bot", "tw"));
     await page.locator(".tts-button").click();
+    await expect(page.locator(".tts-status")).toContainText("browser fallback");
+    await expect.poll(
+      () => page.evaluate(() => window.__speechTest.speak),
+    ).toBe(1);
     expect(await page.evaluate(() => window.__speechTest.speak)).toBe(1);
   });
 
