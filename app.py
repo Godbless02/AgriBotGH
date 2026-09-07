@@ -5,6 +5,7 @@ import re
 from pathlib import Path
 
 from entity_guard import DatasetEntityGuard
+from operation_guard import OperationCompatibilityGuard
 from retrieval_runtime import RetrievalRuntime, sha256_file
 from retrieval_assistance import attempt_retrieval_assistance
 from retrieval_semantics import has_agricultural_intent
@@ -48,6 +49,7 @@ if not DATA_FILE.exists():
 print(f"Loading canonical local dataset from {DATA_FILE}")
 CANONICAL_RECORDS = load_canonical_dataset(DATA_FILE)
 ENTITY_GUARD = DatasetEntityGuard(CANONICAL_RECORDS)
+OPERATION_GUARD = OperationCompatibilityGuard()
 AVAILABLE_CATEGORIES = tuple(sorted(
     {
         str(record.get('category', '')).strip()
@@ -732,6 +734,14 @@ def get_answer(question, lang, username=None):
         retrieval["state"] = "B"
         retrieval["entity_support_rejected"] = True
         retrieval["entity_support_reason"] = entity_decision.reason
+    operation_decision = OPERATION_GUARD.evaluate(
+        q, top_candidate["question"], lang
+    )
+    if retrieval["state"] == "A" and not operation_decision.compatible:
+        retrieval = dict(retrieval)
+        retrieval["state"] = "B"
+        retrieval["operation_support_rejected"] = True
+        retrieval["operation_support_reason"] = operation_decision.reason
     if is_explicitly_off_topic(q, lang):
         retrieval["state"] = "C"
         retrieval["explicit_off_topic"] = True
@@ -745,7 +755,8 @@ def get_answer(question, lang, username=None):
     assistance = None
     if retrieval["state"] == "B" and not weather_question:
         assistance = attempt_retrieval_assistance(
-            q, lang, retrieval, RETRIEVAL_RUNTIME, GEMINI_SERVICE, ENTITY_GUARD
+            q, lang, retrieval, RETRIEVAL_RUNTIME, GEMINI_SERVICE,
+            ENTITY_GUARD, OPERATION_GUARD
         )
         retrieval = assistance["selected_retrieval"]
         top_candidate = retrieval["candidates"][0]
@@ -759,6 +770,16 @@ def get_answer(question, lang, username=None):
             retrieval["entity_support_reason"] = entity_decision.reason
             assistance["accepted"] = False
             assistance["reason"] = "entity_incompatible_second_pass"
+        operation_decision = OPERATION_GUARD.evaluate(
+            q, top_candidate["question"], lang
+        )
+        if retrieval["state"] == "A" and not operation_decision.compatible:
+            retrieval = dict(retrieval)
+            retrieval["state"] = "B"
+            retrieval["operation_support_rejected"] = True
+            retrieval["operation_support_reason"] = operation_decision.reason
+            assistance["accepted"] = False
+            assistance["reason"] = "operation_incompatible_second_pass"
     top_candidate = retrieval["candidates"][0]
 
     if retrieval["state"] == "A":

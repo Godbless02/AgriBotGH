@@ -23,6 +23,7 @@ def attempt_retrieval_assistance(
     retrieval_runtime: Any,
     gemini_service: Any,
     entity_guard: Any = None,
+    operation_guard: Any = None,
 ) -> dict[str, Any]:
     """Make at most one interpretation call and conservatively compare results."""
     original_score = candidate_raw_score(original_retrieval)
@@ -61,6 +62,11 @@ def attempt_retrieval_assistance(
     ):
         result["reason"] = "salient_entity_not_preserved"
         return result
+    if operation_guard is not None and not operation_guard.preserves_operation(
+        original_query, interpreted_query, language_code
+    ):
+        result["reason"] = "operation_not_preserved"
+        return result
 
     interpreted_retrieval = retrieval_runtime.retrieve(
         interpreted_query, language_code
@@ -72,6 +78,7 @@ def attempt_retrieval_assistance(
     second_is_strong = interpreted_retrieval.get("state") == "A"
     non_regressing_score = interpreted_score >= original_score
     candidate_compatible = True
+    operation_compatible = True
     if second_is_strong and entity_guard is not None:
         candidate = interpreted_retrieval["candidates"][0]
         original_decision = entity_guard.evaluate(
@@ -89,12 +96,28 @@ def attempt_retrieval_assistance(
         candidate_compatible = (
             original_decision.compatible and interpreted_decision.compatible
         )
-    if second_is_strong and non_regressing_score and candidate_compatible:
+    if second_is_strong and operation_guard is not None:
+        candidate = interpreted_retrieval["candidates"][0]
+        original_operation = operation_guard.evaluate(
+            original_query, candidate["question"], language_code
+        )
+        interpreted_operation = operation_guard.evaluate(
+            interpreted_query, candidate["question"], language_code
+        )
+        operation_compatible = (
+            original_operation.compatible and interpreted_operation.compatible
+        )
+    if (
+        second_is_strong and non_regressing_score
+        and candidate_compatible and operation_compatible
+    ):
         result["accepted"] = True
         result["reason"] = "stronger_dataset_match"
         result["selected_retrieval"] = interpreted_retrieval
     elif not candidate_compatible:
         result["reason"] = "entity_incompatible_second_pass"
+    elif not operation_compatible:
+        result["reason"] = "operation_incompatible_second_pass"
     elif not second_is_strong:
         result["reason"] = "second_pass_still_uncertain"
     else:
