@@ -993,6 +993,7 @@ def weather_route():
         'empty_location': 400,
         'invalid_location': 400,
         'location_not_found': 404,
+        'rate_limited': 503,
         'timeout': 504,
         'api_http_error': 502,
         'service_unavailable': 503,

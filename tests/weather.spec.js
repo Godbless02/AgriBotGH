@@ -44,7 +44,49 @@ test("farmer can retrieve current Kumasi weather and a three-day forecast", asyn
   await expect(page.locator(".weather-metric")).toHaveCount(5);
   await expect(page.locator(".weather-day")).toHaveCount(3);
   await expect(page.locator("#weatherGuidance")).toContainText("Protect harvested produce");
+  await expect(page.locator("#weatherStatus")).toBeEmpty();
   expect(requestedLocation).toBe("Kumasi");
+});
+
+test("stale weather remains usable and is clearly disclosed", async ({ page }) => {
+  await page.route("**/api/weather?*", (route) => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({
+      ...weatherPayload,
+      stale: true,
+      cache_status: "stale",
+      stale_reason: "rate_limited",
+    }),
+  }));
+  await enterApp(page, "StaleWeatherFarmer");
+  await page.click("#weatherBtn");
+  await page.fill("#weatherLocation", "Kumasi");
+  await page.click("#weatherSubmit");
+
+  await expect(page.locator("#weatherCondition")).toHaveText("Light rain");
+  await expect(page.locator("#weatherStatus")).toContainText("Showing recently retrieved weather");
+  await expect(page.locator("#weatherSubmit")).toBeEnabled();
+});
+
+test("rate-limit failure is friendly and leaves weather retryable", async ({ page }) => {
+  await page.route("**/api/weather?*", (route) => route.fulfill({
+    status: 503,
+    contentType: "application/json",
+    body: JSON.stringify({
+      success: false,
+      code: "rate_limited",
+      error: "Weather information is temporarily rate-limited. Please try again shortly.",
+    }),
+  }));
+  await enterApp(page, "RateLimitedWeatherFarmer");
+  await page.click("#weatherBtn");
+  await page.fill("#weatherLocation", "Kumasi");
+  await page.click("#weatherSubmit");
+
+  await expect(page.locator("#weatherStatus")).toContainText("temporarily rate-limited");
+  await expect(page.locator("#weatherSubmit")).toBeEnabled();
+  await expect(page.locator(".weather-close")).toBeVisible();
 });
 
 test("weather errors are friendly and do not affect chat", async ({ page }) => {

@@ -53,7 +53,8 @@ const WEATHER_TEXT = {
     dry: "Little rain is expected today. Check soil moisture before watering.",
     possibleRain: "Rain is possible today. Plan spraying and drying work carefully.",
     likelyRain: "Rain is likely today. Protect harvested produce and avoid spraying before rain.",
-    caution: "Forecasts can change. Check again before time-sensitive farm work."
+    caution: "Forecasts can change. Check again before time-sensitive farm work.",
+    staleNotice: "Showing recently retrieved weather because the live weather provider is temporarily unavailable. Check again soon for the latest conditions."
   },
   tw: {
     button: "Ewiem Tebea", eyebrow: "Afuw nhyehyɛe", title: "Mpɔtam ewiem tebea",
@@ -67,7 +68,8 @@ const WEATHER_TEXT = {
     dry: "Ɛda adi sɛ osu pii rentɔ nnɛ. Hwɛ asase no mu nsu ansa na woagugu so nsu.",
     possibleRain: "Osu betumi atɔ nnɛ. Yɛ aduro pete ne nnɔbae yow ho nhyehyɛe yiye.",
     likelyRain: "Ɛda adi sɛ osu bɛtɔ nnɛ. Kata nnɔbae a woatwa so na mfa aduro mpete ansa na osu atɔ.",
-    caution: "Ewiem tebea betumi asesa. San hwɛ ansa na woayɛ afuw adwuma a ɛhia bere pɔtee."
+    caution: "Ewiem tebea betumi asesa. San hwɛ ansa na woayɛ afuw adwuma a ɛhia bere pɔtee.",
+    staleNotice: "Yɛrekyerɛ ewiem tebea a yɛnyaa no nnansa yi ara efisɛ yentumi nnya foforo seesei. San hwɛ bio akyiri yi."
   }
 };
 
@@ -316,7 +318,7 @@ function renderWeather(data) {
     card.append(date, condition, temperature, rain);
     forecast.appendChild(card);
   });
-  document.getElementById("weatherStatus").textContent = "";
+  document.getElementById("weatherStatus").textContent = data.stale ? text.staleNotice : "";
   document.getElementById("weatherResults").hidden = false;
 }
 
