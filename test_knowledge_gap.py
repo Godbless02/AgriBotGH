@@ -118,24 +118,38 @@ class KnowledgeGapTests(unittest.TestCase):
                 self.assertEqual(result["type"], "knowledge_gap")
                 self.assertNotIn("record_id", result)
 
-    def test_available_topics_are_exactly_the_dataset_categories(self):
-        expected = sorted(
-            {
-                record["category"].strip()
-                for record in app.CANONICAL_RECORDS
-                if record["category"].strip()
-            },
-            key=str.casefold,
-        )
-        self.assertEqual(list(app.AVAILABLE_CATEGORIES), expected)
-        self.assertEqual(len(expected), len(set(expected)))
-        self.assertNotIn("", expected)
-
+    def test_knowledge_gap_topics_use_the_reviewed_ui_catalogue(self):
         with patch.object(app, "GEMINI_SERVICE", GeminiService(api_key="")):
             payload = app.get_answer("How do I manage alpacas on a farm?", "en")
+        expected = list(app.TOPICS)
+        self.assertEqual((payload["type"], payload["routing_state"]), ("knowledge_gap", "D"))
         self.assertEqual(payload["available_topics"], expected)
         self.assertEqual(set(payload["available_topic_icons"]), set(expected))
         self.assertEqual(set(payload["available_topic_names_tw"]), set(expected))
+        for topic, info in app.TOPICS.items():
+            self.assertEqual(payload["available_topic_icons"][topic], info["icon"])
+            self.assertEqual(
+                payload["available_topic_names_tw"][topic],
+                info.get("tw_name", topic),
+            )
+
+    def test_every_knowledge_gap_topic_is_accepted_by_suggestion_endpoint(self):
+        with patch.object(app, "GEMINI_SERVICE", GeminiService(api_key="")):
+            payload = app.get_answer("How do I manage alpacas on a farm?", "en")
+        for topic in payload["available_topics"]:
+            with self.subTest(topic=topic):
+                response = self.client.post(
+                    "/api/topic-suggestions", json={"topic": topic, "lang": "en"}
+                )
+                self.assertEqual(response.status_code, 200)
+                self.assertTrue(response.get_json()["suggestions"])
+
+    def test_raw_dataset_categories_do_not_become_invalid_topic_keys(self):
+        raw_only_categories = set(app.AVAILABLE_CATEGORIES) - set(app.TOPICS)
+        self.assertTrue(raw_only_categories)
+        with patch.object(app, "GEMINI_SERVICE", GeminiService(api_key="")):
+            payload = app.get_answer("How do I manage alpacas on a farm?", "en")
+        self.assertFalse(raw_only_categories & set(payload["available_topics"]))
 
     def test_known_questions_across_categories_do_not_false_positive_as_gaps(self):
         categories = (

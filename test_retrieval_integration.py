@@ -61,7 +61,7 @@ class RetrievalIntegrationTests(unittest.TestCase):
         payload = response.get_json()
         self.assertEqual(payload["type"], "knowledge_gap")
         self.assertEqual(payload["routing_state"], "D")
-        self.assertEqual(payload["available_topics"], list(agribot.AVAILABLE_CATEGORIES))
+        self.assertEqual(payload["available_topics"], list(agribot.TOPICS))
 
     def test_clearly_unrelated_questions_return_state_c(self):
         cases = (

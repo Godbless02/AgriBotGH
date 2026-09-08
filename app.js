@@ -1999,10 +1999,7 @@ function appendKnowledgeGapTopics(topics, icons, twNames, responseLang) {
     nameEl.textContent = displayName;
     btn.append(iconEl, nameEl);
     btn.addEventListener("click", () => {
-      const input = document.getElementById("chatInput");
-      input.value = displayName;
-      updateCharCount();
-      input.focus();
+      selectTopic(topic, (icons && icons[topic]) || "🌱", responseLang);
     });
     grid.appendChild(btn);
   });
@@ -2046,11 +2043,11 @@ function appendTopicsGrid(topics, icons, twNames) {
   scrollBottom();
 }
 
-function selectTopic(topic, icon) {
+function selectTopic(topic, icon, selectionLang = currentLang) {
   fetch(`${API}/api/topic-suggestions`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ topic, lang: currentLang }),
+    body: JSON.stringify({ topic, lang: selectionLang }),
   })
     .then((response) => {
       if (!response.ok) throw new Error("Could not load topic suggestions");
@@ -2060,18 +2057,19 @@ function selectTopic(topic, icon) {
       const displayName = data.display_name || topic;
       const topicIcon = data.icon || icon || "🌱";
       const followUp =
-        currentLang === "tw"
+        selectionLang === "tw"
           ? `Wapaw **${topicIcon} ${displayName}**.\n\nDɛn na wopɛ sɛ wonim? Asɛmmisa bi a wotumi bisa:`
           : `You selected **${topicIcon} ${displayName}**.\n\nWhat would you like to know? Here are some ideas:`;
-      appendMessage(followUp, "bot");
+      appendMessage(followUp, "bot", selectionLang);
       appendSuggestionButtons(data.suggestions, topic);
     })
     .catch(() => {
       appendMessage(
-        currentLang === "tw"
+        selectionLang === "tw"
           ? "Yɛantumi antwe asɛmmisa no amma. Yɛsrɛ wo san sɔ hwɛ."
           : "The suggested questions could not be loaded. Please try again.",
         "bot",
+        selectionLang,
       );
     });
 }

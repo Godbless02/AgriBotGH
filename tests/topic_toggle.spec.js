@@ -19,7 +19,7 @@ test.describe("Topic and quick-question panels", () => {
       "My maize leaves are changing colour and I am not sure why",
     );
     await page.click("#sendBtn");
-    await expect(page.locator(".knowledge-gap-topic-btn")).toHaveCount(40, {
+    await expect(page.locator(".knowledge-gap-topic-btn")).toHaveCount(28, {
       timeout: 15000,
     });
     await expect(page.locator(".message-card.bot-message").last()).toContainText(

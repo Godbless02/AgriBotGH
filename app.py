@@ -488,17 +488,11 @@ def get_topic_display_name(topic, lang='en'):
 
 
 def get_available_category_presentation():
-    """Return UI metadata for categories derived from the in-memory dataset."""
-    icons = {}
-    twi_names = {}
-    for category in AVAILABLE_CATEGORIES:
-        topic = CATEGORY_TO_TOPIC.get(category)
-        topic_info = TOPICS.get(topic, {})
-        icons[category] = topic_info.get('icon', '🌱')
-        twi_name = topic_info.get('tw_name')
-        twi_names[category] = (
-            f"{twi_name} — {category}" if twi_name else category
-        )
+    """Return UI metadata for the reviewed topic catalogue."""
+    icons = {topic: info['icon'] for topic, info in TOPICS.items()}
+    twi_names = {
+        topic: info.get('tw_name', topic) for topic, info in TOPICS.items()
+    }
     return icons, twi_names
 
 
@@ -833,7 +827,7 @@ def get_answer(question, lang, username=None):
                 "type": "knowledge_gap",
                 "text": text,
                 "knowledge_gap": True,
-                "available_topics": list(AVAILABLE_CATEGORIES),
+                "available_topics": list(TOPICS.keys()),
                 "available_topic_icons": available_topic_icons,
                 "available_topic_names_tw": available_topic_names_tw,
                 "source": "retrieval_v1",

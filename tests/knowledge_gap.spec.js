@@ -16,7 +16,7 @@ async function submitGapQuestion(page, question) {
   });
 }
 
-test("State D renders dataset topics and a click edits rather than submits", async ({
+test("State D topic click loads canonical suggestions without editing input", async ({
   page,
 }) => {
   await enterApp(page, "GapUser");
@@ -28,18 +28,34 @@ test("State D renders dataset topics and a click edits rather than submits", asy
   await expect(page.locator(".knowledge-gap-heading")).toHaveText(
     "Topics I can currently help with",
   );
-  await expect(page.locator(".knowledge-gap-topic-btn")).toHaveCount(40);
+  await expect(page.locator(".knowledge-gap-topic-btn")).toHaveCount(28);
 
-  const messageCount = await page.locator(".message-card").count();
-  const maize = page.locator('.knowledge-gap-topic-btn[data-topic="Maize"]');
-  await expect(maize).toHaveAttribute("type", "button");
-  await maize.click();
-  await expect(page.locator("#chatInput")).toHaveValue("Maize");
-  await expect(page.locator("#chatInput")).toBeFocused();
-  await expect(page.locator(".message-card")).toHaveCount(messageCount);
+  await page.fill("#chatInput", "keep this draft");
+  const requestPromise = page.waitForRequest((request) =>
+    request.url().endsWith("/api/topic-suggestions") &&
+    request.postDataJSON().topic === "Pepper"
+  );
+  const pepper = page.locator('.knowledge-gap-topic-btn[data-topic="Pepper"]');
+  await expect(pepper).toHaveAttribute("type", "button");
+  await pepper.click();
+  const request = await requestPromise;
+  expect(request.postDataJSON()).toEqual({ topic: "Pepper", lang: "en" });
+  await expect(page.locator("#chatInput")).toHaveValue("keep this draft");
+  const suggestions = page.locator(".suggestions-wrapper .suggestion-btn");
+  await expect(suggestions).toHaveCount(5);
+  await expect(page.locator(".message-card.bot-message").last()).toContainText(
+    "You selected",
+  );
+
+  await suggestions.first().click();
+  await expect(page.locator(".message-card.user-message").last()).toContainText(/.+/);
+  await expect(page.locator(".message-card.bot-message").last()).toContainText(
+    /.+/,
+    { timeout: 15000 },
+  );
 });
 
-test("Twi State D stays localized and uses the same editable topic behavior", async ({
+test("Twi State D topic click loads Twi suggestions without editing input", async ({
   page,
 }) => {
   await enterApp(page, "TwiGapUser");
@@ -53,9 +69,17 @@ test("Twi State D stays localized and uses the same editable topic behavior", as
     "Kuayɛ nsɛm a metumi aboa wo wɔ ho",
   );
   const maize = page.locator('.knowledge-gap-topic-btn[data-topic="Maize"]');
-  await expect(maize).toContainText("Aburoɔ — Maize");
+  await expect(maize).toContainText("Aburoɔ");
+  await page.fill("#chatInput", "Twi draft");
+  const requestPromise = page.waitForRequest((request) =>
+    request.url().endsWith("/api/topic-suggestions") &&
+    request.postDataJSON().topic === "Maize"
+  );
   await maize.click();
-  await expect(page.locator("#chatInput")).toHaveValue("Aburoɔ — Maize");
+  expect((await requestPromise).postDataJSON()).toEqual({ topic: "Maize", lang: "tw" });
+  await expect(page.locator("#chatInput")).toHaveValue("Twi draft");
+  await expect(page.locator(".suggestions-wrapper .suggestion-btn")).toHaveCount(5);
+  await expect(page.locator(".message-card.bot-message").last()).toContainText("Wapaw");
 });
 
 test("State D is readable on mobile and dark mode and remains TTS-playable", async ({
@@ -101,6 +125,12 @@ test("State D is readable on mobile and dark mode and remains TTS-playable", asy
     element.scrollWidth > element.clientWidth,
   );
   expect(overflow).toBeFalsy();
+  await page.fill("#chatInput", "mobile draft");
+  await page.locator('.knowledge-gap-topic-btn[data-topic="Pepper"]').click();
+  await expect(page.locator("#chatInput")).toHaveValue("mobile draft");
+  await expect(page.locator(".suggestions-wrapper .suggestion-btn")).toHaveCount(5);
+  await expect(page.locator(".topic-toggle-btn")).toBeVisible();
+  await expect(page.locator("#sendBtn")).toBeVisible();
   const play = page.locator(".message-card.bot-message").last().locator(".tts-button");
   await expect(play).toBeEnabled();
   await play.click();
