@@ -1,6 +1,5 @@
 // ── CONSTANTS ────────────────────────────────────────────────────
 const API = "";
-const STORAGE_KEY_CURRENT = "agribot_current_user"; // who is logged in now
 const STORAGE_KEY_ALL = "agribot_all_users"; // all user profiles + their chats
 const STORAGE_KEY_THEME = "agribot_theme_preference";
 const DARK_THEME_QUERY = "(prefers-color-scheme: dark)";
@@ -98,13 +97,13 @@ function saveAllUsers(users) {
 
 function getUserProfile(name) {
   const all = getAllUsers();
-  const key = name.trim().toLowerCase();
+  const key = name.trim().replace(/\s+/g, " ").toLowerCase();
   return all[key] || null;
 }
 
 function createUserProfile(name, lang) {
   const all = getAllUsers();
-  const key = name.trim().toLowerCase();
+  const key = name.trim().replace(/\s+/g, " ").toLowerCase();
   if (!all[key]) {
     all[key] = {
       displayName: name.trim(),
@@ -118,7 +117,7 @@ function createUserProfile(name, lang) {
 
 function updateUserProfile(name, data) {
   const all = getAllUsers();
-  const key = name.trim().toLowerCase();
+  const key = name.trim().replace(/\s+/g, " ").toLowerCase();
   if (all[key]) {
     all[key] = { ...all[key], ...data };
     saveAllUsers(all);
@@ -127,7 +126,7 @@ function updateUserProfile(name, data) {
 
 function saveSessionMessage(name, sessId, lang, title, userMsg, botMsg) {
   const all = getAllUsers();
-  const key = name.trim().toLowerCase();
+  const key = name.trim().replace(/\s+/g, " ").toLowerCase();
   if (!all[key]) return;
 
   if (!all[key].sessions[sessId]) {
@@ -158,68 +157,88 @@ function selectWelcomeLang(lang) {
   document
     .getElementById("langTwBtn")
     .classList.toggle("active", lang === "tw");
-  startChatIfReady();
 }
 
-function startChatIfReady() {
-  const nameValue = document.getElementById("nameInput").value.trim();
-  if (!nameValue) return;
-  if (document.getElementById("appShell").style.display === "none") {
-    startChat();
-  }
+function showAuthView(view) {
+  const login = view === "login";
+  document.getElementById("authLoginForm").hidden = !login;
+  document.getElementById("authRegisterForm").hidden = login;
+  document.getElementById("welcomeError").textContent = "";
+  document.getElementById("registerError").textContent = "";
 }
 
-function startChat() {
-  const nameInput = document.getElementById("nameInput").value.trim();
-  const errEl = document.getElementById("welcomeError");
+function authError(view, message) {
+  document.getElementById(view === "register" ? "registerError" : "welcomeError").textContent = message;
+}
 
-  if (!nameInput) {
-    errEl.textContent = "Please enter your name to continue.";
-    return;
-  }
-  errEl.textContent = "";
+async function authRequest(path, payload) {
+  const response = await fetch(`${API}${path}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.error || "Unable to access your account.");
+  return data;
+}
 
-  const profile = getUserProfile(nameInput);
-
-  if (profile) {
-    // RETURNING USER — restore their language and sessions
-    currentUser = profile.displayName;
-    currentLang = profile.lang || welcomeLang;
-  } else {
-    // NEW USER — create fresh profile
-    currentUser = nameInput;
-    currentLang = welcomeLang;
-    createUserProfile(nameInput, welcomeLang);
-  }
-
-  // Remember who is currently using the app
-  localStorage.setItem(STORAGE_KEY_CURRENT, currentUser);
-
-  // Launch app
+function enterAuthenticatedApp(user, isReturning) {
+  currentUser = user.username;
+  currentLang = user.preferred_language || "en";
+  welcomeLang = currentLang;
+  if (!getUserProfile(currentUser)) createUserProfile(currentUser, currentLang);
+  else updateUserProfile(currentUser, { displayName: currentUser, lang: currentLang });
   document.getElementById("welcomeScreen").style.display = "none";
   document.getElementById("appShell").style.display = "flex";
   document.getElementById("appShell").style.flexDirection = "column";
-  initApp(profile !== null); // pass true if returning user
+  initApp(isReturning);
 }
 
-function changeName() {
+async function registerUser() {
+  try {
+    const data = await authRequest("/api/auth/register", {
+      username: document.getElementById("registerUsername").value,
+      password: document.getElementById("registerPassword").value,
+      confirm_password: document.getElementById("registerConfirmPassword").value,
+      preferred_language: welcomeLang,
+    });
+    document.getElementById("registerPassword").value = "";
+    document.getElementById("registerConfirmPassword").value = "";
+    enterAuthenticatedApp(data.user, false);
+  } catch (error) {
+    authError("register", error.message);
+  }
+}
+
+async function loginUser() {
+  try {
+    const data = await authRequest("/api/auth/login", {
+      username: document.getElementById("loginUsername").value,
+      password: document.getElementById("loginPassword").value,
+    });
+    document.getElementById("loginPassword").value = "";
+    enterAuthenticatedApp(data.user, true);
+  } catch (error) {
+    authError("login", error.message);
+  }
+}
+
+async function logoutUser() {
   stopSpeechRecognition({ abort: true, clearStatus: true });
   stopSpeech();
-  // Save current user's language preference before leaving
-  if (currentUser) {
-    updateUserProfile(currentUser, { lang: currentLang });
+  try {
+    await fetch(`${API}/api/auth/logout`, { method: "POST" });
+  } catch {
+    // A refresh will re-check the server session if the network is unavailable.
   }
-  // Clear current session state
   enSessionId = null;
   twSessionId = null;
   currentUser = "";
-
-  // Go back to welcome screen — blank name field so new user enters their own name
   document.getElementById("appShell").style.display = "none";
   document.getElementById("welcomeScreen").style.display = "flex";
-  document.getElementById("nameInput").value = "";
-  document.getElementById("welcomeError").textContent = "";
-  selectWelcomeLang("en");
+  document.getElementById("loginUsername").value = "";
+  document.getElementById("loginPassword").value = "";
+  showAuthView("login");
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -400,23 +419,22 @@ window.onload = function () {
   initializeWeather();
   initializeSpeechSynthesis();
   initializeSpeechRecognition();
-  const lastUser = localStorage.getItem(STORAGE_KEY_CURRENT);
-  if (lastUser) {
-    const profile = getUserProfile(lastUser);
-    if (profile) {
-      // Auto-login the last user
-      currentUser = profile.displayName;
-      currentLang = profile.lang || "en";
-      document.getElementById("welcomeScreen").style.display = "none";
-      document.getElementById("appShell").style.display = "flex";
-      document.getElementById("appShell").style.flexDirection = "column";
-      initApp(true);
-      return;
-    }
-  }
-  // Show welcome screen for new visitor
-  document.getElementById("welcomeScreen").style.display = "flex";
-  document.getElementById("appShell").style.display = "none";
+  fetch(`${API}/api/auth/me`)
+    .then(async (response) => ({ response, data: await response.json() }))
+    .then(({ response, data }) => {
+      if (response.ok && data.authenticated) {
+        enterAuthenticatedApp(data.user, true);
+        return;
+      }
+      document.getElementById("welcomeScreen").style.display = "flex";
+      document.getElementById("appShell").style.display = "none";
+      showAuthView("login");
+    })
+    .catch(() => {
+      document.getElementById("welcomeScreen").style.display = "flex";
+      document.getElementById("appShell").style.display = "none";
+      showAuthView("login");
+    });
 };
 
 // ══════════════════════════════════════════════════════════════════
@@ -1281,7 +1299,7 @@ function showTyping() {
 
 function loadSidebarHistory() {
   const all = getAllUsers();
-  const key = currentUser.trim().toLowerCase();
+  const key = currentUser.trim().replace(/\s+/g, " ").toLowerCase();
   const profile = all[key];
 
   const enList = document.getElementById("enHistory");
@@ -1323,7 +1341,7 @@ function loadSidebarHistory() {
 
 function loadSession(sessId, lang) {
   const all = getAllUsers();
-  const key = currentUser.trim().toLowerCase();
+  const key = currentUser.trim().replace(/\s+/g, " ").toLowerCase();
   const profile = all[key];
   if (!profile) return;
 
@@ -1874,6 +1892,7 @@ function submitQuestion(question = null) {
   stopSpeech();
 
   const requestLang = currentLang;
+  const requestUser = currentUser;
   appendMessage(text, "user", requestLang);
   input.value = "";
   updateCharCount();
@@ -1888,7 +1907,6 @@ function submitQuestion(question = null) {
       message: text,
       language: requestLang,
       session_id: sessId,
-      username: currentUser,
     }),
   })
     .then(async (response) => {
@@ -1901,11 +1919,15 @@ function submitQuestion(question = null) {
     })
     .then((data) => {
       typingEl.remove();
-      renderBotResponse(data, sessId, text, requestLang);
+      renderBotResponse(data, sessId, text, requestLang, requestUser);
     })
     .catch((error) => {
       typingEl.remove();
-      if (currentLang === requestLang && getCurrentSessionId() === sessId) {
+      if (
+        currentUser === requestUser &&
+        currentLang === requestLang &&
+        getCurrentSessionId() === sessId
+      ) {
         appendMessage(
           error.message ||
             "Sorry, the server is not responding. Please make sure the app is running.",
@@ -1916,23 +1938,25 @@ function submitQuestion(question = null) {
     });
 }
 
-function renderBotResponse(data, sessId, userText, responseLang = currentLang) {
+function renderBotResponse(data, sessId, userText, responseLang, requestUser) {
   const type = data.type || "answer";
   const botText = data.safety_notice
     ? `${data.text}\n\n${data.safety_notice}`
     : data.text;
   const isActiveSession =
-    currentLang === responseLang && getCurrentSessionId() === sessId;
+    currentUser === requestUser &&
+    currentLang === responseLang &&
+    getCurrentSessionId() === sessId;
 
   saveSessionMessage(
-    currentUser,
+    requestUser,
     sessId,
     responseLang,
     userText.length > 35 ? userText.substring(0, 35) + "..." : userText,
     userText,
     botText,
   );
-  loadSidebarHistory();
+  if (currentUser === requestUser) loadSidebarHistory();
 
   if (!isActiveSession) return;
 

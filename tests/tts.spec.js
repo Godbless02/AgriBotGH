@@ -1,11 +1,10 @@
 const { test, expect } = require("@playwright/test");
+const { enterAuthenticatedApp } = require("./helpers/auth");
 
-const BASE = process.env.TEST_BASE_URL || "http://localhost:8080";
+const BASE = process.env.TEST_BASE_URL || "http://127.0.0.1:5000";
 
 async function enterApp(page, name) {
-  await page.goto(BASE + "/index.html");
-  await page.fill("#nameInput", name);
-  await page.click(".start-btn");
+  await enterAuthenticatedApp(page, { base: BASE, username: name });
 }
 
 async function installSpeechMock(page, voices) {

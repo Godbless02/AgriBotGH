@@ -1,11 +1,10 @@
 const { test, expect } = require("@playwright/test");
+const { enterAuthenticatedApp, mockAuthenticatedUser } = require("./helpers/auth");
 
-const BASE = process.env.TEST_BASE_URL || "http://localhost:8080";
+const BASE = process.env.TEST_BASE_URL || "http://127.0.0.1:5000";
 
 async function startChat(page, name = "RegressionUser") {
-  await page.goto(BASE + "/index.html");
-  await page.fill("#nameInput", name);
-  await page.click(".start-btn");
+  await enterAuthenticatedApp(page, { base: BASE, username: name });
   await expect(page.locator("#enChips .chip")).toHaveCount(8);
 }
 
@@ -103,6 +102,7 @@ test.describe("intelligent theme priority", () => {
   test("uses system dark, tracks changes, and preserves manual override", async ({
     page,
   }) => {
+    await mockAuthenticatedUser(page, { username: "ThemeUser" });
     await page.goto(BASE + "/index.html");
     await expect(page.locator("body")).toHaveAttribute("data-theme", "night");
     await expect(page.locator("#themeBtn")).toHaveAttribute(
@@ -115,8 +115,6 @@ test.describe("intelligent theme priority", () => {
     await page.evaluate(() => window.__setSystemDark(false));
     await expect(page.locator("body")).not.toHaveAttribute("data-theme", "night");
 
-    await page.fill("#nameInput", "ThemeUser");
-    await page.click(".start-btn");
     await page.click("#themeBtn");
     await expect(page.locator("body")).toHaveAttribute("data-theme", "night");
     expect(await page.evaluate(() => localStorage.getItem("agribot_theme_preference"))).toBe(

@@ -1,6 +1,7 @@
 const { test, expect } = require("@playwright/test");
+const { enterAuthenticatedApp, mockAuthenticatedUser } = require("./helpers/auth");
 
-const BASE = process.env.TEST_BASE_URL || "http://localhost:8080";
+const BASE = process.env.TEST_BASE_URL || "http://127.0.0.1:5000";
 
 async function installRecognitionMock(page, { standard = false, withTts = false } = {}) {
   await page.addInitScript(({ useStandard, includeTts }) => {
@@ -83,9 +84,7 @@ async function installRecognitionMock(page, { standard = false, withTts = false 
 }
 
 async function enterApp(page, name = "SttUser") {
-  await page.goto(BASE + "/index.html");
-  await page.fill("#nameInput", `${name}${Date.now()}`);
-  await page.click(".start-btn");
+  await enterAuthenticatedApp(page, { base: BASE, username: `${name}${Date.now()}` });
   await expect(page.locator("#chatInput")).toBeVisible();
 }
 
@@ -129,6 +128,7 @@ test.describe("Browser-native speech-to-text", () => {
       delete window.SpeechRecognition;
       delete window.webkitSpeechRecognition;
     });
+    await mockAuthenticatedUser(unsupported, { username: "UnsupportedSttUser" });
     await unsupported.goto(BASE + "/index.html");
     await expect(unsupported.locator("#chatInput")).toBeVisible();
     await expect(unsupported.locator("#micBtn")).toBeDisabled();

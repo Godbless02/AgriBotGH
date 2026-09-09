@@ -1,6 +1,7 @@
 const { test, expect } = require("@playwright/test");
+const { enterAuthenticatedApp } = require("./helpers/auth");
 
-const BASE = process.env.TEST_BASE_URL || "http://localhost:8080";
+const BASE = process.env.TEST_BASE_URL || "http://127.0.0.1:5000";
 const MOBILE_VIEWPORTS = [
   { width: 360, height: 800 },
   { width: 390, height: 844 },
@@ -48,11 +49,8 @@ async function installRecognitionMock(page, { accelerateStatus = false } = {}) {
 }
 
 async function enterApp(page, name) {
-  await page.goto(BASE + "/index.html");
+  await enterAuthenticatedApp(page, { base: BASE, username: name });
   await page.evaluate(() => localStorage.clear());
-  await page.reload();
-  await page.fill("#nameInput", name);
-  await page.click(".start-btn");
   await expect(page.locator("#chatInput")).toBeVisible();
 }
 

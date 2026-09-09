@@ -43,21 +43,40 @@
           </div>
         </div>
 
-        <div class="welcome-form">
-          <label class="form-label">What should we call you?</label>
+        <div class="welcome-form" id="authLoginForm">
+          <div class="auth-tabs" role="tablist" aria-label="Account access">
+            <button class="auth-tab active" id="loginTab" type="button" onclick="showAuthView('login')">Login</button>
+            <button class="auth-tab" id="registerTab" type="button" onclick="showAuthView('register')">Register</button>
+          </div>
+          <label class="form-label">Username</label>
           <input
             type="text"
-            id="nameInput"
+            id="loginUsername"
             class="name-input"
-            placeholder="Enter your name e.g. Kofi"
+            placeholder="Enter your username e.g. Kofi"
             maxlength="30"
-            autocomplete="off"
-            onkeydown="if (event.key === 'Enter') { startChat(); }"
+            autocomplete="username"
           />
 
-          <label class="form-label" style="margin-top: 18px"
-            >Choose your language</label
-          >
+          <label class="form-label" style="margin-top: 18px">Password</label>
+          <input type="password" id="loginPassword" class="name-input" autocomplete="current-password" />
+          <button class="start-btn" type="button" onclick="loginUser()">Login</button>
+          <p class="auth-switch">New here? <button type="button" onclick="showAuthView('register')">Register</button></p>
+          <p id="welcomeError" class="welcome-error" role="alert"></p>
+        </div>
+
+        <div class="welcome-form" id="authRegisterForm" hidden>
+          <div class="auth-tabs" role="tablist" aria-label="Account access">
+            <button class="auth-tab" type="button" onclick="showAuthView('login')">Login</button>
+            <button class="auth-tab active" type="button">Register</button>
+          </div>
+          <label class="form-label">Username</label>
+          <input type="text" id="registerUsername" class="name-input" placeholder="Enter your username e.g. Kofi" maxlength="30" autocomplete="username" />
+          <label class="form-label" style="margin-top: 18px">Password</label>
+          <input type="password" id="registerPassword" class="name-input" autocomplete="new-password" />
+          <label class="form-label" style="margin-top: 18px">Confirm password</label>
+          <input type="password" id="registerConfirmPassword" class="name-input" autocomplete="new-password" />
+          <label class="form-label" style="margin-top: 18px">Choose your language</label>
           <div class="lang-choice-btns">
             <button
               class="lang-choice-btn active"
@@ -75,10 +94,9 @@
             </button>
           </div>
 
-          <button class="start-btn" onclick="startChat()">
-            Start Chatting →
-          </button>
-          <p id="welcomeError" class="welcome-error"></p>
+          <button class="start-btn" type="button" onclick="registerUser()">Register and enter AgriBotGH →</button>
+          <p class="auth-switch">Already have an account? <button type="button" onclick="showAuthView('login')">Login</button></p>
+          <p id="registerError" class="welcome-error" role="alert"></p>
         </div>
       </div>
     </div>
@@ -122,6 +140,7 @@
             🌙
           </button>
           <button class="clear-btn" onclick="clearChat()">Clear Chat</button>
+          <button class="clear-btn logout-btn" onclick="logoutUser()">Logout</button>
         </div>
       </header>
 
@@ -178,10 +197,10 @@
             </div>
           </div>
 
-          <!-- Change Name -->
+          <!-- Account logout -->
           <div class="sidebar-footer">
-            <button class="change-name-btn" onclick="changeName()">
-              ✏️ Change Name
+            <button class="change-name-btn" onclick="logoutUser()">
+              Logout
             </button>
           </div>
         </aside>

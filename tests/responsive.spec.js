@@ -1,6 +1,7 @@
 const { test, expect } = require("@playwright/test");
+const { enterAuthenticatedApp } = require("./helpers/auth");
 
-const BASE = process.env.TEST_BASE_URL || "http://localhost:8080";
+const BASE = process.env.TEST_BASE_URL || "http://127.0.0.1:5000";
 const WIDTHS = [1920, 1440, 1366, 1280, 1024, 768, 480, 390, 375];
 
 for (const width of WIDTHS) {
@@ -9,9 +10,7 @@ for (const width of WIDTHS) {
       width,
       height: width <= 768 ? 844 : 900,
     });
-    await page.goto(BASE + "/index.html");
-    await page.fill("#nameInput", `Responsive${width}`);
-    await page.click(".start-btn");
+    await enterAuthenticatedApp(page, { base: BASE, username: `Responsive${width}` });
 
     await expect(page.locator("#chatInput")).toBeVisible();
     await expect(page.locator("#micBtn")).toBeVisible();

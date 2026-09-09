@@ -1,18 +1,15 @@
 const { test, expect } = require("@playwright/test");
+const { enterAuthenticatedApp } = require("./helpers/auth");
 
-// NOTE: These tests expect you to run a simple static server rooted at the project
-// directory (e.g. `npx http-server -p 8080` or `npx serve -p 8080`) and then
-// visit http://localhost:8080/ in the tests. Start the server before running.
+// The shared Playwright configuration launches the Flask application.
 
-const BASE = process.env.TEST_BASE_URL || "http://localhost:8080";
+const BASE = process.env.TEST_BASE_URL || "http://127.0.0.1:5000";
 
 test.describe("Topic and quick-question panels", () => {
   test("renders uncertain agriculture and off-topic router states", async ({
     page,
   }) => {
-    await page.goto(BASE + "/index.html");
-    await page.fill("#nameInput", "RouterUser");
-    await page.click(".start-btn");
+    await enterAuthenticatedApp(page, { base: BASE, username: "RouterUser" });
 
     await page.fill(
       "#chatInput",
@@ -39,9 +36,7 @@ test.describe("Topic and quick-question panels", () => {
   test("loads all canonical topics and routes a selected suggestion", async ({
     page,
   }) => {
-    await page.goto(BASE + "/index.html");
-    await page.fill("#nameInput", "TopicUser");
-    await page.click(".start-btn");
+    await enterAuthenticatedApp(page, { base: BASE, username: "TopicUser" });
 
     await page.click(".topic-toggle-btn");
     const topicButtons = page.locator("#topicsGridPanel .topic-btn[data-topic]");
@@ -71,9 +66,7 @@ test.describe("Topic and quick-question panels", () => {
   });
 
   test("renders canonical Twi topic names", async ({ page }) => {
-    await page.goto(BASE + "/index.html");
-    await page.fill("#nameInput", "TwiTopicUser");
-    await page.click(".start-btn");
+    await enterAuthenticatedApp(page, { base: BASE, username: "TwiTopicUser" });
     await page.click("#twBtn");
     await page.click(".topic-toggle-btn");
 
@@ -87,11 +80,7 @@ test.describe("Topic and quick-question panels", () => {
   test("opens and closes the topics panel", async ({
     page,
   }) => {
-    await page.goto(BASE + "/index.html");
-
-    // Start the chat (welcome screen shows initially)
-    await page.fill("#nameInput", "PlaywrightUser");
-    await page.click(".start-btn");
+    await enterAuthenticatedApp(page, { base: BASE, username: "PlaywrightUser" });
 
     // Ensure the topic button exists
     const topicBtn = page.locator(".topic-toggle-btn");
@@ -116,10 +105,7 @@ test.describe("Topic and quick-question panels", () => {
   });
 
   test("rapid clicks do not toggle repeatedly", async ({ page }) => {
-    await page.goto(BASE + "/index.html");
-    // Start the chat so controls are visible
-    await page.fill("#nameInput", "PlaywrightUser");
-    await page.click(".start-btn");
+    await enterAuthenticatedApp(page, { base: BASE, username: "PlaywrightUser" });
     const topicBtn = page.locator(".topic-toggle-btn");
     const chips = page.locator("#chipsSidebar");
 
@@ -137,9 +123,7 @@ test.describe("Topic and quick-question panels", () => {
   test("bot responses include a manual play control and do not auto-speak", async ({
     page,
   }) => {
-    await page.goto(BASE + "/index.html");
-    await page.fill("#nameInput", "TTSUser");
-    await page.click(".start-btn");
+    await enterAuthenticatedApp(page, { base: BASE, username: "TTSUser" });
 
     await page.fill("#chatInput", "How do I grow maize?");
     await page.click("#sendBtn");
@@ -175,9 +159,7 @@ test.describe("Topic and quick-question panels", () => {
       await route.continue();
     });
 
-    await page.goto(BASE + "/index.html");
-    await page.fill("#nameInput", "LanguageIsolationUser");
-    await page.click(".start-btn");
+    await enterAuthenticatedApp(page, { base: BASE, username: "LanguageIsolationUser" });
 
     await page.fill("#chatInput", "What are the signs of good farming soil?");
     await page.click("#sendBtn");
@@ -226,9 +208,7 @@ test.describe("Topic and quick-question panels", () => {
   });
 
   test("high-risk advice displays and stores its safety notice", async ({ page }) => {
-    await page.goto(BASE + "/index.html");
-    await page.fill("#nameInput", "SafetyNoticeUser");
-    await page.click(".start-btn");
+    await enterAuthenticatedApp(page, { base: BASE, username: "SafetyNoticeUser" });
 
     await page.fill("#chatInput", "What fertilizer is best for maize?");
     await page.click("#sendBtn");
@@ -251,9 +231,7 @@ test.describe("Topic and quick-question panels", () => {
   test("history survives refresh and clear starts a new session without data loss", async ({
     page,
   }) => {
-    await page.goto(BASE + "/index.html");
-    await page.fill("#nameInput", "HistoryAuditUser");
-    await page.click(".start-btn");
+    await enterAuthenticatedApp(page, { base: BASE, username: "HistoryAuditUser" });
 
     await page.fill(
       "#chatInput",

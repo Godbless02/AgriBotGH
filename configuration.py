@@ -25,6 +25,18 @@ def environment_flag(name: str, true_values: set[str]) -> bool:
     return os.getenv(name, "").strip().casefold() in true_values
 
 
+def environment_boolean(name: str, default: bool = False) -> bool:
+    """Read a conventional boolean setting, falling back safely if invalid."""
+    value = os.getenv(name, "").strip().casefold()
+    if not value:
+        return default
+    if value in {"1", "true", "yes", "on"}:
+        return True
+    if value in {"0", "false", "no", "off"}:
+        return False
+    return default
+
+
 def running_unittest_command(argv: list[str] | None = None) -> bool:
     """Detect ``python -m unittest`` from its command entry point, not imports."""
     arguments = sys.argv if argv is None else argv
@@ -53,3 +65,9 @@ ORDINARY_UNIT_TEST_RUN = (
 LOCAL_ENV_LOADED = (
     False if ORDINARY_UNIT_TEST_RUN else load_local_environment()
 )
+
+# Account data is optional at process startup: the chatbot can still run
+# diagnostics and deterministic tests when PostgreSQL is unavailable.
+DATABASE_URL = os.getenv("DATABASE_URL", "").strip()
+FLASK_SECRET_KEY = os.getenv("FLASK_SECRET_KEY", "").strip()
+SESSION_COOKIE_SECURE = environment_boolean("SESSION_COOKIE_SECURE", default=False)

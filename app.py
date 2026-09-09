@@ -1,8 +1,13 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, session
 import json
 import os
 import re
+from datetime import timedelta
 from pathlib import Path
+
+from werkzeug.security import check_password_hash, generate_password_hash
+
+import configuration
 
 from entity_guard import DatasetEntityGuard
 from operation_guard import OperationCompatibilityGuard
@@ -12,15 +17,44 @@ from retrieval_semantics import has_agricultural_intent
 from services.abena_tts_service import AbenaTTSService, MAX_TTS_TEXT_LENGTH
 from services.gemini_service import GeminiService
 from services.weather_service import WeatherService
+from services.database_service import (
+    DatabaseService,
+    DatabaseUnavailable,
+    InMemoryDatabaseService,
+    UsernameTaken,
+    normalize_username,
+    validate_username,
+)
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR
 
 app = Flask(__name__, static_folder=None)
 app.config['MAX_CONTENT_LENGTH'] = 32 * 1024
+# Explicit test mode receives a deterministic signing key. All non-test
+# authentication requires a secret supplied by the environment.
+def configured_session_secret():
+    if configuration.TEST_MODE_REQUESTED:
+        return 'agribot-test-session-secret'
+    return configuration.FLASK_SECRET_KEY or None
+
+
+_SESSION_SECRET = configured_session_secret()
+AUTH_SECRET_CONFIGURED = bool(_SESSION_SECRET)
+app.config.update(
+    SECRET_KEY=_SESSION_SECRET,
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE='Lax',
+    SESSION_COOKIE_SECURE=(
+        False if configuration.TEST_MODE_REQUESTED
+        else configuration.SESSION_COOKIE_SECURE
+    ),
+    PERMANENT_SESSION_LIFETIME=timedelta(days=7),
+)
 WEATHER_SERVICE = WeatherService()
 GEMINI_SERVICE = GeminiService()
 ABENA_TTS_SERVICE = AbenaTTSService()
+DATABASE_SERVICE = InMemoryDatabaseService() if configuration.TEST_MODE_REQUESTED else DatabaseService()
 
 DATA_FILE = DATA_DIR / 'data' / 'agribotgh_dataset_bilingual_563.json'
 SUGGESTION_LINKS_FILE = BASE_DIR / 'models' / 'suggestion_links.json'
@@ -912,6 +946,117 @@ def get_answer(question, lang, username=None):
         ),
     }
 # ── ROUTES ────────────────────────────────────────────────────────
+def public_user(user):
+    """Return only metadata that is safe to send to the browser."""
+    return {
+        "id": user.id,
+        "username": user.username,
+        "preferred_language": user.preferred_language,
+    }
+
+
+def auth_unavailable_response():
+    return jsonify({"error": "User account service is temporarily unavailable."}), 503
+
+
+def valid_auth_json():
+    payload = request.get_json(silent=True)
+    if not isinstance(payload, dict):
+        return None, (jsonify({"error": "Invalid JSON payload"}), 400)
+    return payload, None
+
+
+def establish_session(user):
+    session.clear()
+    session.permanent = True
+    session['user_id'] = user.id
+    session['username'] = user.username
+    session['preferred_language'] = user.preferred_language
+
+
+@app.route('/api/auth/register', methods=['POST'])
+def register():
+    if not AUTH_SECRET_CONFIGURED:
+        return auth_unavailable_response()
+    payload, error = valid_auth_json()
+    if error:
+        return error
+    username, username_error = validate_username(payload.get('username'))
+    password = payload.get('password')
+    confirm_password = payload.get('confirm_password')
+    language = payload.get('preferred_language', 'en')
+    if username_error:
+        return jsonify({"error": username_error}), 400
+    if not isinstance(password, str) or not isinstance(confirm_password, str):
+        return jsonify({"error": "Password and confirmation are required."}), 400
+    if not 8 <= len(password) <= 128:
+        return jsonify({"error": "Password must be between 8 and 128 characters."}), 400
+    if password != confirm_password:
+        return jsonify({"error": "Passwords do not match."}), 400
+    if language not in {'en', 'tw'}:
+        return jsonify({"error": "Preferred language must be 'en' or 'tw'."}), 400
+    try:
+        user = DATABASE_SERVICE.create_user(
+            username,
+            normalize_username(username),
+            generate_password_hash(password),
+            language,
+        )
+    except UsernameTaken:
+        return jsonify({"error": "That username is already taken. Please choose another."}), 409
+    except DatabaseUnavailable:
+        return auth_unavailable_response()
+    establish_session(user)
+    return jsonify({"authenticated": True, "user": public_user(user)}), 201
+
+
+@app.route('/api/auth/login', methods=['POST'])
+def login():
+    if not AUTH_SECRET_CONFIGURED:
+        return auth_unavailable_response()
+    payload, error = valid_auth_json()
+    if error:
+        return error
+    username = payload.get('username')
+    password = payload.get('password')
+    if not isinstance(username, str) or not isinstance(password, str):
+        return jsonify({"error": "Invalid username or password."}), 401
+    try:
+        user = DATABASE_SERVICE.find_user_by_normalized_username(normalize_username(username))
+        if user is None or not check_password_hash(user.password_hash, password):
+            return jsonify({"error": "Invalid username or password."}), 401
+        DATABASE_SERVICE.update_last_login(user.id)
+    except DatabaseUnavailable:
+        return auth_unavailable_response()
+    establish_session(user)
+    return jsonify({"authenticated": True, "user": public_user(user)})
+
+
+@app.route('/api/auth/logout', methods=['POST'])
+def logout():
+    if not AUTH_SECRET_CONFIGURED:
+        return auth_unavailable_response()
+    session.clear()
+    return jsonify({"authenticated": False})
+
+
+@app.route('/api/auth/me', methods=['GET'])
+def current_authenticated_user():
+    if not AUTH_SECRET_CONFIGURED:
+        return auth_unavailable_response()
+    required = ('user_id', 'username', 'preferred_language')
+    if not all(session.get(key) for key in required):
+        return jsonify({"error": "Authentication required."}), 401
+    return jsonify({
+        "authenticated": True,
+        "user": {
+            "id": session['user_id'],
+            "username": session['username'],
+            "preferred_language": session['preferred_language'],
+        },
+    })
+
+
 @app.route('/api/chat', methods=['POST'])
 def chat():
     d = request.get_json(silent=True)
@@ -923,7 +1068,10 @@ def chat():
         return jsonify({"error": "Message must be text"}), 400
     question = message.strip()
     language = d.get('language','en')
-    username = d.get('username', None)
+    supplied_username = d.get('username', None)
+    if supplied_username is not None and not isinstance(supplied_username, str):
+        return jsonify({"error": "Username must be text"}), 400
+    username = session.get('username')
     suggestion_id = d.get('suggestion_id')
     if not question:
         return jsonify({"error": "No message provided"}), 400
@@ -931,10 +1079,9 @@ def chat():
         return jsonify({"error": "Message must not exceed 2000 characters"}), 400
     if not isinstance(language, str) or language not in {'en', 'tw'}:
         return jsonify({"error": "Language must be 'en' or 'tw'"}), 400
-    if username is not None:
-        if not isinstance(username, str):
-            return jsonify({"error": "Username must be text"}), 400
-        username = username.strip()[:30] or None
+    # Browser-supplied names are deliberately ignored. When a user is logged
+    # in, the server-signed session is the sole identity source. Anonymous
+    # diagnostic requests remain supported for existing retrieval tests.
 
     if suggestion_id is not None:
         error = validate_known_suggestion(

@@ -1,6 +1,7 @@
 const { test, expect } = require("@playwright/test");
+const { enterAuthenticatedApp } = require("./helpers/auth");
 
-const BASE = process.env.TEST_BASE_URL || "http://localhost:8080";
+const BASE = process.env.TEST_BASE_URL || "http://127.0.0.1:5000";
 
 const weatherPayload = {
   success: true,
@@ -17,11 +18,8 @@ const weatherPayload = {
 };
 
 async function enterApp(page, name) {
-  await page.goto(BASE + "/index.html");
+  await enterAuthenticatedApp(page, { base: BASE, username: name });
   await page.evaluate(() => localStorage.clear());
-  await page.reload();
-  await page.fill("#nameInput", name);
-  await page.click(".start-btn");
 }
 
 test("farmer can retrieve current Kumasi weather and a three-day forecast", async ({ page }) => {

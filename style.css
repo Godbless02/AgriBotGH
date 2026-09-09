@@ -113,6 +113,38 @@ button {
 .welcome-form {
   text-align: left;
 }
+.auth-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.auth-tab {
+  flex: 1;
+  padding: 9px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  color: var(--green);
+  font-weight: 700;
+}
+.auth-tab.active {
+  background: var(--light-green);
+  border-color: var(--green);
+  color: var(--dark-green);
+}
+.auth-switch {
+  margin-top: 12px;
+  text-align: center;
+  color: #616161;
+  font-size: 12px;
+}
+.auth-switch button {
+  border: 0;
+  background: transparent;
+  color: var(--green);
+  font-weight: 700;
+  text-decoration: underline;
+}
 .form-label {
   display: block;
   font-size: 13px;

@@ -1,8 +1,9 @@
 const { test, expect } = require("@playwright/test");
+const { enterAuthenticatedApp } = require("./helpers/auth");
 const fs = require("fs");
 const path = require("path");
 
-const BASE = process.env.TEST_BASE_URL || "http://localhost:8080";
+const BASE = process.env.TEST_BASE_URL || "http://127.0.0.1:5000";
 const ROOT = path.resolve(__dirname, "..");
 const SET_PATH = path.join(
   ROOT,
@@ -66,9 +67,7 @@ test("executes all 10 presentation TTS cases and completes the 80-case report", 
   const cases = testSet.cases.filter((item) => item.group === "tts");
   expect(cases).toHaveLength(10);
 
-  await page.goto(BASE + "/index.html");
-  await page.fill("#nameInput", "PresentationTtsUser");
-  await page.click(".start-btn");
+  await enterAuthenticatedApp(page, { base: BASE, username: "PresentationTtsUser" });
   const results = [];
 
   for (const item of cases) {
