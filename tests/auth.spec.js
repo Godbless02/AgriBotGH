@@ -7,6 +7,25 @@ async function mockUnauthenticated(page) {
   await page.route("**/api/auth/me", (route) => route.fulfill({ status: 401, contentType: "application/json", body: JSON.stringify({ error: "Authentication required." }) }));
 }
 
+test("numeric registration names stay on the registration screen without an API request", async ({ page }) => {
+  await mockUnauthenticated(page);
+  const requests = [];
+  await page.route("**/api/auth/register", (route) => {
+    requests.push(route.request());
+    return route.fulfill({ status: 201, contentType: "application/json", body: JSON.stringify({ authenticated: true, user }) });
+  });
+  await page.goto(BASE + "/index.html");
+  await page.getByRole("button", { name: "Register", exact: true }).first().click();
+  await page.fill("#registerUsername", "Kofi123");
+  await page.fill("#registerPassword", "private-password");
+  await page.fill("#registerConfirmPassword", "private-password");
+  await page.getByRole("button", { name: /Register and enter/ }).click();
+  await expect(page.locator("#registerError")).toHaveText("Please enter a valid name using letters, spaces, hyphens or apostrophes only.");
+  await expect(page.locator("#authRegisterForm")).toBeVisible();
+  await expect(page.locator("#appShell")).toBeHidden();
+  expect(requests).toHaveLength(0);
+});
+
 test("register success opens the authenticated app without storing passwords", async ({ page }) => {
   await mockUnauthenticated(page);
   await page.route("**/api/auth/register", (route) => route.fulfill({ status: 201, contentType: "application/json", body: JSON.stringify({ authenticated: true, user }) }));

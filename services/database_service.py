@@ -7,7 +7,6 @@ agricultural application from starting or its deterministic tests from running.
 
 from __future__ import annotations
 
-import re
 import uuid
 from dataclasses import dataclass
 from typing import Callable
@@ -32,7 +31,7 @@ class User:
     preferred_language: str
 
 
-USERNAME_PATTERN = re.compile(r"[A-Za-z0-9_-]+(?: [A-Za-z0-9_-]+)*\Z")
+NAME_VALIDATION_ERROR = "Please enter a valid name using letters, spaces, hyphens or apostrophes only."
 
 
 def normalize_username(value: str) -> str:
@@ -42,12 +41,19 @@ def normalize_username(value: str) -> str:
 
 def validate_username(value: object) -> tuple[str | None, str | None]:
     if not isinstance(value, str):
-        return None, "Username must be text."
+        return None, NAME_VALIDATION_ERROR
     display = " ".join(value.strip().split())
     if not 3 <= len(display) <= 30:
-        return None, "Username must be between 3 and 30 characters."
-    if not USERNAME_PATTERN.fullmatch(display):
-        return None, "Use letters, numbers, spaces, underscores, or hyphens only."
+        return None, NAME_VALIDATION_ERROR
+    if not display[0].isalpha() or not display[-1].isalpha():
+        return None, NAME_VALIDATION_ERROR
+    for index, character in enumerate(display):
+        if character.isalpha() or character == " ":
+            continue
+        if (character in "-'" and display[index - 1].isalpha()
+                and display[index + 1].isalpha()):
+            continue
+        return None, NAME_VALIDATION_ERROR
     return display, None
 
 

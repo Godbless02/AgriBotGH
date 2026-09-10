@@ -22,7 +22,22 @@ class RecordingConnection:
 class DatabaseServiceTests(unittest.TestCase):
     def test_normalization_preserves_meaningful_username_characters(self):
         self.assertEqual(normalize_username("  Ama__Kofi-2  "), "ama__kofi-2")
-        self.assertEqual(validate_username("Ama__Kofi-2")[1], None)
+        self.assertIsNotNone(validate_username("Ama__Kofi-2")[1])
+
+    def test_registration_accepts_names_and_collapses_spaces(self):
+        for name in ("Ama", "Kofi Mensah", "Osei-Tutu", "Nana O'Kyei", "Akɔsua", "Ɛsi", "Élodie", "A" * 30):
+            with self.subTest(name=name):
+                self.assertEqual(validate_username(name), (name, None))
+        self.assertEqual(validate_username("  Kofi   Mensah  "), ("Kofi Mensah", None))
+
+    def test_registration_rejects_invalid_names(self):
+        for name in (None, 123, [], "Kofi123", "12345", "Ama_22", "Kofi@Mensah",
+                     "---", "", "  ", "Al", "A" * 31, "-Ama", "Ama'", "Osei--Tutu",
+                     "Nana O''Kyei", "Ama - Kofi", "Ama#", "Ama$", "Ama%", "Ama!",
+                     "Ama😀", "Ama١", "Ama²"):
+            with self.subTest(name=name):
+                self.assertEqual(validate_username(name), (None,
+                    "Please enter a valid name using letters, spaces, hyphens or apostrophes only."))
 
     def test_repository_uses_parameterized_queries(self):
         connection = RecordingConnection()

@@ -195,9 +195,15 @@ function enterAuthenticatedApp(user, isReturning) {
 }
 
 async function registerUser() {
+  const username = document.getElementById("registerUsername").value.trim().replace(/\s+/gu, " ");
+  const nameLength = [...username].length;
+  if (nameLength < 3 || nameLength > 30 || !/^\p{L}+(?:[ '-]\p{L}+)*$/u.test(username)) {
+    authError("register", "Please enter a valid name using letters, spaces, hyphens or apostrophes only.");
+    return;
+  }
   try {
     const data = await authRequest("/api/auth/register", {
-      username: document.getElementById("registerUsername").value,
+      username,
       password: document.getElementById("registerPassword").value,
       confirm_password: document.getElementById("registerConfirmPassword").value,
       preferred_language: welcomeLang,

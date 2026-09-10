@@ -3,7 +3,7 @@ import secrets
 import unittest
 from unittest.mock import patch
 
-from werkzeug.security import check_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 
 import app
 import configuration
@@ -77,7 +77,7 @@ class AuthenticationTests(unittest.TestCase):
 
     def test_username_normalization_and_policy(self):
         self.assertEqual(normalize_username("  GODBLESS   Farmer "), "godbless farmer")
-        self.assertEqual(validate_username("Kofi-01")[0], "Kofi-01")
+        self.assertIsNotNone(validate_username("Kofi-01")[1])
         self.assertIsNotNone(validate_username("no!")[1])
 
     def test_registration_hashes_password_and_returns_safe_metadata(self):
@@ -105,6 +105,25 @@ class AuthenticationTests(unittest.TestCase):
         self.assertEqual(self.register(password=too_short, confirm_password=too_short).status_code, 400)
         self.assertEqual(self.register(username="bad!name").status_code, 400)
         self.assertEqual(self.register(preferred_language="fr").status_code, 400)
+
+    def test_numeric_registration_name_does_not_create_user(self):
+        for name in ("Kofi123", "12345"):
+            with self.subTest(name=name):
+                response = self.register(username=name)
+                self.assertEqual(response.status_code, 400)
+                self.assertEqual(response.get_json()["error"],
+                    "Please enter a valid name using letters, spaces, hyphens or apostrophes only.")
+                self.assertEqual(self.database.users, {})
+                self.assertEqual(self.client.get("/api/auth/me").status_code, 401)
+
+    def test_legacy_username_can_still_log_in(self):
+        self.database.create_user("Ama__Kofi-2", "ama__kofi-2",
+                                  generate_password_hash("safe-password-123"), "en")
+        response = self.client.post("/api/auth/login", json={
+            "username": "  AMA__KOFI-2  ", "password": "safe-password-123",
+        })
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.get_json()["user"]["username"], "Ama__Kofi-2")
 
     def test_login_success_creates_session_and_me_returns_safe_user(self):
         self.register(username="Ama", preferred_language="tw")
